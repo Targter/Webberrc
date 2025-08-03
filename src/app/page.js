@@ -4,9 +4,9 @@ import { TrustedPartnersScroll } from "../components/ui/text-scroll";
 
 export default function Home() {
   return (
-    <div className="max-w-7xl h-auto mx-auto">
+    <div className="max-w-5xl h-auto mx-auto flex flex-col">
       <Home2 />
-      <div className="w-full min-h-[500px] bg-black flex items-center justify-center">
+      <div className="w-full max-h-[500px] bg-black flex items-center justify-center mt-8">
         <video
           className="w-full h-full object-cover"
           autoPlay

@@ -1,15 +1,26 @@
-import React from "react";
-// const Header = () => {
-//   return <div className="bg-white">Header</div>;
-//   <FlipLink href="https://x.com/guri_who">Behance</FlipLink>
-//   <FlipLink href="https://x.com/guri_who">Behance</FlipLink>
-//   <FlipLink href="https://x.com/guri_who">Behance</FlipLink>
-// };
-
-// export default Header;
+"use client";
+import React, { useState } from "react";
+import FlipLink from "@/components/ui/text-effect-flipper";
 
 const Header = () => {
-  return <div className=" h-[100px]">Header</div>;
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  return (
+    <div className="flex items-center justify-center px-4 py-8 pb-0 h-[120px] md:h-[160px] lg:h-[180px] mt-32 max-w-2xl mx-auto ">
+      <div className="flex flex-col items-center space-y-3">
+        {/* First line with two links */}
+        <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6 ">
+          <FlipLink href="#context">Better Chip</FlipLink>
+          <FlipLink href="#agent">Better Power</FlipLink>
+        </div>
+
+        {/* Second line with one link */}
+        <div className="">
+          <FlipLink href="#code">Better Ride</FlipLink>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Header;
