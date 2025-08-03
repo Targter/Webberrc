@@ -1,22 +1,25 @@
 import Home2 from "@/Pages/Home";
+import Products from "@/component/Products";
+import { TrustedPartnersScroll } from "../components/ui/text-scroll";
 
 export default function Home() {
   return (
-    <div className="max-w-5xl h-auto mx-auto">
+    <div className="max-w-7xl h-auto mx-auto">
       <Home2 />
-
-      <div className="bg-black w-full min-h-[500px]">
+      <div className="w-full min-h-[500px] bg-black flex items-center justify-center">
         <video
+          className="w-full h-full object-cover"
           autoPlay
-          loop
           muted
+          loop
           playsInline
-          className=" w-full h-full object-cover z-0"
         >
           <source src="/bgv1.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
+      <Products />
+      <TrustedPartnersScroll />
     </div>
   );
 }
