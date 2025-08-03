@@ -1,3 +1,4 @@
+"use client";
 import Header from "@/component/Header";
 import React from "react";
 
