@@ -1,13 +1,34 @@
 import Home2 from "@/Pages/Home";
 import Products from "@/component/Products";
 import { TrustedPartnersScroll } from "../components/ui/text-scroll";
-import {GlowingEffectDemoSecond} from "@/component/rd";
+import { GlowingEffectDemoSecond } from "@/component/rd";
 
 export default function Home() {
   return (
-    <div className="max-w-5xl h-auto mx-auto flex flex-col">
+    <div className=" max-w-6xl mx-auto flex flex-col ">
+      {/*
+       */}
+      {/* <div className="absolute inset-0 -z-1 pointer-events-none overflow-hidden">
+        <div
+          className="absolute w-full h-full"
+          style={{
+            background: `
+              radial-gradient(
+                circle at top right,
+                rgba(240, 248, 255, 0.4) 0%, 
+                rgba(135, 206, 250, 0.3) 20%, 
+                rgba(144, 238, 144, 0.2) 40%,
+                transparent 70%
+              )
+            `,
+            transform: "rotate(-45deg)",
+            transformOrigin: "top right",
+          }}
+        />
+      </div> */}
+
       <Home2 />
-      <div className="w-full max-h-[500px] bg-black flex items-center justify-center mt-8">
+      <div className="w-full max-h-[500px] bg-black flex items-center justify-center mt-18">
         <video
           className="w-full h-full object-cover"
           autoPlay
@@ -22,7 +43,6 @@ export default function Home() {
       <Products />
       <TrustedPartnersScroll />
       <GlowingEffectDemoSecond />
-      
     </div>
   );
 }
