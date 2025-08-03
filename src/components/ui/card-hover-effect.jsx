@@ -20,10 +20,12 @@ export const HoverEffect = ({ items, className }) => {
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
+          {/* bg-zinc-900 */}
+          {/* bg-gradient-to-br from-zinc-800 via-zinc-900 to-zinc-100 */}
           <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.span
-                className="absolute inset-2 bg-gradient-to-br from-zinc-700  to-zinc-800 block rounded-2xl shadow-2xl"
+                className="absolute inset-2  block rounded-2xl shadow-2xl bg-gradient-to-br from-zinc-50 via-zinc-100 to-zinc-100  "
                 layoutId="hoverBackground"
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{
@@ -80,12 +82,12 @@ export const Card = ({ className, children }) => {
 
 export const CardImage = ({ src, alt, className }) => {
   return (
-    <div className="p-3 mb-6 overflow-hidden rounded-xl bg-gradient-to-br from-slate-50 to-blue-50 ring-1 ring-slate-200/60 group-hover:ring-blue-300/60 transition-all duration-500 ease-out">
+    <div className="p-3 mb-6 overflow-hidden rounded-xl ring-slate-200/60 group-hover:ring-blue-300/60 transition-all duration-500 ease-out">
       <img
         src={src}
         alt={alt}
         className={cn(
-          "w-full h-48 object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:brightness-110",
+          "w-full h-48 object-cover transition-all duration-700 ease-out ",
           className
         )}
       />
@@ -97,7 +99,7 @@ export const CardTitle = ({ className, children }) => {
   return (
     <h4
       className={cn(
-        "text-slate-800 font-bold tracking-wide mt-6 text-2xl group-hover:text-blue-700 transition-colors duration-500 ease-out",
+        "text-zinc-700 font-bold tracking-wide mt-6 text-2xl group-hover:text-zinc-700 transition-colors duration-500 ease-out",
         className
       )}
     >
