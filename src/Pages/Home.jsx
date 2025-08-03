@@ -5,7 +5,7 @@ const Home2 = () => {
   return (
     <div className="w-full max-h-[500px] flex flex-col  pt-[200px]">
       <Header />
-      <p className="p-44 pt-4  pb-6 text-center">
+      <p className="p-44 pt-4  pb-6 text-center text-xs text-gray-500 ">
         We design battery chips with precision and purpose — powering the future
         through quiet intelligence.
       </p>

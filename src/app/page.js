@@ -5,11 +5,18 @@ export default function Home() {
     <div className="max-w-5xl h-auto mx-auto">
       <Home2 />
 
-      <div
-        className="bg-black w-full min-h-[500px]"
-        // style={{ backgroundImage: "" }}
-        style="background-image: url('path/to/image.jpg'); background-size: cover; background-position: center;"
-      ></div>
+      <div className="bg-black w-full min-h-[500px]">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className=" w-full h-full object-cover z-0"
+        >
+          <source src="/bgv1.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
     </div>
   );
 }
