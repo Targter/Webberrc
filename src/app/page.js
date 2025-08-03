@@ -1,6 +1,7 @@
 import Home2 from "@/Pages/Home";
 import Products from "@/component/Products";
 import { TrustedPartnersScroll } from "../components/ui/text-scroll";
+import {GlowingEffectDemoSecond} from "@/component/rd";
 
 export default function Home() {
   return (
@@ -20,6 +21,8 @@ export default function Home() {
       </div>
       <Products />
       <TrustedPartnersScroll />
+      <GlowingEffectDemoSecond />
+      
     </div>
   );
 }
