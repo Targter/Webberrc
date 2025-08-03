@@ -1,5 +1,6 @@
 import Header from "@/component/Header";
 import React from "react";
+import FlipLink from "@/components/ui/text-effect-flipper";
 
 const Home2 = () => {
   return (

@@ -1,5 +1,5 @@
-// import React from "react";
-// import FlipLink from "./components/ui/text-effet-flipper"
+import React from "react";
+import FlipLink from "./components/ui/text-effet-flipper"
 
 // const Header = () => {
 //   return <div className="bg-white">Header</div>;
@@ -13,7 +13,10 @@
 import React from "react";
 
 const Header = () => {
-  return <div className=" h-[100px]">Header</div>;
+  return (
+    
+<div className=" h-[100px]">Header</div>;
+  )
 };
 
 export default Header;
