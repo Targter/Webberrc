@@ -1,20 +1,20 @@
 import React from "react";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
-const DURATION = 0.25
-const STAGGER = 0.025
+const DURATION = 0.25;
+const STAGGER = 0.025;
 
 const FlipLink = ({ children, href }) => {
   return (
-    (<motion.a
+    <motion.a
       initial="initial"
       whileHover="hovered"
-      target="_blank"
       href={href}
-      className="relative block overflow-hidden whitespace-nowrap text-4xl font-semibold uppercase dark:text-white/90 sm:text-7xl md:text-8xl "
+      className="relative block overflow-hidden whitespace-nowrap text-4xl font-black uppercase sm:text-7xl md:text-8xl lg:text-7xl"
       style={{
         lineHeight: 0.75,
-      }}>
+      }}
+    >
       <div>
         {children.split("").map((l, i) => (
           <motion.span
@@ -32,8 +32,9 @@ const FlipLink = ({ children, href }) => {
               delay: STAGGER * i,
             }}
             className="inline-block"
-            key={i}>
-            {l}
+            key={i}
+          >
+            {l === " " ? "\u00A0" : l}
           </motion.span>
         ))}
       </div>
@@ -54,13 +55,14 @@ const FlipLink = ({ children, href }) => {
               delay: STAGGER * i,
             }}
             className="inline-block"
-            key={i}>
-            {l}
+            key={i}
+          >
+            {l === " " ? "\u00A0" : l}
           </motion.span>
         ))}
       </div>
-    </motion.a>)
+    </motion.a>
   );
-}
+};
 
-export default FlipLink
+export default FlipLink;
