@@ -2,20 +2,17 @@
 import Header from "@/component/Header";
 import React from "react";
 
-
 const Home2 = () => {
   return (
-    <div>
-
+    <div className="flex flex-col items-center pb-11">
       <Header />
-    <div className="w-full  flex flex-col  pt-[30px]">
- <p className="px-6 md:px-20 lg:px-44 pt-6 pb-8 text-center text-xl md:text-2xl lg:text-3xl text-gray-800 leading-snug">
-  We design battery chips with precision — silent yet powerful.<br />
-  In every circuit flows the quiet intelligence shaping tomorrow.
-</p>
-
-    </div>
-
+      <p className=" text-center text-lg mb-11 md:mt-4 mt-11">
+        We design battery chips with precision and purpose — powering the future
+        through quiet intelligence.
+      </p>
+      <button className="bg-blue-800/30  backdrop-blur-8xl shadow-2xl px-6 p-3 rounded-2xl text-black">
+        Button Products
+      </button>
     </div>
   );
 };
