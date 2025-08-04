@@ -29,7 +29,7 @@ export function GlowingEffectDemoSecond() {
           area="md:[grid-area:1/1/2/7] xl:[grid-area:1/1/2/5]"
           icon={<Box className="h-4 w-4 text-black dark:text-neutral-400" />}
           title="Easy Battery Pack Paralleling"
-          description="State of the art and reliable battery pack paralleling technique without software communication between battery packs. Unhindered power delivery even while large SOC mismatch."
+          description="State of the art battery pack paralleling technique without software communication between battery packs. Unhindered power delivery ."
         />
         
         <GridItem

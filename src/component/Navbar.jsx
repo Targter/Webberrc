@@ -68,7 +68,7 @@ const ElectricChipNavbar = () => {
   }, []);
 
   return (
-    <nav className={`fixed top-0  items-center justify-between xl:bg-slate-800 opacity-90 z-50 left-0 right-0  transition-all duration-500 ${
+    <nav className={`fixed top-1  rounded-2xl items-center justify-between xl:bg-slate-800 opacity-90 z-50 left-4 right-4  transition-all duration-500 ${
       isScrolled 
         ? 'bg-slate-800/95 backdrop-blur-sm border-b border-slate-700/50' 
         : 'bg-transparent'
@@ -85,8 +85,8 @@ const ElectricChipNavbar = () => {
             <Link href="/">
             <Image
             src="/logo/webber-logo.png"
-            width={200}
-            height={200}
+            width={180}
+            height={180}
             alt='logo'
             
             />

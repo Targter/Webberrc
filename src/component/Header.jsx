@@ -10,13 +10,13 @@ const Header = () => {
       <div className="flex flex-col items-center space-y-3">
         {/* First line with two links */}
         <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6 ">
-          <FlipLink href="#context">Better Chip</FlipLink>
-          <FlipLink href="#agent">Better Power</FlipLink>
+          <FlipLink href="#context">BETTER CHIP.</FlipLink>
+          <FlipLink href="#agent">BETTER POWER.</FlipLink>
         </div>
 
         {/* Second line with one link */}
         <div className="">
-          <FlipLink href="#code">Better Ride</FlipLink>
+          <FlipLink href="#code">BETTER RIDE.</FlipLink>
         </div>
       </div>
     </div>

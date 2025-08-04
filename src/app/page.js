@@ -2,6 +2,9 @@ import Home2 from "@/Pages/Home";
 import Products from "@/component/Products";
 import { TrustedPartnersScroll } from "../components/ui/text-scroll";
 import { GlowingEffectDemoSecond } from "@/component/rd";
+import {SkiperCard} from "../component/advance"
+import  ContactMap from "@/component/contactmap";
+import { Achieve } from "@/component/achieve";
 
 export default function Home() {
   return (
@@ -30,7 +33,7 @@ export default function Home() {
       <Home2 />
       <div className="w-full max-h-[500px] bg-black flex items-center justify-center mt-18">
         <video
-          className="w-full h-full object-cover"
+          className="w-full h-full rounded-2xl object-cover"
           autoPlay
           muted
           loop
@@ -40,9 +43,14 @@ export default function Home() {
           Your browser does not support the video tag.
         </video>
       </div>
+     
       <Products />
+
       <TrustedPartnersScroll />
       <GlowingEffectDemoSecond />
+      <SkiperCard />
+      <Achieve />
+      <ContactMap />
     </div>
   );
 }
