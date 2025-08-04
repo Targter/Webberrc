@@ -8,7 +8,7 @@ import { Achieve } from "@/component/achieve";
 
 export default function Home() {
   return (
-    <div className=" max-w-6xl mx-auto flex flex-col ">
+    <div className=" max-w-6xl mx-auto">
       {/*
        */}
       {/* <div className="absolute inset-0 -z-1 pointer-events-none overflow-hidden">
