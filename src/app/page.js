@@ -2,7 +2,7 @@ import Home2 from "@/Pages/Home";
 import Products from "@/component/Products";
 import  TrustedPartnersSection  from "../component/patners";
 import { GlowingEffectDemoSecond } from "@/component/rd";
-import {SkiperCard} from "../component/advance"
+import {ManufacturingShowcase} from "../component/advance"
 import  ContactMap from "@/component/contactmap";
 import { Achieve } from "@/component/achieve";
 import VideoComponent from "@/component/VideoComponent";
@@ -39,7 +39,7 @@ export default function Home() {
 
       <TrustedPartnersSection />
       <GlowingEffectDemoSecond />
-      <SkiperCard />
+      <ManufacturingShowcase />
       <Achieve />
       <ContactMap />
     </div>

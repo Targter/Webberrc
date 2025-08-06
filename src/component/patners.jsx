@@ -96,27 +96,28 @@ const TrustedPartnersSection = () => {
   }, []);
 
   return (
-    <section className="relative w-full py-12 lg:py-16 bg-gradient-to-br from-gray-50 via-blue-50/30 to-emerald-50/30 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+    <section className="relative w-full py-8 lg:py-10 bg-gradient-to-br from-gray-50 via-blue-50/30 to-emerald-50/30 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
       {/* Header Section */}
-      <div 
-        className="container mx-auto px-4 lg:px-6 text-center mb-12 lg:mb-16"
-        data-header="true"
-      >
-        <div 
-          className={`bg-gradient-to-r from-blue-600 to-blue-700 dark:from-blue-600 dark:to-blue-800 rounded-xl lg:rounded-2xl p-6 sm:p-8 lg:p-12 text-white shadow-xl transition-all duration-1000 ease-out transform ${
-            headerVisible 
-              ? 'opacity-100 translate-y-0 scale-100' 
-              : 'opacity-0 translate-y-8 scale-95'
-          }`}
-        >
-             <h1 className="lg:text-5xl md:text-4xl text-3xl font-bold text-white mb-4 leading-tight">
-            OUR TRUSTED PATNERS
-          </h1>
-          <h3 className="text-sm sm:text-base lg:text-lg opacity-90 font-light leading-relaxed max-w-2xl lg:max-w-3xl mx-auto">
-            We collaborate with industry leaders who share our commitment to innovation and excellence
-          </h3>
-        </div>
-      </div>
+   <div 
+  className="w-screen text-center mb-12 lg:mb-16"
+  data-header="true"
+>
+  <div 
+    className={`w-full bg-gradient-to-r from-blue-600 to-blue-700 dark:from-blue-600 dark:to-blue-800 sm:p-8 lg:p-12 text-white shadow-xl transition-all duration-1000 ease-out transform ${
+      headerVisible 
+        ? 'opacity-100 translate-y-0 scale-100' 
+        : 'opacity-0 translate-y-8 scale-95'
+    }`}
+  >
+    <h1 className="lg:text-5xl md:text-4xl text-3xl font-bold text-white mb-4 leading-tight">
+      OUR TRUSTED PARTNERS
+    </h1>
+    <h3 className="text-sm sm:text-base lg:text-lg opacity-90 font-light leading-relaxed max-w-2xl lg:max-w-3xl mx-auto">
+      We collaborate with industry leaders who share our commitment to innovation and excellence
+    </h3>
+  </div>
+</div>
+
 
       {/* Partners Scroll Section */}
       <div className="relative">
@@ -239,7 +240,7 @@ const TrustedPartnersSection = () => {
         </div>
 
         {/* Scroll indicator */}
-        <div className="flex justify-center mt-6 lg:mt-8">
+        <div className="flex justify-center mt-4 lg:mt-8">
           <div className="flex items-center gap-2 text-xs text-gray-400 dark:text-gray-500">
             <div className="w-6 sm:w-8 h-px bg-gradient-to-r from-transparent to-yellow-400/50"></div>
             <span className="hidden sm:inline">Scroll to explore</span>
