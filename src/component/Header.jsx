@@ -6,8 +6,8 @@ const Header = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
-    <div className="flex items-center justify-center px-4 py-8 pb-0 h-[120px] md:h-[160px] lg:h-[180px] mt-32 max-w-2xl mx-auto ">
-      <div className="flex flex-col items-center space-y-3">
+    <div className="flex items-center justify-center px-4 py-4  h-[120px] md:h-[160px] lg:h-[180px] mt-16 max-w-2xl mx-auto ">
+      <div className="flex flex-col items-center  space-y-3">
         {/* First line with two links */}
         <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6 ">
           <FlipLink href="#context">BETTER CHIP.</FlipLink>

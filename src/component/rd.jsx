@@ -8,7 +8,9 @@ export function GlowingEffectDemoSecond() {
     <div className="max-w-7xl mx-auto px-4 py-8">
       {/* Heading Section */}
       <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-4">
+        <h3 className="text-blue-600 font-medium hover:text-blue-700 transition-colors border-b-2 border-yellow-400 hover:border-yellow-500 pb-1 inline-block">Why choose us</h3>
+        
+        <h1 className="lg:text-6xl  md:text-5xl font-bold text-black dark:text-white mb-4">
           FIRST PRINCIPLE DESIGN APPROACH
         </h1>
         <h2 className="text-2xl md:text-3xl font-semibold text-gray-700 dark:text-gray-300 mb-2">

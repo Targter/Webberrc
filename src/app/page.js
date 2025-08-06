@@ -1,14 +1,15 @@
 import Home2 from "@/Pages/Home";
 import Products from "@/component/Products";
-import { TrustedPartnersScroll } from "../components/ui/text-scroll";
+import  TrustedPartnersSection  from "../component/patners";
 import { GlowingEffectDemoSecond } from "@/component/rd";
 import {SkiperCard} from "../component/advance"
 import  ContactMap from "@/component/contactmap";
 import { Achieve } from "@/component/achieve";
+import VideoComponent from "@/component/VideoComponent";
 
 export default function Home() {
   return (
-    <div className=" max-w-6xl mx-auto">
+    <div>
       {/*
        */}
       {/* <div className="absolute inset-0 -z-1 pointer-events-none overflow-hidden">
@@ -31,22 +32,12 @@ export default function Home() {
       </div> */}
 
       <Home2 />
-      <div className="w-full max-h-[500px] bg-black flex items-center justify-center mt-18">
-        <video
-          className="w-full h-full rounded-2xl object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-        >
-          <source src="/bgv1.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
+      
      
       <Products />
+      <VideoComponent />
 
-      <TrustedPartnersScroll />
+      <TrustedPartnersSection />
       <GlowingEffectDemoSecond />
       <SkiperCard />
       <Achieve />
