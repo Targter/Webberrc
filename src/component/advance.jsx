@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion, useMotionTemplate, useMotionValue } from "motion/react";
+// import { motion, useMotionTemplate, useMotionValue } from "motion/react";
+import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 
 import FlipLink from "@/components/ui/text-effect-flipper";
 import { cn } from "@/lib/utils";
@@ -11,21 +12,24 @@ const manufacturingSteps = [
     id: 1,
     name: "Lithography",
     step: "Step 1",
-    description: "Lithography transfers the IC design onto the wafer using light and photoresist.",
+    description:
+      "Lithography transfers the IC design onto the wafer using light and photoresist.",
     image: "/manufacture/s1.png",
   },
   {
     id: 2,
     name: "Etching",
     step: "Step 2",
-    description: "Etching removes layers to create the circuit pattern on the wafer surface.",
+    description:
+      "Etching removes layers to create the circuit pattern on the wafer surface.",
     image: "/manufacture/s2.png",
   },
   {
     id: 3,
     name: "Deposition",
     step: "Step 3",
-    description: "Deposition adds conductive or insulating materials onto the wafer.",
+    description:
+      "Deposition adds conductive or insulating materials onto the wafer.",
     image: "/manufacture/s3.png",
   },
 ];
@@ -75,19 +79,14 @@ export function ManufacturingShowcase({
       <div className="mx-auto w-screen px-6 lg:flex lg:px-8">
         {/* Left: Heading */}
         <div className="  max-w-2xl  lg:mx-0 lg:flex-auto mb-12 lg:mb-0">
-           <div className=" items-center py-8 space-y-3">
-              <FlipLink href="">HOW WE</FlipLink>
-         
-        
+          <div className=" items-center py-8 space-y-3">
+            <FlipLink href="">HOW WE</FlipLink>
 
-        {/* Second line with one link */}
-        <div className="">
-          <FlipLink href="#code">MANUFACTURE</FlipLink>
-        </div>
-      
-
-     
-      </div>
+            {/* Second line with one link */}
+            <div className="">
+              <FlipLink href="#code">MANUFACTURE</FlipLink>
+            </div>
+          </div>
         </div>
 
         {/* Right: Steps */}
@@ -113,7 +112,9 @@ export function ManufacturingShowcase({
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                <h3 className="mt-4 text-lg font-semibold text-gray-900">{step.name}</h3>
+                <h3 className="mt-4 text-lg font-semibold text-gray-900">
+                  {step.name}
+                </h3>
                 <p className="mt-1 text-sm text-gray-500">{step.step}</p>
                 <p className="mt-2 text-sm text-gray-700">{step.description}</p>
               </motion.li>

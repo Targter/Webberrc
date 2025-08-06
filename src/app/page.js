@@ -1,9 +1,9 @@
 import Home2 from "@/Pages/Home";
 import Products from "@/component/Products";
-import  TrustedPartnersSection  from "../component/patners";
+import TrustedPartnersSection from "../component/patners";
 import { GlowingEffectDemoSecond } from "@/component/rd";
-import {ManufacturingShowcase} from "../component/advance"
-import  ContactMap from "@/component/contactmap";
+import { ManufacturingShowcase } from "../component/advance";
+import ContactMap from "@/component/contactmap";
 import { Achieve } from "@/component/achieve";
 import VideoComponent from "@/component/VideoComponent";
 
@@ -32,8 +32,7 @@ export default function Home() {
       </div> */}
 
       <Home2 />
-      
-     
+
       <Products />
 
       <GlowingEffectDemoSecond />
