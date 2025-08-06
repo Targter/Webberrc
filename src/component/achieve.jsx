@@ -125,7 +125,7 @@ export const Achieve = ({
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8 }}
     viewport={{ once: true }}
-    className="text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black dark:text-black leading-tight"
+    className="text-center text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-black dark:text-black leading-tight"
   >
     WHAT WEBBER HAS ACHIEVED AT WORLD STAGE
   </motion.h1>
