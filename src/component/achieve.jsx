@@ -116,17 +116,18 @@ export const Achieve = ({ default_velocity = 0.5, className }) => {
   return (
     <section className="relative w-full  overflow-hidden">
       {/* Full-width blue background heading */}
-      <div className="w-full bg-gray-100 py-10">
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black dark:text-black leading-tight"
-        >
-          WHAT WEBBER HAS ACHIEVED AT WORLD STAGE
-        </motion.h1>
-      </div>
+<div className="w-full bg-blue-100 py-10">
+  <motion.h1
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+    viewport={{ once: true }}
+    className="text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black dark:text-black leading-tight"
+  >
+    WHAT WEBBER HAS ACHIEVED AT WORLD STAGE
+  </motion.h1>
+</div>
+
 
       <div className="relative overflow-hidden">
         <ParallaxLogos
