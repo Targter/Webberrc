@@ -103,7 +103,7 @@ const Home2 = () => {
             transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
           }}>
             <span className="text-orange-500 text-sm font-medium tracking-[0.15em] uppercase">
-              RELIABLE CHIPS.RELIABLE BATTERY.RELIABLE RIDE 
+              RELIABLE CHIP.RELIABLE BATTERY.RELIABLE RIDE 
             </span>
           </div>
 
