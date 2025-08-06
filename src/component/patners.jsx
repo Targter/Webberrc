@@ -109,12 +109,12 @@ const TrustedPartnersSection = () => {
               : 'opacity-0 translate-y-8 scale-95'
           }`}
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light mb-4 lg:mb-6">
-            Our Trusted Partners
-          </h2>
-          <p className="text-sm sm:text-base lg:text-lg opacity-90 font-light leading-relaxed max-w-2xl lg:max-w-3xl mx-auto">
+             <h1 className="lg:text-5xl md:text-4xl text-3xl font-bold text-white mb-4 leading-tight">
+            OUR TRUSTED PATNERS
+          </h1>
+          <h3 className="text-sm sm:text-base lg:text-lg opacity-90 font-light leading-relaxed max-w-2xl lg:max-w-3xl mx-auto">
             We collaborate with industry leaders who share our commitment to innovation and excellence
-          </p>
+          </h3>
         </div>
       </div>
 

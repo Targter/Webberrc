@@ -1,64 +1,99 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { Box, Lock, Search, Settings, Sparkles } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 export function GlowingEffectDemoSecond() {
+  const headingRef = useRef(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsInView(entry.isIntersecting),
+      { threshold: 0.3 }
+    );
+    if (headingRef.current) observer.observe(headingRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
+    <div className="w-full mx-auto px-4 py-8">
       {/* Heading Section */}
-      <div className="text-center mb-12">
-        <h3 className="text-blue-600 font-medium hover:text-blue-700 transition-colors border-b-2 border-yellow-400 hover:border-yellow-500 pb-1 inline-block">Why choose us</h3>
-        
-        <h1 className="lg:text-6xl  md:text-5xl font-bold text-black dark:text-white mb-4">
-          FIRST PRINCIPLE DESIGN APPROACH
-        </h1>
-        <h2 className="text-2xl md:text-3xl font-semibold text-gray-700 dark:text-gray-300 mb-2">
-          Fueling Our Winning Streak
-        </h2>
-        <div className="flex justify-center items-center gap-4 text-lg md:text-xl font-medium text-gray-600 dark:text-gray-400">
-          <span>Value</span>
-          <span className="text-gray-400">|</span>
-          <span>Reliable</span>
-          <span className="text-gray-400">|</span>
-          <span>Agile</span>
+      <div
+        ref={headingRef}
+        className="text-center mb-10 mx-auto bg-gradient-to-r from-green-400 to-green-500 rounded-2xl p-6 shadow-lg max-w-[1400px] w-full"
+      >
+        <div className="transition-all duration-700 delay-200 opacity-100 translate-y-0">
+          <h3 className="text-white font-medium text-base hover:text-gray-200 transition-all duration-300 border-b-2 border-yellow-400 hover:border-yellow-300 hover:scale-105 pb-1 inline-block mb-4 tracking-wide">
+            Why choose us
+          </h3>
+        </div>
+
+        <div className="transition-all duration-700 delay-400 opacity-100 translate-y-0">
+          <h1 className="lg:text-5xl md:text-4xl text-3xl font-bold text-white mb-4 leading-tight">
+            FIRST PRINCIPLE DESIGN APPROACH
+          </h1>
+        </div>
+
+        <div
+          className={`transition-all duration-700 delay-600 ${
+            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <h2 className="text-xl md:text-2xl font-semibold text-white mb-2">
+            Fueling Our Winning Streak
+          </h2>
+        </div>
+
+        <div
+          className={`flex flex-wrap justify-center items-center gap-4 text-lg md:text-xl font-medium text-white transition-all duration-700 delay-800 ${
+            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <span className="hover:text-yellow-300 transition-colors cursor-default">Value</span>
+          <span className="text-gray-300">|</span>
+          <span className="hover:text-yellow-300 transition-colors cursor-default">Reliable</span>
+          <span className="text-gray-300">|</span>
+          <span className="hover:text-yellow-300 transition-colors cursor-default">Agile</span>
         </div>
       </div>
 
       {/* Grid Section */}
-      <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 md:grid-rows-3 lg:gap-4 xl:max-h-[34rem] xl:grid-rows-2">
+      <ul className="grid grid-cols-1 md:grid-cols-12 md:grid-rows-3 xl:grid-rows-2 gap-4 w-full max-w-[1400px] mx-auto px-4">
         <GridItem
+          img="/rd/battery.png"
           area="md:[grid-area:1/1/2/7] xl:[grid-area:1/1/2/5]"
-          icon={<Box className="h-4 w-4 text-black dark:text-neutral-400" />}
+          icon={<Box className="h-6 w-6  text-black dark:text-neutral-400" />}
           title="Easy Battery Pack Paralleling"
-          description="State of the art battery pack paralleling technique without software communication between battery packs. Unhindered power delivery ."
+          description="State of the art battery pack paralleling technique without software communication between battery packs. Unhindered power delivery."
         />
-        
         <GridItem
+        img="/rd/Reliability.png"
           area="md:[grid-area:1/7/2/13] xl:[grid-area:2/1/3/5]"
-          icon={<Settings className="h-4 w-4 text-black dark:text-neutral-400" />}
+          icon={<Settings className="h-6 w-6 text-black dark:text-neutral-400" />}
           title="Unparalleled Reliability"
           description="Unbreakable design tested for millions of kms with >15K deployments. Infallible at even thousands of dead short circuits."
         />
-        
         <GridItem
+        img="/logo/webber-logo.png"
           area="md:[grid-area:2/1/3/7] xl:[grid-area:1/5/3/8]"
-          icon={<Lock className="h-4 w-4 text-black dark:text-neutral-400" />}
+          icon={<Lock className="h-6 w-6 text-black dark:text-neutral-400" />}
           title="The Art of Energy"
           description="In the dance between electrons and efficiency, we find that true innovation lies not in adding complexity, but in understanding the fundamental harmony of power and purpose. Every circuit tells a story of potential realized."
-          isPhilosophical={true}
+          isPhilosophical
         />
-        
         <GridItem
+        img="/rd/cellbalance.png"
           area="md:[grid-area:2/7/3/13] xl:[grid-area:1/8/2/13]"
-          icon={<Sparkles className="h-4 w-4 text-black dark:text-neutral-400" />}
+          icon={<Sparkles className="h-6 w-6 text-black dark:text-neutral-400" />}
           title="Better Cell Balancing"
           description="400mA Balancing Current works in unison with unique charging profile control algorithms for fastest cell balancing and better DoD Control."
         />
-        
         <GridItem
+        img="/rd/ThermalStability.png"
           area="md:[grid-area:3/1/4/13] xl:[grid-area:2/8/3/13]"
-          icon={<Search className="h-4 w-4 text-black dark:text-neutral-400" />}
+          icon={<Search className="h-6 w-6 text-black dark:text-neutral-400" />}
           title="Superior Thermal Stability"
           description="Highly optimized thermals with use of industry first and innovative MOSFET mounting technique. Extract 2x better thermal performance from PDU."
         />
@@ -67,10 +102,10 @@ export function GlowingEffectDemoSecond() {
   );
 }
 
-const GridItem = ({ area, icon, title, description, isPhilosophical = false }) => {
+const GridItem = ({ img, area, icon, title, description, isPhilosophical = false }) => {
   return (
-    <li className={`min-h-[14rem] list-none ${area}`}>
-      <div className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3">
+    <li className={`min-h-[18rem] md:min-h-[22rem] xl:min-h-[24rem] list-none ${area}`}>
+      <div className="relative h-full rounded-xl border p-2 md:rounded-2xl md:p-3">
         <GlowingEffect
           blur={0}
           borderWidth={3}
@@ -80,16 +115,53 @@ const GridItem = ({ area, icon, title, description, isPhilosophical = false }) =
           proximity={64}
           inactiveZone={0.01}
         />
-        <div className={`border-0.75 relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl p-6 md:p-6 dark:shadow-[0px_0px_27px_0px_#2D2D2D] ${isPhilosophical ? 'bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20' : ''}`}>
-          <div className="relative flex flex-1 flex-col justify-between gap-3">
-            <div className={`w-fit rounded-lg border p-2 ${isPhilosophical ? 'border-purple-300 bg-purple-100 dark:border-purple-600 dark:bg-purple-800' : 'border-gray-600'}`}>
-              {icon}
-            </div>
-            <div className="space-y-3">
-              <h3 className={`-tracking-4 pt-0.5 font-sans text-xl/[1.375rem] font-semibold text-balance md:text-2xl/[1.875rem] ${isPhilosophical ? 'text-purple-800 dark:text-purple-200' : 'text-black dark:text-white'}`}>
+        <div
+          className={`border-0.75 relative flex h-full flex-col justify-between gap-3 overflow-hidden rounded-xl p-4 md:p-5 dark:shadow-[0px_0px_27px_0px_#2D2D2D] ${
+            isPhilosophical
+              ? "bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20"
+              : ""
+          }`}
+        >
+          {icon}
+          {/* Image */}
+        {img && (
+  <div className="w-full h-40 md:h-32 xl:h-46 lg:h-40 rounded-xl overflow-hidden">
+    <img
+      src={img}
+      alt={title}
+      className="object-cover  h-[150px] py-6 mx-auto scale-[1.25] transform" // Zoom out look
+    />
+  </div>
+)}
+
+
+          {/* Content */}
+          <div className="relative flex flex-1 flex-col justify-between gap-2">
+            {/* <div
+              className={`w-fit rounded-lg border p-2 ${
+                isPhilosophical
+                  ? "border-purple-300 bg-purple-100 dark:border-purple-600 dark:bg-purple-800"
+                  : "border-gray-600"
+              }`}
+            >
+            </div> */}
+            <div className="space-y-2">
+              <h3
+                className={`-tracking-4 pt-0.5 font-sans text-lg md:text-xl font-semibold text-balance ${
+                  isPhilosophical
+                    ? "text-purple-800 dark:text-purple-200"
+                    : "text-black dark:text-white"
+                }`}
+              >
                 {title}
               </h3>
-              <h2 className={`font-sans text-sm/[1.125rem] md:text-base/[1.375rem] [&_b]:md:font-semibold [&_strong]:md:font-semibold ${isPhilosophical ? 'text-purple-700 dark:text-purple-300 italic' : 'text-black dark:text-neutral-400'}`}>
+              <h2
+                className={`font-sans text-sm md:text-base [&_b]:md:font-semibold [&_strong]:md:font-semibold ${
+                  isPhilosophical
+                    ? "text-purple-700 dark:text-purple-300 italic"
+                    : "text-black dark:text-neutral-400"
+                }`}
+              >
                 {description}
               </h2>
             </div>
@@ -99,3 +171,5 @@ const GridItem = ({ area, icon, title, description, isPhilosophical = false }) =
     </li>
   );
 };
+
+
