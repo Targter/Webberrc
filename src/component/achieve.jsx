@@ -127,7 +127,7 @@ export const Achieve = ({
   }
 
   return (
-    <section className="relative w-full py-20 overflow-hidden ">
+    <section className="relative w-full py-28 overflow-hidden ">
       <div className="container mx-auto px-4 mb-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -136,9 +136,12 @@ export const Achieve = ({
           viewport={{ once: true }}
           className="text-center"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
-            Webber In Action At World Stage
-          </h2>
+         <h1 className='text-5xl md:text-6xl lg:text-2xl oy-10  xl:text-6xl font-bold text-black leading-[0.9] mb-8 transition-all duration-1000 '
+          >
+            WHAT WEBBER HAS ACHIEVED AT WORLD STAGE
+            
+            
+          </h1>
          
           {/* <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Showcasing our global presence and achievements across international platforms

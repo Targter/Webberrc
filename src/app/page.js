@@ -35,10 +35,10 @@ export default function Home() {
       
      
       <Products />
-      <VideoComponent />
 
-      <TrustedPartnersSection />
       <GlowingEffectDemoSecond />
+      <VideoComponent />
+      <TrustedPartnersSection />
       <ManufacturingShowcase />
       <Achieve />
       <ContactMap />

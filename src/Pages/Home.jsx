@@ -1,37 +1,36 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const Home2 = () => {
-  const images = ["/bg/bg3.png", "/bg/bg6.png", "/bg/bg8.png"];
+  const images = [
+    "/bg/bg3.png",
+    "/bg/bg6.png",
+    "/bg/bg8.png",
+  ];
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  // const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [hasLaunched, setHasLaunched] = useState(false);
 
   // First launch effect
   useEffect(() => {
     const timer = setTimeout(() => {
       setHasLaunched(true);
-    }, 100); // Small delay to ensure smooth animation start
+    }, 100);
 
     return () => clearTimeout(timer);
   }, []);
 
-  // Auto-advance disabled for now
-  // useEffect(() => {
-  //   if (!isAutoPlaying) return;
-  //   
-  //   const interval = setInterval(() => {
-  //     setCurrentSlide((prev) => (prev + 1) % images.length);
-  //   }, 5000);
+  // Auto-advance slides
+  useEffect(() => {
+    // if (!isAutoPlaying) return;
+    
+ 
 
-  //   return () => clearInterval(interval);
-  // }, [isAutoPlaying, images.length]);
+    return () => clearInterval(interval);
+  }, [images.length]);
 
   const goToSlide = (index) => {
     setCurrentSlide(index);
-    // Auto-play functionality disabled for now
   };
 
   const nextSlide = () => {
@@ -44,7 +43,7 @@ const Home2 = () => {
 
   return (
     <div className="relative w-full min-h-screen overflow-hidden flex items-center justify-center">
-      {/* Background Images with Overlapping Animation */}
+      {/* Background Images with Dark Overlay */}
       <div className="absolute top-0 left-0 w-full h-full z-0">
         {images.map((image, index) => (
           <div
@@ -59,111 +58,145 @@ const Home2 = () => {
                 : 'scale-110 opacity-0'
             }`}
             style={{
-              transform: 'translateZ(0)', // Force hardware acceleration
-              backfaceVisibility: 'hidden', // Prevent blur during transitions
+              transform: 'translateZ(0)',
+              backfaceVisibility: 'hidden',
               transitionDuration: hasLaunched ? '800ms' : '1200ms',
               transitionTimingFunction: hasLaunched ? 'linear' : 'cubic-bezier(0.4, 0, 0.2, 1)'
             }}
           >
-            <Image
-              src={image}
-              alt={`Slide ${index + 1}`}
-              fill
-              style={{ objectFit: 'cover' }}
-              priority={index === 0}
-              quality={90}
+            <div
+              className="w-full h-full bg-cover bg-center bg-no-repeat"
+              style={{
+                backgroundImage: `url(${image})`
+              }}
             />
+            {/* Dark overlay for better text readability */}
+            <div className="absolute inset-0 bg-black/60"></div>
           </div>
         ))}
       </div>
 
-      {/* Navigation Controls */}
-      <button
+      {/* Invisible Click Areas for Navigation */}
+      <div
         onClick={prevSlide}
-        className={`absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/20 hover:bg-black/40 backdrop-blur-sm rounded-full p-3 transition-all duration-300 text-white group ${
-          hasLaunched 
-            ? 'opacity-100 translate-x-0' 
-            : 'opacity-0 -translate-x-8'
-        }`}
-        style={{
-          transitionDelay: hasLaunched ? '0ms' : '800ms',
-          transitionDuration: '600ms'
-        }}
+        className="absolute left-0 top-0 w-1/2 h-full z-10 cursor-pointer"
         aria-label="Previous slide"
-      >
-        <ChevronLeft className="w-6 h-6 group-hover:scale-110 transition-transform" />
-      </button>
-
-      <button
+      />
+      
+      <div
         onClick={nextSlide}
-        className={`absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/20 hover:bg-black/40 backdrop-blur-sm rounded-full p-3 transition-all duration-300 text-white group ${
-          hasLaunched 
-            ? 'opacity-100 translate-x-0' 
-            : 'opacity-0 translate-x-8'
-        }`}
-        style={{
-          transitionDelay: hasLaunched ? '0ms' : '800ms',
-          transitionDuration: '600ms'
-        }}
+        className="absolute right-0 top-0 w-1/2 h-full z-10 cursor-pointer"
         aria-label="Next slide"
-      >
-        <ChevronRight className="w-6 h-6 group-hover:scale-110 transition-transform" />
-      </button>
+      />
 
-      {/* Content Over Images */}
-      <div className="relative z-10 w-full h-full flex flex-col justify-between px-4 sm:px-6 md:px-8 lg:px-16 py-8">
-        {/* Header */}
-        {/* <div className="flex justify-between items-center w-full">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-wide">
-            WEBBER ELECTRO CORP
-          </h1>
-          <div className="flex items-center space-x-6">
-            <div className="w-8 h-8 flex flex-col justify-center space-y-1 cursor-pointer">
-              <div className="w-full h-0.5 bg-white"></div>
-              <div className="w-full h-0.5 bg-white"></div>
-              <div className="w-full h-0.5 bg-white"></div>
-            </div>
-            <div className="w-8 h-8 border-2 border-white rounded-full flex items-center justify-center cursor-pointer">
-              <div className="w-4 h-4 border-2 border-white rounded-full"></div>
-            </div>
+      {/* Main Content - Matching the image layout exactly */}
+      <div className="relative z-20 w-full h-full flex items-center px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20 pointer-events-none">
+        <div className="max-w-2xl pointer-events-auto">
+          {/* Orange highlight text */}
+          <div className={`mb-6 transition-all duration-1000 ${
+            hasLaunched 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-8'
+          }`}
+          style={{
+            transitionDelay: hasLaunched ? '200ms' : '200ms',
+            transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
+          }}>
+            <span className="text-orange-500 text-sm font-medium tracking-[0.15em] uppercase">
+              RELIABLE CHIPS.RELIABLE BATTERY.RELIABLE RIDE 
+            </span>
           </div>
-        </div> */}
 
-        {/* Main Content */}
-        <div className="flex-1 flex items-center">
-          <div className="max-w-4xl">
-            <h2 className={`text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight mb-8 transition-all duration-1000 ${
-              hasLaunched 
-                ? 'opacity-100 translate-y-0' 
-                : 'opacity-0 translate-y-12'
-            }`}
-            style={{
-              transitionDelay: hasLaunched ? '0ms' : '400ms',
-              transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
-            }}>
-              Powering innovation,<br />
-              one circuit at a<br />
-              time
-            </h2>
-            
-            <p className={`text-lg md:text-xl lg:text-2xl text-white/90 max-w-2xl leading-relaxed font-light transition-all duration-1000 ${
-              hasLaunched 
-                ? 'opacity-100 translate-y-0' 
-                : 'opacity-0 translate-y-8'
-            }`}
-            style={{
-              transitionDelay: hasLaunched ? '0ms' : '600ms',
-              transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
-            }}>
-              Webber Electro Corp delivers cutting-edge<br />
-              electrical solutions and innovative technology<br />
-              for tomorrow's world
-            </p>
+          {/* Main heading - exactly matching the image */}
+          <h1 className={`text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[0.9] mb-8 transition-all duration-1000 ${
+            hasLaunched 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-12'
+          }`}
+          style={{
+            transitionDelay: hasLaunched ? '400ms' : '400ms',
+            transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
+          }}>
+            TRUSTED<br />
+            PERFORMANCE
+          </h1>
+          
+          {/* Description paragraph */}
+          <p className={`text-base md:text-lg text-gray-300 max-w-xl leading-relaxed mb-10 font-light transition-all duration-1000 ${
+            hasLaunched 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-8'
+          }`}
+          style={{
+            transitionDelay: hasLaunched ? '600ms' : '600ms',
+            transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
+          }}>
+            Delivering cutting-edge Electric Vehicle Chips engineered with precision, durability, and intelligence — enabling smarter, safer, and more efficient automotive innovation.
+          </p>
+
+          {/* CTA Button */}
+          <div className={`transition-all duration-1000 ${
+            hasLaunched 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-8'
+          }`}
+          style={{
+            transitionDelay: hasLaunched ? '800ms' : '800ms',
+            transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
+          }}>
+            <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-4 text-sm tracking-wide uppercase transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+              CONTACT US
+            </button>
           </div>
         </div>
-
-      
       </div>
+
+      {/* Slide Indicators */}
+     <div
+  className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 transition-all duration-1000 ${
+    hasLaunched 
+      ? 'opacity-100 translate-y-0' 
+      : 'opacity-0 translate-y-8'
+  }`}
+  style={{
+    transitionDelay: hasLaunched ? '1000ms' : '1000ms',
+    transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
+  }}
+>
+  <div className="flex flex-col items-center space-y-1 animate-bounce">
+    <span className="text-white text-sm">Scroll down</span>
+    <svg
+      className="w-6 h-6 text-white"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+    </svg>
+  </div>
+</div>
+
+
+      {/* Chat/Contact Button (bottom right) */}
+      {/* <div className={`fixed bottom-6 right-6 z-30 transition-all duration-1000 ${
+        hasLaunched 
+          ? 'opacity-100 translate-x-0' 
+          : 'opacity-0 translate-x-8'
+      }`}
+      style={{
+        transitionDelay: hasLaunched ? '1200ms' : '1200ms',
+        transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
+      }}>
+        <button className="bg-white text-gray-800 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors duration-300 shadow-lg mr-3">
+          Get in Touch
+        </button>
+        <button className="bg-gray-800 hover:bg-gray-700 text-white rounded-full p-3 transition-all duration-300 shadow-lg">
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+          </svg>
+        </button>
+      </div> */}
     </div>
   );
 };

@@ -68,7 +68,7 @@ export function ManufacturingShowcase({
         src="/rd/greenchip.jpeg"
         alt="Green Chip"
         fill
-        className="object-cover h-full w-full -z-10"
+        className="object-cover h-full w-full -z-10 filter contrast-80"
         priority
       />
 

@@ -1,39 +1,49 @@
 "use client"
 import React, { useState, useEffect, useRef } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Products = () => {
   const [visibleItems, setVisibleItems] = useState(new Set());
+  const [hoveredIndex, setHoveredIndex] = useState(null);
   const observerRef = useRef(null);
 
   const products = [
     {
-      title: "Premium Chip Series 1",
-      description: "Our flagship semiconductor solution engineered with cutting-edge technology for next-generation computing applications. This premium chip series delivers unparalleled performance, energy efficiency, and reliability for demanding industrial and consumer electronics.",
+      title: "Wiring Harness",
+      description: "Reliable, custom-built wiring harnesses for seamless electrical connectivity and optimal performance.",
       image: "/chip.png",
-      price: "$299",
-      buttonText: "Explore more"
+      category: "Connectivity Solutions"
     },
     {
-      title: "Advanced Chip Series 2",
-      description: "Revolutionary semiconductor architecture designed for artificial intelligence and machine learning applications. This advanced series combines powerful neural processing units with optimized memory architecture to deliver exceptional AI performance.",
+      title: "Wires & Cables", 
+      description: "High-quality wires and cables engineered for durability, efficiency, and safe power transmission.",
       image: "/chip.png",
-      price: "$449",
-      buttonText: "Learn more"
+      category: "Power Transmission"
     },
     {
-      title: "Elite Chip Series 3",
-      description: "High-performance computing solution engineered for enterprise-grade applications and data-intensive workloads. This elite series offers unprecedented processing capabilities with multi-core architecture, advanced vector processing, and integrated security features.",
-      image: "/chip.png",
-      price: "$599",
-      buttonText: "Discover more"
+      title: "Power Cords",
+      description: "Versatile power cords designed for stable and secure electrical connections across applications.",
+      image: "/chip.png", 
+      category: "Power Solutions"
     },
     {
-      title: "Luxury Chip Series 4",
-      description: "Premium flagship processor representing the pinnacle of semiconductor innovation and engineering excellence. This luxury series features the most advanced manufacturing process, cutting-edge materials, and revolutionary architecture design.",
-      image: "/chip.png",
-      price: "$799",
-      buttonText: "View details"
+      title: "CAT 6 Patch Cords",
+      description: "Professional-grade network cables delivering reliable high-speed data transmission and connectivity.",
+      image: "/api/placeholder/300/200",
+      category: "Network Solutions"
     },
+    {
+      title: "Temperature Sensors",
+      description: "Precision temperature monitoring solutions for industrial and commercial applications.",
+      image: "/api/placeholder/300/200",
+      category: "Sensing Technology"
+    },
+    {
+      title: "Electrical Assemblies",
+      description: "Complete electrical assembly solutions engineered for complex industrial requirements.",
+      image: "/api/placeholder/300/200",
+      category: "Complete Systems"
+    }
   ];
 
   useEffect(() => {
@@ -47,8 +57,8 @@ const Products = () => {
         });
       },
       {
-        threshold: 0.2,
-        rootMargin: '-50px 0px'
+        threshold: 0.3,
+        rootMargin: '-20px 0px'
       }
     );
 
@@ -63,83 +73,128 @@ const Products = () => {
   }, []);
 
   return (
-    <div className="w-full min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50">
-      {/* Enhanced Header Section */}
-      <div className="bg-gradient-to-r from-slate-100 to-blue-100 text-center py-16 px-4">
-        <div className="max-w-5xl mx-auto">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-5">
-            We're moving technology forward
+    <div className="w-full min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+      {/* Header Section */}
+      <div className="text-center py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-800 mb-2 tracking-tight">
+            PRODUCTS
           </h1>
-          <p className="text-base lg:text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed mb-6">
-            In fact, we're probably a part of the electronic device you're using right now. Our lithography technology is fundamental to mass 
-            producing semiconductor chips that are more powerful, faster and energy efficient.
-          </p>
-          <button className="text-emerald-600 font-medium hover:text-emerald-700 transition-colors border-b-2 border-yellow-400 pb-1">
-            See all products
-          </button>
+          
+          <div className="mt-12">
+            <div className="text-orange-500 text-sm font-semibold tracking-wider mb-4">
+              OUR PRODUCT RANGE
+            </div>
+          
+            <p className="text-base lg:text-lg text-slate-600 max-w-4xl mx-auto leading-relaxed">
+              Explore our diverse range of precision-engineered electrical products designed to meet industry standards, ensuring 
+              durability, efficiency, and superior performance.
+            </p>
+          </div>
         </div>
       </div>
 
-      {/* Products Container */}
-      <div className="px-4 lg:px-8 py-4 space-y-2">
-        {products.map((product, index) => (
-          <div
-            key={index}
-            data-index={index}
-            className={`flex flex-col lg:flex-row rounded-lg overflow-hidden transition-all duration-1000 ease-out transform ${
-              visibleItems.has(index) 
-                ? 'opacity-100 translate-y-0 translate-x-0 scale-100' 
-                : index % 2 === 0 
-                  ? 'opacity-0 translate-y-8 -translate-x-16 scale-95'
-                  : 'opacity-0 translate-y-8 translate-x-16 scale-95'
-            } ${
-              index % 2 === 0 
-                ? 'bg-white shadow-sm hover:shadow-md' 
-                : 'bg-gradient-to-r from-blue-50 to-emerald-50 shadow-sm hover:shadow-md'
-            } hover:scale-[1.02] transition-all duration-500`}
-            style={{
-              transitionDelay: visibleItems.has(index) ? `${index * 100}ms` : '0ms'
-            }}
-          >
-            {/* Information Section */}
-            <div className="w-full lg:w-1/2 px-6 lg:px-12 py-6 lg:py-8 flex flex-col justify-center">
-              <div className="space-y-4">
-                <h2 className="text-2xl lg:text-3xl font-bold text-slate-800">
-                  {product.title}
-                </h2>
-                
-                <p className="text-sm lg:text-base text-slate-600 leading-relaxed">
-                  {product.description}
-                </p>
-                
-                <div className="pt-2">
-                  <span className="text-xl lg:text-2xl font-bold text-emerald-600 mb-3 block">
-                    {product.price}
-                  </span>
-                  <button className="text-blue-600 font-medium hover:text-blue-700 transition-colors border-b-2 border-yellow-400 hover:border-yellow-500 pb-1 inline-block">
-                    {product.buttonText}
+      {/* Products Grid */}
+      <div className="max-w-7xl mx-auto px-4 lg:px-8 pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {products.map((product, index) => (
+            <div
+              key={index}
+              data-index={index}
+              className={`relative group p-2 h-full w-full transition-all duration-700 ease-out transform ${
+                visibleItems.has(index) 
+                  ? 'opacity-100 translate-y-0 scale-100' 
+                  : 'opacity-0 translate-y-8 scale-95'
+              }`}
+              style={{
+                transitionDelay: visibleItems.has(index) ? `${index * 150}ms` : '0ms'
+              }}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              <AnimatePresence>
+                {hoveredIndex === index && (
+                  <motion.span
+                    className="absolute inset-0 h-full w-full bg-gradient-to-br from-blue-50 to-emerald-50 block rounded-3xl"
+                    layoutId="hoverBackground"
+                    initial={{ opacity: 0 }}
+                    animate={{
+                      opacity: 1,
+                      transition: { duration: 0.15 },
+                    }}
+                    exit={{
+                      opacity: 0,
+                      transition: { duration: 0.15, delay: 0.2 },
+                    }}
+                  />
+                )}
+              </AnimatePresence>
+
+              <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 relative z-20 h-full">
+                {/* Image Container */}
+                <div className="relative h-48 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  {/* Category Badge */}
+                  <div className="absolute top-4 left-4">
+                    <span className="text-xs font-medium text-orange-600 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full">
+                      {product.category}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-slate-900 transition-colors">
+                    {product.title}
+                  </h3>
+                  
+                  <p className="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3">
+                    {product.description}
+                  </p>
+
+                  {/* Learn More Button */}
+                  <button className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors group/btn">
+                    <span className="mr-2">Learn more</span>
+                    <svg 
+                      className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        strokeWidth={2} 
+                        d="M9 5l7 7-7 7" 
+                      />
+                    </svg>
                   </button>
                 </div>
+
+                {/* Bottom Border Accent */}
+                <div className="h-1 bg-gradient-to-r from-orange-400 via-blue-500 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
             </div>
-
-            {/* Subtle Separator */}
-            <div className="hidden lg:block w-px bg-gradient-to-b from-transparent via-slate-200 to-transparent"></div>
-
-            {/* Image Section */}
-            <div className="w-full lg:w-1/2 min-h-[250px] lg:min-h-[280px] relative overflow-hidden">
-              <img
-                src={product.image}
-                alt={product.title}
-                className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-              />
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
-      {/* Subtle Bottom Gradient */}
-      <div className="h-8 bg-gradient-to-t from-emerald-50 to-transparent"></div>
+      {/* Contact Section */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <button className="bg-slate-800 hover:bg-slate-900 text-white px-4 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2 group">
+          <span className="text-sm font-medium">Get in Touch</span>
+          <div className="w-8 h-8 bg-slate-700 rounded-full flex items-center justify-center group-hover:bg-slate-600 transition-colors">
+            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
+            </svg>
+          </div>
+        </button>
+      </div>
     </div>
   );
 };

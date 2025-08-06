@@ -53,7 +53,7 @@ const VideoComponent = () => {
             autoPlay
             onEnded={handleVideoEnd}
           >
-            <source src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4" type="video/mp4" />
+            <source src="/bgv1.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         )}
