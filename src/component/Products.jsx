@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -10,40 +10,25 @@ const Products = () => {
   const products = [
     {
       title: "Wiring Harness",
-      description: "Reliable, custom-built wiring harnesses for seamless electrical connectivity and optimal performance.",
+      description:
+        "Reliable, custom-built wiring harnesses for seamless electrical connectivity and optimal performance.",
       image: "/chip.png",
-      category: "Connectivity Solutions"
+      category: "Connectivity Solutions",
     },
     {
-      title: "Wires & Cables", 
-      description: "High-quality wires and cables engineered for durability, efficiency, and safe power transmission.",
+      title: "Wires & Cables",
+      description:
+        "High-quality wires and cables engineered for durability, efficiency, and safe power transmission.",
       image: "/chip.png",
-      category: "Power Transmission"
+      category: "Power Transmission",
     },
     {
       title: "Power Cords",
-      description: "Versatile power cords designed for stable and secure electrical connections across applications.",
-      image: "/chip.png", 
-      category: "Power Solutions"
+      description:
+        "Versatile power cords designed for stable and secure electrical connections across applications.",
+      image: "/chip.png",
+      category: "Power Solutions",
     },
-    {
-      title: "CAT 6 Patch Cords",
-      description: "Professional-grade network cables delivering reliable high-speed data transmission and connectivity.",
-      image: "/api/placeholder/300/200",
-      category: "Network Solutions"
-    },
-    {
-      title: "Temperature Sensors",
-      description: "Precision temperature monitoring solutions for industrial and commercial applications.",
-      image: "/api/placeholder/300/200",
-      category: "Sensing Technology"
-    },
-    {
-      title: "Electrical Assemblies",
-      description: "Complete electrical assembly solutions engineered for complex industrial requirements.",
-      image: "/api/placeholder/300/200",
-      category: "Complete Systems"
-    }
   ];
 
   useEffect(() => {
@@ -52,18 +37,18 @@ const Products = () => {
         entries.forEach((entry) => {
           const index = parseInt(entry.target.dataset.index);
           if (entry.isIntersecting) {
-            setVisibleItems(prev => new Set([...prev, index]));
+            setVisibleItems((prev) => new Set([...prev, index]));
           }
         });
       },
       {
         threshold: 0.3,
-        rootMargin: '-20px 0px'
+        rootMargin: "-20px 0px",
       }
     );
 
-    const elements = document.querySelectorAll('[data-index]');
-    elements.forEach(el => observerRef.current?.observe(el));
+    const elements = document.querySelectorAll("[data-index]");
+    elements.forEach((el) => observerRef.current?.observe(el));
 
     return () => {
       if (observerRef.current) {
@@ -80,15 +65,16 @@ const Products = () => {
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-800 mb-2 tracking-tight">
             PRODUCTS
           </h1>
-          
+
           <div className="mt-12">
             <div className="text-orange-500 text-sm font-semibold tracking-wider mb-4">
               OUR PRODUCT RANGE
             </div>
-          
+
             <p className="text-base lg:text-lg text-slate-600 max-w-4xl mx-auto leading-relaxed">
-              Explore our diverse range of precision-engineered electrical products designed to meet industry standards, ensuring 
-              durability, efficiency, and superior performance.
+              Explore our diverse range of precision-engineered electrical
+              products designed to meet industry standards, ensuring durability,
+              efficiency, and superior performance.
             </p>
           </div>
         </div>
@@ -102,12 +88,14 @@ const Products = () => {
               key={index}
               data-index={index}
               className={`relative group p-2 h-full w-full transition-all duration-700 ease-out transform ${
-                visibleItems.has(index) 
-                  ? 'opacity-100 translate-y-0 scale-100' 
-                  : 'opacity-0 translate-y-8 scale-95'
+                visibleItems.has(index)
+                  ? "opacity-100 translate-y-0 scale-100"
+                  : "opacity-0 translate-y-8 scale-95"
               }`}
               style={{
-                transitionDelay: visibleItems.has(index) ? `${index * 150}ms` : '0ms'
+                transitionDelay: visibleItems.has(index)
+                  ? `${index * 150}ms`
+                  : "0ms",
               }}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
@@ -152,7 +140,7 @@ const Products = () => {
                   <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-slate-900 transition-colors">
                     {product.title}
                   </h3>
-                  
+
                   <p className="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3">
                     {product.description}
                   </p>
@@ -160,17 +148,17 @@ const Products = () => {
                   {/* Learn More Button */}
                   <button className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors group/btn">
                     <span className="mr-2">Learn more</span>
-                    <svg 
-                      className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" 
-                      fill="none" 
-                      stroke="currentColor" 
+                    <svg
+                      className="w-4 h-4 transition-transform group-hover/btn:translate-x-1"
+                      fill="none"
+                      stroke="currentColor"
                       viewBox="0 0 24 24"
                     >
-                      <path 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round" 
-                        strokeWidth={2} 
-                        d="M9 5l7 7-7 7" 
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
                       />
                     </svg>
                   </button>
@@ -190,7 +178,11 @@ const Products = () => {
           <span className="text-sm font-medium">Get in Touch</span>
           <div className="w-8 h-8 bg-slate-700 rounded-full flex items-center justify-center group-hover:bg-slate-600 transition-colors">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
+              <path
+                fillRule="evenodd"
+                d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
+                clipRule="evenodd"
+              />
             </svg>
           </div>
         </button>

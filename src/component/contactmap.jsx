@@ -1,44 +1,48 @@
-"use client"
-import React, { useState } from 'react';
-import { ChevronDown, MapPin, Phone, Mail, Send } from 'lucide-react';
+"use client";
+import React, { useState } from "react";
+import { ChevronDown, MapPin, Phone, Mail, Send } from "lucide-react";
 
 const ContactFAQComponent = () => {
   const [openFAQ, setOpenFAQ] = useState(null);
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    comments: ''
+    firstName: "",
+    lastName: "",
+    email: "",
+    comments: "",
   });
 
   const faqs = [
     {
       question: "What Industries Do You Serve?",
-      answer: "We cater to automotive, telecom, medical, appliance, and various other industries with customized wiring and electrical solutions."
+      answer:
+        "We cater to automotive, telecom, medical, appliance, and various other industries with customized wiring and electrical solutions.",
     },
     {
       question: "Do You Offer Custom Wiring Solutions?",
-      answer: "Yes, we specialize in custom wiring solutions tailored to your specific industry requirements and applications."
+      answer:
+        "Yes, we specialize in custom wiring solutions tailored to your specific industry requirements and applications.",
     },
     {
       question: "Are Your Products Certified For Quality And Safety?",
-      answer: "All our products meet industry standards and are certified for quality and safety compliance."
+      answer:
+        "All our products meet industry standards and are certified for quality and safety compliance.",
     },
     {
       question: "How Can I Request A Quote Or Consultation?",
-      answer: "You can request a quote by filling out our contact form below or reaching out to us directly via phone or email."
-    }
+      answer:
+        "You can request a quote by filling out our contact form below or reaching out to us directly via phone or email.",
+    },
   ];
 
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = () => {
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
     // Handle form submission logic here
   };
 
@@ -59,15 +63,15 @@ const ContactFAQComponent = () => {
               Frequently Asked Questions?
             </h2>
             <p className="text-gray-600 mb-8 text-lg leading-relaxed">
-              Find answers to common questions about our products, services, and 
+              Find answers to common questions about our products, services, and
               processes. If you need more details, feel free to contact us!
             </p>
           </div>
 
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow duration-200"
               >
                 <button
@@ -77,9 +81,9 @@ const ContactFAQComponent = () => {
                   <span className="font-semibold text-gray-900 pr-4">
                     {faq.question}
                   </span>
-                  <ChevronDown 
+                  <ChevronDown
                     className={`w-5 h-5 text-orange-500 transition-transform duration-200 flex-shrink-0 ${
-                      openFAQ === index ? 'rotate-180' : ''
+                      openFAQ === index ? "rotate-180" : ""
                     }`}
                   />
                 </button>
@@ -107,27 +111,35 @@ const ContactFAQComponent = () => {
               Get The Right Solution For Your Needs
             </h2>
             <p className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">
-  Powering the future of electric mobility — Webber delivers cutting-edge wiring and chip solutions engineered for performance, reliability, and scalability. Let's build the next generation of EVs together.
-</p>
-
+              Powering the future of electric mobility — Webber delivers
+              cutting-edge wiring and chip solutions engineered for performance,
+              reliability, and scalability. Let's build the next generation of
+              EVs together.
+            </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Info */}
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Get In Touch With Webber</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                Get In Touch With Webber
+              </h3>
               <p className="text-gray-600 mb-8 leading-relaxed">
-                Have questions or need a custom solution? Our team is here to help! Reach out to 
-                us for expert guidance, product inquiries, or collaboration opportunities.
+                Have questions or need a custom solution? Our team is here to
+                help! Reach out to us for expert guidance, product inquiries, or
+                collaboration opportunities.
               </p>
-              
+
               <div className="mb-8">
-                <h4 className="text-lg font-semibold text-gray-900 mb-4">Head Office</h4>
+                <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                  Head Office
+                </h4>
                 <div className="space-y-4">
                   <div className="flex items-start">
                     <MapPin className="w-5 h-5 text-orange-500 mt-1 mr-3 flex-shrink-0" />
                     <span className="text-gray-600">
-                      Office 03 and 04, First Floor, Sai Raj Regency, Pimple Saudagar, Pune, Maharashtra 411 027
+                      Office 03 and 04, First Floor, Sai Raj Regency, Pimple
+                      Saudagar, Pune, Maharashtra 411 027
                     </span>
                   </div>
                   <div className="flex items-center">
@@ -136,11 +148,15 @@ const ContactFAQComponent = () => {
                   </div>
                   <div className="flex items-center">
                     <Mail className="w-5 h-5 text-orange-500 mr-3" />
-                    <span className="text-gray-600">sales@shrisaielectroworks.com</span>
+                    <span className="text-gray-600">
+                      sales@shrisaielectroworks.com
+                    </span>
                   </div>
                   <div className="flex items-center">
                     <Mail className="w-5 h-5 text-orange-500 mr-3" />
-                    <span className="text-gray-600">sandeep@shrisaielectroworks.com</span>
+                    <span className="text-gray-600">
+                      sandeep@shrisaielectroworks.com
+                    </span>
                   </div>
                 </div>
               </div>
@@ -148,7 +164,9 @@ const ContactFAQComponent = () => {
 
             {/* Contact Form */}
             <div className="bg-slate-800 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-white mb-6">Contact Form</h3>
+              <h3 className="text-2xl font-bold text-white mb-6">
+                Contact Form
+              </h3>
               <div className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
@@ -178,7 +196,7 @@ const ContactFAQComponent = () => {
                     />
                   </div>
                 </div>
-                
+
                 <div>
                   <label className="block text-white text-sm font-medium mb-2">
                     Email Address <span className="text-orange-500">*</span>
@@ -191,10 +209,11 @@ const ContactFAQComponent = () => {
                     className="w-full px-4 py-3 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-orange-500 focus:outline-none transition-all duration-200"
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-white text-sm font-medium mb-2">
-                    Comments / Questions <span className="text-orange-500">*</span>
+                    Comments / Questions{" "}
+                    <span className="text-orange-500">*</span>
                   </label>
                   <textarea
                     name="comments"
@@ -204,7 +223,7 @@ const ContactFAQComponent = () => {
                     className="w-full px-4 py-3 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-orange-500 focus:outline-none transition-all duration-200 resize-none"
                   ></textarea>
                 </div>
-                
+
                 <button
                   onClick={handleSubmit}
                   className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center"
@@ -239,7 +258,8 @@ const ContactFAQComponent = () => {
               <div className="flex items-center">
                 <MapPin className="w-5 h-5 text-orange-500 mr-3 flex-shrink-0" />
                 <span className="text-sm">
-                  Office 03 and 04, First Floor, Sai Raj Regency, Pimple Saudagar, Pune, Maharashtra 411 027
+                  Office 03 and 04, First Floor, Sai Raj Regency, Pimple
+                  Saudagar, Pune, Maharashtra 411 027
                 </span>
               </div>
             </div>
