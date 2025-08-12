@@ -1,12 +1,16 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 
 const TrustedPartnersSection = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
   const [visibleItems, setVisibleItems] = useState(new Set());
   const [headerVisible, setHeaderVisible] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
   const observerRef = useRef(null);
+  const scrollContainerRef = useRef(null);
 
   const partners = [
     {
@@ -85,6 +89,9 @@ const TrustedPartnersSection = () => {
     },
   ];
 
+  // Calculate card width including gap (320px card + 32px gap)
+  const cardWidth = 320 + 32; // w-80 = 320px + gap-8 = 32px
+
   useEffect(() => {
     observerRef.current = new IntersectionObserver(
       (entries) => {
@@ -115,6 +122,57 @@ const TrustedPartnersSection = () => {
     };
   }, []);
 
+  // Update scroll button states
+  const updateScrollButtons = () => {
+    if (typeof window !== 'undefined' && scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  };
+
+  // Handle scroll events
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener('scroll', updateScrollButtons);
+      updateScrollButtons(); // Initial check
+      
+      return () => container.removeEventListener('scroll', updateScrollButtons);
+    }
+  }, []);
+
+  // Handle window resize
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const handleResize = () => updateScrollButtons();
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const scrollAmount = cardWidth;
+      container.scrollBy({
+        left: -scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const scrollAmount = cardWidth;
+      container.scrollBy({
+        left: scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section className="relative w-full py-8 lg:py-10 bg-gradient-to-br from-gray-50 via-blue-50/30 to-emerald-50/30 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
       {/* Header Section */}
@@ -138,129 +196,165 @@ const TrustedPartnersSection = () => {
 
       {/* Partners Scroll Section */}
       <div className="relative max-w-7xl mx-auto">
-        {/* Scroll hint */}
-        <div className="text-center mb-4 lg:mb-6">
-          <p className="text-xs sm:text-sm text-gray-400 dark:text-gray-500 font-light">
+        {/* Navigation and Scroll hint */}
+        <div className="flex flex-col items-center justify-center mb-4 lg:mb-6 gap-3">
+          {/* Navigation Arrows */}
+          <div className="flex items-center gap-4">
+            {/* Left Arrow */}
+            <button
+              onClick={scrollLeft}
+              disabled={!canScrollLeft}
+              className={`flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 transition-all duration-300 ${
+                canScrollLeft
+                  ? 'border-yellow-400 text-yellow-600 hover:bg-yellow-50 dark:hover:bg-yellow-900/20 hover:scale-110 cursor-pointer'
+                  : 'border-gray-300 text-gray-400 cursor-not-allowed'
+              }`}
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+            </button>
+
+            {/* Right Arrow */}
+            <button
+              onClick={scrollRight}
+              disabled={!canScrollRight}
+              className={`flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 transition-all duration-300 ${
+                canScrollRight
+                  ? 'border-yellow-400 text-yellow-600 hover:bg-yellow-50 dark:hover:bg-yellow-900/20 hover:scale-110 cursor-pointer'
+                  : 'border-gray-300 text-gray-400 cursor-not-allowed'
+              }`}
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+            </button>
+          </div>
+
+          {/* Instruction Text */}
+          <p className="text-xs sm:text-sm text-gray-400 dark:text-gray-500 font-light text-center px-4">
             <span className="hidden sm:inline">
-              Scroll horizontally to explore our partnerships
+              Use arrows or scroll horizontally to explore our partnerships
             </span>
-            <span className="sm:hidden">Swipe to explore partnerships</span>
+            <span className="sm:hidden">Use arrows or swipe to explore partnerships</span>
           </p>
         </div>
 
         {/* Scrollable Cards Container */}
-        <div
-          className="overflow-x-auto scrollbar-hide pb-6 lg:pb-8"
-          style={{
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
-          }}
-        >
-          <style jsx>{`
-            .scrollbar-hide::-webkit-scrollbar {
-              display: none;
-            }
-          `}</style>
+        <div className="relative">
 
-          <div className="flex gap-4 sm:gap-6 lg:gap-8 px-4 lg:px-6 min-w-max">
-            {partners.map((partner, index) => (
-              <div
-                key={partner.id}
-                data-index={index}
-                className={`relative flex-shrink-0 w-72 sm:w-80 lg:w-80 h-80 sm:h-96 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-xl cursor-pointer group border-2 border-gray-200 dark:border-gray-600 hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-700 ease-out transform ${
-                  visibleItems.has(index)
-                    ? "opacity-100 translate-y-0 translate-x-0 scale-100"
-                    : index % 3 === 0
-                    ? "opacity-0 translate-y-8 -translate-x-12 scale-95"
-                    : index % 3 === 1
-                    ? "opacity-0 translate-y-12 scale-95"
-                    : "opacity-0 translate-y-8 translate-x-12 scale-95"
-                }`}
-                style={{
-                  transitionDelay: visibleItems.has(index)
-                    ? `${index * 100}ms`
-                    : "0ms",
-                }}
-                onMouseEnter={() => setHoveredCard(partner.id)}
-                onMouseLeave={() => setHoveredCard(null)}
-              >
-                {/* Logo Container */}
-                <div className="p-4 sm:p-6 lg:p-8 h-36 sm:h-48 flex items-center justify-center bg-gray-50 dark:bg-gray-750 rounded-t-lg transition-all duration-500 group-hover:bg-gray-100 dark:group-hover:bg-gray-700">
-                  <img
-                    src={partner.image}
-                    alt={partner.name}
-                    className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
+          <div
+            ref={scrollContainerRef}
+            className="overflow-x-auto scrollbar-hide pb-6 lg:pb-8"
+            style={{
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
+            }}
+          >
+            <style jsx>{`
+              .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+              }
+            `}</style>
 
-                {/* Basic Info */}
-                <div className="p-4 sm:p-6">
-                  <h3 className="text-lg sm:text-xl font-medium text-gray-900 dark:text-white mb-2">
-                    {partner.name}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-3 sm:mb-4">
-                    {partner.location}
-                  </p>
-
-                  {/* Partnership duration - always visible */}
-                  <div className="flex items-center justify-between mb-3 sm:mb-4">
-                    <span className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider">
-                      Partnership
-                    </span>
-                    <span className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-300">
-                      {partner.partnership}
-                    </span>
+            <div className="flex gap-3 sm:gap-4 md:gap-6 lg:gap-8 px-3 sm:px-4 lg:px-6 min-w-max">
+              {partners.map((partner, index) => (
+                <div
+                  key={partner.id}
+                  data-index={index}
+                  className={`relative flex-shrink-0 w-64 sm:w-72 md:w-80 lg:w-80 h-72 sm:h-80 md:h-96 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-xl cursor-pointer group border-2 border-gray-200 dark:border-gray-600 hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-700 ease-out transform ${
+                    visibleItems.has(index)
+                      ? "opacity-100 translate-y-0 translate-x-0 scale-100"
+                      : index % 3 === 0
+                      ? "opacity-0 translate-y-8 -translate-x-12 scale-95"
+                      : index % 3 === 1
+                      ? "opacity-0 translate-y-12 scale-95"
+                      : "opacity-0 translate-y-8 translate-x-12 scale-95"
+                  }`}
+                  style={{
+                    transitionDelay: visibleItems.has(index)
+                      ? `${index * 100}ms`
+                      : "0ms",
+                  }}
+                  onMouseEnter={() => setHoveredCard(partner.id)}
+                  onMouseLeave={() => setHoveredCard(null)}
+                >
+                  {/* Logo Container */}
+                  <div className="p-3 sm:p-4 md:p-6 lg:p-8 h-28 sm:h-36 md:h-48 flex items-center justify-center bg-gray-50 dark:bg-gray-750 rounded-t-lg transition-all duration-500 group-hover:bg-gray-100 dark:group-hover:bg-gray-700">
+                    <img
+                      src={partner.image}
+                      alt={partner.name}
+                      className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                    />
                   </div>
 
-                  {/* Hover Information Overlay */}
-                  <div
-                    className={`absolute inset-0 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-lg transition-all duration-300 ${
-                      hoveredCard === partner.id
-                        ? "opacity-100 visible"
-                        : "opacity-0 invisible"
-                    }`}
-                  >
-                    <div className="p-4 sm:p-6 h-full flex flex-col justify-center">
-                      <h3 className="text-base sm:text-lg font-medium text-gray-900 dark:text-white mb-2 sm:mb-3">
-                        {partner.name}
-                      </h3>
+                  {/* Basic Info */}
+                  <div className="p-3 sm:p-4 md:p-6">
+                    <h3 className="text-base sm:text-lg md:text-xl font-medium text-gray-900 dark:text-white mb-1 sm:mb-2">
+                      {partner.name}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-2 sm:mb-3 md:mb-4">
+                      {partner.location}
+                    </p>
 
-                      <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-3 sm:mb-4 line-clamp-4">
-                        {partner.description}
-                      </p>
+                    {/* Partnership duration - always visible */}
+                    <div className="flex items-center justify-between mb-2 sm:mb-3 md:mb-4">
+                      <span className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider">
+                        Partnership
+                      </span>
+                      <span className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-300">
+                        {partner.partnership}
+                      </span>
+                    </div>
 
-                      <div className="mb-3 sm:mb-4">
-                        <h4 className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">
-                          Specialties
-                        </h4>
-                        <div className="flex flex-wrap gap-1 sm:gap-2">
-                          {partner.specialties.map((spec, i) => (
-                            <span
-                              key={i}
-                              className="px-2 py-1 text-xs bg-blue-50 dark:bg-gray-700 text-blue-600 dark:text-gray-300 rounded border border-yellow-400/30"
-                            >
-                              {spec}
-                            </span>
-                          ))}
+                    {/* Hover Information Overlay */}
+                    <div
+                      className={`absolute inset-0 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-lg transition-all duration-300 ${
+                        hoveredCard === partner.id
+                          ? "opacity-100 visible"
+                          : "opacity-0 invisible"
+                      }`}
+                    >
+                      <div className="p-3 sm:p-4 md:p-6 h-full flex flex-col justify-center">
+                        <h3 className="text-sm sm:text-base md:text-lg font-medium text-gray-900 dark:text-white mb-2 sm:mb-3">
+                          {partner.name}
+                        </h3>
+
+                        <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-2 sm:mb-3 md:mb-4 line-clamp-3 sm:line-clamp-4">
+                          {partner.description}
+                        </p>
+
+                        <div className="mb-2 sm:mb-3 md:mb-4">
+                          <h4 className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-1 sm:mb-2">
+                            Specialties
+                          </h4>
+                          <div className="flex flex-wrap gap-1 sm:gap-2">
+                            {partner.specialties.map((spec, i) => (
+                              <span
+                                key={i}
+                                className="px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs bg-blue-50 dark:bg-gray-700 text-blue-600 dark:text-gray-300 rounded border border-yellow-400/30"
+                              >
+                                {spec}
+                              </span>
+                            ))}
+                          </div>
                         </div>
-                      </div>
 
-                      <div className="flex items-center justify-between mt-auto pt-3 sm:pt-4 border-t border-gray-200 dark:border-gray-600">
-                        <span className="text-xs text-gray-500 dark:text-gray-400">
-                          {partner.partnership} partnership
-                        </span>
-                        <button className="flex items-center gap-1 text-xs text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors border-b border-yellow-400 pb-0.5">
-                          Learn more <ExternalLink className="w-3 h-3" />
-                        </button>
+                        <div className="flex items-center justify-between mt-auto pt-2 sm:pt-3 md:pt-4 border-t border-gray-200 dark:border-gray-600">
+                          <span className="text-xs text-gray-500 dark:text-gray-400">
+                            {partner.partnership} partnership
+                          </span>
+                          <button className="flex items-center gap-1 text-xs text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors border-b border-yellow-400 pb-0.5">
+                            Learn more <ExternalLink className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Subtle accent */}
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-yellow-400 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-              </div>
-            ))}
+                  {/* Subtle accent */}
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-yellow-400 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -268,7 +362,7 @@ const TrustedPartnersSection = () => {
         <div className="flex justify-center mt-4 lg:mt-8">
           <div className="flex items-center gap-2 text-xs text-gray-400 dark:text-gray-500">
             <div className="w-6 sm:w-8 h-px bg-gradient-to-r from-transparent to-yellow-400/50"></div>
-            <span className="hidden sm:inline">Scroll to explore</span>
+            <span className="hidden sm:inline">Use arrows or scroll to explore</span>
             <span className="sm:hidden">Swipe to explore</span>
             <div className="w-6 sm:w-8 h-px bg-gradient-to-l from-transparent to-yellow-400/50"></div>
           </div>

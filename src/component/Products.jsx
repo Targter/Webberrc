@@ -9,21 +9,21 @@ const Products = () => {
 
   const products = [
     {
-      title: "Wiring Harness",
+      title: "chip1",
       description:
         "Reliable, custom-built wiring harnesses for seamless electrical connectivity and optimal performance.",
       image: "/chip.png",
       category: "Connectivity Solutions",
     },
     {
-      title: "Wires & Cables",
+      title: "chip2",
       description:
         "High-quality wires and cables engineered for durability, efficiency, and safe power transmission.",
       image: "/chip.png",
       category: "Power Transmission",
     },
     {
-      title: "Power Cords",
+      title: "chip3",
       description:
         "Versatile power cords designed for stable and secure electrical connections across applications.",
       image: "/chip.png",
