@@ -1,7 +1,7 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import { motion, useMotionTemplate, useMotionValue, useInView } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
@@ -49,62 +49,47 @@ export function ManufacturingShowcase({
   ...props
 }) {
   const isMobile = useIsMobile();
-
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const motionStyle = {
-    "--x": useMotionTemplate`${mouseX}px`,
-    "--y": useMotionTemplate`${mouseY}px`,
-  };
-
-  const mouseMove = ({ clientX, clientY, currentTarget }) => {
-    let { left, top } = currentTarget.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
-  };
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
-    <section className="relative min-h-screen bg-slate-50 overflow-hidden">
+    <section 
+      ref={sectionRef}
+      className="relative min-h-screen bg-slate-50 overflow-hidden"
+    >
       {/* Background with improved visibility */}
       <div className="absolute inset-0">
         <Image
-          src="/bg/bg7.png"
+          src="/bg/bg2.png"
           alt="EV Manufacturing Background"
           fill
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/40 via-slate-900/20 to-slate-900/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/50 via-slate-900/30 to-slate-900/70"></div>
       </div>
 
       {/* Hero Header Section */}
       <div className="relative z-10 pt-12 pb-8 px-4 text-center">
         <div className="max-w-6xl mx-auto">
-          {/* Badge */}
-         
-
-          {/* Main Heading */}
+          {/* Main Heading - Single Line */}
           <motion.h1 
             className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-4 leading-none"
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            HOW WE
-            <br />
             <span className="bg-gradient-to-r from-blue-400 via-green-400 to-teal-400 bg-clip-text text-transparent">
-              MANUFACTURE
+              HOW WE MANUFACTURE
             </span>
           </motion.h1>
-
-        
 
           {/* Stats */}
           <motion.div 
             className="flex flex-wrap justify-center gap-8 mt-8 text-center"
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
           >
             {[
               { number: "3", label: "Manufacturing Steps", suffix: "" },
@@ -125,67 +110,66 @@ export function ManufacturingShowcase({
       {/* Manufacturing Steps Section */}
       <div className="relative z-10 px-4 pb-12">
         <div className="max-w-7xl mx-auto">
-          {/* Section Title 
-
           {/* Steps Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {components.map((step, index) => (
               <motion.div
                 key={step.id}
                 className="group relative"
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1 + index * 0.2 }}
-                onMouseMove={isMobile ? undefined : mouseMove}
-                style={isMobile ? undefined : motionStyle}
-                whileHover={{ y: -10 }}
+                initial={{ opacity: 0, y: 60 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
+                transition={{ duration: 0.8, delay: 0.6 + index * 0.2 }}
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
               >
-                {/* Card */}
-                <div className="relative bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-5 h-full overflow-hidden group-hover:bg-white/15 transition-all duration-500">
-                  {/* Gradient border effect */}
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500/30 to-green-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+                {/* Card - Boxy Design */}
+                <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 p-6 h-full overflow-hidden hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                  {/* EV Theme Accent */}
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-green-500"></div>
                   
                   {/* Content */}
                   <div className="relative z-10">
-                    {/* Step Number */}
-                    <div className="flex items-center justify-between mb-6">
-                      
-                      <div className="text-6xl font-black text-white/30 group-hover:text-white/20 transition-colors duration-300">
+                    {/* Step Number Header */}
+                    <div className="flex items-center justify-end mb-6">
+                      <div className="text-4xl font-black text-white/20 group-hover:text-white/30 transition-colors duration-300">
                         0{step.id}
                       </div>
                     </div>
 
                     {/* Image */}
-                    <div className="relative h-84 mb-8 rounded-2xl overflow-hidden bg-white/5">
+                    <div className="relative h-76 mb-6 overflow-hidden bg-white/5 border border-white/10">
                       <Image
                         src={step.image}
                         alt={step.name}
                         fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-700"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                     </div>
 
                     {/* Text Content */}
-                    <div>
-                      <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-green-400 transition-colors duration-300">
+                    <div className="space-y-3">
+                      <h3 className="text-xl font-bold text-white group-hover:text-green-400 transition-colors duration-300">
                         {step.name}
                       </h3>
-                      <p className="text-white/70 leading-relaxed group-hover:text-white/90 transition-colors duration-300">
+                      <p className="text-white/60 text-sm leading-relaxed group-hover:text-white/80 transition-colors duration-300 pb-1">
                         {step.description}
                       </p>
                     </div>
 
-                    {/* Bottom accent */}
-                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                  
                   </div>
                 </div>
 
-                {/* Connecting line (except for last item) */}
+                {/* Connecting line (except for last item) - More Minimal */}
                 {index < components.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-blue-400 to-green-400 z-20">
-                    <div className="absolute -right-2 -top-1 w-3 h-3 bg-green-400 rounded-full"></div>
-                  </div>
+                  <motion.div 
+                    className="hidden lg:block absolute top-1/2 -right-4 w-8 h-px bg-gradient-to-r from-green-400/60 to-transparent z-20"
+                    initial={{ scaleX: 0 }}
+                    animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
+                    transition={{ duration: 0.8, delay: 1.2 + index * 0.2 }}
+                  >
+                    <div className="absolute -right-1 -top-0.5 w-1 h-1 bg-green-400 opacity-80"></div>
+                  </motion.div>
                 )}
               </motion.div>
             ))}
