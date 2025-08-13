@@ -8,25 +8,28 @@ const Products = () => {
   const observerRef = useRef(null);
 
   const products = [
-    {
-      title: "chip1",
+    {  
+      heading:"Compact Applications", 
+      title: "WBMS-SW Mini 16S",
       description:
         "Reliable, custom-built wiring harnesses for seamless electrical connectivity and optimal performance.",
-      image: "/chip.png",
+      image: "/products/sw.png",
       category: "Connectivity Solutions",
     },
     {
-      title: "chip2",
+      heading:"Performance 2W & E-Ricks (L3)",
+      title: "WBMS-SW 16S",
       description:
         "High-quality wires and cables engineered for durability, efficiency, and safe power transmission.",
-      image: "/chip.png",
+      image: "/products/swmini.png",
       category: "Power Transmission",
     },
     {
-      title: "chip3",
+      heading:"Autos (L5) & Forklifts",
+      title: "WBMS-SW 16S Contactor",
       description:
         "Versatile power cords designed for stable and secure electrical connections across applications.",
-      image: "/chip.png",
+      image: "/products/webim2.png",
       category: "Power Solutions",
     },
   ];
@@ -58,27 +61,25 @@ const Products = () => {
   }, []);
 
   return (
-    <div className="w-full min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+    <div className="w-full min-h-screen ">
       {/* Header Section */}
-      <div className="text-center py-16 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-800 mb-2 tracking-tight">
-            PRODUCTS
-          </h1>
+     <div className="text-center py-16 px-4">
+  <div className="max-w-6xl mx-auto">
+    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-800 mb-2 tracking-tight">
+      PRODUCTS
+    </h1>
 
-          <div className="mt-12">
-            <div className="text-orange-500 text-sm font-semibold tracking-wider mb-4">
-              OUR PRODUCT RANGE
-            </div>
-
-            <p className="text-base lg:text-lg text-slate-600 max-w-4xl mx-auto leading-relaxed">
-              Explore our diverse range of precision-engineered electrical
-              products designed to meet industry standards, ensuring durability,
-              efficiency, and superior performance.
-            </p>
-          </div>
-        </div>
-      </div>
+    <div className="mt-7">
+      <p className="text-base lg:text-xl xl:text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+        Explore our diverse range of{" "}
+        <span className="font-bold bg-gradient-to-r from-blue-500 to-green-400 bg-clip-text text-transparent">Precision-Engineered</span>{" "}
+        electrical products designed to meet industry standards,
+        <br />
+        ensuring durability, efficiency, and superior performance.
+      </p>
+    </div>
+  </div>
+</div>
 
       {/* Products Grid */}
       <div className="max-w-7xl mx-auto px-4 lg:px-8 pb-16">
@@ -120,7 +121,7 @@ const Products = () => {
 
               <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 relative z-20 h-full">
                 {/* Image Container */}
-                <div className="relative h-48 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
+                <div className="relative h-68 bg-white ">
                   <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <img
                     src={product.image}
@@ -128,15 +129,18 @@ const Products = () => {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   {/* Category Badge */}
-                  <div className="absolute top-4 left-4">
-                    <span className="text-xs font-medium text-orange-600 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full">
+                  {/* <div className="absolute top-4 left-4">
+                    <span className="text-xs font-medium text-green-600 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full">
                       {product.category}
                     </span>
-                  </div>
+                  </div> */}
                 </div>
 
                 {/* Content */}
                 <div className="p-6">
+                  <h2 className="text-xl  text-slate-500 mb-1 group-hover:text-slate-900 transition-colors">
+                    {product.heading}
+                  </h2>
                   <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-slate-900 transition-colors">
                     {product.title}
                   </h3>

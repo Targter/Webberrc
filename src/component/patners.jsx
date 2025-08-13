@@ -176,23 +176,26 @@ const TrustedPartnersSection = () => {
   return (
     <section className="relative w-full py-8 lg:py-10 bg-gradient-to-br from-gray-50 via-blue-50/30 to-emerald-50/30 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
       {/* Header Section */}
-      <div className="w-screen text-center mb-12 lg:mb-16" data-header="true">
-        <div
-          className={`w-full bg-gradient-to-r from-gray-600 to-gray-700 dark:from-gray-600 dark:to-gray-800 sm:p-8 lg:p-12 text-white shadow-xl transition-all duration-1000 ease-out transform ${
-            headerVisible
-              ? "opacity-100 translate-y-0 scale-100"
-              : "opacity-0 translate-y-8 scale-95"
-          }`}
-        >
-          <h1 className="lg:text-5xl md:text-4xl text-3xl font-bold text-white mb-4 leading-tight">
-            OUR TRUSTED PARTNERS
-          </h1>
-          <h3 className="text-sm sm:text-base lg:text-lg opacity-90 font-light leading-relaxed max-w-2xl lg:max-w-3xl mx-auto">
-            We collaborate with industry leaders who share our commitment to
-            innovation and excellence
-          </h3>
-        </div>
-      </div>
+   <div className="w-screen text-center mb-8 lg:mb-12" data-header="true">
+  <div
+    className={`w-full bg-gradient-to-r from-blue-600 via-blue-700 to-teal-600 dark:from-blue-700 dark:via-blue-800 dark:to-teal-700 p-3 sm:p-5 lg:p-6 text-white shadow-2xl drop-shadow-lg transition-all duration-1000 ease-out transform ${
+      headerVisible
+        ? "opacity-100 translate-y-0 scale-100"
+        : "opacity-0 translate-y-8 scale-95"
+    }`}
+    style={{
+      boxShadow: '0 20px 40px -8px rgba(56, 178, 172, 0.25), 0 10px 20px -5px rgba(59, 130, 246, 0.15)'
+    }}
+  >
+    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 leading-tight">
+      OUR TRUSTED PARTNERS
+    </h1>
+    <h3 className="text-xs sm:text-sm md:text-base lg:text-lg opacity-90 font-light leading-relaxed max-w-xl sm:max-w-2xl lg:max-w-3xl mx-auto px-4 sm:px-0">
+      We collaborate with industry leaders who share our commitment to
+      sustainable innovation and clean energy excellence
+    </h3>
+  </div>
+</div>
 
       {/* Partners Scroll Section */}
       <div className="relative max-w-7xl mx-auto">

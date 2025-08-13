@@ -1,14 +1,43 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const VideoComponent = () => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [hasAutoPlayed, setHasAutoPlayed] = useState(false);
+  const containerRef = useRef(null);
 
   const handlePlay = () => setIsPlaying(true);
   const handleVideoEnd = () => setIsPlaying(false);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        // Check if 80% of the component is visible and hasn't auto-played yet
+        if (entry.intersectionRatio >= 0.8 && !hasAutoPlayed) {
+          setHasAutoPlayed(true);
+          setIsPlaying(true);
+        }
+      },
+      {
+        threshold: 0.8, // Trigger when 80% of the element is visible
+        rootMargin: '0px'
+      }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, [hasAutoPlayed]);
+
   return (
-    <div className="w-full py-12 md:py-20">
+    <div className="w-full py-12 md:py-20" ref={containerRef}>
       <div className="relative w-full max-w-[1300px] mx-auto overflow-hidden">
         {!isPlaying ? (
           <div
@@ -51,9 +80,12 @@ const VideoComponent = () => {
             className="w-full h-[350px] md:h-[500px] lg:h-[620px] object-cover"
             controls
             autoPlay
+            loop
+            muted // Added muted for better autoplay compatibility
+            playsInline // Added for mobile compatibility
             onEnded={handleVideoEnd}
           >
-            <source src="/bgv1.mp4" type="video/mp4" />
+            <source src="bgvid//bgvid2.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         )}

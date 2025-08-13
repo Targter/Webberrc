@@ -18,14 +18,14 @@ export function GlowingEffectDemoSecond() {
   }, []);
 
   return (
-    <div className="w-screen mx-auto  py-8">
+    <div className="w-screen mx-auto    py-8">
       {/* Heading Section */}
     <div
   ref={headingRef}
-  className="text-center mb-10 bg-gradient-to-r bg-blue-100 p-6 shadow-lg w-screen"
+  className="text-center mb-10 bg-gradient-to-r  from-blue-100 to-blue-50  p-6 py-1   shadow-lg w-screen"
 >
   <div className="transition-all duration-700 delay-200 opacity-100 translate-y-0">
-    <h3 className="text-orange-500 font-medium text-base hover:text-blue-900 transition-all duration-300 border-b-2 border-yellow-400 hover:border-yellow-300 hover:scale-105 pb-1 inline-block mb-4 tracking-wide">
+    <h3 className="text hover:text-blue-900 transition-all duration-300 border-b-2 border-yellow-400  pb-1 inline-block mb-4 tracking-wide">
       Why choose Webber?
     </h3>
   </div>

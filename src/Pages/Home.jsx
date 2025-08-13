@@ -45,7 +45,15 @@ const Home2 = () => {
     <div className="relative w-full min-h-screen overflow-hidden flex items-center justify-center">
       {/* Background Images with Dark Overlay */}
       <div className="absolute top-0 left-0 w-full h-full z-0">
-        {images.map((image, index) => (
+
+        <video 
+        autoPlay
+         loop 
+  muted 
+  playsInline 
+        
+        src="bgvid/webberbg.mp4"></video>
+        {/* {images.map((image, index) => (
           <div
             key={index}
             className={`absolute top-0 left-0 w-full h-full transition-all duration-[800ms] ease-linear ${
@@ -71,9 +79,9 @@ const Home2 = () => {
               }}
             />
             {/* Dark overlay for better text readability */}
-            <div className="absolute inset-0 bg-black/60"></div>
-          </div>
-        ))}
+            {/* <div className="absolute inset-0 bg-black/60"></div> */}
+          {/* </div> */}
+        {/* ))} */} 
       </div>
 
       {/* Invisible Click Areas for Navigation */}
@@ -102,7 +110,7 @@ const Home2 = () => {
             transitionDelay: hasLaunched ? '200ms' : '200ms',
             transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
           }}>
-            <span className="text-orange-500 text-sm font-medium tracking-[0.15em] uppercase">
+            <span className="text-white text-xl font-medium tracking-[0.15em] uppercase">
               RELIABLE CHIP.RELIABLE BATTERY.RELIABLE RIDE 
             </span>
           </div>
@@ -144,7 +152,7 @@ const Home2 = () => {
             transitionDelay: hasLaunched ? '800ms' : '800ms',
             transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
           }}>
-            <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-4 text-sm tracking-wide uppercase transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+            <button className="bg-green-900 text-white font-semibold px-8 py-4 text-sm tracking-wide uppercase transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
               CONTACT US
             </button>
           </div>

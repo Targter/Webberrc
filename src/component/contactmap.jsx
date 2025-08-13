@@ -56,7 +56,7 @@ const ContactFAQComponent = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid lg:grid-cols-2 gap-12">
           <div>
-            <div className="text-orange-500 text-sm font-medium mb-2 tracking-wide">
+            <div className="bg-gradient-to-r from-blue-500 to-green-400 bg-clip-text text-transparent text-sm font-medium mb-2 tracking-wide">
               HAVE ANY QUESTION?
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
@@ -82,7 +82,7 @@ const ContactFAQComponent = () => {
                     {faq.question}
                   </span>
                   <ChevronDown
-                    className={`w-5 h-5 text-orange-500 transition-transform duration-200 flex-shrink-0 ${
+                    className={`w-5 h-5 text-blue-500 transition-transform duration-200 flex-shrink-0 ${
                       openFAQ === index ? "rotate-180" : ""
                     }`}
                   />
@@ -104,7 +104,7 @@ const ContactFAQComponent = () => {
       <div className="bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center mb-12">
-            <div className="text-orange-500 text-sm font-medium mb-2 tracking-wide">
+            <div className="text-blue-500 text-sm font-medium mb-2 tracking-wide">
               CONTACT US
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
@@ -136,24 +136,24 @@ const ContactFAQComponent = () => {
                 </h4>
                 <div className="space-y-4">
                   <div className="flex items-start">
-                    <MapPin className="w-5 h-5 text-orange-500 mt-1 mr-3 flex-shrink-0" />
+                    <MapPin className="w-5 h-5 text-blue-500 mt-1 mr-3 flex-shrink-0" />
                     <span className="text-gray-600">
                       Office 03 and 04, First Floor, Sai Raj Regency, Pimple
                       Saudagar, Pune, Maharashtra 411 027
                     </span>
                   </div>
                   <div className="flex items-center">
-                    <Phone className="w-5 h-5 text-orange-500 mr-3" />
+                    <Phone className="w-5 h-5 text-blue-500 mr-3" />
                     <span className="text-gray-600">+91 999 999 0794</span>
                   </div>
                   <div className="flex items-center">
-                    <Mail className="w-5 h-5 text-orange-500 mr-3" />
+                    <Mail className="w-5 h-5 text-blue-500 mr-3" />
                     <span className="text-gray-600">
                       sales@shrisaielectroworks.com
                     </span>
                   </div>
                   <div className="flex items-center">
-                    <Mail className="w-5 h-5 text-orange-500 mr-3" />
+                    <Mail className="w-5 h-5 text-blue-500 mr-3" />
                     <span className="text-gray-600">
                       sandeep@shrisaielectroworks.com
                     </span>
@@ -171,27 +171,27 @@ const ContactFAQComponent = () => {
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-white text-sm font-medium mb-2">
-                      First Name <span className="text-orange-500">*</span>
+                      First Name <span className="bg-gradient-to-r from-blue-500 to-green-400 bg-clip-text text-transparent">*</span>
                     </label>
                     <input
                       type="text"
                       name="firstName"
                       value={formData.firstName}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-orange-500 focus:outline-none transition-all duration-200"
+                      className="w-full px-4 py-3 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all duration-200"
                       placeholder="Rohit"
                     />
                   </div>
                   <div>
                     <label className="block text-white text-sm font-medium mb-2">
-                      Last Name <span className="text-orange-500">*</span>
+                      Last Name <span className="bg-gradient-to-r from-blue-500 to-green-400 bg-clip-text text-transparent">*</span>
                     </label>
                     <input
                       type="text"
                       name="lastName"
                       value={formData.lastName}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-orange-500 focus:outline-none transition-all duration-200"
+                      className="w-full px-4 py-3 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all duration-200"
                       placeholder="Gupta"
                     />
                   </div>
@@ -199,34 +199,34 @@ const ContactFAQComponent = () => {
 
                 <div>
                   <label className="block text-white text-sm font-medium mb-2">
-                    Email Address <span className="text-orange-500">*</span>
+                    Email Address <span className="bg-gradient-to-r from-blue-500 to-green-400 bg-clip-text text-transparent">*</span>
                   </label>
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-orange-500 focus:outline-none transition-all duration-200"
+                    className="w-full px-4 py-3 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all duration-200"
                   />
                 </div>
 
                 <div>
                   <label className="block text-white text-sm font-medium mb-2">
                     Comments / Questions{" "}
-                    <span className="text-orange-500">*</span>
+                    <span className="bg-gradient-to-r from-blue-500 to-green-400 bg-clip-text text-transparent">*</span>
                   </label>
                   <textarea
                     name="comments"
                     value={formData.comments}
                     onChange={handleInputChange}
                     rows={4}
-                    className="w-full px-4 py-3 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-orange-500 focus:outline-none transition-all duration-200 resize-none"
+                    className="w-full px-4 py-3 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all duration-200 resize-none"
                   ></textarea>
                 </div>
 
                 <button
                   onClick={handleSubmit}
-                  className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center"
+                  className="w-full bg-gradient-to-r from-blue-500 to-green-400 hover:from-blue-600 hover:to-green-500 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center"
                 >
                   <Send className="w-4 h-4 mr-2" />
                   SEND MESSAGE
@@ -256,7 +256,7 @@ const ContactFAQComponent = () => {
             </div>
             <div className="p-6 bg-slate-800 text-white">
               <div className="flex items-center">
-                <MapPin className="w-5 h-5 text-orange-500 mr-3 flex-shrink-0" />
+                <MapPin className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" />
                 <span className="text-sm">
                   Office 03 and 04, First Floor, Sai Raj Regency, Pimple
                   Saudagar, Pune, Maharashtra 411 027

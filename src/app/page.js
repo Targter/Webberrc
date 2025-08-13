@@ -36,10 +36,10 @@ export default function Home() {
       <Products />
 
       <GlowingEffectDemoSecond />
+      <Achieve />
       <VideoComponent />
       <TrustedPartnersSection />
       <ManufacturingShowcase />
-      <Achieve />
       <ContactMap />
     </div>
   );
