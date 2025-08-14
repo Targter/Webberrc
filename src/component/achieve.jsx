@@ -142,7 +142,7 @@ export const Achieve = ({ default_velocity = 0.5, className }) => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
               viewport={{ once: true }}
-              className="lg:text-5xl md:text-4xl text-3xl font-bold text-white mb-4 leading-tight"
+              className="lg:text-4xl md:text-3xl text-3xl font-bold text-white mb-4  md:py-2 leading-tight"
             >
               WHAT WEBBER HAS ACHIEVED AT WORLD STAGE
             </motion.h1>
