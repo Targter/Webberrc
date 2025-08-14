@@ -116,7 +116,7 @@ export const Achieve = ({ default_velocity = 0.5, className }) => {
   return (
     <section className="relative w-full overflow-hidden bg-slate-50 dark:bg-slate-900 ">
       {/* Reduced height header with EV-themed gradient and perfect symmetry */}
-      <div className="w-full  bg-gradient-to-r from-blue-600 via-blue-700 to-teal-600 dark:from-blue-700 dark:via-blue-800 dark:to-teal-700 p-3 sm:p-5 text-white py-8  shadow-lg  mt-4  ">
+      <div className="w-full  bg-gradient-to-r from-blue-600 via-blue-700 to-teal-600 dark:from-blue-700 dark:via-blue-800 dark:to-teal-700 p-3 sm:p-5 text-white py-8 h-40 shadow-lg  mt-4  ">
         <div className="max-w-6xl mx-auto px-4 text-center ">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -142,7 +142,7 @@ export const Achieve = ({ default_velocity = 0.5, className }) => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
               viewport={{ once: true }}
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white dark:text-white leading-tight"
+              className="lg:text-5xl md:text-4xl text-3xl font-bold text-white mb-4 leading-tight"
             >
               WHAT WEBBER HAS ACHIEVED AT WORLD STAGE
             </motion.h1>

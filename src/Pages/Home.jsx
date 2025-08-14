@@ -24,7 +24,7 @@ const Home2 = () => {
           playsInline
           className="w-full h-full object-cover"
           src="bgvid/webberbg.mp4"
-          poster="/bg/bg3.png" // Fallback image while video loads
+          
         />
         {/* Dark overlay for better text readability */}
         <div className="absolute inset-0 bg-black/40"></div>
