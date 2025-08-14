@@ -27,13 +27,14 @@ const ElectricChipNavbar = () => {
   const [hasLaunched, setHasLaunched] = useState(false);
 
   const navItems = [
+    { name: 'Home', hasDropdown: false },
     {
       name: 'Products',
       hasDropdown: true,
       items: ['chip1', 'chip2', 'chip3', 'chip4']
     },
     { name: 'R&D Insights', hasDropdown: false },
-    { name: 'Support', hasDropdown: false }
+    { name: 'Support', hasDropdown: false },
   ];
 
   // First launch effect
