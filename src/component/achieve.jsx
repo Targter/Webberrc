@@ -116,39 +116,39 @@ export const Achieve = ({ default_velocity = 0.5, className }) => {
   return (
     <section className="relative w-full overflow-hidden bg-slate-50 dark:bg-slate-900 ">
       {/* Reduced height header with EV-themed gradient and perfect symmetry */}
-      <div className="w-full  bg-gradient-to-r from-blue-600 via-blue-700 to-teal-600 dark:from-blue-700 dark:via-blue-800 dark:to-teal-700 p-3 sm:p-5 text-white py-8 h-40 shadow-lg  mt-4  ">
-        <div className="max-w-6xl mx-auto px-4 text-center ">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="space-y-4"
-          >
-            {/* Philosophical tagline */}
-            <motion.p
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="text-white dark:text-white text-sm sm:text-base font-medium tracking-wide uppercase"
-            >
-              Excellence in Motion • Innovation Through Achievement
-            </motion.p>
-            
-            {/* Main heading - further reduced size */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="lg:text-4xl md:text-3xl text-3xl font-bold text-white mb-4  md:py-2 leading-tight"
-            >
-              WHAT WEBBER HAS ACHIEVED AT WORLD STAGE
-            </motion.h1>
-          </motion.div>
-        </div>
-      </div>
+    <div className="w-full bg-gradient-to-r from-blue-600 via-blue-700 to-teal-600 dark:from-blue-700 dark:via-blue-800 dark:to-teal-700 p-3 sm:p-4 md:p-6 text-white shadow-lg mt-4 min-h-[150px] sm:min-h-[170px] md:min-h-[190px] flex items-center">
+  <div className="max-w-6xl mx-auto px-4 text-center w-full">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="space-y-2 sm:space-y-3 md:space-y-4"
+    >
+      {/* Philosophical tagline */}
+      <motion.p
+        initial={{ opacity: 0, y: 15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+        className="text-white/90 dark:text-white/90 text-xs sm:text-sm md:text-base font-medium tracking-wide uppercase"
+      >
+        Excellence in Motion • Innovation Through Achievement
+      </motion.p>
+      
+      {/* Main heading - responsive sizing */}
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.1 }}
+        viewport={{ once: true }}
+        className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white leading-tight px-2 sm:px-4"
+      >
+        WHAT WEBBER HAS ACHIEVED AT WORLD STAGE
+      </motion.h1>
+    </motion.div>
+  </div>
+</div>
 
       {/* Achievement carousel */}
       <div className="relative overflow-hidden bg-slate-50 dark:bg-slate-900">
