@@ -22,16 +22,16 @@ export function GlowingEffectDemoSecond() {
       {/* Heading Section */}
     <div
   ref={headingRef}
-  className="text-center mb-10 bg-gradient-to-r  from-blue-100 to-blue-50  p-6 py-1   shadow-lg w-screen"
+  className="text-center mb-10   bg-gradient-to-r from-blue-600 via-blue-700 to-teal-600 dark:from-blue-700 dark:via-blue-800 dark:to-teal-700 py-8 mt-4 shadow-2xl "
 >
   <div className="transition-all duration-700 delay-200 opacity-100 translate-y-0">
-    <h3 className="text hover:text-blue-900 transition-all duration-300 border-b-2 border-yellow-400  pb-1 inline-block mb-4 tracking-wide">
+    <h3 className="text-white hover:text-white transition-all duration-300 border-b-2 border-yellow-400  pb-1 inline-block mb-4 tracking-wide">
       Why choose Webber?
     </h3>
   </div>
 
   <div className="transition-all duration-700 delay-400 opacity-100 translate-y-0">
-    <h1 className="lg:text-5xl md:text-4xl text-3xl font-bold text-blue-900 mb-4 leading-tight">
+    <h1 className="lg:text-5xl md:text-4xl text-3xl font-bold text-white mb-4 leading-tight">
       FIRST PRINCIPLE DESIGN APPROACH
     </h1>
   </div>
@@ -43,11 +43,11 @@ export function GlowingEffectDemoSecond() {
       isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
     }`}
   >
-      <span className="text-blue-900">Value</span>
+      <span className="text-white">Value</span>
     <span className="text-gray-500">|</span>
-    <span className="text-blue-900">Reliable</span>
+    <span className="text-white">Reliable</span>
     <span className="text-gray-500">|</span>
-    <span className="text-blue-900">Agile</span>
+    <span className="text-white">Agile</span>
   </div>
 </div>
 

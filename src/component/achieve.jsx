@@ -115,8 +115,8 @@ export const Achieve = ({ default_velocity = 0.5, className }) => {
 
   return (
     <section className="relative w-full overflow-hidden bg-slate-50 dark:bg-slate-900 ">
-      {/* header with EV-themed gradient and perfect symmetry */}
-      <div className="w-full bg-gradient-to-r from-emerald-100 via-green-100 to-emerald-100 dark:from-emerald-900/20 dark:via-green-900/10 dark:to-emerald-900/20 py-8 mt-4 shadow-2xl ">
+      {/* Reduced height header with EV-themed gradient and perfect symmetry */}
+      <div className="w-full  bg-gradient-to-r from-blue-600 via-blue-700 to-teal-600 dark:from-blue-700 dark:via-blue-800 dark:to-teal-700 p-3 sm:p-5 text-white py-8  shadow-lg  mt-4  ">
         <div className="max-w-6xl mx-auto px-4 text-center ">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -131,7 +131,7 @@ export const Achieve = ({ default_velocity = 0.5, className }) => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="text-emerald-700 dark:text-emerald-300 text-sm sm:text-base font-medium tracking-wide uppercase"
+              className="text-white dark:text-white text-sm sm:text-base font-medium tracking-wide uppercase"
             >
               Excellence in Motion • Innovation Through Achievement
             </motion.p>
@@ -142,7 +142,7 @@ export const Achieve = ({ default_velocity = 0.5, className }) => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
               viewport={{ once: true }}
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-slate-100 leading-tight"
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white dark:text-white leading-tight"
             >
               WHAT WEBBER HAS ACHIEVED AT WORLD STAGE
             </motion.h1>
