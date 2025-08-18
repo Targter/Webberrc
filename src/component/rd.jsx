@@ -22,7 +22,7 @@ export function GlowingEffectDemoSecond() {
       {/* Heading Section */}
     <div
   ref={headingRef}
-  className="text-center mb-10   bg-gradient-to-r from-blue-600 via-blue-700 to-teal-600 dark:from-blue-700 dark:via-blue-800 dark:to-teal-700 py-8 mt-4 shadow-2xl "
+  className="text-center mb-10   bg-gradient-to-r from-blue-500 via-blue-400  dark:from-blue-500 dark:via-blue-600 py-8 mt-4 shadow-2xl "
 >
   <div className="transition-all duration-700 delay-200 opacity-100 translate-y-0">
     <h3 className="text-white hover:text-white transition-all duration-300 border-b-2 border-yellow-400  pb-1 inline-block mb-4 tracking-wide">

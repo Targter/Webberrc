@@ -1,8 +1,8 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Menu, X } from 'lucide-react';
+import { ChevronDown, Menu, X, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { px } from 'framer-motion';
 
 const Button = ({ title, leftIcon, rightIcon, containerClass = "", onClick }) => (
   <button
@@ -23,18 +23,37 @@ const ElectricChipNavbar = () => {
   const [isTransparent, setIsTransparent] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [activeDropdown, setActiveDropdown] = useState(true);
+  const [activeBMSHover, setActiveBMSHover] = useState(true);
   const [hasLaunched, setHasLaunched] = useState(false);
 
   const navItems = [
     { name: 'Home', hasDropdown: false },
+    { name: 'About Us', hasDropdown: false },
     {
       name: 'Products',
       hasDropdown: true,
-      items: ['chip1', 'chip2', 'chip3', 'chip4']
+      items: [
+        {
+          type: "Battery Management System",
+          hasSubDropdown: true,
+          chips: [
+            { name: 'FS-LT', description: 'For standalone & stackable architectures' },
+            { name: 'CT-Safe', description: 'For onroad & battery safety' },
+            { name: 'CT-Lite', description: 'For cost-competitive mobility applications' },
+            { name: 'CT-Lite+ 50A', description: 'For cost-competitive mobility applications' },
+            { name: 'CT-Lite + 80A', description: 'For cost-competitive mobility applications' },
+            { name: 'FS-XT', description: 'For high voltage & high power applications' },
+            { name: 'HP Safe', description: 'For high power low-voltage applications' }
+          ]
+        },
+        {
+          type: "Upcoming Projects",
+          hasSubDropdown: false
+        }
+      ]
     },
-    { name: 'R&D Insights', hasDropdown: false },
-    { name: 'Support', hasDropdown: false },
+    { name: 'Services', hasDropdown: false },
   ];
 
   // First launch effect
@@ -103,12 +122,12 @@ const ElectricChipNavbar = () => {
         transitionTimingFunction: hasLaunched ? 'ease-out' : 'cubic-bezier(0.4, 0, 0.2, 1)'
       }}
     >
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 py-1">
-        <div className="flex items-center justify-between h-10 sm:h-12">
+      <div className="max-w-7xl mx-auto px-3  sm:px-6 py-1">
+        <div className="flex items-center justify-between h-50 sm:h-12">
 
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
-            <div className={`relative p-1 bg-black/5 rounded-lg transition-all duration-700 ${
+          
+            <div className={`relative p-1  bg-black/5 rounded-lg transition-all duration-700 ${
               hasLaunched 
                 ? 'opacity-100 scale-100' 
                 : 'opacity-0 scale-95'
@@ -117,15 +136,17 @@ const ElectricChipNavbar = () => {
               transitionDelay: hasLaunched ? '0ms' : '200ms',
               transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
             }}>
-              <Image 
-                src="/logo/webber-logo.png" 
-                width={100} 
-                height={100} 
-                alt="logo" 
-                className="h-7 w-auto sm:h-8 filter brightness-0 opacity-80" 
-              />
+              <div className="h-[300px] w-24 sm:h-12 sm:w-30 bg-gray-800 rounded pr-2 pl-2 flex items-center justify-center text-white text-xs font-bold">
+                <Image
+                src="/logo/webber-logo.png"
+                width={300}
+                height={150}
+                alt='webber-logo'
+                
+                />
+              </div>
             </div>
-          </Link>
+          
 
           {/* Desktop Menu */}
           <div className={`hidden lg:flex items-center space-x-4 xl:space-x-6 transition-all duration-800 ${
@@ -137,36 +158,85 @@ const ElectricChipNavbar = () => {
             transitionDelay: hasLaunched ? '0ms' : '400ms',
             transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
           }}>
-            {navItems.map((item, i) => (
-              <div
-                key={i}
-                className="relative"
-                onMouseEnter={() => item.hasDropdown && setActiveDropdown(item.name)}
-                onMouseLeave={() => setActiveDropdown(null)}
-                style={{
-                  animationDelay: hasLaunched ? '0ms' : `${500 + i * 100}ms`
-                }}
-              >
-                <button className="flex items-center space-x-1 text-gray-700 hover:text-black transition-all text-sm font-medium py-1">
-                  <span>{item.name}</span>
-                  {item.hasDropdown && <ChevronDown className="w-3.5 h-3.5" />}
-                </button>
+     {navItems.map((item, i) => (
+  <div
+    key={i}
+    className="relative group"
+    style={{
+      animationDelay: hasLaunched ? '0ms' : `${500 + i * 100}ms`
+    }}
+  >
+    <button className="flex items-center space-x-1 text-gray-700 hover:text-black transition-all text-sm font-medium py-1">
+      <span>{item.name}</span>
+      {item.hasDropdown && <ChevronDown className="w-3.5 h-3.5" />}
+    </button>
 
-                {item.hasDropdown && activeDropdown === item.name && (
-                  <div className="absolute left-0 mt-1 w-52 bg-white border border-gray-200 rounded-lg shadow-xl overflow-hidden">
-                    {item.items.map((sub, si) => (
-                      <a
-                        key={si}
-                        href="#"
-                        className="block px-4 py-2.5 text-gray-700 hover:text-black hover:bg-gray-50 text-sm border-b border-gray-100 last:border-0 transition-colors"
-                      >
-                        {sub}
-                      </a>
-                    ))}
+    {item.hasDropdown && (
+      <div className="absolute left-0 mt-1 w-72 bg-gray-900 border border-gray-800 rounded-lg shadow-2xl overflow-visible z-[100] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+        {item.items.map((category, ci) => (
+          <div
+            key={ci}
+            className="relative group/submenu"
+          >
+            <div className="flex items-center justify-between px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800/50 text-sm border-b border-gray-800 last:border-0 transition-all cursor-pointer">
+              <span className="font-medium">{category.type}</span>
+              {category.hasSubDropdown && <ChevronRight className="w-4 h-4" />}
+            </div>
+
+            {/* BMS Products Submenu - repositioned and more concise */}
+            {category.hasSubDropdown && (
+              <div className="absolute left-full top-0 ml-1 w-[500px] bg-gray-900 border border-gray-800 rounded-lg shadow-2xl overflow-hidden z-[110] max-h-[70vh] overflow-y-auto opacity-0 invisible group-hover/submenu:opacity-100 group-hover/submenu:visible transition-all duration-200">
+                <div className="p-4">
+                  {/* Low Voltage Section */}
+                  <div className="mb-6">
+  {/* Simple Product Grid */}
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    {category.chips.map((chip, chipIndex) => (
+      <div
+        key={chipIndex}
+        className="relative p-4 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md hover:border-blue-300 transition-all duration-200 cursor-pointer group"
+      >
+        {/* Product Header */}
+        <div className="flex items-start justify-between mb-2">
+          <h4 className="font-semibold text-gray-900 text-sm group-hover:text-blue-600 transition-colors">
+            {chip.name}
+          </h4>
+          <div className="w-1.5 h-1.5 bg-blue-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        </div>
+        
+        {/* Product Description */}
+        <p className="text-xs text-gray-600 leading-relaxed line-clamp-3 mb-3">
+          {chip.description}
+        </p>
+        
+        {/* Bottom Accent */}
+        <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+      </div>
+    ))}
+  </div>
+</div>
+
+                  {/* Webber Ecosystem Section */}
+                  <div className="pt-4 border-t border-gray-800">
+                    <div className="flex items-center space-x-3">
+                      <Image
+                      src="/logo/webber-logo.png"
+                      width={200}
+                      height={200}
+                      alt='logo'
+                      />
+                      
+                    </div>
                   </div>
-                )}
+                </div>
               </div>
-            ))}
+            )}
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+))}
           </div>
 
           {/* Right Side Buttons */}
@@ -188,8 +258,8 @@ const ElectricChipNavbar = () => {
               transitionDelay: hasLaunched ? '0ms' : '650ms'
             }}>
               <Button
-                title="History"
-                containerClass="hidden sm:inline-block border border-gray-300 text-gray-700 hover:bg-gray-100 hover:text-black rounded-lg"
+                title="Resources"
+                containerClass="hidden sm:inline-block    border border-gray-600 text-gray-700 hover:bg-gray-100 hover:text-black rounded-lg"
               />
             </div>
             
@@ -202,7 +272,7 @@ const ElectricChipNavbar = () => {
               transitionDelay: hasLaunched ? '0ms' : '700ms'
             }}>
               <Button
-                title="Let's Chip it"
+                title="Contact Us"
                 containerClass="bg-black text-white hover:bg-gray-800 border border-black rounded-lg"
               />
             </div>
@@ -227,20 +297,40 @@ const ElectricChipNavbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden mt-2 bg-white border border-gray-200 rounded-lg shadow-xl">
+          <div className="lg:hidden mt-2 bg-gray-900 border border-gray-800 rounded-lg shadow-xl">
             <div className="px-4 py-3 space-y-3">
               {navItems.map((item, i) => (
                 <div key={i}>
-                  <button className="w-full flex justify-between items-center text-gray-700 hover:text-black text-sm font-medium py-1">
+                  <button className="w-full flex justify-between items-center text-gray-300 hover:text-white text-sm font-medium py-2">
                     <span>{item.name}</span>
                     {item.hasDropdown && <ChevronDown className="h-4 w-4" />}
                   </button>
-                  {item.hasDropdown && (
-                    <div className="ml-4 mt-2 space-y-1">
-                      {item.items.map((sub, si) => (
-                        <a key={si} href="#" className="block text-gray-600 hover:text-black text-sm py-1 transition-colors">
-                          {sub}
-                        </a>
+                  {item.hasDropdown && item.items && (
+                    <div className="ml-4 mt-2 space-y-3">
+                      {item.items.map((category, ci) => (
+                        <div key={ci}>
+                          <div className="text-white font-medium text-sm py-1 border-l-2 border-cyan-400 pl-3">
+                            {category.type}
+                          </div>
+                          {category.hasSubDropdown && category.chips && (
+                            <div className="ml-4 space-y-2">
+                              <div className="text-cyan-400 text-xs font-medium mb-2">Low Voltage</div>
+                              {category.chips.slice(0, 5).map((chip, chipIndex) => (
+                                <div key={chipIndex} className="bg-gray-800/50 p-2 rounded border border-gray-700 hover:border-gray-600 transition-colors">
+                                  <div className="font-medium text-white text-xs mb-1">{chip.name}</div>
+                                  <div className="text-xs text-gray-400 leading-relaxed">{chip.description}</div>
+                                </div>
+                              ))}
+                              <div className="text-cyan-400 text-xs font-medium mb-2 mt-3">High Voltage</div>
+                              {category.chips.slice(5).map((chip, chipIndex) => (
+                                <div key={chipIndex} className="bg-gray-800/50 p-2 rounded border border-gray-700 hover:border-gray-600 transition-colors">
+                                  <div className="font-medium text-white text-xs mb-1">{chip.name}</div>
+                                  <div className="text-xs text-gray-400 leading-relaxed">{chip.description}</div>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
                       ))}
                     </div>
                   )}
@@ -248,20 +338,22 @@ const ElectricChipNavbar = () => {
               ))}
 
               {/* Mobile CTA Buttons */}
-              <div className="pt-3 border-t border-gray-200 space-y-2">
+              <div className="pt-3 border-t border-gray-800 space-y-2">
                 <Button
-                  title="History"
-                  containerClass="w-full sm:hidden border border-gray-300 text-gray-700 hover:bg-gray-100 hover:text-black rounded-lg"
+                  title="Resources"
+                  containerClass="w-full sm:hidden border border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white rounded-lg"
                 />
                 <Button
                   title="Let's Chip it"
-                  containerClass="w-full bg-black text-white hover:bg-gray-800 border border-black rounded-lg"
+                  containerClass="w-full bg-cyan-500 text-white hover:bg-cyan-600 border border-cyan-500 rounded-lg"
                 />
               </div>
             </div>
           </div>
         )}
       </div>
+
+      
     </nav>
   );
 };

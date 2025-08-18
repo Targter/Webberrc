@@ -1,178 +1,290 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const Products = () => {
-  const [visibleItems, setVisibleItems] = useState(new Set());
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  const observerRef = useRef(null);
+  const [activeCategory, setActiveCategory] = useState("Battery Management Systems");
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+  const scrollContainerRef = useRef(null);
 
-  const products = [
-    {  
-      heading:"Compact Applications", 
-      title: "WBMS-SW Mini 16S",
-      description:
-        "Reliable, custom-built wiring harnesses for seamless electrical connectivity and optimal performance.",
-      image: "/products/sw.png",
-      category: "Connectivity Solutions",
-    },
-    {
-      heading:"Performance 2W & E-Ricks (L3)",
-      title: "WBMS-SW 16S",
-      description:
-        "High-quality wires and cables engineered for durability, efficiency, and safe power transmission.",
-      image: "/products/swmini.png",
-      category: "Power Transmission",
-    },
-    {
-      heading:"Autos (L5) & Forklifts",
-      title: "WBMS-SW 16S Contactor",
-      description:
-        "Versatile power cords designed for stable and secure electrical connections across applications.",
-      image: "/products/webim2.png",
-      category: "Power Solutions",
-    },
-  ];
+  const categories = ["Battery Management Systems", "Other Advance Electronics"];
 
-  useEffect(() => {
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const index = parseInt(entry.target.dataset.index);
-          if (entry.isIntersecting) {
-            setVisibleItems((prev) => new Set([...prev, index]));
-          }
-        });
+  const allProducts = {
+    "Battery Management Systems": [
+      {  
+        heading: "Compact Applications", 
+        title: "WBMS-SW Mini 16S",
+        description: "Feature-rich BMS designed for standalone & stackable architecture with paralleling support.",
+        image: "/products/sw.png",
       },
       {
-        threshold: 0.3,
-        rootMargin: "-20px 0px",
-      }
-    );
+        heading: "Performance 2W & E-Ricks (L3)",
+        title: "WBMS-SW 16S",
+        description: "Compact monolithic BMS designed for cost-competitive mobility applications.",
+        image: "/products/swmini.png",
+      },
+      {
+        heading: "Autos (L5) & Forklifts",
+        title: "WBMS-SW 16S Contactor",
+        description: "Functionally Safe BMS for High Power and low voltage applications.",
+        image: "/products/webim2.png",
+      },
+      {
+        heading: "Heavy Duty Applications",
+        title: "WBMS-SW 24S Pro",
+        description: "Advanced BMS solution for heavy-duty vehicles with enhanced safety protocols.",
+        image: "/products/sw.png",
+      },
+      {
+        heading: "Marine & Maritime",
+        title: "WBMS-SW Marine Series",
+        description: "Waterproof BMS designed for marine applications with corrosion resistance.",
+        image: "/products/swmini.png",
+      },
+      {
+        heading: "Energy Storage Systems",
+        title: "WBMS-SW Grid Scale",
+        description: "High-capacity BMS for grid-scale energy storage and renewable integration.",
+        image: "/products/webim2.png",
+      },
+    ],
+    "Other Advance Electronics": [
+      {  
+        heading: "Industrial Solutions", 
+        title: "Advanced Control Unit",
+        description: "High-performance control systems for industrial automation and monitoring applications.",
+        image: "/products/sw.png",
+      },
+      {
+        heading: "Smart Connectivity",
+        title: "IoT Communication Module",
+        description: "Seamless connectivity solutions for smart devices and industrial IoT applications.",
+        image: "/products/swmini.png",
+      },
+      {
+        heading: "Power Electronics",
+        title: "Precision Power Supply",
+        description: "Reliable power management solutions for critical electronic systems and applications.",
+        image: "/products/webim2.png",
+      },
+      {
+        heading: "Signal Processing",
+        title: "Digital Signal Processor",
+        description: "High-speed signal processing unit for real-time data analysis and filtering.",
+        image: "/products/sw.png",
+      },
+      {
+        heading: "Wireless Solutions",
+        title: "RF Communication Module",
+        description: "Long-range wireless communication system for remote monitoring applications.",
+        image: "/products/swmini.png",
+      },
+      {
+        heading: "Sensor Networks",
+        title: "Multi-Sensor Hub",
+        description: "Integrated sensor platform for environmental monitoring and data collection.",
+        image: "/products/webim2.png",
+      },
+    ]
+  };
 
-    const elements = document.querySelectorAll("[data-index]");
-    elements.forEach((el) => observerRef.current?.observe(el));
+  const currentProducts = allProducts[activeCategory];
+  const cardWidth = 352 + 32; // 352px card + 32px gap
 
-    return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
-    };
+  // Update scroll button states
+  const updateScrollButtons = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  };
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener('scroll', updateScrollButtons);
+      updateScrollButtons();
+      
+      return () => container.removeEventListener('scroll', updateScrollButtons);
+    }
+  }, [activeCategory]);
+
+  useEffect(() => {
+    const handleResize = () => updateScrollButtons();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: -cardWidth,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: cardWidth,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   return (
     <div className="w-full min-h-screen ">
       {/* Header Section */}
-     <div className="text-center py-16 px-4">
-  <div className="max-w-6xl mx-auto">
-    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-800 mb-2 tracking-tight">
-      PRODUCTS
-    </h1>
+      <div className="text-center py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-sm uppercase tracking-wide text-slate-500 ">OUR OFFERINGS</p>
+          <div className="w-28 h-0.5 bg-gradient-to-r from-green-400 to-emerald-500 mx-auto mt-1 mb-3 rounded-full"></div>
 
-    <div className="mt-7">
-      <p className="text-base lg:text-xl xl:text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
-        Explore our diverse range of{" "}
-        <span className="font-bold bg-gradient-to-r from-blue-500 to-green-400 bg-clip-text text-transparent">Precision-Engineered</span>{" "}
-        electrical products designed to meet industry standards,
-        <br />
-        ensuring durability, efficiency, and superior performance.
-      </p>
-    </div>
-  </div>
-</div>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-800 mb-2 tracking-tight">
+            Revolutionizing <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Electric</span>{" "}
+            <span className="bg-gradient-to-r from-cyan-400 to-green-400 bg-clip-text text-transparent">Mobility</span> with our cutting-edge product line
+          </h1>
+        </div>
+      </div>
 
-      {/* Products Grid */}
-      <div className="max-w-7xl mx-auto px-4 lg:px-8 pb-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product, index) => (
-            <div
-              key={index}
-              data-index={index}
-              className={`relative group p-2 h-full w-full transition-all duration-700 ease-out transform ${
-                visibleItems.has(index)
-                  ? "opacity-100 translate-y-0 scale-100"
-                  : "opacity-0 translate-y-8 scale-95"
-              }`}
-              style={{
-                transitionDelay: visibleItems.has(index)
-                  ? `${index * 150}ms`
-                  : "0ms",
-              }}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              <AnimatePresence>
-                {hoveredIndex === index && (
-                  <motion.span
-                    className="absolute inset-0 h-full w-full bg-gradient-to-br from-blue-50 to-emerald-50 block rounded-3xl"
-                    layoutId="hoverBackground"
-                    initial={{ opacity: 0 }}
-                    animate={{
-                      opacity: 1,
-                      transition: { duration: 0.15 },
-                    }}
-                    exit={{
-                      opacity: 0,
-                      transition: { duration: 0.15, delay: 0.2 },
-                    }}
-                  />
-                )}
-              </AnimatePresence>
+      {/* Category Tabs */}
+      <div className="max-w-7xl mx-auto px-4 lg:px-8 mb-8">
+        <div className="flex justify-center">
+          <div className="bg-white rounded-full p-1 shadow-md">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+                  activeCategory === category
+                    ? "bg-slate-900 text-white shadow-lg"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-gray-50"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
 
-              <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 relative z-20 h-full">
-                {/* Image Container */}
-                <div className="relative h-68 bg-white ">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  {/* Category Badge */}
-                  {/* <div className="absolute top-4 left-4">
-                    <span className="text-xs font-medium text-green-600 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full">
-                      {product.category}
-                    </span>
-                  </div> */}
-                </div>
+      {/* Products Carousel */}
+      <div className="max-w-8xl mx-auto px-4 lg:px-8 pb-16">
+        {/* Navigation Controls */}
+        <div className="flex items-center justify-center mb-6 gap-4">
+          <button
+            onClick={scrollLeft}
+            disabled={!canScrollLeft}
+            className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
+              canScrollLeft
+                ? "border-slate-300 text-slate-600 hover:border-slate-400 hover:text-slate-800 hover:shadow-md"
+                : "border-gray-200 text-gray-300 cursor-not-allowed"
+            }`}
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
 
-                {/* Content */}
-                <div className="p-6">
-                  <h2 className="text-xl  text-slate-500 mb-1 group-hover:text-slate-900 transition-colors">
-                    {product.heading}
-                  </h2>
-                  <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-slate-900 transition-colors">
-                    {product.title}
-                  </h3>
+          <p className="text-sm text-gray-500 font-light">
+            <span className="hidden sm:inline">Use arrows or scroll horizontally to explore products</span>
+            <span className="sm:hidden">Use arrows or swipe to explore</span>
+          </p>
 
-                  <p className="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3">
-                    {product.description}
-                  </p>
+          <button
+            onClick={scrollRight}
+            disabled={!canScrollRight}
+            className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
+              canScrollRight
+                ? "border-slate-300 text-slate-600 hover:border-slate-400 hover:text-slate-800 hover:shadow-md"
+                : "border-gray-200 text-gray-300 cursor-not-allowed"
+            }`}
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
 
-                  {/* Learn More Button */}
-                  <button className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors group/btn">
-                    <span className="mr-2">Learn more</span>
-                    <svg
-                      className="w-4 h-4 transition-transform group-hover/btn:translate-x-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
+        {/* Scrollable Products Container */}
+        <div className="relative">
+          <div
+            ref={scrollContainerRef}
+            className="overflow-x-auto scrollbar-hide pb-6"
+            style={{
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
+            }}
+          >
+            <style jsx>{`
+              .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+              }
+            `}</style>
+
+            <div className="flex gap-8 px-4 min-w-max">
+              {currentProducts.map((product, index) => (
+                <div
+                  key={`${activeCategory}-${index}`}
+                  className="relative group flex-shrink-0 w-88 h-[420px]"
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                >
+                  {/* Hover Background Effect */}
+                  {hoveredIndex === index && (
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-emerald-50 rounded-3xl transition-opacity duration-300" />
+                  )}
+
+                  <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 relative z-20 h-full">
+                    {/* Image Container */}
+                    <div className="relative h-52 bg-white">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <img
+                        src={product.image}
+                        alt={product.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
-                    </svg>
-                  </button>
-                </div>
+                    </div>
 
-                {/* Bottom Border Accent */}
-                <div className="h-1 bg-gradient-to-r from-orange-400 via-blue-500 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
+                    {/* Content */}
+                    <div className="p-6">
+                      <h2 className="text-lg text-slate-500 mb-1 group-hover:text-slate-900 transition-colors">
+                        {product.heading}
+                      </h2>
+                      <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-slate-900 transition-colors">
+                        {product.title}
+                      </h3>
+
+                      <p className="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3">
+                        {product.description}
+                      </p>
+
+                      {/* View Product Button */}
+                      <button className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors group/btn">
+                        <span className="mr-2">View product</span>
+                        <svg
+                          className="w-4 h-4 transition-transform group-hover/btn:translate-x-1"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+
+                    {/* Bottom Border Accent */}
+                    <div className="h-1 bg-gradient-to-r from-blue-500 via-cyan-400 to-green-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
 
