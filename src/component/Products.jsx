@@ -4,90 +4,107 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const Products = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [activeCategory, setActiveCategory] = useState("Battery Management Systems");
+  const [activeCategory, setActiveCategory] = useState(
+    "Battery Management Systems"
+  );
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const scrollContainerRef = useRef(null);
 
-  const categories = ["Battery Management Systems", "Other Advance Electronics"];
+  const categories = [
+    "Battery Management Systems",
+    "Other Advance Electronics",
+  ];
 
   const allProducts = {
     "Battery Management Systems": [
-      {  
-        heading: "Compact Applications", 
+      {
+        heading: "Compact Applications",
         title: "WBMS-SW Mini 16S",
-        description: "Feature-rich BMS designed for standalone & stackable architecture with paralleling support.",
+        description:
+          "Feature-rich BMS designed for standalone & stackable architecture with paralleling support.",
         image: "/products/sw.png",
       },
       {
         heading: "Performance 2W & E-Ricks (L3)",
         title: "WBMS-SW 16S",
-        description: "Compact monolithic BMS designed for cost-competitive mobility applications.",
+        description:
+          "Compact monolithic BMS designed for cost-competitive mobility applications.",
         image: "/products/swmini.png",
       },
       {
         heading: "Autos (L5) & Forklifts",
         title: "WBMS-SW 16S Contactor",
-        description: "Functionally Safe BMS for High Power and low voltage applications.",
+        description:
+          "Functionally Safe BMS for High Power and low voltage applications.",
         image: "/products/webim2.png",
       },
       {
         heading: "Heavy Duty Applications",
         title: "WBMS-SW 24S Pro",
-        description: "Advanced BMS solution for heavy-duty vehicles with enhanced safety protocols.",
+        description:
+          "Advanced BMS solution for heavy-duty vehicles with enhanced safety protocols.",
         image: "/products/sw.png",
       },
       {
         heading: "Marine & Maritime",
         title: "WBMS-SW Marine Series",
-        description: "Waterproof BMS designed for marine applications with corrosion resistance.",
+        description:
+          "Waterproof BMS designed for marine applications with corrosion resistance.",
         image: "/products/swmini.png",
       },
       {
         heading: "Energy Storage Systems",
         title: "WBMS-SW Grid Scale",
-        description: "High-capacity BMS for grid-scale energy storage and renewable integration.",
+        description:
+          "High-capacity BMS for grid-scale energy storage and renewable integration.",
         image: "/products/webim2.png",
       },
     ],
     "Other Advance Electronics": [
-      {  
-        heading: "Industrial Solutions", 
+      {
+        heading: "Industrial Solutions",
         title: "Advanced Control Unit",
-        description: "High-performance control systems for industrial automation and monitoring applications.",
+        description:
+          "High-performance control systems for industrial automation and monitoring applications.",
         image: "/products/sw.png",
       },
       {
         heading: "Smart Connectivity",
         title: "IoT Communication Module",
-        description: "Seamless connectivity solutions for smart devices and industrial IoT applications.",
+        description:
+          "Seamless connectivity solutions for smart devices and industrial IoT applications.",
         image: "/products/swmini.png",
       },
       {
         heading: "Power Electronics",
         title: "Precision Power Supply",
-        description: "Reliable power management solutions for critical electronic systems and applications.",
+        description:
+          "Reliable power management solutions for critical electronic systems and applications.",
         image: "/products/webim2.png",
       },
       {
         heading: "Signal Processing",
         title: "Digital Signal Processor",
-        description: "High-speed signal processing unit for real-time data analysis and filtering.",
+        description:
+          "High-speed signal processing unit for real-time data analysis and filtering.",
         image: "/products/sw.png",
       },
       {
         heading: "Wireless Solutions",
         title: "RF Communication Module",
-        description: "Long-range wireless communication system for remote monitoring applications.",
+        description:
+          "Long-range wireless communication system for remote monitoring applications.",
         image: "/products/swmini.png",
       },
       {
         heading: "Sensor Networks",
         title: "Multi-Sensor Hub",
-        description: "Integrated sensor platform for environmental monitoring and data collection.",
+        description:
+          "Integrated sensor platform for environmental monitoring and data collection.",
         image: "/products/webim2.png",
       },
-    ]
+    ],
   };
 
   const currentProducts = allProducts[activeCategory];
@@ -96,7 +113,8 @@ const Products = () => {
   // Update scroll button states
   const updateScrollButtons = () => {
     if (scrollContainerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+      const { scrollLeft, scrollWidth, clientWidth } =
+        scrollContainerRef.current;
       setCanScrollLeft(scrollLeft > 0);
       setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
     }
@@ -105,24 +123,24 @@ const Products = () => {
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (container) {
-      container.addEventListener('scroll', updateScrollButtons);
+      container.addEventListener("scroll", updateScrollButtons);
       updateScrollButtons();
-      
-      return () => container.removeEventListener('scroll', updateScrollButtons);
+
+      return () => container.removeEventListener("scroll", updateScrollButtons);
     }
   }, [activeCategory]);
 
   useEffect(() => {
     const handleResize = () => updateScrollButtons();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({
         left: -cardWidth,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }
   };
@@ -131,22 +149,30 @@ const Products = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({
         left: cardWidth,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }
   };
 
   return (
-    <div className="w-full min-h-screen ">
+    <div className="w-full min-h-screen  max-w-7xl mx-auto">
       {/* Header Section */}
       <div className="text-center py-16 px-4">
         <div className="max-w-6xl mx-auto">
-          <p className="text-sm uppercase tracking-wide text-slate-500 ">OUR OFFERINGS</p>
+          <p className="text-sm uppercase tracking-wide text-slate-500 ">
+            OUR OFFERINGS
+          </p>
           <div className="w-28 h-0.5 bg-gradient-to-r from-green-400 to-emerald-500 mx-auto mt-1 mb-3 rounded-full"></div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-800 mb-2 tracking-tight">
-            Revolutionizing <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Electric</span>{" "}
-            <span className="bg-gradient-to-r from-cyan-400 to-green-400 bg-clip-text text-transparent">Mobility</span> with our cutting-edge product line
+            Revolutionizing{" "}
+            <span className="bg-gradient-to-r from-[#65af32] via-[#4ecf56] to-[#3dd07a] bg-clip-text text-transparent">
+              Electric
+            </span>{" "}
+            <span className="bg-gradient-to-r from-[#65af32] via-[#3ad98a] to-[#2eeeb5] bg-clip-text text-transparent">
+              Mobility
+            </span>{" "}
+            with our cutting-edge product line
           </h1>
         </div>
       </div>
@@ -175,36 +201,6 @@ const Products = () => {
       {/* Products Carousel */}
       <div className="max-w-8xl mx-auto px-4 lg:px-8 pb-16">
         {/* Navigation Controls */}
-        <div className="flex items-center justify-center mb-6 gap-4">
-          <button
-            onClick={scrollLeft}
-            disabled={!canScrollLeft}
-            className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
-              canScrollLeft
-                ? "border-slate-300 text-slate-600 hover:border-slate-400 hover:text-slate-800 hover:shadow-md"
-                : "border-gray-200 text-gray-300 cursor-not-allowed"
-            }`}
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-
-          <p className="text-sm text-gray-500 font-light">
-            <span className="hidden sm:inline">Use arrows or scroll horizontally to explore products</span>
-            <span className="sm:hidden">Use arrows or swipe to explore</span>
-          </p>
-
-          <button
-            onClick={scrollRight}
-            disabled={!canScrollRight}
-            className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
-              canScrollRight
-                ? "border-slate-300 text-slate-600 hover:border-slate-400 hover:text-slate-800 hover:shadow-md"
-                : "border-gray-200 text-gray-300 cursor-not-allowed"
-            }`}
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
-        </div>
 
         {/* Scrollable Products Container */}
         <div className="relative">
@@ -222,7 +218,7 @@ const Products = () => {
               }
             `}</style>
 
-            <div className="flex  gap-8 px-4 min-w-max">
+            <div className="flex  gap-8 px-4 ">
               {currentProducts.map((product, index) => (
                 <div
                   key={`${activeCategory}-${index}`}
@@ -285,6 +281,39 @@ const Products = () => {
               ))}
             </div>
           </div>
+        </div>
+
+        <div className="flex items-center justify-center mb-6 gap-4">
+          <button
+            onClick={scrollLeft}
+            disabled={!canScrollLeft}
+            className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
+              canScrollLeft
+                ? "border-slate-300 text-slate-600 hover:border-slate-400 hover:text-slate-800 hover:shadow-md"
+                : "border-gray-200 text-gray-300 cursor-not-allowed"
+            }`}
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          <p className="text-sm text-gray-500 font-light">
+            <span className="hidden sm:inline">
+              Use arrows or scroll horizontally to explore products
+            </span>
+            <span className="sm:hidden">Use arrows or swipe to explore</span>
+          </p>
+
+          <button
+            onClick={scrollRight}
+            disabled={!canScrollRight}
+            className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
+              canScrollRight
+                ? "border-slate-300 text-slate-600 hover:border-slate-400 hover:text-slate-800 hover:shadow-md"
+                : "border-gray-200 text-gray-300 cursor-not-allowed"
+            }`}
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
         </div>
       </div>
 
