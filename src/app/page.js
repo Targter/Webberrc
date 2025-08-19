@@ -7,22 +7,24 @@ import ContactMap from "@/component/contactmap";
 import { Achieve } from "@/component/achieve";
 import VideoComponent from "@/component/VideoComponent";
 import Ab from "@/component/Ab";
+import StickyScrollDemo from "@/component/scrollrd"
 
 export default function Home() {
   return (
     <div className="">
       <Home2 />
       <Products />
-  <div className="relative ">
+  {/* <div className="relative ">
 
   <Ab />
-  </div>
+  </div> */}
+  <StickyScrollDemo/>
 
-      <GlowingEffectDemoSecond />
-      <Achieve />
-      <VideoComponent />
+      {/* <GlowingEffectDemoSecond /> */}
       <TrustedPartnersSection />
-      <ManufacturingShowcase />
+      <Achieve />
+      {/* <VideoComponent /> */}
+      {/* <ManufacturingShowcase /> */}
       <ContactMap />
     </div>
   );
