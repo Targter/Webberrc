@@ -1022,7 +1022,7 @@ export const StickyScroll = ({ content, contentClassName }) => {
   }, []);
 
   return (
-    <div
+   <div
       className="relative flex flex-col h-auto justify-center overflow-y-auto bg-black p-8 scroll-smooth max-w-7xl mx-auto"
       ref={ref}
       style={{
@@ -1037,7 +1037,7 @@ export const StickyScroll = ({ content, contentClassName }) => {
             className="card-item flex flex-row items-center justify-center mt-8 gap-3"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, margin: "-20%" }} // Changed once to false to always animate
+            viewport={{ once: false, margin: "-20%" }}
             transition={{
               duration: 0.6,
               ease: "easeOut",
@@ -1116,12 +1116,12 @@ export const StickyScroll = ({ content, contentClassName }) => {
                 x: 0,
                 transition: { duration: 0.7 },
               }}
-              viewport={{ once: false }} // Changed to false to always animate
+              viewport={{ once: false }}
               whileHover={{ scale: 1.02 }}
               className={cn(
-                "h-[15rem] w-[28rem] overflow-hidden rounded-2xl shadow-2xl border border-white/20 flex-shrink-0 transition-all duration-300",
-                contentClassName,
-                activeCard === index ? "brightness-100" : "brightness-50" // Added brightness control for active state
+                "h-[15rem] w-[28rem] overflow-hidden rounded-2xl shadow-2xl border border-white/20 flex-shrink-0 transition-all duration-300 brightness-100",
+                contentClassName
+                // Removed the conditional brightness control - now all containers are bright
               )}
               style={{
                 background: linearGradients[index % linearGradients.length],
