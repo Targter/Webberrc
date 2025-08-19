@@ -222,7 +222,7 @@ const Products = () => {
               }
             `}</style>
 
-            <div className="flex gap-8 px-4 min-w-max">
+            <div className="flex  gap-8 px-4 min-w-max">
               {currentProducts.map((product, index) => (
                 <div
                   key={`${activeCategory}-${index}`}

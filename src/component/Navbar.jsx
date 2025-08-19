@@ -2,12 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Menu, X, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
-import { px } from 'framer-motion';
+import Link from 'next/link';
 
 const Button = ({ title, leftIcon, rightIcon, containerClass = "", onClick }) => (
   <button
     onClick={onClick}
-    className={`group relative overflow-hidden px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-medium transition-all duration-300 ${containerClass}`}
+    className={`group relative overflow-hidden px-2 sm:px-3 md:px-4 py-1.5 text-xs sm:text-sm font-medium transition-all duration-300 ${containerClass}`}
   >
     {leftIcon}
     <span className="relative inline-flex overflow-hidden tracking-wide">
@@ -23,8 +23,8 @@ const ElectricChipNavbar = () => {
   const [isTransparent, setIsTransparent] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(true);
-  const [activeBMSHover, setActiveBMSHover] = useState(true);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [activeMobileSection, setActiveMobileSection] = useState(null);
   const [hasLaunched, setHasLaunched] = useState(false);
 
   const navItems = [
@@ -38,13 +38,13 @@ const ElectricChipNavbar = () => {
           type: "Battery Management System",
           hasSubDropdown: true,
           chips: [
-            { name: 'FS-LT', description: 'For standalone & stackable architectures' },
-            { name: 'CT-Safe', description: 'For onroad & battery safety' },
-            { name: 'CT-Lite', description: 'For cost-competitive mobility applications' },
-            { name: 'CT-Lite+ 50A', description: 'For cost-competitive mobility applications' },
-            { name: 'CT-Lite + 80A', description: 'For cost-competitive mobility applications' },
-            { name: 'FS-XT', description: 'For high voltage & high power applications' },
-            { name: 'HP Safe', description: 'For high power low-voltage applications' }
+            { name: 'FS-LT', description: 'For standalone & stackable architectures', category: 'low' },
+            { name: 'CT-Safe', description: 'For onroad & battery safety', category: 'low' },
+            { name: 'CT-Lite', description: 'For cost-competitive mobility applications', category: 'low' },
+            { name: 'CT-Lite+ 50A', description: 'For cost-competitive mobility applications', category: 'low' },
+            { name: 'CT-Lite + 80A', description: 'For cost-competitive mobility applications', category: 'low' },
+            { name: 'FS-XT', description: 'For high voltage & high power applications', category: 'high' },
+            { name: 'HP Safe', description: 'For high power low-voltage applications', category: 'high' }
           ]
         },
         {
@@ -69,27 +69,25 @@ const ElectricChipNavbar = () => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
-      // Set scrolled state
       setIsScrolled(currentScrollY > 50);
       
-      // Handle transparency based on scroll direction
       if (currentScrollY < 10) {
-        // Always visible at top
         setIsTransparent(false);
       } else if (currentScrollY < lastScrollY) {
-        // Scrolling up - make navbar visible
         setIsTransparent(false);
       } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling down and past 100px - make transparent
         setIsTransparent(true);
-        setIsMobileMenuOpen(false); // Close mobile menu when going transparent
+        setIsMobileMenuOpen(false);
       }
       
       setLastScrollY(currentScrollY);
     };
 
     const handleResize = () => {
-      if (window.innerWidth >= 1024) setIsMobileMenuOpen(false);
+      if (window.innerWidth >= 1024) {
+        setIsMobileMenuOpen(false);
+        setActiveMobileSection(null);
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -101,9 +99,13 @@ const ElectricChipNavbar = () => {
     };
   }, [lastScrollY]);
 
+  const toggleMobileSection = (index) => {
+    setActiveMobileSection(activeMobileSection === index ? null : index);
+  };
+
   return (
     <nav
-      className={`fixed top-2 left-4 right-4 z-50 rounded-xl transition-all duration-500 transform
+      className={`fixed top-2 left-2 right-2 sm:left-4 sm:right-4 z-50 rounded-xl transition-all duration-500 transform
         ${isTransparent 
           ? 'opacity-0 hover:opacity-100' 
           : 'opacity-100'
@@ -122,34 +124,32 @@ const ElectricChipNavbar = () => {
         transitionTimingFunction: hasLaunched ? 'ease-out' : 'cubic-bezier(0.4, 0, 0.2, 1)'
       }}
     >
-      <div className="max-w-7xl mx-auto px-3  sm:px-6 py-1">
-        <div className="flex items-center justify-between h-50 sm:h-12">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 py-1">
+        <div className="flex items-center justify-between h-12 sm:h-14">
 
-          {/* Logo */}
-          
-            <div className={`relative p-1  bg-black/5 rounded-lg transition-all duration-700 ${
-              hasLaunched 
-                ? 'opacity-100 scale-100' 
-                : 'opacity-0 scale-95'
+          {/* Logo - Responsive sizing */}
+            <Link href="/">
+          <div className={`relative p-1 bg-slate-700 rounded-lg transition-all duration-700 ${
+            hasLaunched 
+            ? 'opacity-100 scale-100' 
+            : 'opacity-0 scale-95'
             }`}
             style={{
               transitionDelay: hasLaunched ? '0ms' : '200ms',
               transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
             }}>
-              <div className="h-[300px] w-24 sm:h-12 sm:w-30 bg-gray-800 rounded pr-2 pl-2 flex items-center justify-center text-white text-xs font-bold">
-                <Image
-                src="/logo/webber-logo.png"
-                width={300}
-                height={150}
-                alt='webber-logo'
-                
-                />
-              </div>
-            </div>
-          
+         <Image
+         src="/logo/webber-logo.png"
+         width={200}
+         height={200}
+         alt='logo'
+         className=''
+         />
+          </div>
+         </Link>
 
-          {/* Desktop Menu */}
-          <div className={`hidden lg:flex items-center space-x-4 xl:space-x-6 transition-all duration-800 ${
+          {/* Desktop/Tablet Menu - Hidden on mobile */}
+          <div className={`hidden md:flex items-center space-x-2 lg:space-x-4 xl:space-x-6 transition-all duration-800 ${
             hasLaunched 
               ? 'opacity-100 translate-x-0' 
               : 'opacity-0 translate-x-4'
@@ -158,89 +158,59 @@ const ElectricChipNavbar = () => {
             transitionDelay: hasLaunched ? '0ms' : '400ms',
             transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
           }}>
-     {navItems.map((item, i) => (
-  <div
-    key={i}
-    className="relative group"
-    style={{
-      animationDelay: hasLaunched ? '0ms' : `${500 + i * 100}ms`
-    }}
-  >
-    <button className="flex items-center space-x-1 text-gray-700 hover:text-black transition-all text-sm font-medium py-1">
-      <span>{item.name}</span>
-      {item.hasDropdown && <ChevronDown className="w-3.5 h-3.5" />}
-    </button>
+            {navItems.map((item, i) => (
+              <div
+                key={i}
+                className="relative group"
+                style={{
+                  animationDelay: hasLaunched ? '0ms' : `${500 + i * 100}ms`
+                }}
+              >
+                <button className="flex items-center space-x-1 text-gray-700 hover:text-black transition-all text-sm font-medium py-1 px-2">
+                  <span className="whitespace-nowrap">{item.name}</span>
+                  {item.hasDropdown && <ChevronDown className="w-3 h-3" />}
+                </button>
 
-    {item.hasDropdown && (
-      <div className="absolute left-0 mt-1 w-72 bg-gray-900 border border-gray-800 rounded-lg shadow-2xl overflow-visible z-[100] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-        {item.items.map((category, ci) => (
-          <div
-            key={ci}
-            className="relative group/submenu"
-          >
-            <div className="flex items-center justify-between px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800/50 text-sm border-b border-gray-800 last:border-0 transition-all cursor-pointer">
-              <span className="font-medium">{category.type}</span>
-              {category.hasSubDropdown && <ChevronRight className="w-4 h-4" />}
-            </div>
-
-            {/* BMS Products Submenu - repositioned and more concise */}
-            {category.hasSubDropdown && (
-              <div className="absolute left-full top-0 ml-1 w-[500px] bg-gray-900 border border-gray-800 rounded-lg shadow-2xl overflow-hidden z-[110] max-h-[70vh] overflow-y-auto opacity-0 invisible group-hover/submenu:opacity-100 group-hover/submenu:visible transition-all duration-200">
-                <div className="p-4">
-                  {/* Low Voltage Section */}
-                  <div className="mb-6">
-  {/* Simple Product Grid */}
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-    {category.chips.map((chip, chipIndex) => (
-      <div
-        key={chipIndex}
-        className="relative p-4 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md hover:border-blue-300 transition-all duration-200 cursor-pointer group"
-      >
-        {/* Product Header */}
-        <div className="flex items-start justify-between mb-2">
-          <h4 className="font-semibold text-gray-900 text-sm group-hover:text-blue-600 transition-colors">
-            {chip.name}
-          </h4>
-          <div className="w-1.5 h-1.5 bg-blue-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                {item.hasDropdown && (
+  <div className="absolute left-0 mt-1 w-64 bg-white border border-gray-200 rounded-lg shadow-lg z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150">
+    {item.items.map((category, ci) => (
+      <div key={ci} className="relative group/submenu">
+        <div className="flex items-center justify-between px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 text-sm border-b border-gray-100 last:border-0 transition-colors cursor-pointer">
+          <span className="font-medium">{category.type}</span>
+          {category.hasSubDropdown && <ChevronRight className="w-3 h-3" />}
         </div>
-        
-        {/* Product Description */}
-        <p className="text-xs text-gray-600 leading-relaxed line-clamp-3 mb-3">
-          {chip.description}
-        </p>
-        
-        {/* Bottom Accent */}
-        <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+        {category.hasSubDropdown && (
+          <div className="absolute left-full top-0 ml-1 w-96 bg-white border border-gray-200 rounded-lg shadow-lg z-60 max-h-[60vh] overflow-y-auto opacity-0 invisible group-hover/submenu:opacity-100 group-hover/submenu:visible transition-all duration-150">
+            <div className="p-3">
+              <div className="grid grid-cols-2 gap-2">
+                {category.chips.map((chip, chipIndex) => (
+                  <div
+                    key={chipIndex}
+                    className="p-2 bg-gray-50 border border-gray-100 rounded-lg hover:shadow-sm hover:border-blue-200 transition-all cursor-pointer group"
+                  >
+                    <h4 className="font-medium text-gray-900 text-sm group-hover:text-blue-600 mb-1">
+                      {chip.name}
+                    </h4>
+                    <p className="text-xs text-gray-600 line-clamp-2">
+                      {chip.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     ))}
   </div>
-</div>
-
-                  {/* Webber Ecosystem Section */}
-                  <div className="pt-4 border-t border-gray-800">
-                    <div className="flex items-center space-x-3">
-                      <Image
-                      src="/logo/webber-logo.png"
-                      width={200}
-                      height={200}
-                      alt='logo'
-                      />
-                      
-                    </div>
-                  </div>
-                </div>
+)}
               </div>
-            )}
-          </div>
-        ))}
-      </div>
-    )}
-  </div>
-))}
+            ))}
           </div>
 
-          {/* Right Side Buttons */}
-          <div className={`flex items-center space-x-2 transition-all duration-700 ${
+          {/* Right Side Buttons - Responsive */}
+          <div className={`flex items-center space-x-1 sm:space-x-2 transition-all duration-700 ${
             hasLaunched 
               ? 'opacity-100 translate-x-0' 
               : 'opacity-0 translate-x-8'
@@ -249,7 +219,8 @@ const ElectricChipNavbar = () => {
             transitionDelay: hasLaunched ? '0ms' : '600ms',
             transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
           }}>
-            <div className={`transition-all duration-600 ${
+            {/* Resources Button - Hidden on small screens, visible on sm+ */}
+            <div className={`hidden sm:block transition-all duration-600 ${
               hasLaunched 
                 ? 'opacity-100 scale-100' 
                 : 'opacity-0 scale-95'
@@ -259,10 +230,11 @@ const ElectricChipNavbar = () => {
             }}>
               <Button
                 title="Resources"
-                containerClass="hidden sm:inline-block    border border-gray-600 text-gray-700 hover:bg-gray-100 hover:text-black rounded-lg"
+                containerClass="border border-gray-600 text-gray-700 hover:bg-gray-100 hover:text-black rounded-lg"
               />
             </div>
             
+            {/* Contact Button - Always visible but responsive sizing */}
             <div className={`transition-all duration-600 ${
               hasLaunched 
                 ? 'opacity-100 scale-100' 
@@ -272,12 +244,13 @@ const ElectricChipNavbar = () => {
               transitionDelay: hasLaunched ? '0ms' : '700ms'
             }}>
               <Button
-                title="Contact Us"
+                title="Contact"
                 containerClass="bg-black text-white hover:bg-gray-800 border border-black rounded-lg"
               />
             </div>
             
-            <div className={`transition-all duration-600 ${
+            {/* Mobile Menu Toggle - Only visible on mobile/tablet */}
+            <div className={`block md:hidden transition-all duration-600 ${
               hasLaunched 
                 ? 'opacity-100 scale-100' 
                 : 'opacity-0 scale-95'
@@ -287,47 +260,68 @@ const ElectricChipNavbar = () => {
             }}>
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="lg:hidden p-2 border border-gray-300 bg-white text-gray-700 hover:text-black hover:bg-gray-50 rounded-lg transition-colors"
+                className="p-1.5 sm:p-2 border border-gray-300 bg-white text-gray-700 hover:text-black hover:bg-gray-50 rounded-lg transition-colors"
               >
-                {isMobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+                {isMobileMenuOpen ? <X className="h-3 w-3 sm:h-4 sm:w-4" /> : <Menu className="h-3 w-3 sm:h-4 sm:w-4" />}
               </button>
             </div>
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile/Tablet Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden mt-2 bg-gray-900 border border-gray-800 rounded-lg shadow-xl">
-            <div className="px-4 py-3 space-y-3">
+          <div className="md:hidden mt-2 bg-gray-900 border border-gray-800 rounded-lg shadow-xl overflow-hidden">
+            <div className="px-3 sm:px-4 py-3 space-y-1">
               {navItems.map((item, i) => (
                 <div key={i}>
-                  <button className="w-full flex justify-between items-center text-gray-300 hover:text-white text-sm font-medium py-2">
+                  <button 
+                    onClick={() => item.hasDropdown ? toggleMobileSection(i) : null}
+                    className="w-full flex justify-between items-center text-gray-300 hover:text-white text-sm font-medium py-2.5 px-2 hover:bg-gray-800/30 rounded transition-all"
+                  >
                     <span>{item.name}</span>
-                    {item.hasDropdown && <ChevronDown className="h-4 w-4" />}
+                    {item.hasDropdown && (
+                      <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${
+                        activeMobileSection === i ? 'rotate-180' : ''
+                      }`} />
+                    )}
                   </button>
-                  {item.hasDropdown && item.items && (
-                    <div className="ml-4 mt-2 space-y-3">
+
+                  {/* Mobile Dropdown Content */}
+                  {item.hasDropdown && activeMobileSection === i && (
+                    <div className="ml-2 sm:ml-4 mt-2 space-y-3 animate-in slide-in-from-top-2 duration-200">
                       {item.items.map((category, ci) => (
                         <div key={ci}>
-                          <div className="text-white font-medium text-sm py-1 border-l-2 border-cyan-400 pl-3">
+                          <div className="text-white font-medium text-sm py-2 border-l-2 border-cyan-400 pl-3">
                             {category.type}
                           </div>
+                          
                           {category.hasSubDropdown && category.chips && (
-                            <div className="ml-4 space-y-2">
-                              <div className="text-cyan-400 text-xs font-medium mb-2">Low Voltage</div>
-                              {category.chips.slice(0, 5).map((chip, chipIndex) => (
-                                <div key={chipIndex} className="bg-gray-800/50 p-2 rounded border border-gray-700 hover:border-gray-600 transition-colors">
-                                  <div className="font-medium text-white text-xs mb-1">{chip.name}</div>
-                                  <div className="text-xs text-gray-400 leading-relaxed">{chip.description}</div>
+                            <div className="ml-2 sm:ml-4 space-y-3">
+                              {/* Low Voltage Section */}
+                              <div>
+                                <div className="text-cyan-400 text-xs font-medium mb-2 px-2">Low Voltage</div>
+                                <div className="space-y-2">
+                                  {category.chips.filter(chip => chip.category === 'low').map((chip, chipIndex) => (
+                                    <div key={chipIndex} className="bg-gray-800/50 p-3 rounded border border-gray-700 hover:border-gray-600 transition-colors mx-1">
+                                      <div className="font-medium text-white text-xs mb-1">{chip.name}</div>
+                                      <div className="text-[10px] sm:text-xs text-gray-400 leading-relaxed">{chip.description}</div>
+                                    </div>
+                                  ))}
                                 </div>
-                              ))}
-                              <div className="text-cyan-400 text-xs font-medium mb-2 mt-3">High Voltage</div>
-                              {category.chips.slice(5).map((chip, chipIndex) => (
-                                <div key={chipIndex} className="bg-gray-800/50 p-2 rounded border border-gray-700 hover:border-gray-600 transition-colors">
-                                  <div className="font-medium text-white text-xs mb-1">{chip.name}</div>
-                                  <div className="text-xs text-gray-400 leading-relaxed">{chip.description}</div>
+                              </div>
+
+                              {/* High Voltage Section */}
+                              <div>
+                                <div className="text-cyan-400 text-xs font-medium mb-2 px-2">High Voltage</div>
+                                <div className="space-y-2">
+                                  {category.chips.filter(chip => chip.category === 'high').map((chip, chipIndex) => (
+                                    <div key={chipIndex} className="bg-gray-800/50 p-3 rounded border border-gray-700 hover:border-gray-600 transition-colors mx-1">
+                                      <div className="font-medium text-white text-xs mb-1">{chip.name}</div>
+                                      <div className="text-[10px] sm:text-xs text-gray-400 leading-relaxed">{chip.description}</div>
+                                    </div>
+                                  ))}
                                 </div>
-                              ))}
+                              </div>
                             </div>
                           )}
                         </div>
@@ -341,10 +335,10 @@ const ElectricChipNavbar = () => {
               <div className="pt-3 border-t border-gray-800 space-y-2">
                 <Button
                   title="Resources"
-                  containerClass="w-full sm:hidden border border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white rounded-lg"
+                  containerClass="w-full border border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white rounded-lg"
                 />
                 <Button
-                  title="Let's Chip it"
+                  title="Contact Us"
                   containerClass="w-full bg-cyan-500 text-white hover:bg-cyan-600 border border-cyan-500 rounded-lg"
                 />
               </div>
@@ -352,8 +346,6 @@ const ElectricChipNavbar = () => {
           </div>
         )}
       </div>
-
-      
     </nav>
   );
 };

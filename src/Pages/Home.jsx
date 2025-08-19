@@ -66,11 +66,11 @@ const Home2 = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60"></div>
       </div>
 
-      {/* Main Content - Compact layout */}
-      <div className="relative z-20 w-full h-screen flex items-center px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20 pt-20 sm:pt-24">
+      {/* Main Content - Improved responsive layout */}
+      <div className="relative z-20 w-full h-screen flex items-center px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20 pt-16 sm:pt-20 md:pt-24">
         <div className="w-full h-full max-w-4xl mx-auto lg:mx-0">
-          {/* Orange highlight text - Compact */}
-          <div className={`mb-3 sm:mb-4 pt-20 pb-3 transition-all duration-1000 ${
+          {/* Orange highlight text - Better responsive spacing */}
+          <div className={`mb-4 sm:mb-6 md:mb-8 pt-12 sm:pt-16 md:pt-20 pb-2 sm:pb-3 md:pb-4 transition-all duration-1000 ${
             hasLaunched 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-8'
@@ -79,16 +79,15 @@ const Home2 = () => {
             transitionDelay: '200ms',
             transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
           }}>
-            <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/20">
-             
-              <span className="text-white xl:text-lg  sm:text-sm font-medium tracking-wide uppercase">
+            <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-full border border-white/20">
+              <span className="text-white text-xs sm:text-sm md:text-base lg:text-lg font-medium tracking-wide uppercase leading-tight">
                 RELIABLE CHIP • RELIABLE BATTERY • RELIABLE RIDE 
               </span>
             </div>
           </div>
 
-          {/* Main heading - Further reduced */}
-          <h1 className={`text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-8xl font-bold text-white leading-[0.9] mb-2 mt-6 sm:mb-3 transition-all duration-1000 ${
+          {/* Main heading - Improved responsive typography */}
+          <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-bold text-white leading-[0.85] sm:leading-[0.9] mb-3 sm:mb-4 md:mb-6 mt-4 sm:mt-6 md:mt-8 transition-all duration-1000 ${
             hasLaunched 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-12'
@@ -97,17 +96,16 @@ const Home2 = () => {
             transitionDelay: '400ms',
             transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
           }}>
-            <span className="bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent block">
               TRUSTED
             </span>
-            <br />
-            <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent block">
               PERFORMANCE
             </span>
           </h1>
           
-          {/* Description paragraph - Further reduced */}
-          <p className={`xl:text-lg sm:text-sm text-gray-200 max-w-full sm:max-w-xl leading-relaxed mb-4 mt-2 sm:mb-6 font-light transition-all duration-1000 ${
+          {/* Description paragraph - Better responsive text sizing */}
+          <p className={`text-sm sm:text-base md:text-lg xl:text-xl text-gray-200 max-w-full sm:max-w-lg md:max-w-xl lg:max-w-2xl leading-relaxed mb-6 sm:mb-8 md:mb-10 mt-3 sm:mt-4 md:mt-6 font-light transition-all duration-1000 ${
             hasLaunched 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-8'
@@ -119,7 +117,7 @@ const Home2 = () => {
             Delivering cutting-edge Electric Vehicle Chips engineered with precision, durability, and intelligence — enabling smarter, safer, and more efficient automotive innovation.
           </p>
 
-          {/* Compact Stats Section - Fixed alignment */}
+          {/* Responsive Stats Section - Improved spacing and sizing */}
           <div className={`flex justify-center sm:justify-start transition-all duration-1000 ${
             hasLaunched 
               ? 'opacity-100 translate-y-0' 
@@ -129,41 +127,39 @@ const Home2 = () => {
             transitionDelay: '800ms',
             transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
           }}>
-            <div className="grid grid-cols-3 gap-4 sm:gap-8 md:gap-12 lg:gap-16 w-fit">
+            <div className="grid grid-cols-3 gap-6 sm:gap-8 md:gap-12 lg:gap-16 w-fit">
               {stats.map((stat, index) => (
                 <div 
                   key={index}
                   className="text-center group min-w-0"
                 >
-                  {/* Animated Number */}
-                  <div className="mb-1">
-                    <span className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent group-hover:from-cyan-300 group-hover:to-blue-300 transition-all duration-300">
+                  {/* Animated Number - Better responsive sizing */}
+                  <div className="mb-1 sm:mb-2">
+                    <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent group-hover:from-cyan-300 group-hover:to-blue-300 transition-all duration-300">
                       {animatedStats[index]}
                     </span>
-                    <span className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-cyan-400 group-hover:text-cyan-300 transition-colors duration-300">
+                    <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-cyan-400 group-hover:text-cyan-300 transition-colors duration-300">
                       {stat.suffix}
                     </span>
                   </div>
                   
-                  {/* Stat Title */}
-                  <h3 className="text-xs sm:text-sm text-gray-300 font-medium uppercase tracking-wide group-hover:text-white transition-colors duration-300 whitespace-nowrap">
+                  {/* Stat Title - Better responsive text */}
+                  <h3 className="text-xs sm:text-sm md:text-base text-gray-300 font-medium uppercase tracking-wide group-hover:text-white transition-colors duration-300 whitespace-nowrap px-1">
                     {stat.title}
                   </h3>
                   
-                  {/* Decorative line */}
-                  <div className="w-6 sm:w-8 h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent mx-auto mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  {/* Decorative line - Responsive sizing */}
+                  <div className="w-4 sm:w-6 md:w-8 h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent mx-auto mt-1 sm:mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
               ))}
             </div>
           </div>
-
-         
         </div>
       </div>
 
-      {/* Enhanced Scroll Indicator */}
+      {/* Enhanced Scroll Indicator - Responsive positioning */}
       <div
-        className={`absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-20 transition-all duration-1000 ${
+        className={`absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 z-20 transition-all duration-1000 ${
           hasLaunched 
             ? 'opacity-100 translate-y-0' 
             : 'opacity-0 translate-y-8'
@@ -173,17 +169,17 @@ const Home2 = () => {
           transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
         }}
       >
-        <div className="flex flex-col items-center space-y-2 group cursor-pointer">
+        <div className="flex flex-col items-center space-y-1 sm:space-y-2 group cursor-pointer">
           <span className="text-white/80 text-xs sm:text-sm font-light group-hover:text-white transition-colors duration-300">
             Scroll down
           </span>
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center group-hover:border-white/60 transition-colors duration-300">
-            <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-bounce group-hover:bg-white transition-colors duration-300"></div>
+          <div className="w-5 sm:w-6 h-8 sm:h-10 border-2 border-white/30 rounded-full flex justify-center group-hover:border-white/60 transition-colors duration-300">
+            <div className="w-0.5 sm:w-1 h-2 sm:h-3 bg-white/60 rounded-full mt-1.5 sm:mt-2 animate-bounce group-hover:bg-white transition-colors duration-300"></div>
           </div>
         </div>
       </div>
 
-      {/* Floating particles effect */}
+      {/* Floating particles effect - Responsive count */}
       <div className="absolute inset-0 z-10 pointer-events-none">
         {[...Array(6)].map((_, i) => (
           <div
