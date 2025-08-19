@@ -1,6 +1,14 @@
 "use client";
 import React, { useState } from "react";
-import { ChevronDown, MapPin, Phone, Mail, Send } from "lucide-react";
+import {
+  ChevronDown,
+  MapPin,
+  Phone,
+  Mail,
+  Send,
+  Plus,
+  Minus,
+} from "lucide-react";
 
 const ContactFAQComponent = () => {
   const [openFAQ, setOpenFAQ] = useState(null);
@@ -10,6 +18,7 @@ const ContactFAQComponent = () => {
     email: "",
     comments: "",
   });
+  const [isHovered, setIsHovered] = useState(false);
 
   const faqs = [
     {
@@ -51,49 +60,80 @@ const ContactFAQComponent = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/50">
       {/* FAQ Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid lg:grid-cols-2 gap-12">
-          <div>
-            <div className="bg-gradient-to-r from-blue-500 to-green-400 bg-clip-text text-transparent text-sm font-medium mb-2 tracking-wide">
-              HAVE ANY QUESTION?
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+          {/* Left Side - Enhanced Text */}
+          <div className="sticky top-8">
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/10 to-green-400/10 blur-xl rounded-3xl"></div>
+              <div className="relative">
+                <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 to-green-400/10 border border-blue-200/20 mb-6">
+                  <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-green-400 rounded-full mr-3 animate-pulse"></div>
+                  <span className="bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent text-sm font-medium tracking-wide">
+                    HAVE ANY QUESTION?
+                  </span>
+                </div>
+                <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                  Frequently Asked{" "}
+                  <span className="relative">
+                    Questions
+                    <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-green-400 rounded-full transform scale-x-0 animate-pulse"></div>
+                  </span>
+                </h2>
+                <p className="text-gray-600 mb-8 text-xl leading-relaxed">
+                  Find answers to common questions about our products, services,
+                  and processes. If you need more details, feel free to contact
+                  us!
+                </p>
+              </div>
             </div>
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Frequently Asked Questions?
-            </h2>
-            <p className="text-gray-600 mb-8 text-lg leading-relaxed">
-              Find answers to common questions about our products, services, and
-              processes. If you need more details, feel free to contact us!
-            </p>
           </div>
 
-          <div className="space-y-4">
+          {/* Right Side - Enhanced FAQs */}
+          <div className="space-y-3">
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow duration-200"
+                className="group bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-100 hover:border-blue-200/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-100/50"
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200"
+                  className="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-transparent transition-all duration-300 rounded-2xl"
                 >
-                  <span className="font-semibold text-gray-900 pr-4">
+                  <span className="font-semibold text-gray-900 pr-4 group-hover:text-blue-700 transition-colors duration-300">
                     {faq.question}
                   </span>
-                  <ChevronDown
-                    className={`w-5 h-5 text-blue-500 transition-transform duration-200 flex-shrink-0 ${
-                      openFAQ === index ? "rotate-180" : ""
-                    }`}
-                  />
+                  <div className="relative w-6 h-6 flex-shrink-0">
+                    <Plus
+                      className={`absolute w-6 h-6 text-blue-500 transition-all duration-300 ${
+                        openFAQ === index
+                          ? "opacity-0 rotate-90"
+                          : "opacity-100"
+                      }`}
+                    />
+                    <Minus
+                      className={`absolute w-6 h-6 text-green-500 transition-all duration-300 ${
+                        openFAQ === index
+                          ? "opacity-100 rotate-0"
+                          : "opacity-0 -rotate-90"
+                      }`}
+                    />
+                  </div>
                 </button>
-                {openFAQ === index && (
-                  <div className="px-6 pb-4">
+                <div
+                  className={`overflow-hidden transition-all duration-300 ${
+                    openFAQ === index ? "max-h-96 pb-6" : "max-h-0"
+                  }`}
+                >
+                  <div className="px-8">
+                    <div className="w-full h-px bg-gradient-to-r from-blue-200 to-green-200 mb-4"></div>
                     <p className="text-gray-600 leading-relaxed">
                       {faq.answer}
                     </p>
                   </div>
-                )}
+                </div>
               </div>
             ))}
           </div>
@@ -102,15 +142,20 @@ const ContactFAQComponent = () => {
 
       {/* Contact Section */}
       <div className="bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="text-center mb-12">
-            <div className="text-blue-500 text-sm font-medium mb-2 tracking-wide">
-              CONTACT US
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100/50 border border-blue-200/30 mb-6">
+              <span className="text-blue-600 text-sm font-medium tracking-wide">
+                CONTACT US
+              </span>
             </div>
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Get The Right Solution For Your Needs
+            <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">
+              Get The Right Solution{" "}
+              <span className="bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">
+                For Your Needs
+              </span>
             </h2>
-            <p className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">
+            <p className="text-gray-600 max-w-4xl mx-auto text-xl leading-relaxed">
               Powering the future of electric mobility — Webber delivers
               cutting-edge wiring and chip solutions engineered for performance,
               reliability, and scalability. Let's build the next generation of
@@ -118,149 +163,193 @@ const ContactFAQComponent = () => {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-5 gap-12">
             {/* Contact Info */}
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                Get In Touch With Webber
-              </h3>
-              <p className="text-gray-600 mb-8 leading-relaxed">
-                Have questions or need a custom solution? Our team is here to
-                help! Reach out to us for expert guidance, product inquiries, or
-                collaboration opportunities.
-              </p>
+            <div className="lg:col-span-2">
+              <div className="relative">
+                <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/5 to-green-400/5 blur-xl rounded-3xl"></div>
+                <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-100">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                    Get In Touch With{" "}
+                    <span className="bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">
+                      Webber
+                    </span>
+                  </h3>
+                  <p className="text-gray-600 mb-8 leading-relaxed">
+                    Have questions or need a custom solution? Our team is here
+                    to help! Reach out to us for expert guidance, product
+                    inquiries, or collaboration opportunities.
+                  </p>
 
-              <div className="mb-8">
-                <h4 className="text-lg font-semibold text-gray-900 mb-4">
-                  Head Office
-                </h4>
-                <div className="space-y-4">
-                  <div className="flex items-start">
-                    <MapPin className="w-5 h-5 text-blue-500 mt-1 mr-3 flex-shrink-0" />
-                    <span className="text-gray-600">
-                      Office 03 and 04, First Floor, Sai Raj Regency, Pimple
-                      Saudagar, Pune, Maharashtra 411 027
-                    </span>
-                  </div>
-                  <div className="flex items-center">
-                    <Phone className="w-5 h-5 text-blue-500 mr-3" />
-                    <span className="text-gray-600">+91 999 999 0794</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Mail className="w-5 h-5 text-blue-500 mr-3" />
-                    <span className="text-gray-600">
-                      sales@shrisaielectroworks.com
-                    </span>
-                  </div>
-                  <div className="flex items-center">
-                    <Mail className="w-5 h-5 text-blue-500 mr-3" />
-                    <span className="text-gray-600">
-                      sandeep@shrisaielectroworks.com
-                    </span>
+                  <div className="space-y-6">
+                    <h4 className="text-lg font-semibold text-gray-900 border-b border-gray-100 pb-2">
+                      Head Office
+                    </h4>
+                    <div className="space-y-5">
+                      <div className="flex items-start group">
+                        <div className="w-10 h-10 bg-gradient-to-r from-blue-100 to-green-100 rounded-full flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                          <MapPin className="w-5 h-5 text-blue-600" />
+                        </div>
+                        <span className="text-gray-600 leading-relaxed">
+                          Office 03 and 04, First Floor, Sai Raj Regency, Pimple
+                          Saudagar, Pune, Maharashtra 411 027
+                        </span>
+                      </div>
+                      <div className="flex items-center group">
+                        <div className="w-10 h-10 bg-gradient-to-r from-blue-100 to-green-100 rounded-full flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                          <Phone className="w-5 h-5 text-blue-600" />
+                        </div>
+                        <span className="text-gray-600">+91 999 999 0794</span>
+                      </div>
+                      <div className="flex items-center group">
+                        <div className="w-10 h-10 bg-gradient-to-r from-blue-100 to-green-100 rounded-full flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                          <Mail className="w-5 h-5 text-blue-600" />
+                        </div>
+                        <span className="text-gray-600">
+                          sales@shrisaielectroworks.com
+                        </span>
+                      </div>
+                      <div className="flex items-center group">
+                        <div className="w-10 h-10 bg-gradient-to-r from-blue-100 to-green-100 rounded-full flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                          <Mail className="w-5 h-5 text-blue-600" />
+                        </div>
+                        <span className="text-gray-600">
+                          sandeep@shrisaielectroworks.com
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Contact Form */}
-            <div className="bg-slate-800 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-white mb-6">
-                Contact Form
-              </h3>
-              <div className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-white text-sm font-medium mb-2">
-                      First Name <span className="bg-gradient-to-r from-blue-500 to-green-400 bg-clip-text text-transparent">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      name="firstName"
-                      value={formData.firstName}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all duration-200"
-                      placeholder="Rohit"
-                    />
+            <div className="lg:col-span-3">
+              <div className="relative">
+                <div className="absolute -inset-2 bg-black rounded-3xl "></div>
+                <div className="relative bg-black rounded-3xl p-8 border border-slate-700/50">
+                  <div className="flex items-center mb-8">
+                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-green-400 rounded-2xl flex items-center justify-center mr-4">
+                      <Mail className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white">
+                      Contact Form
+                    </h3>
                   </div>
-                  <div>
-                    <label className="block text-white text-sm font-medium mb-2">
-                      Last Name <span className="bg-gradient-to-r from-blue-500 to-green-400 bg-clip-text text-transparent">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      name="lastName"
-                      value={formData.lastName}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all duration-200"
-                      placeholder="Gupta"
-                    />
+
+                  <div className="space-y-6">
+                    <div className="grid sm:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label className="block text-white text-sm font-medium">
+                          First Name <span className="text-red-400">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          name="firstName"
+                          value={formData.firstName}
+                          onChange={handleInputChange}
+                          className="w-full px-4 py-3 rounded-xl bg-white/10 border border-slate-600/50 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500/50 focus:border-transparent focus:bg-white/20 transition-all duration-300"
+                          placeholder="Rohit"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="block text-white text-sm font-medium">
+                          Last Name <span className="text-red-400">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          name="lastName"
+                          value={formData.lastName}
+                          onChange={handleInputChange}
+                          className="w-full px-4 py-3 rounded-xl bg-white/10 border border-slate-600/50 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500/50 focus:border-transparent focus:bg-white/20 transition-all duration-300"
+                          placeholder="Gupta"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="block text-white text-sm font-medium">
+                        Email Address <span className="text-red-400">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 rounded-xl bg-white/10 border border-slate-600/50 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500/50 focus:border-transparent focus:bg-white/20 transition-all duration-300"
+                        placeholder="rohit@example.com"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="block text-white text-sm font-medium">
+                        Comments / Questions{" "}
+                        <span className="text-red-400">*</span>
+                      </label>
+                      <textarea
+                        name="comments"
+                        value={formData.comments}
+                        onChange={handleInputChange}
+                        rows={4}
+                        className="w-full px-4 py-3 rounded-xl bg-white/10 border border-slate-600/50 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500/50 focus:border-transparent focus:bg-white/20 transition-all duration-300 resize-none"
+                        placeholder="Tell us about your requirements..."
+                      ></textarea>
+                    </div>
+
+                    <button
+                      onClick={handleSubmit}
+                      onMouseEnter={() => setIsHovered(true)}
+                      onMouseLeave={() => setIsHovered(false)}
+                      className="group relative w-full bg-gradient-to-r from-blue-500 to-green-400 hover:from-blue-600 hover:to-green-500 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center overflow-hidden"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                      <Send
+                        className={`w-5 h-5 mr-3 transition-transform duration-300 ${
+                          isHovered ? "translate-x-1" : ""
+                        }`}
+                      />
+                      <span className="relative">SEND MESSAGE</span>
+                    </button>
                   </div>
                 </div>
-
-                <div>
-                  <label className="block text-white text-sm font-medium mb-2">
-                    Email Address <span className="bg-gradient-to-r from-blue-500 to-green-400 bg-clip-text text-transparent">*</span>
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all duration-200"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-white text-sm font-medium mb-2">
-                    Comments / Questions{" "}
-                    <span className="bg-gradient-to-r from-blue-500 to-green-400 bg-clip-text text-transparent">*</span>
-                  </label>
-                  <textarea
-                    name="comments"
-                    value={formData.comments}
-                    onChange={handleInputChange}
-                    rows={4}
-                    className="w-full px-4 py-3 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all duration-200 resize-none"
-                  ></textarea>
-                </div>
-
-                <button
-                  onClick={handleSubmit}
-                  className="w-full bg-gradient-to-r from-blue-500 to-green-400 hover:from-blue-600 hover:to-green-500 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center"
-                >
-                  <Send className="w-4 h-4 mr-2" />
-                  SEND MESSAGE
-                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Map Section */}
-      <div className="bg-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="bg-white rounded-2xl overflow-hidden shadow-lg">
-            <div className="h-96 w-full">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.567!2d73.799!3d18.631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b9b8a8b8a8a8%3A0x8b8a8b8a8b8a8b8a!2sPimple%20Saudagar%2C%20Pune%2C%20Maharashtra%20411027!5e0!3m2!1sen!2sin!4v1234567890"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="w-full h-full"
-                title="Office Location - Pimple Saudagar, Pune"
-              ></iframe>
-            </div>
-            <div className="p-6 bg-slate-800 text-white">
-              <div className="flex items-center">
-                <MapPin className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" />
-                <span className="text-sm">
-                  Office 03 and 04, First Floor, Sai Raj Regency, Pimple
-                  Saudagar, Pune, Maharashtra 411 027
-                </span>
+      {/* Enhanced Map Section */}
+      <div className="bg-gradient-to-br from-gray-100 to-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="relative group">
+            <div className="absolute -inset-2 bg-black blur-xl rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="relative bg-white rounded-3xl overflow-hidden shadow-2xl border border-gray-200/50">
+              <div className="h-96 w-full relative overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.567!2d73.799!3d18.631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b9b8a8b8a8a8%3A0x8b8a8b8a8b8a8b8a!2sPimple%20Saudagar%2C%20Pune%2C%20Maharashtra%20411027!5e0!3m2!1sen!2sin!4v1234567890"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full h-full transition-all duration-300 group-hover:scale-105"
+                  title="Office Location - Pimple Saudagar, Pune"
+                ></iframe>
+              </div>
+              <div className="bg-black text-white p-6">
+                <div className="flex items-center">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-green-400 rounded-2xl flex items-center justify-center mr-4">
+                    <MapPin className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-1">Head Office Location</h4>
+                    <span className="text-sm text-gray-300">
+                      Office 03 and 04, First Floor, Sai Raj Regency, Pimple
+                      Saudagar, Pune, Maharashtra 411 027
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

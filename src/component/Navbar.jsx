@@ -37,15 +37,14 @@ const ElectricChipNavbar = () => {
         {
           type: "Battery Management System",
           hasSubDropdown: true,
-          chips: [
-            { name: 'FS-LT', description: 'For standalone & stackable architectures', category: 'low' },
-            { name: 'CT-Safe', description: 'For onroad & battery safety', category: 'low' },
-            { name: 'CT-Lite', description: 'For cost-competitive mobility applications', category: 'low' },
-            { name: 'CT-Lite+ 50A', description: 'For cost-competitive mobility applications', category: 'low' },
-            { name: 'CT-Lite + 80A', description: 'For cost-competitive mobility applications', category: 'low' },
-            { name: 'FS-XT', description: 'For high voltage & high power applications', category: 'high' },
-            { name: 'HP Safe', description: 'For high power low-voltage applications', category: 'high' }
-          ]
+         chips: [
+  { name: 'WBMS-SW-32S Contactor', description: 'For standalone & stackable architectures', category: 'low' },
+  { name: 'WBMS-SWLT 20S 60A', description: 'For onroad & battery safety', category: 'low' },
+  { name: 'WBMS-SWLT 16S 100A', description: 'For cost-competitive mobility applications', category: 'low' },
+  { name: 'WBMS-SW-16S Contactor', description: 'For cost-competitive mobility applications', category: 'low' },
+  { name: 'WBMS-SW 16S 60/80A', description: 'For cost-competitive mobility applications', category: 'low' },
+
+]
         },
         {
           type: "Upcoming Projects",

@@ -8,6 +8,7 @@ import { Achieve } from "@/component/achieve";
 import VideoComponent from "@/component/VideoComponent";
 import Ab from "@/component/Ab";
 import StickyScrollDemo from "@/component/scrollrd";
+import VerticalTravelingGallery from "@/component/VerticalTravelingGallery";
 
 export default function Home() {
   return (
@@ -16,13 +17,14 @@ export default function Home() {
       <Products />
       {/* <div className="relative ">
 
-</div> */}
+<Ab />
+  </div> */}
       <StickyScrollDemo />
-      {/* <Ab /> */}
 
       {/* <GlowingEffectDemoSecond /> */}
       <TrustedPartnersSection />
-      <Achieve />
+      <VerticalTravelingGallery />
+      {/* <Achieve /> */}
       {/* <VideoComponent /> */}
       {/* <ManufacturingShowcase /> */}
       <ContactMap />
