@@ -10,20 +10,17 @@ import Ab from "@/component/Ab";
 
 export default function Home() {
   return (
-    <div className="">
+    <>
       <Home2 />
       <Products />
-  <div className="relative ">
-
-  <Ab />
-  </div>
-
+      {/* <Ab /> */}
+      <Stickyscrolldemo />
       <GlowingEffectDemoSecond />
       <Achieve />
       <VideoComponent />
       <TrustedPartnersSection />
       <ManufacturingShowcase />
       <ContactMap />
-    </div>
+    </>
   );
 }
