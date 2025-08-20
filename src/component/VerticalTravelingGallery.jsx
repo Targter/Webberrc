@@ -75,7 +75,29 @@ const VerticalSyncGrid = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 py-16 pt-24">
+      {/* Enhanced Header Section */}
+      <div className="pt-29 pb-12 text-center max-w-4xl mx-auto px-4">
+        <div className="space-y-4">
+          <div className="text-6xl md:text-7xl font-black">
+            <span className="bg-gradient-to-r from-[#65af32] via-[#4ecf56] to-[#3dd07a] bg-clip-text text-transparent drop-shadow-lg tracking-tight">
+              MEDIA
+            </span>
+          </div>
+          <h2 className="text-xl md:text-2xl font-semibold text-gray-700 mb-4">
+            Visual Stories That Inspire Innovation
+          </h2>
+          {/* <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            Explore our dynamic workspace where creativity meets technology. From collaborative brainstorming sessions to cutting-edge development environments, witness the passion and innovation that drives our team forward.
+          </p> */}
+          {/* <div className="flex justify-center items-center space-x-2 text-sm text-gray-500 mt-6">
+            <div className="w-8 h-px bg-gradient-to-r from-transparent to-gray-300"></div>
+            <span className="font-medium">Behind the Scenes</span>
+            <div className="w-8 h-px bg-gradient-to-l from-transparent to-gray-300"></div>
+          </div> */}
+        </div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* Left Side - Three Column Image Grid */}
           <div className="relative h-[500px] lg:h-[600px] overflow-hidden">

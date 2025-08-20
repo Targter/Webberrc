@@ -1675,7 +1675,7 @@ export default function StickyScrollDemo() {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="transition-all duration-700 delay-200 opacity-100 translate-y-0"
           >
-            <h3 className="bg-gradient-to-r from-blue-400 via-cyan-500 to-blue-600 bg-clip-text text-transparent hover:from-blue-300 hover:via-cyan-400 hover:to-blue-500 transition-all duration-300 border-b-2 border-yellow-400 pb-1 inline-block mb-3 md:mb-4 tracking-wide text-base md:text-lg font-semibold">
+            <h3 className="bg-gradient-to-r from-[#65af32] via-[#4ecf56] to-[#3dd07a] bg-clip-text text-transparent hover:from-blue-300 hover:via-cyan-400 hover:to-blue-500 transition-all duration-300 border-b-2 border-yellow-400 pb-1 inline-block mb-3 md:mb-4 tracking-wide text-base md:text-lg font-semibold">
               Why choose Webber?
             </h3>
           </motion.div>
@@ -1687,7 +1687,7 @@ export default function StickyScrollDemo() {
             className="transition-all duration-700 delay-400 opacity-100 translate-y-0"
           >
             <div className="text-6xl font-black">
-            <span className="bg-gradient-to-r from-[#65af32] via-[#4ecf56] to-[#3dd07a] bg-clip-text text-transparent drop-shadow-lg tracking-tight">
+            <span className="bg-gradient-to-r from-[#65af32] via-[#4ecf56] to-[#3dd07a] bg-clip-text text-transparent">
               FIRST PRINCIPLE DESIGN APPROACH
             </span>
             </div>
@@ -1699,11 +1699,11 @@ export default function StickyScrollDemo() {
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.4 }}
             className="flex flex-wrap justify-center items-center gap-3 md:gap-4 text-base md:text-lg font-medium text-white transition-all duration-700 delay-800 opacity-100 translate-y-0"
           >
-            <span className="bg-gradient-to-r from-blue-400 via-cyan-500 to-blue-600 bg-clip-text text-transparent font-semibold">Value</span>
+            <span className="bg-gradient-to-r from-[#65af32] via-[#4ecf56] to-[#3dd07a] bg-clip-text text-transparent font-semibold">Value</span>
             <span className="text-gray-300">|</span>
-            <span className="bg-gradient-to-r from-blue-400 via-cyan-500 to-blue-600 bg-clip-text text-transparent font-semibold">Reliable</span>
+            <span className="bg-gradient-to-r from-[#65af32] via-[#4ecf56] to-[#3dd07a] bg-clip-text text-transparent font-semibold">Reliable</span>
             <span className="text-gray-300">|</span>
-            <span className="bg-gradient-to-r from-blue-400 via-cyan-500 to-blue-600 bg-clip-text text-transparent font-semibold">Agile</span>
+            <span className="bg-gradient-to-r from-[#65af32] via-[#4ecf56] to-[#3dd07a] bg-clip-text text-transparent font-semibold">Agile</span>
           </motion.div>
         </div>
         <StickyScroll content={sampleContent} />
