@@ -530,9 +530,8 @@ const ContactFAQComponent = () => {
 
   {/* Map Section - Now takes 2 columns (wider) */}
   <div className="order-1 lg:order-1 lg:col-span-2">
-    <div className="relative group h-full">
-      <div className="absolute -inset-1 md:-inset-2 bg-gradient-to-r from-blue-500/20 to-green-400/20 blur-xl rounded-2xl md:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-      <div className="relative bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-xl md:shadow-2xl border border-gray-200/50 h-full min-h-[450px] md:min-h-[550px] lg:min-h-[650px]">
+    <div className="relative h-full">
+      <div className="relative bg-white overflow-hidden shadow-xl md:shadow-2xl border border-gray-200/50 h-full min-h-[400px] md:min-h-[400px] lg:min-h-[450px]">
         <div className="h-full w-full relative overflow-hidden">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.567!2d73.799!3d18.631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b9b8a8b8a8a8%3A0x8b8a8b8a8b8a8b8a!2sPimple%20Saudagar%2C%20Pune%2C%20Maharashtra%20411027!5e0!3m2!1sen!2sin!4v1234567890"
@@ -542,7 +541,7 @@ const ContactFAQComponent = () => {
             allowFullScreen=""
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            className="w-full h-full transition-all duration-300 group-hover:scale-105 absolute inset-0"
+            className="w-full h-full absolute inset-0"
             title="Office Location - Pimple Saudagar, Pune"
           ></iframe>
         </div>
@@ -570,7 +569,7 @@ const ContactFAQComponent = () => {
   <div className="order-2 lg:order-2">
     <div className="relative">
       <div className="absolute -inset-1 md:-inset-2 bg-black"></div>
-      <div className="relative bg-black p-4 md:p-6 border border-slate-700/50 h-full">
+      <div className="relative bg-black p-4 md:p-6 border border-slate-700/50 h-[400px] md:h-[400px] lg:h-[450px] flex flex-col">
         <div className="flex items-center mb-4 md:mb-6">
           <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-blue-500 to-green-400 rounded-lg md:rounded-xl flex items-center justify-center mr-2 md:mr-3">
             <Mail className="w-4 h-4 md:w-5 md:h-5 text-white" />
@@ -580,7 +579,7 @@ const ContactFAQComponent = () => {
           </h3>
         </div>
 
-        <div className="space-y-3 md:space-y-4">
+        <div className="space-y-3 md:space-y-4 flex-1">
           <div className="space-y-1">
             <label className="block text-white text-xs md:text-sm font-medium">
               Name <span className="text-red-400">*</span>
@@ -609,7 +608,7 @@ const ContactFAQComponent = () => {
             />
           </div>
 
-          <div className="space-y-1">
+          <div className="space-y-1 flex-1">
             <label className="block text-white text-xs md:text-sm font-medium">
               Message <span className="text-red-400">*</span>
             </label>
@@ -617,27 +616,25 @@ const ContactFAQComponent = () => {
               name="message"
               value={formData.message}
               onChange={handleInputChange}
-              rows={3}
-              className="w-full px-3 py-2 rounded-lg bg-white/10 border border-slate-600/50 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500/50 focus:border-transparent focus:bg-white/20 transition-all duration-300 resize-none text-sm"
+              className="w-full h-full px-3 py-2 rounded-lg bg-white/10 border border-slate-600/50 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500/50 focus:border-transparent focus:bg-white/20 transition-all duration-300 resize-none text-sm min-h-[60px]"
               placeholder="Your message..."
             ></textarea>
           </div>
-
-          <button
-            onClick={handleSubmit}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            className="group relative w-full bg-gradient-to-r from-blue-500 to-green-400 hover:from-blue-600 hover:to-green-500 text-white font-semibold py-2.5 md:py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center overflow-hidden text-sm"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-            <Send
-              className={`w-4 h-4 mr-2 transition-transform duration-300 ${
-                isHovered ? "translate-x-1" : ""
-              }`}
-            />
-            <span className="relative">SEND</span>
-          </button>
         </div>
+        <button
+          onClick={handleSubmit}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          className="group relative w-full bg-gradient-to-r from-blue-500 to-green-400 hover:from-blue-600 hover:to-green-500 text-white font-semibold py-2.5 md:py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center overflow-hidden text-sm mt-4"
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+          <Send
+            className={`w-4 h-4 mr-2 transition-transform duration-300 ${
+              isHovered ? "translate-x-1" : ""
+            }`}
+          />
+          <span className="relative">SEND</span>
+        </button>
       </div>
     </div>
   </div>
