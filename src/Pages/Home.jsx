@@ -60,7 +60,7 @@ const Home2 = () => {
           muted 
           playsInline
           className="w-full h-full object-cover"
-          src="bgvid/webberbg.mp4"
+          src="/bgvid/webberbg.mp4"
         />
         {/* Enhanced gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60"></div>
@@ -68,9 +68,9 @@ const Home2 = () => {
 
       {/* Main Content - Improved responsive layout */}
       <div className="relative z-20 w-full h-screen flex items-center px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20 pt-16 sm:pt-20 md:pt-24">
-        <div className="w-full h-full max-w-4xl mx-auto lg:mx-0">
+        <div className="w-full h-full max-w-full sm:max-w-2xl md:max-w-4xl lg:max-w-4xl mx-auto lg:mx-0">
           {/* Orange highlight text - Better responsive spacing */}
-          <div className={`mb-4 sm:mb-6 md:mb-8 pt-12 sm:pt-16 md:pt-20 pb-2 sm:pb-3 md:pb-4 transition-all duration-1000 ${
+          <div className={`mb-3 sm:mb-4 md:mb-6 lg:mb-8 pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-1 sm:pb-2 md:pb-3 lg:pb-4 transition-all duration-1000 ${
             hasLaunched 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-8'
@@ -79,15 +79,16 @@ const Home2 = () => {
             transitionDelay: '200ms',
             transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
           }}>
-            <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-full border border-white/20">
-              <span className="text-white text-xs sm:text-sm md:text-base lg:text-lg font-medium tracking-wide uppercase leading-tight">
-                RELIABLE CHIP • RELIABLE BATTERY • RELIABLE RIDE 
+            <div className="inline-flex items-center space-x-1 sm:space-x-2 bg-white/10 backdrop-blur-sm px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-full border border-white/20">
+              <span className="text-white text-xs sm:text-sm md:text-base lg:text-lg font-medium tracking-wide uppercase leading-tight text-center">
+                <span className="hidden sm:inline">RELIABLE CHIP • RELIABLE BATTERY • RELIABLE RIDE</span>
+                <span className="sm:hidden">RELIABLE • TRUSTED • INNOVATIVE</span>
               </span>
             </div>
           </div>
 
           {/* Main heading - Improved responsive typography */}
-          <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-bold text-white leading-[0.85] sm:leading-[0.9] mb-3 sm:mb-4 md:mb-6 mt-4 sm:mt-6 md:mt-8 transition-all duration-1000 ${
+          <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-bold text-white leading-tight sm:leading-[0.85] md:leading-[0.9] mb-2 sm:mb-3 md:mb-4 lg:mb-6 mt-3 sm:mt-4 md:mt-6 lg:mt-8 transition-all duration-1000 text-center sm:text-left ${
             hasLaunched 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-12'
@@ -105,7 +106,7 @@ const Home2 = () => {
           </h1>
           
           {/* Description paragraph - Better responsive text sizing */}
-          <p className={`text-sm sm:text-base md:text-lg xl:text-xl text-gray-200 max-w-full sm:max-w-lg md:max-w-xl lg:max-w-2xl leading-relaxed mb-6 sm:mb-8 md:mb-10 mt-3 sm:mt-4 md:mt-6 font-light transition-all duration-1000 ${
+          <p className={`text-sm sm:text-base md:text-lg lg:text-xl xl:text-xl text-gray-200 max-w-full leading-relaxed mb-4 sm:mb-6 md:mb-8 lg:mb-10 mt-2 sm:mt-3 md:mt-4 lg:mt-6 font-light transition-all duration-1000 text-center sm:text-left px-2 sm:px-0 ${
             hasLaunched 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-8'
@@ -114,11 +115,12 @@ const Home2 = () => {
             transitionDelay: '600ms',
             transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
           }}>
-            Delivering cutting-edge Electric Vehicle Chips engineered with precision, durability, and intelligence — enabling smarter, safer, and more efficient automotive innovation.
+            <span className="hidden md:inline">Delivering cutting-edge Electric Vehicle Chips engineered with precision, durability, and intelligence — enabling smarter, safer, and more efficient automotive innovation.</span>
+            <span className="md:hidden">Delivering cutting-edge Electric Vehicle Chips engineered with precision and intelligence for smarter automotive innovation.</span>
           </p>
 
           {/* Responsive Stats Section - Improved spacing and sizing */}
-          <div className={`flex justify-center sm:justify-start transition-all duration-1000 ${
+          <div className={`flex justify-center transition-all duration-1000 ${
             hasLaunched 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-8'
@@ -127,7 +129,7 @@ const Home2 = () => {
             transitionDelay: '800ms',
             transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
           }}>
-            <div className="grid grid-cols-3 gap-6 sm:gap-8 md:gap-12 lg:gap-16 w-fit">
+            <div className="grid grid-cols-3 gap-3 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-16 w-fit px-2 sm:px-0">
               {stats.map((stat, index) => (
                 <div 
                   key={index}
@@ -135,21 +137,25 @@ const Home2 = () => {
                 >
                   {/* Animated Number - Better responsive sizing */}
                   <div className="mb-1 sm:mb-2">
-                    <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent group-hover:from-cyan-300 group-hover:to-blue-300 transition-all duration-300">
+                    <span className="text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent group-hover:from-cyan-300 group-hover:to-blue-300 transition-all duration-300">
                       {animatedStats[index]}
                     </span>
-                    <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-cyan-400 group-hover:text-cyan-300 transition-colors duration-300">
+                    <span className="text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-cyan-400 group-hover:text-cyan-300 transition-colors duration-300">
                       {stat.suffix}
                     </span>
                   </div>
                   
                   {/* Stat Title - Better responsive text */}
-                  <h3 className="text-xs sm:text-sm md:text-base text-gray-300 font-medium uppercase tracking-wide group-hover:text-white transition-colors duration-300 whitespace-nowrap px-1">
-                    {stat.title}
+                  <h3 className="text-xs sm:text-sm md:text-base text-gray-300 font-medium uppercase tracking-wide group-hover:text-white transition-colors duration-300 px-1">
+                    <span className="hidden sm:inline">{stat.title}</span>
+                    <span className="sm:hidden">
+                      {stat.title === "Customers Served" ? "Customers" : 
+                       stat.title === "Years Experience" ? "Years" : stat.title}
+                    </span>
                   </h3>
                   
                   {/* Decorative line - Responsive sizing */}
-                  <div className="w-4 sm:w-6 md:w-8 h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent mx-auto mt-1 sm:mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="w-3 sm:w-6 md:w-8 h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent mx-auto mt-1 sm:mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
               ))}
             </div>
@@ -173,18 +179,23 @@ const Home2 = () => {
           <span className="text-white/80 text-xs sm:text-sm font-light group-hover:text-white transition-colors duration-300">
             Scroll down
           </span>
-          <div className="w-5 sm:w-6 h-8 sm:h-10 border-2 border-white/30 rounded-full flex justify-center group-hover:border-white/60 transition-colors duration-300">
-            <div className="w-0.5 sm:w-1 h-2 sm:h-3 bg-white/60 rounded-full mt-1.5 sm:mt-2 animate-bounce group-hover:bg-white transition-colors duration-300"></div>
+          <div className="w-4 sm:w-5 md:w-6 h-6 sm:h-8 md:h-10 border-2 border-white/30 rounded-full flex justify-center group-hover:border-white/60 transition-colors duration-300">
+            <div className="w-0.5 sm:w-0.5 md:w-1 h-1.5 sm:h-2 md:h-3 bg-white/60 rounded-full mt-1 sm:mt-1.5 md:mt-2 animate-bounce group-hover:bg-white transition-colors duration-300"></div>
           </div>
         </div>
       </div>
 
-      {/* Floating particles effect - Responsive count */}
+      {/* Floating particles effect - Responsive count and sizing */}
       <div className="absolute inset-0 z-10 pointer-events-none">
+        {/* Mobile: 3 particles, SM: 4 particles, MD+: 6 particles */}
         {[...Array(6)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-cyan-400/30 rounded-full animate-pulse"
+            className={`absolute bg-cyan-400/30 rounded-full animate-pulse ${
+              i >= 3 ? 'hidden sm:block' : ''
+            } ${
+              i >= 4 ? 'hidden md:block' : ''
+            } w-0.5 h-0.5 sm:w-1 sm:h-1`}
             style={{
               left: `${20 + i * 15}%`,
               top: `${30 + i * 10}%`,

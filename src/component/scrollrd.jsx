@@ -1022,8 +1022,8 @@ export const StickyScroll = ({ content, contentClassName }) => {
   }, []);
 
   return (
-   <div
-      className="relative flex flex-col h-auto justify-center overflow-y-auto bg-black p-8 scroll-smooth max-w-7xl mx-auto"
+    <div
+      className="relative flex flex-col h-auto justify-center overflow-y-auto bg-black p-4 sm:p-6 lg:p-8 scroll-smooth max-w-7xl mx-auto"
       ref={ref}
       style={{
         scrollbarWidth: "thin",
@@ -1034,7 +1034,7 @@ export const StickyScroll = ({ content, contentClassName }) => {
         {content.map((item, index) => (
           <motion.div
             key={item.title + index}
-            className="card-item flex flex-row items-center justify-center mt-8 gap-3"
+            className="card-item flex flex-col lg:flex-row items-center justify-center mt-6 sm:mt-8 gap-4 lg:gap-6 xl:gap-8"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-20%" }}
@@ -1045,7 +1045,7 @@ export const StickyScroll = ({ content, contentClassName }) => {
             }}
           >
             {/* Content Section */}
-            <div className="flex-1 max-w-xl ">
+            <div className="flex-1 w-full lg:max-w-xl order-2 lg:order-1">
               <motion.h2
                 initial={{ opacity: 0, x: -30 }}
                 animate={{
@@ -1053,7 +1053,7 @@ export const StickyScroll = ({ content, contentClassName }) => {
                   x: activeCard === index ? 0 : -10,
                 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="text-3xl font-bold text-white mb-4 leading-tight"
+                className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4 leading-tight text-center lg:text-left"
               >
                 {item.title}
               </motion.h2>
@@ -1064,40 +1064,42 @@ export const StickyScroll = ({ content, contentClassName }) => {
                   x: activeCard === index ? 0 : -10,
                 }}
                 transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
-                className="text-lg text-white leading-relaxed mb-6"
+                className="text-base sm:text-lg text-white leading-relaxed mb-4 sm:mb-6 text-center lg:text-left"
               >
                 {item.description}
               </motion.p>
-              <motion.button
-                initial={{ opacity: 0, x: -30 }}
-                animate={{
-                  opacity: activeCard === index ? 1 : 0.5,
-                  x: activeCard === index ? 0 : -10,
-                }}
-                transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transform transition-all duration-300 overflow-hidden"
-              >
-                <span className="relative z-10">Learn More</span>
-                <svg
-                  className="relative z-10 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+              <div className="flex justify-center lg:justify-start">
+                <motion.button
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{
+                    opacity: activeCard === index ? 1 : 0.5,
+                    x: activeCard === index ? 0 : -10,
+                  }}
+                  transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="group relative inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transform transition-all duration-300 overflow-hidden text-sm sm:text-base"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </motion.button>
+                  <span className="relative z-10">Learn More</span>
+                  <svg
+                    className="relative z-10 w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </motion.button>
+              </div>
             </div>
 
-            {/* Visual Content Section - Image on the right */}
+            {/* Visual Content Section */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8, x: 50 }}
               animate={{
@@ -1119,9 +1121,8 @@ export const StickyScroll = ({ content, contentClassName }) => {
               viewport={{ once: false }}
               whileHover={{ scale: 1.02 }}
               className={cn(
-                "h-[15rem] w-[28rem] overflow-hidden rounded-2xl shadow-2xl border border-white/20 flex-shrink-0 transition-all duration-300 brightness-100",
+                "h-48 sm:h-56 md:h-64 lg:h-[15rem] w-full sm:w-80 md:w-96 lg:w-[28rem] overflow-hidden rounded-xl lg:rounded-2xl shadow-2xl border border-white/20 flex-shrink-0 transition-all duration-300 brightness-100 order-1 lg:order-2",
                 contentClassName
-                // Removed the conditional brightness control - now all containers are bright
               )}
               style={{
                 background: linearGradients[index % linearGradients.length],
@@ -1132,7 +1133,7 @@ export const StickyScroll = ({ content, contentClassName }) => {
           </motion.div>
         ))}
       </div>
-      <div className="h-40" />
+      <div className="h-20 sm:h-32 lg:h-40" />
     </div>
   );
 };
@@ -1145,17 +1146,22 @@ const sampleContent = [
       "State of the art battery pack paralleling technique without software communication between battery packs. Ensures seamless power delivery for maximum efficiency.",
     content: (
       <div className="relative h-full w-full">
-        <img
-          src="/rd/battery2.png"
-          alt="Easy Battery Pack Paralleling"
-          className="h-full w-full object-cover"
-        />
+        <div className="h-full w-full bg-gradient-to-br from-cyan-400 to-emerald-500 flex items-center justify-center">
+          <div className="text-center text-white">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
+              <svg className="w-8 h-8 sm:w-10 sm:h-10" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
+              </svg>
+            </div>
+            <h3 className="text-xl sm:text-2xl font-bold mb-2">Battery Tech</h3>
+          </div>
+        </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-        <div className="absolute bottom-8 left-8 right-8">
-          <h3 className="text-2xl font-bold text-white mb-2">
+        <div className="absolute bottom-4 sm:bottom-6 lg:bottom-8 left-4 sm:left-6 lg:left-8 right-4 sm:right-6 lg:right-8">
+          <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-1 sm:mb-2">
             Seamless Power Delivery
           </h3>
-          <p className="text-white/90 text-sm">
+          <p className="text-white/90 text-xs sm:text-sm">
             Paralleling made simple with no software dependencies
           </p>
         </div>
@@ -1168,17 +1174,22 @@ const sampleContent = [
       "Unbreakable design tested for millions of kms with over 15K deployments. Proven to remain infallible even under thousands of dead short circuits.",
     content: (
       <div className="relative h-full w-full">
-        <img
-          src="/rd/reliable2.png"
-          alt="Unparalleled Reliability"
-          className="h-full w-full object-cover"
-        />
+        <div className="h-full w-full bg-gradient-to-br from-pink-500 to-indigo-600 flex items-center justify-center">
+          <div className="text-center text-white">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
+              <svg className="w-8 h-8 sm:w-10 sm:h-10" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <h3 className="text-xl sm:text-2xl font-bold mb-2">Reliable</h3>
+          </div>
+        </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-        <div className="absolute bottom-8 left-8 right-8">
-          <h3 className="text-2xl font-bold text-white mb-2">
+        <div className="absolute bottom-4 sm:bottom-6 lg:bottom-8 left-4 sm:left-6 lg:left-8 right-4 sm:right-6 lg:right-8">
+          <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-1 sm:mb-2">
             Tested for Millions of Kms
           </h3>
-          <p className="text-white/90 text-sm">
+          <p className="text-white/90 text-xs sm:text-sm">
             Rugged design trusted by 15K+ successful deployments
           </p>
         </div>
@@ -1191,17 +1202,22 @@ const sampleContent = [
       "400mA balancing current works with advanced charging profile control algorithms for the fastest cell balancing and superior Depth of Discharge control.",
     content: (
       <div className="relative h-full w-full">
-        <img
-          src="/rd/balance.png"
-          alt="Better Cell Balancing"
-          className="h-full w-full object-cover"
-        />
+        <div className="h-full w-full bg-gradient-to-br from-orange-500 to-yellow-500 flex items-center justify-center">
+          <div className="text-center text-white">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
+              <svg className="w-8 h-8 sm:w-10 sm:h-10" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <h3 className="text-xl sm:text-2xl font-bold mb-2">Balance</h3>
+          </div>
+        </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-        <div className="absolute bottom-8 left-8 right-8">
-          <h3 className="text-2xl font-bold text-white mb-2">
+        <div className="absolute bottom-4 sm:bottom-6 lg:bottom-8 left-4 sm:left-6 lg:left-8 right-4 sm:right-6 lg:right-8">
+          <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-1 sm:mb-2">
             Fast & Efficient Balancing
           </h3>
-          <p className="text-white/90 text-sm">
+          <p className="text-white/90 text-xs sm:text-sm">
             400mA current + smart algorithms for better DoD control
           </p>
         </div>
@@ -1214,17 +1230,22 @@ const sampleContent = [
       "Highly optimized thermals achieved through an innovative MOSFET mounting technique. Extracts 2x better thermal performance from the PDU for safer operations.",
     content: (
       <div className="relative h-full w-full">
-        <img
-          src="/rd/thermal.png"
-          alt="Superior Thermal Stability"
-          className="h-full w-full object-cover"
-        />
+        <div className="h-full w-full bg-gradient-to-br from-purple-600 to-cyan-500 flex items-center justify-center">
+          <div className="text-center text-white">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
+              <svg className="w-8 h-8 sm:w-10 sm:h-10" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <h3 className="text-xl sm:text-2xl font-bold mb-2">Thermal</h3>
+          </div>
+        </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-        <div className="absolute bottom-8 left-8 right-8">
-          <h3 className="text-2xl font-bold text-white mb-2">
+        <div className="absolute bottom-4 sm:bottom-6 lg:bottom-8 left-4 sm:left-6 lg:left-8 right-4 sm:right-6 lg:right-8">
+          <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-1 sm:mb-2">
             2x Better Thermal Performance
           </h3>
-          <p className="text-white/90 text-sm">
+          <p className="text-white/90 text-xs sm:text-sm">
             Innovative MOSFET mounting delivers cooler efficiency
           </p>
         </div>
@@ -1238,15 +1259,15 @@ export default function StickyScrollDemo() {
   return (
     <div className="min-h-screen bg-black">
       {/* Hero Section */}
-      <div className="py-20 px-4">
-        <div className="text-center mb-10">
+      <div className="py-10 sm:py-16 lg:py-20 px-4">
+        <div className="text-center mb-8 sm:mb-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="transition-all duration-700 delay-200 opacity-100 translate-y-0"
           >
-            <h3 className="text-white hover:text-yellow-400 transition-all duration-300 border-b-2 border-yellow-400 pb-1 inline-block mb-4 tracking-wide text-lg">
+            <h3 className="text-white hover:text-yellow-400 transition-all duration-300 border-b-2 border-yellow-400 pb-1 inline-block mb-4 tracking-wide text-base sm:text-lg">
               Why choose Webber?
             </h3>
           </motion.div>
@@ -1257,7 +1278,7 @@ export default function StickyScrollDemo() {
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
             className="transition-all duration-700 delay-400 opacity-100 translate-y-0"
           >
-            <h1 className="lg:text-5xl md:text-4xl text-3xl font-extrabold bg-gradient-to-r from-yellow-300 via-white to-cyan-300 bg-clip-text text-transparent drop-shadow-lg mb-4 leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-yellow-300 via-white to-cyan-300 bg-clip-text text-transparent drop-shadow-lg mb-4 leading-tight px-4">
               FIRST PRINCIPLE DESIGN APPROACH
             </h1>
           </motion.div>
@@ -1266,7 +1287,7 @@ export default function StickyScrollDemo() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.4 }}
-            className="flex flex-wrap justify-center items-center gap-4 text-lg md:text-xl font-medium text-white transition-all duration-700 delay-800 opacity-100 translate-y-0"
+            className="flex flex-wrap justify-center items-center gap-2 sm:gap-4 text-base sm:text-lg md:text-xl font-medium text-white transition-all duration-700 delay-800 opacity-100 translate-y-0"
           >
             <span className="text-white">Value</span>
             <span className="text-gray-300">|</span>
