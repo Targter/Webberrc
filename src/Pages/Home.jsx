@@ -115,7 +115,7 @@ const Home2 = () => {
             transitionDelay: '600ms',
             transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
           }}>
-            <span className="hidden md:inline">Delivering cutting-edge Electric Vehicle Chips engineered with precision, durability, and intelligence — enabling smarter, safer, and more efficient automotive innovation.</span>
+            <span className="hidden md:inline">Delivering cutting-edge Electric Vehicle Chips engineered with precision, durability, and intelligence enabling smarter, safer, and more efficient automotive innovation.</span>
             <span className="md:hidden">Delivering cutting-edge Electric Vehicle Chips engineered with precision and intelligence for smarter automotive innovation.</span>
           </p>
 

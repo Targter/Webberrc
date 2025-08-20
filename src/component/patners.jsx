@@ -141,16 +141,50 @@ const TrustedPartnersSection = () => {
               : "opacity-0 translate-y-8"
           }`}
         >
-          <div className="max-w-6xl mx-auto text-center py-16 pb-0 px-4">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-800 mb-2 tracking-tight">
-              Our{" "}
-              <span className="bg-gradient-to-r from-[#65af32] via-[#4ecf56] to-[#3dd07a] bg-clip-text text-transparent">
-                Trusted
+         <div className="max-w-6xl mx-auto text-center py-16 pb-0 px-4">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-2 tracking-tight">
+              <span className="text-black">
+                OUR
               </span>{" "}
-              <span className="bg-gradient-to-r from-[#65af32] via-[#3ad98a] to-[#2eeeb5] bg-clip-text text-transparent">
-                Partners
+              <span className="bg-gradient-to-r from-[#65af32] via-[#4ecf56] to-[#3dd07a] bg-clip-text text-transparent drop-shadow-sm">
+                TRUSTED
+              </span>{" "}
+              <span className="bg-gradient-to-r from-[#65af32] via-[#3ad98a] to-[#2eeeb5] bg-clip-text text-transparent drop-shadow-sm shine">
+                PARTNERS
               </span>{" "}
             </h1>
+            
+            <style jsx>{`
+              .shine {
+                position: relative;
+                overflow: hidden;
+              }
+              
+              .shine::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(
+                  90deg,
+                  transparent,
+                  rgba(255, 255, 255, 0.4),
+                  transparent
+                );
+                animation: shine 3s infinite;
+              }
+              
+              @keyframes shine {
+                0% {
+                  left: -100%;
+                }
+                100% {
+                  left: 100%;
+                }
+              }
+            `}</style>
           </div>
         </div>
       </div>

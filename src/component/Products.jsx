@@ -234,11 +234,11 @@ const Products = () => {
     <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 relative z-20 h-full">
       {/* Image Container */}
       <div className="relative h-52 bg-white">
-        <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div className="absolute p-6 inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         <img
           src={product.image}
           alt={product.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full p-4 object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </div>
        
@@ -260,10 +260,10 @@ const Products = () => {
           {/* Download Info Document Button - Left Side */}
           <button 
             onClick={() => window.open(product.documentUrl, '_blank')}
-            className="inline-flex items-center text-xs font-medium text-green-600 hover:text-green-700 transition-colors group/download"
+            className="inline-flex items-center text-md font-medium text-green-600 hover:text-green-700 transition-colors group/download"
           >
             <svg
-              className="w-3 h-3 mr-1 transition-transform group-hover/download:translate-y-0.5"
+              className="w-5 h-5 mr-1 transition-transform group-hover/download:translate-y-0.5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"

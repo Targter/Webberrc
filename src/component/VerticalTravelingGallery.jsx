@@ -10,32 +10,32 @@ const VerticalSyncGrid = () => {
 
   // Column 1 - Electronics/Hardware workspace images
   const column1Images = [
-    "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=400&h=350&fit=crop",
-    "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop",
-    "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=280&fit=crop",
-    "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=320&fit=crop",
-    "https://images.unsplash.com/photo-1587440871875-191322ee64b0?w=400&h=300&fit=crop",
-    "/rd/thermal.png",
+    "media/m1.jpg",
+    "media/m2.jpg",
+    "media/m3.jpg",
+    "media/m1.jpg",
+    "media/m2.jpg",
+    "media/m3.jpg",
   ];
 
   // Column 2 - Development/Coding workspace images
   const column2Images = [
-    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=280&fit=crop",
-    "https://images.unsplash.com/photo-1517077304055-6e89bebf9e2f?w=400&h=340&fit=crop",
-    "https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?w=400&h=300&fit=crop",
-    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=310&fit=crop",
-    "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=280&fit=crop",
-    "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=400&h=320&fit=crop",
+    "media/m4.jpg",
+    "media/m5.jpg",
+    "media/m3.jpg",
+    "media/m1.jpg",
+    "media/m6.jpg",
+    "media/m4.jpg",
   ];
 
   // Column 3 - Team collaboration images
   const column3Images = [
-    "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=320&fit=crop",
-    "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=290&fit=crop",
-    "https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=400&h=310&fit=crop",
-    "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=400&h=300&fit=crop",
-    "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&h=280&fit=crop",
-    "https://images.unsplash.com/photo-1590650516494-0c8e4a4dd67e?w=400&h=330&fit=crop",
+    "media/m6.jpg",
+    "media/m2.jpg",
+    "media/m4.jpg",
+    "media/m6.jpg",
+    "media/m2.jpg",
+    "media/m4.jpg",
   ];
 
   const ImageColumn = ({ images, direction = "up", delay = "0s" }) => {

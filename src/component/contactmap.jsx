@@ -526,200 +526,123 @@ const ContactFAQComponent = () => {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-5 gap-8 md:gap-10 lg:gap-12">
-            {/* Contact Info */}
-            <div className="lg:col-span-2">
-              <div className="relative">
-                <div className="absolute -inset-2 md:-inset-4 bg-gradient-to-r from-blue-500/5 to-green-400/5 blur-xl rounded-2xl md:rounded-3xl"></div>
-                <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl md:rounded-3xl p-6 md:p-8 border border-gray-100">
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">
-                    Get In Touch With{" "}
-                    <span className="bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">
-                      Webber
-                    </span>
-                  </h3>
-                  <p className="text-gray-600 mb-6 md:mb-8 text-sm md:text-base leading-relaxed">
-                    Have questions or need a custom solution? Our team is here
-                    to help! Reach out to us for expert guidance, product
-                    inquiries, or collaboration opportunities.
-                  </p>
+        <div className="grid lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12">
 
-                  <div className="space-y-4 md:space-y-6">
-                    <h4 className="text-base md:text-lg font-semibold text-gray-900 border-b border-gray-100 pb-2">
-                      Head Office
-                    </h4>
-                    <div className="space-y-4 md:space-y-5">
-                      <div className="flex items-start group">
-                        <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-blue-100 to-green-100 rounded-full flex items-center justify-center mr-3 md:mr-4 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                          <MapPin className="w-4 h-4 md:w-5 md:h-5 text-blue-600" />
-                        </div>
-                        <span className="text-gray-600 text-sm md:text-base leading-relaxed">
-                          Office 03 and 04, First Floor, Sai Raj Regency, Pimple
-                          Saudagar, Pune, Maharashtra 411 027
-                        </span>
-                      </div>
-                      <div className="flex items-center group">
-                        <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-blue-100 to-green-100 rounded-full flex items-center justify-center mr-3 md:mr-4 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                          <Phone className="w-4 h-4 md:w-5 md:h-5 text-blue-600" />
-                        </div>
-                        <span className="text-gray-600 text-sm md:text-base">
-                          +91 999 999 0794
-                        </span>
-                      </div>
-                      <div className="flex items-center group">
-                        <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-blue-100 to-green-100 rounded-full flex items-center justify-center mr-3 md:mr-4 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                          <Mail className="w-4 h-4 md:w-5 md:h-5 text-blue-600" />
-                        </div>
-                        <span className="text-gray-600 text-sm md:text-base">
-                          sales@shrisaielectroworks.com
-                        </span>
-                      </div>
-                      <div className="flex items-center group">
-                        <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-blue-100 to-green-100 rounded-full flex items-center justify-center mr-3 md:mr-4 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                          <Mail className="w-4 h-4 md:w-5 md:h-5 text-blue-600" />
-                        </div>
-                        <span className="text-gray-600 text-sm md:text-base">
-                          sandeep@shrisaielectroworks.com
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+  {/* Map Section - Now takes 2 columns (wider) */}
+  <div className="order-1 lg:order-1 lg:col-span-2">
+    <div className="relative group h-full">
+      <div className="absolute -inset-1 md:-inset-2 bg-gradient-to-r from-blue-500/20 to-green-400/20 blur-xl rounded-2xl md:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      <div className="relative bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-xl md:shadow-2xl border border-gray-200/50 h-full min-h-[450px] md:min-h-[550px] lg:min-h-[650px]">
+        <div className="h-full w-full relative overflow-hidden">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.567!2d73.799!3d18.631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b9b8a8b8a8a8%3A0x8b8a8b8a8b8a8b8a!2sPimple%20Saudagar%2C%20Pune%2C%20Maharashtra%20411027!5e0!3m2!1sen!2sin!4v1234567890"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="w-full h-full transition-all duration-300 group-hover:scale-105 absolute inset-0"
+            title="Office Location - Pimple Saudagar, Pune"
+          ></iframe>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent text-white p-4 md:p-6">
+          <div className="flex items-start">
+            <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-r from-blue-500 to-green-400 rounded-xl md:rounded-2xl flex items-center justify-center mr-3 md:mr-4 flex-shrink-0">
+              <MapPin className="w-5 h-5 md:w-6 md:h-6 text-white" />
             </div>
-
-            {/* Contact Form */}
-            <div className="lg:col-span-3">
-              <div className="relative">
-                <div className="absolute -inset-1 md:-inset-2 bg-black rounded-2xl md:rounded-3xl"></div>
-                <div className="relative bg-black rounded-2xl md:rounded-3xl p-6 md:p-8 border border-slate-700/50">
-                  <div className="flex items-center mb-6 md:mb-8">
-                    <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-r from-blue-500 to-green-400 rounded-xl md:rounded-2xl flex items-center justify-center mr-3 md:mr-4">
-                      <Mail className="w-5 h-5 md:w-6 md:h-6 text-white" />
-                    </div>
-                    <h3 className="text-xl md:text-2xl font-bold text-white">
-                      Contact Form
-                    </h3>
-                  </div>
-
-                  <div className="space-y-4 md:space-y-6">
-                    <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
-                      <div className="space-y-2">
-                        <label className="block text-white text-xs md:text-sm font-medium">
-                          First Name <span className="text-red-400">*</span>
-                        </label>
-                        <input
-                          type="text"
-                          name="firstName"
-                          value={formData.firstName}
-                          onChange={handleInputChange}
-                          className="w-full px-3 py-2 md:px-4 md:py-3 rounded-lg md:rounded-xl bg-white/10 border border-slate-600/50 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500/50 focus:border-transparent focus:bg-white/20 transition-all duration-300 text-sm md:text-base"
-                          placeholder="Rohit"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <label className="block text-white text-xs md:text-sm font-medium">
-                          Last Name <span className="text-red-400">*</span>
-                        </label>
-                        <input
-                          type="text"
-                          name="lastName"
-                          value={formData.lastName}
-                          onChange={handleInputChange}
-                          className="w-full px-3 py-2 md:px-4 md:py-3 rounded-lg md:rounded-xl bg-white/10 border border-slate-600/50 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500/50 focus:border-transparent focus:bg-white/20 transition-all duration-300 text-sm md:text-base"
-                          placeholder="Gupta"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <label className="block text-white text-xs md:text-sm font-medium">
-                        Email Address <span className="text-red-400">*</span>
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 md:px-4 md:py-3 rounded-lg md:rounded-xl bg-white/10 border border-slate-600/50 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500/50 focus:border-transparent focus:bg-white/20 transition-all duration-300 text-sm md:text-base"
-                        placeholder="rohit@example.com"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <label className="block text-white text-xs md:text-sm font-medium">
-                        Comments / Questions{" "}
-                        <span className="text-red-400">*</span>
-                      </label>
-                      <textarea
-                        name="comments"
-                        value={formData.comments}
-                        onChange={handleInputChange}
-                        rows={4}
-                        className="w-full px-3 py-2 md:px-4 md:py-3 rounded-lg md:rounded-xl bg-white/10 border border-slate-600/50 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500/50 focus:border-transparent focus:bg-white/20 transition-all duration-300 resize-none text-sm md:text-base"
-                        placeholder="Tell us about your requirements..."
-                      ></textarea>
-                    </div>
-
-                    <button
-                      onClick={handleSubmit}
-                      onMouseEnter={() => setIsHovered(true)}
-                      onMouseLeave={() => setIsHovered(false)}
-                      className="group relative w-full bg-gradient-to-r from-blue-500 to-green-400 hover:from-blue-600 hover:to-green-500 text-white font-semibold py-3 md:py-4 px-4 md:px-6 rounded-lg md:rounded-xl transition-all duration-300 flex items-center justify-center overflow-hidden text-sm md:text-base"
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                      <Send
-                        className={`w-4 h-4 md:w-5 md:h-5 mr-2 md:mr-3 transition-transform duration-300 ${
-                          isHovered ? "translate-x-1" : ""
-                        }`}
-                      />
-                      <span className="relative">SEND MESSAGE</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
+            <div>
+              <h4 className="font-semibold mb-1 text-sm md:text-base">
+                Head Office Location
+              </h4>
+              <span className="text-xs md:text-sm text-gray-200 leading-relaxed">
+                Office 03 and 04, First Floor, Sai Raj Regency, Pimple
+                Saudagar, Pune, Maharashtra 411 027
+              </span>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
-      {/* Enhanced Map Section */}
-      <div className="bg-gradient-to-br from-gray-100 to-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-          <div className="relative group">
-            <div className="absolute -inset-1 md:-inset-2 bg-black blur-xl rounded-2xl md:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="relative bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-xl md:shadow-2xl border border-gray-200/50">
-              <div className="h-64 sm:h-72 md:h-80 lg:h-96 w-full relative overflow-hidden">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.567!2d73.799!3d18.631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b9b8a8b8a8a8%3A0x8b8a8b8a8b8a8b8a!2sPimple%20Saudagar%2C%20Pune%2C%20Maharashtra%20411027!5e0!3m2!1sen!2sin!4v1234567890"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="w-full h-full transition-all duration-300 group-hover:scale-105"
-                  title="Office Location - Pimple Saudagar, Pune"
-                ></iframe>
-              </div>
-              <div className="bg-black text-white p-4 md:p-6">
-                <div className="flex items-center">
-                  <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-r from-blue-500 to-green-400 rounded-xl md:rounded-2xl flex items-center justify-center mr-3 md:mr-4 flex-shrink-0">
-                    <MapPin className="w-5 h-5 md:w-6 md:h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-1 text-sm md:text-base">
-                      Head Office Location
-                    </h4>
-                    <span className="text-xs md:text-sm text-gray-300">
-                      Office 03 and 04, First Floor, Sai Raj Regency, Pimple
-                      Saudagar, Pune, Maharashtra 411 027
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
+  {/* Contact Form - Now takes 1 column (more concise and positioned to right) */}
+  <div className="order-2 lg:order-2">
+    <div className="relative">
+      <div className="absolute -inset-1 md:-inset-2 bg-black"></div>
+      <div className="relative bg-black p-4 md:p-6 border border-slate-700/50 h-full">
+        <div className="flex items-center mb-4 md:mb-6">
+          <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-blue-500 to-green-400 rounded-lg md:rounded-xl flex items-center justify-center mr-2 md:mr-3">
+            <Mail className="w-4 h-4 md:w-5 md:h-5 text-white" />
           </div>
+          <h3 className="text-lg md:text-xl font-bold text-white">
+            Contact Us
+          </h3>
+        </div>
+
+        <div className="space-y-3 md:space-y-4">
+          <div className="space-y-1">
+            <label className="block text-white text-xs md:text-sm font-medium">
+              Name <span className="text-red-400">*</span>
+            </label>
+            <input
+              type="text"
+              name="fullName"
+              value={formData.fullName}
+              onChange={handleInputChange}
+              className="w-full px-3 py-2 rounded-lg bg-white/10 border border-slate-600/50 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500/50 focus:border-transparent focus:bg-white/20 transition-all duration-300 text-sm"
+              placeholder="Your Full Name"
+            />
+          </div>
+
+          <div className="space-y-1">
+            <label className="block text-white text-xs md:text-sm font-medium">
+              Email <span className="text-red-400">*</span>
+            </label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              className="w-full px-3 py-2 rounded-lg bg-white/10 border border-slate-600/50 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500/50 focus:border-transparent focus:bg-white/20 transition-all duration-300 text-sm"
+              placeholder="your@email.com"
+            />
+          </div>
+
+          <div className="space-y-1">
+            <label className="block text-white text-xs md:text-sm font-medium">
+              Message <span className="text-red-400">*</span>
+            </label>
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleInputChange}
+              rows={3}
+              className="w-full px-3 py-2 rounded-lg bg-white/10 border border-slate-600/50 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500/50 focus:border-transparent focus:bg-white/20 transition-all duration-300 resize-none text-sm"
+              placeholder="Your message..."
+            ></textarea>
+          </div>
+
+          <button
+            onClick={handleSubmit}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className="group relative w-full bg-gradient-to-r from-blue-500 to-green-400 hover:from-blue-600 hover:to-green-500 text-white font-semibold py-2.5 md:py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center overflow-hidden text-sm"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+            <Send
+              className={`w-4 h-4 mr-2 transition-transform duration-300 ${
+                isHovered ? "translate-x-1" : ""
+              }`}
+            />
+            <span className="relative">SEND</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
         </div>
       </div>
     </div>

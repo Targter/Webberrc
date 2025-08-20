@@ -19,6 +19,7 @@ const Button = ({ title, leftIcon, rightIcon, containerClass = "", onClick }) =>
 );
 
 const ElectricChipNavbar = () => {
+  const [isResourcesOpen, setIsResourcesOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isTransparent, setIsTransparent] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -209,7 +210,7 @@ const ElectricChipNavbar = () => {
           </div>
 
           {/* Right Side Buttons - Responsive */}
-          <div className={`flex items-center space-x-1 sm:space-x-2 transition-all duration-700 ${
+       <div className={`flex items-center space-x-1 sm:space-x-2 transition-all duration-700 ${
             hasLaunched 
               ? 'opacity-100 translate-x-0' 
               : 'opacity-0 translate-x-8'
@@ -218,8 +219,8 @@ const ElectricChipNavbar = () => {
             transitionDelay: hasLaunched ? '0ms' : '600ms',
             transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
           }}>
-            {/* Resources Button - Hidden on small screens, visible on sm+ */}
-            <div className={`hidden sm:block transition-all duration-600 ${
+            {/* Resources Button with Dropdown - Hidden on small screens, visible on sm+ */}
+            <div className={`hidden sm:block relative group transition-all duration-600 ${
               hasLaunched 
                 ? 'opacity-100 scale-100' 
                 : 'opacity-0 scale-95'
@@ -228,9 +229,36 @@ const ElectricChipNavbar = () => {
               transitionDelay: hasLaunched ? '0ms' : '650ms'
             }}>
               <Button
-                title="Resources"
-                containerClass="border border-gray-600 text-gray-700 hover:bg-gray-100 hover:text-black rounded-lg"
+                title={
+                  <div className="flex items-center space-x-1">
+                    <span>Resources</span>
+                    <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
+                  </div>
+                }
+                containerClass="border border-gray-600 text-gray-700 rounded-lg"
               />
+              
+              {/* Dropdown Menu */}
+              <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                <div className="py-2">
+                  <button
+                    onClick={() => {
+                      // Handle Blogs navigation
+                    }}
+                    className="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-black transition-colors"
+                  >
+                    Blogs
+                  </button>
+                  <button
+                    onClick={() => {
+                      // Handle Media navigation
+                    }}
+                    className="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-black transition-colors"
+                  >
+                    Media
+                  </button>
+                </div>
+              </div>
             </div>
             
             {/* Contact Button - Always visible but responsive sizing */}

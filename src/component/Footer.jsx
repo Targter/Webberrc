@@ -19,22 +19,30 @@ const Footer = () => {
           <h2 className="text-white text-lg font-semibold mb-4">Contact</h2>
           <ul className="space-y-3 text-sm">
             <li className="flex items-start gap-2">
-              <MapPin className="w-5 h-5 text-blue-500" />
-              <span>
-                Mumbai, India
+              <MapPin className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
+              <span className="text-gray-300 leading-relaxed">
+                Plot No 4/25, Sector 10<br />
+                PCNTDA, Bhosari Pune, Maharashtra 411026
               </span>
             </li>
-            <li className="flex items-center gap-2">
-              <Phone className="w-5 h-5 text-blue-500" />
-              <span>+91 999 999 0794</span>
+            
+            <li className="flex items-start gap-2">
+              <MapPin className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
+              <span className="text-gray-300 leading-relaxed">
+                DLF Corporate Green, Tower 1<br />
+                Unit no: 711, Sector 74A<br />
+                Gurugram 122004
+              </span>
             </li>
+            
             <li className="flex items-center gap-2">
-              <Mail className="w-5 h-5 text-blue-500" />
-              <span>chip@webber.com</span>
+              <Phone className="w-5 h-5 text-blue-500 flex-shrink-0" />
+              <span className="text-gray-300">+91 91006 39555</span>
             </li>
+            
             <li className="flex items-center gap-2">
-              <Mail className="w-5 h-5 text-blue-500" />
-              <span>chip@webber.com</span>
+              <Mail className="w-5 h-5 text-blue-500 flex-shrink-0" />
+              <span className="text-gray-300">mahindersehgl@webberec.com</span>
             </li>
           </ul>
         </div>
@@ -61,9 +69,9 @@ const Footer = () => {
           {/* Social Media Icons */}
           <div className="flex gap-4">
             <a href="#" className="hover:text-blue-400 transition-colors duration-200"><Facebook className="w-5 h-5" /></a>
-            <a href="#" className="hover:text-blue-400 transition-colors duration-200"><Linkedin className="w-5 h-5" /></a>
+            <a href="https://www.linkedin.com/company/webber-electrocorp/" className="hover:text-blue-400 transition-colors duration-200"><Linkedin className="w-5 h-5" /></a>
             <a href="#" className="hover:text-blue-400 transition-colors duration-200"><Twitter className="w-5 h-5" /></a>
-            <a href="#" className="hover:text-blue-400 transition-colors duration-200"><Instagram className="w-5 h-5" /></a>
+            <a href="https://www.instagram.com/webberelectro?igsh=bTNyZnJlZjJhamp1&utm_source=qr" className="hover:text-blue-400 transition-colors duration-200"><Instagram className="w-5 h-5" /></a>
           </div>
         </div>
       </div>
