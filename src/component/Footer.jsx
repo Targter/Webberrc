@@ -116,51 +116,51 @@ const Footer = () => {
         <div className="border-t border-gray-800 mb-12"></div>
 
         {/* Office Locations */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-  {/* Pune Office */}
-  <div className="text-center">
-    <h4 className="text-white font-semibold mb-4">Pune Office</h4>
-    <address className="text-gray-400 text-sm leading-relaxed not-italic">
-      Plot No 4/25, Sector 10<br />
-      PCNTDA, Bhosari<br />
-      Pune, Maharashtra 411026
-    </address>
-  </div>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          {/* Pune Office */}
+          <div>
+            <h4 className="text-white font-semibold mb-4">Pune Office</h4>
+            <address className="text-gray-400 text-sm leading-relaxed not-italic">
+              Plot No 4/25, Sector 10<br />
+              PCNTDA, Bhosari<br />
+              Pune, Maharashtra 411026
+            </address>
+          </div>
 
-  {/* Gurugram Office */}
-  <div className="text-center">
-    <h4 className="text-white font-semibold mb-4">Gurugram Office</h4>
-    <address className="text-gray-400 text-sm leading-relaxed not-italic">
-      DLF Corporate Green, Tower 1<br />
-      Unit no: 711, Sector 74A<br />
-      Gurugram 122004
-    </address>
-  </div>
-</div>
+          {/* Gurugram Office */}
+          <div>
+            <h4 className="text-white font-semibold mb-4">Gurugram Office</h4>
+            <address className="text-gray-400 text-sm leading-relaxed not-italic">
+              DLF Corporate Green, Tower 1<br />
+              Unit no: 711, Sector 74A<br />
+              Gurugram 122004
+            </address>
+          </div>
+        </div>
 
-{/* Bottom Section */}
-<div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 pt-8 border-t border-gray-800">
-  {/* Social Media */}
-  <div className="flex items-center gap-4">
-    <a href="https://www.linkedin.com/company/webber-electrocorp/" className="text-gray-400 hover:text-blue-400 transition-colors duration-200">
-      <Linkedin className="w-5 h-5" />
-    </a>
-    <a href="https://www.instagram.com/webberelectro?igsh=bTNyZnJlZjJhamp1&utm_source=qr" className="text-gray-400 hover:text-pink-400 transition-colors duration-200">
-      <Instagram className="w-5 h-5" />
-    </a>
-  </div>
+        {/* Bottom Section */}
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 pt-8 border-t border-gray-800">
+          {/* Social Media */}
+          <div className="flex items-center gap-4">
+            <a href="https://www.linkedin.com/company/webber-electrocorp/" className="text-gray-400 hover:text-blue-400 transition-colors duration-200">
+              <Linkedin className="w-5 h-5" />
+            </a>
+            <a href="https://www.instagram.com/webberelectro?igsh=bTNyZnJlZjJhamp1&utm_source=qr" className="text-gray-400 hover:text-pink-400 transition-colors duration-200">
+              <Instagram className="w-5 h-5" />
+            </a>
+          </div>
 
-  {/* Copyright and Links */}
-  <div className="flex flex-col lg:flex-row items-start lg:items-center gap-4 lg:gap-8">
-    <p className="text-gray-500 text-sm">
-      © Webber Electro Corp Inc. All Rights Reserved.
-    </p>
-    <div className="flex gap-6 text-sm">
-      <a href="#" className="text-gray-500 hover:text-white transition-colors duration-200">Privacy Policy</a>
-      <a href="#" className="text-gray-500 hover:text-white transition-colors duration-200">Terms & Conditions</a>
-    </div>
-  </div>
-</div>
+          {/* Copyright and Links */}
+          <div className="flex flex-col lg:flex-row items-start lg:items-center gap-4 lg:gap-8">
+            <p className="text-gray-500 text-sm">
+               Webber Elctro Corp Inc. All Rights Reserved.
+            </p>
+            <div className="flex gap-6 text-sm">
+              <a href="#" className="text-gray-500 hover:text-white transition-colors duration-200">Privacy policy</a>
+              <a href="#" className="text-gray-500 hover:text-white transition-colors duration-200">Terms and conditions</a>
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
   );
