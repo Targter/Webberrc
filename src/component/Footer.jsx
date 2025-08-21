@@ -116,27 +116,28 @@ const Footer = () => {
         <div className="border-t border-gray-800 mb-12"></div>
 
         {/* Office Locations */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          {/* Pune Office */}
-          <div>
-            <h4 className="text-white font-semibold mb-4">Pune Office</h4>
-            <address className="text-gray-400 text-sm leading-relaxed not-italic">
-              Plot No 4/25, Sector 10<br />
-              PCNTDA, Bhosari<br />
-              Pune, Maharashtra 411026
-            </address>
-          </div>
+       <div className="grid grid-cols-1 gap-8 mb-12">
+  {/* Pune Office */}
+  <div className="text-justify">
+    <h4 className="text-white font-semibold mb-4">Pune Office</h4>
+    <address className="text-gray-400 text-sm leading-relaxed not-italic">
+      Plot No 4/25, Sector 10<br />
+      PCNTDA, Bhosari<br />
+      Pune, Maharashtra 411026
+    </address>
+  </div>
 
-          {/* Gurugram Office */}
-          <div>
-            <h4 className="text-white font-semibold mb-4">Gurugram Office</h4>
-            <address className="text-gray-400 text-sm leading-relaxed not-italic">
-              DLF Corporate Green, Tower 1<br />
-              Unit no: 711, Sector 74A<br />
-              Gurugram 122004
-            </address>
-          </div>
-        </div>
+  {/* Gurugram Office */}
+  <div className="text-justify">
+    <h4 className="text-white font-semibold mb-4">Gurugram Office</h4>
+    <address className="text-gray-400 text-sm leading-relaxed not-italic">
+      DLF Corporate Green, Tower 1<br />
+      Unit no: 711, Sector 74A<br />
+      Gurugram 122004
+    </address>
+  </div>
+</div>
+
 
         {/* Bottom Section */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 pt-8 border-t border-gray-800">

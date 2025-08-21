@@ -331,12 +331,12 @@ const Products = () => {
             <ChevronLeft className="w-5 h-5" />
           </button>
 
-          <p className="text-sm text-gray-500 font-light">
+          {/* <p className="text-sm text-gray-500 font-light">
             <span className="hidden sm:inline">
               Use arrows or scroll horizontally to explore products
             </span>
             <span className="sm:hidden">Use arrows or swipe to explore</span>
-          </p>
+          </p> */}
 
           <button
             onClick={scrollRight}

@@ -265,11 +265,11 @@ const TrustedPartnersSection = () => {
               <ChevronRight className="w-5 h-5" />
             </button>
           </div>
-          <div className="flex items-center gap-2 text-xs text-gray-400 dark:text-gray-500">
+          {/* <div className="flex items-center gap-2 text-xs text-gray-400 dark:text-gray-500">
             <div className="w-8 h-px bg-gradient-to-r from-transparent to-gray-400/50"></div>
             <span>Use arrows or scroll to explore</span>
             <div className="w-8 h-px bg-gradient-to-l from-transparent to-gray-400/50"></div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

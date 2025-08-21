@@ -163,8 +163,7 @@ const Home2 = () => {
         </div>
       </div>
 
-      {/* Enhanced Scroll Indicator - Responsive positioning */}
-      <div
+    {/* <div
         className={`absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 z-20 transition-all duration-1000 ${
           hasLaunched 
             ? 'opacity-100 translate-y-0' 
@@ -183,7 +182,7 @@ const Home2 = () => {
             <div className="w-0.5 sm:w-0.5 md:w-1 h-1.5 sm:h-2 md:h-3 bg-white/60 rounded-full mt-1 sm:mt-1.5 md:mt-2 animate-bounce group-hover:bg-white transition-colors duration-300"></div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Floating particles effect - Responsive count and sizing */}
       <div className="absolute inset-0 z-10 pointer-events-none">

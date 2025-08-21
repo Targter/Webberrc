@@ -74,19 +74,20 @@ const VerticalSyncGrid = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 overflow-hidden">
+
+    <div className=" mb-15 bg-gray-50 overflow-hidden">
       {/* Enhanced Header Section */}
 
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-4 py-8 pb-0">
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* Left Side - Three Column Image Grid */}
           <div className="relative h-[500px] lg:h-[600px] overflow-hidden">
             <div
               className={`flex gap-4 h-full transition-all duration-1000 ${
                 isVisible
-                  ? "opacity-100 translate-x-0"
+                ? "opacity-100 translate-x-0"
                   : "opacity-0 -translate-x-10"
-              }`}
+                }`}
             >
               {/* Column 1 - Moving Up */}
               <ImageColumn images={column1Images} direction="up" delay="0s" />
@@ -107,10 +108,10 @@ const VerticalSyncGrid = () => {
           <div
             className={`space-y-6 transition-all duration-1000 delay-300 ${
               isVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 translate-x-10"
-            }`}
-          >
+              ? "opacity-100 translate-x-0"
+              : "opacity-0 translate-x-10"
+              }`}
+              >
             <div className="space-y-4">
               <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                 Powered by{" "}
@@ -155,12 +156,18 @@ const VerticalSyncGrid = () => {
               </div>
 
               <div className="flex gap-4 pt-4">
-                <button className="px-8 py-3 bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] text-white rounded-xl hover:from-[#2563eb] hover:via-[#0891b2] hover:to-[#059669] transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                {/* <button className="px-8 py-3 bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] text-white rounded-xl hover:from-[#2563eb] hover:via-[#0891b2] hover:to-[#059669] transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
                   Explore Our Work
-                </button>
-                <button className="px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl hover:border-gray-400 hover:bg-gray-50 transition-all duration-300 font-medium">
-                  Get In Touch
-                </button>
+                  </button> */}
+             <button
+  onClick={() => window.location.href = "mailto:mahindersehgl@webberec.com?subject=Inquiry&body=Hello%2C%20I%20would%20like%20to%20get%20in%20touch%20regarding..."}
+  className="px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl hover:border-gray-400 hover:bg-gray-50 transition-all duration-300 font-medium"
+>
+  
+  Get In Touch
+</button>
+
+
               </div>
             </div>
           </div>
