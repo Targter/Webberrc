@@ -1305,6 +1305,8 @@ export const StickyScroll = ({ content, contentClassName }) => {
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     const cardsBreakpoints = content.map(
+
+
       (_, index) => index / (cardLength - 1)
     );
     const closestBreakpointIndex = cardsBreakpoints.reduce(
@@ -1375,8 +1377,8 @@ export const StickyScroll = ({ content, contentClassName }) => {
               <motion.h2
                 initial={{ opacity: 0, x: -30 }}
                 animate={{
-                  opacity: activeCard === index ? 1 : 0.7,
-                  x: activeCard === index ? 0 : -10,
+                  opacity: 1, // Fixed: consistent high opacity
+                  x: 0, // Fixed: consistent positioning
                 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
                 className="text-2xl md:text-3xl font-bold text-white mb-3 md:mb-4 leading-tight text-center lg:text-left"
@@ -1386,8 +1388,8 @@ export const StickyScroll = ({ content, contentClassName }) => {
               <motion.p
                 initial={{ opacity: 0, x: -30 }}
                 animate={{
-                  opacity: activeCard === index ? 1 : 0.6,
-                  x: activeCard === index ? 0 : -10,
+                  opacity: 1, // Fixed: consistent high opacity
+                  x: 0, // Fixed: consistent positioning
                 }}
                 transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
                 className="text-base md:text-lg text-white leading-relaxed mb-4 md:mb-6 text-center lg:text-left"
@@ -1397,13 +1399,13 @@ export const StickyScroll = ({ content, contentClassName }) => {
               <motion.button
                 initial={{ opacity: 0, x: -30 }}
                 animate={{
-                  opacity: activeCard === index ? 1 : 0.5,
-                  x: activeCard === index ? 0 : -10,
+                  opacity: 1, // Fixed: consistent high opacity
+                  x: 0, // Fixed: consistent positioning
                 }}
                 transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative  items-center gap-2 px-5 py-2 md:px-6 md:py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transform transition-all duration-300 overflow-hidden mx-auto lg:mx-0 block"
+                className="group relative items-center gap-2 px-5 py-2 md:px-6 md:py-3 bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] text-white font-medium rounded-lg shadow-lg hover:shadow-xl transform transition-all duration-300 overflow-hidden mx-auto lg:mx-0 block"
               >
                 <span className="relative z-10 text-sm md:text-base">
                   Learn More
@@ -1417,9 +1419,9 @@ export const StickyScroll = ({ content, contentClassName }) => {
             <motion.div
               initial={{ opacity: 0, scale: 0.8, x: 50 }}
               animate={{
-                opacity: activeCard === index ? 1 : 0.4,
-                scale: activeCard === index ? 1 : 0.9,
-                x: activeCard === index ? 0 : 20,
+                opacity: 1, // Fixed: consistent high opacity
+                scale: 1, // Fixed: consistent scale
+                x: 0, // Fixed: consistent positioning
               }}
               transition={{
                 duration: 0.7,

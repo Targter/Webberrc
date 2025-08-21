@@ -159,10 +159,10 @@ const Products = () => {
       {/* Header Section */}
      <div className="text-center py-12 px-4">
   <div className="max-w-6xl mx-auto">
-    <p className="text-sm uppercase tracking-wide text-slate-500">
+    <p className="text-sm uppercase tracking-wide text-slate-900">
       Our Offerings
     </p>
-    <div className="w-28 h-0.5 bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] mx-auto mt-1 mb-3 rounded-full"></div>
+    <div className="w-28 h-0.5 bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] mx-auto  mb-3 rounded-full"></div>
 
     <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-slate-800 mb-2 tracking-tight">
       Powering{" "}

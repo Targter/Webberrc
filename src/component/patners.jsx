@@ -147,11 +147,11 @@ const TrustedPartnersSection = () => {
                 OUR
               </span>{" "}
               <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent drop-shadow-sm">
-                TRUSTED
+                TRUSTED PARTNERS
               </span>{" "}
-              <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent drop-shadow-sm shine">
+              {/* <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent drop-shadow-sm shine">
                 PARTNERS
-              </span>{" "}
+              </span>{" "} */}
             </h1>
             
             <style jsx>{`
