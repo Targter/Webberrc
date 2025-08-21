@@ -23,7 +23,7 @@ export default function Home() {
 
       {/* <GlowingEffectDemoSecond /> */}
       <TrustedPartnersSection />
-      <div className="text-center max-w-5xl mx-auto px-4">
+      <div className="bg-gray-50 text-center max-w-5xl mx-auto px-4">
         <div className="space-y-0">
           <div className="text-3xl md:text-5xl font-black">
             <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent drop-shadow-lg tracking-tight">

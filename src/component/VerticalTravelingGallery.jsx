@@ -76,10 +76,28 @@ const VerticalSyncGrid = () => {
   return (
     <div className="min-h-screen bg-gray-50 overflow-hidden">
       {/* Enhanced Header Section */}
-      
-      
 
-       
+      <div className="text-center max-w-5xl mx-auto px-4">
+        <div className="space-y-0">
+          <div className="text-3xl md:text-5xl font-black">
+            <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent drop-shadow-lg tracking-tight">
+              VISUAL WALKTHROUGH
+            </span>
+          </div>
+          <div className="space-y-3">
+            <h3 className="text-l md:text-xl font-semibold text-gray-400 mt-2">
+              Unleashing the Power of Our Solutions
+            </h3>
+          </div>
+          <div className="flex justify-center items-center space-x-3 text-sm text-gray-500 mt-8">
+            <div className="w-12 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
+            <span className="font-semibold px-4 py-2 bg-white rounded-full shadow-sm">
+              Design • Develop • Deploy
+            </span>
+            <div className="w-12 h-px bg-gradient-to-l from-transparent via-gray-400 to-transparent"></div>
+          </div>
+        </div>
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="grid lg:grid-cols-2 gap-8 items-center">
@@ -117,7 +135,11 @@ const VerticalSyncGrid = () => {
           >
             <div className="space-y-4">
               <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                Powered by <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent">150+</span> Visionaries:
+                Powered by{" "}
+                <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent">
+                  150+
+                </span>{" "}
+                Visionaries:
               </h1>
 
               <h2 className="text-2xl lg:text-3xl font-semibold text-gray-700">
@@ -127,21 +149,30 @@ const VerticalSyncGrid = () => {
 
             <div className="space-y-6">
               <p className="text-lg text-gray-600">
-                Our multidisciplinary team of designers, developers, strategists, and innovators collaborate seamlessly to bring extraordinary concepts to life through cutting-edge technology and creative excellence.
+                Our multidisciplinary team of designers, developers,
+                strategists, and innovators collaborate seamlessly to bring
+                extraordinary concepts to life through cutting-edge technology
+                and creative excellence.
               </p>
 
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="w-4 h-px bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981]"></div>
-                  <span className="text-gray-700 font-medium">Award-winning design solutions</span>
+                  <span className="text-gray-700 font-medium">
+                    Award-winning design solutions
+                  </span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-4 h-px bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981]"></div>
-                  <span className="text-gray-700 font-medium">Next-generation development practices</span>
+                  <span className="text-gray-700 font-medium">
+                    Next-generation development practices
+                  </span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-4 h-px bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981]"></div>
-                  <span className="text-gray-700 font-medium">Strategic innovation consulting</span>
+                  <span className="text-gray-700 font-medium">
+                    Strategic innovation consulting
+                  </span>
                 </div>
               </div>
 
