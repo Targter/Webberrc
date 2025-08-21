@@ -157,25 +157,25 @@ const Products = () => {
   return (
     <div className="w-full min-h-screen  max-w-7xl mx-auto">
       {/* Header Section */}
-      <div className="text-center py-16 px-4">
-        <div className="max-w-6xl mx-auto">
-          <p className="text-sm uppercase tracking-wide text-slate-500 ">
-            OUR OFFERINGS
-          </p>
-          <div className="w-28 h-0.5 bg-gradient-to-r from-green-400 to-emerald-500 mx-auto mt-1 mb-3 rounded-full"></div>
+     <div className="text-center py-12 px-4">
+  <div className="max-w-6xl mx-auto">
+    <p className="text-sm uppercase tracking-wide text-slate-500">
+      Our Offerings
+    </p>
+    <div className="w-28 h-0.5 bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] mx-auto mt-1 mb-3 rounded-full"></div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-800 mb-2 tracking-tight">
-            Revolutionizing{" "}
-            <span className="bg-gradient-to-r from-[#65af32] via-[#4ecf56] to-[#3dd07a] bg-clip-text text-transparent">
-              Electric
-            </span>{" "}
-            <span className="bg-gradient-to-r from-[#65af32] via-[#3ad98a] to-[#2eeeb5] bg-clip-text text-transparent">
-              Mobility
-            </span>{" "}
-            with our cutting-edge product line
-          </h1>
-        </div>
-      </div>
+    <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-slate-800 mb-2 tracking-tight">
+      Powering{" "}
+      <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent">
+        Electric
+      </span>{" "}
+      <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent">
+        Mobility
+      </span>
+    </h1>
+  </div>
+</div>
+
 
       {/* Category Tabs */}
       <div className="max-w-7xl mx-auto px-4 lg:px-8 mb-8">

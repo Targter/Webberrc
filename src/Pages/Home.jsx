@@ -66,11 +66,11 @@ const Home2 = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60"></div>
       </div>
 
-      {/* Main Content - Improved responsive layout */}
+      {/* Main Content - Fixed responsive layout */}
       <div className="relative z-20 w-full h-screen flex items-center px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20 pt-16 sm:pt-20 md:pt-24">
         <div className="w-full h-full max-w-full sm:max-w-2xl md:max-w-4xl lg:max-w-4xl mx-auto lg:mx-0">
-          {/* Orange highlight text - Better responsive spacing */}
-          <div className={`mb-3 sm:mb-4 md:mb-6 lg:mb-8 pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-1 sm:pb-2 md:pb-3 lg:pb-4 transition-all duration-1000 ${
+          {/* Orange highlight text - Left aligned for all sizes */}
+          <div className={`mb-3 sm:mb-4 md:mb-6 lg:mb-8 pt-4 sm:pt-8 md:pt-12 lg:pt-20 pb-1 sm:pb-2 md:pb-3 lg:pb-4 transition-all duration-1000 ${
             hasLaunched 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-8'
@@ -80,15 +80,15 @@ const Home2 = () => {
             transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
           }}>
             <div className="inline-flex items-center space-x-1 sm:space-x-2 bg-white/10 backdrop-blur-sm px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-full border border-white/20">
-              <span className="text-white text-xs sm:text-sm md:text-base lg:text-lg font-medium tracking-wide uppercase leading-tight text-center">
+              <span className="text-white text-xs sm:text-sm md:text-base lg:text-lg font-medium tracking-wide uppercase leading-tight">
                 <span className="hidden sm:inline">RELIABLE CHIP • RELIABLE BATTERY • RELIABLE RIDE</span>
                 <span className="sm:hidden">RELIABLE • TRUSTED • INNOVATIVE</span>
               </span>
             </div>
           </div>
 
-          {/* Main heading - Improved responsive typography */}
-          <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-bold text-white leading-tight sm:leading-[0.85] md:leading-[0.9] mb-2 sm:mb-3 md:mb-4 lg:mb-6 mt-3 sm:mt-4 md:mt-6 lg:mt-8 transition-all duration-1000 text-center sm:text-left ${
+          {/* Main heading - Left aligned for all sizes */}
+          <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-bold text-white leading-tight sm:leading-[0.85] md:leading-[0.9] mb-2 sm:mb-3 md:mb-4 lg:mb-6 mt-2 sm:mt-3 md:mt-4 lg:mt-6 transition-all duration-1000 text-left ${
             hasLaunched 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-12'
@@ -100,13 +100,13 @@ const Home2 = () => {
             <span className="bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent block">
               TRUSTED
             </span>
-            <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent block">
+            <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent block">
               PERFORMANCE
             </span>
           </h1>
           
-          {/* Description paragraph - Better responsive text sizing */}
-          <p className={`text-sm sm:text-base md:text-lg lg:text-xl xl:text-xl text-gray-200 max-w-full leading-relaxed mb-4 sm:mb-6 md:mb-8 lg:mb-10 mt-2 sm:mt-3 md:mt-4 lg:mt-6 font-light transition-all duration-1000 text-center sm:text-left px-2 sm:px-0 ${
+          {/* Description paragraph - Left aligned for all sizes */}
+          <p className={`text-sm sm:text-base md:text-lg lg:text-xl xl:text-xl text-gray-200 max-w-full leading-relaxed mb-4 sm:mb-6 md:mb-6 lg:mb-8 mt-2 sm:mt-3 md:mt-4 lg:mt-6 font-light transition-all duration-1000 text-left ${
             hasLaunched 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-8'
@@ -119,8 +119,8 @@ const Home2 = () => {
             <span className="md:hidden">Delivering cutting-edge Electric Vehicle Chips engineered with precision and intelligence for smarter automotive innovation.</span>
           </p>
 
-          {/* Responsive Stats Section - Improved spacing and sizing */}
-          <div className={`flex justify-center transition-all duration-1000 ${
+          {/* Stats Section - Left aligned and reduced spacing */}
+          <div className={`flex justify-start transition-all duration-1000 ${
             hasLaunched 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-8'
@@ -129,15 +129,15 @@ const Home2 = () => {
             transitionDelay: '800ms',
             transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
           }}>
-            <div className="grid grid-cols-3 gap-3 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-16 w-fit px-2 sm:px-0">
+            <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-16 w-fit">
               {stats.map((stat, index) => (
                 <div 
                   key={index}
-                  className="text-center group min-w-0"
+                  className="text-left group min-w-0"
                 >
-                  {/* Animated Number - Better responsive sizing */}
+                  {/* Animated Number */}
                   <div className="mb-1 sm:mb-2">
-                    <span className="text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent group-hover:from-cyan-300 group-hover:to-blue-300 transition-all duration-300">
+                    <span className="text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent group-hover:from-cyan-300 group-hover:to-blue-300 transition-all duration-300">
                       {animatedStats[index]}
                     </span>
                     <span className="text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-cyan-400 group-hover:text-cyan-300 transition-colors duration-300">
@@ -145,8 +145,8 @@ const Home2 = () => {
                     </span>
                   </div>
                   
-                  {/* Stat Title - Better responsive text */}
-                  <h3 className="text-xs sm:text-sm md:text-base text-gray-300 font-medium uppercase tracking-wide group-hover:text-white transition-colors duration-300 px-1">
+                  {/* Stat Title */}
+                  <h3 className="text-xs sm:text-sm md:text-base text-gray-300 font-medium uppercase tracking-wide group-hover:text-white transition-colors duration-300">
                     <span className="hidden sm:inline">{stat.title}</span>
                     <span className="sm:hidden">
                       {stat.title === "Customers Served" ? "Customers" : 
@@ -154,8 +154,8 @@ const Home2 = () => {
                     </span>
                   </h3>
                   
-                  {/* Decorative line - Responsive sizing */}
-                  <div className="w-3 sm:w-6 md:w-8 h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent mx-auto mt-1 sm:mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  {/* Decorative line */}
+                  <div className="w-3 sm:w-6 md:w-8 h-0.5 bg-gradient-to-r from-cyan-400 via-cyan-400 to-transparent mt-1 sm:mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
               ))}
             </div>

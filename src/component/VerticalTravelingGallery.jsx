@@ -76,24 +76,24 @@ const VerticalSyncGrid = () => {
   return (
     <div className="min-h-screen bg-gray-50 overflow-hidden">
       {/* Enhanced Header Section */}
-      <div className="pt-29 pb-12 text-center max-w-4xl mx-auto px-4">
-        <div className="space-y-4">
-          <div className="text-6xl md:text-7xl font-black">
-            <span className="bg-gradient-to-r from-[#65af32] via-[#4ecf56] to-[#3dd07a] bg-clip-text text-transparent drop-shadow-lg tracking-tight">
-              MEDIA
+      <div className="pt-29 pb-12 text-center max-w-5xl mx-auto px-4">
+        <div className="space-y-6">
+          <div className="text-6xl md:text-8xl font-black">
+            <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent drop-shadow-lg tracking-tight">
+              VISUAL WALKTHROUGH
             </span>
           </div>
-          <h2 className="text-xl md:text-2xl font-semibold text-gray-700 mb-4">
-            Visual Stories That Inspire Innovation
-          </h2>
-          {/* <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Explore our dynamic workspace where creativity meets technology. From collaborative brainstorming sessions to cutting-edge development environments, witness the passion and innovation that drives our team forward.
-          </p> */}
-          {/* <div className="flex justify-center items-center space-x-2 text-sm text-gray-500 mt-6">
-            <div className="w-8 h-px bg-gradient-to-r from-transparent to-gray-300"></div>
-            <span className="font-medium">Behind the Scenes</span>
-            <div className="w-8 h-px bg-gradient-to-l from-transparent to-gray-300"></div>
-          </div> */}
+          <div className="space-y-3">
+           
+            <h3 className="text-xl md:text-2xl font-semibold text-gray-600">
+              Unleashing the Power of Our Solutions
+            </h3>
+          </div>
+          <div className="flex justify-center items-center space-x-3 text-sm text-gray-500 mt-8">
+            <div className="w-12 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
+            <span className="font-semibold px-4 py-2 bg-white rounded-full shadow-sm">Design • Develop • Deploy</span>
+            <div className="w-12 h-px bg-gradient-to-l from-transparent via-gray-400 to-transparent"></div>
+          </div>
         </div>
       </div>
       
@@ -133,24 +133,40 @@ const VerticalSyncGrid = () => {
           >
             <div className="space-y-4">
               <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                Fueled by <span className="text-blue-500">120+</span> Creative
-                Minds:
+                Powered by <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent">150+</span> Visionaries:
               </h1>
 
               <h2 className="text-2xl lg:text-3xl font-semibold text-gray-700">
-                Crafting Innovation Beyond Boundaries
+                Transforming Ideas Into Digital Masterpieces
               </h2>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-6">
               <p className="text-lg text-gray-600">
-                Our diverse team brings together expertise from various fields
-                to create a culture of continuous learning and innovation.
+                Our multidisciplinary team of designers, developers, strategists, and innovators collaborate seamlessly to bring extraordinary concepts to life through cutting-edge technology and creative excellence.
               </p>
 
-              <div className="flex gap-4">
-                <button className="px-6 py-3 border-2 border-blue-500 text-blue-500 rounded-xl hover:bg-blue-500 hover:text-white transition-all duration-300 font-medium">
-                  About us
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-4 h-px bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981]"></div>
+                  <span className="text-gray-700 font-medium">Award-winning design solutions</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-4 h-px bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981]"></div>
+                  <span className="text-gray-700 font-medium">Next-generation development practices</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-4 h-px bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981]"></div>
+                  <span className="text-gray-700 font-medium">Strategic innovation consulting</span>
+                </div>
+              </div>
+
+              <div className="flex gap-4 pt-4">
+                <button className="px-8 py-3 bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] text-white rounded-xl hover:from-[#2563eb] hover:via-[#0891b2] hover:to-[#059669] transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                  Explore Our Work
+                </button>
+                <button className="px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl hover:border-gray-400 hover:bg-gray-50 transition-all duration-300 font-medium">
+                  Get In Touch
                 </button>
               </div>
             </div>

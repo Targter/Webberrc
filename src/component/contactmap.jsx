@@ -433,8 +433,7 @@ const ContactFAQComponent = () => {
               <div className="absolute -inset-2 md:-inset-4 bg-gradient-to-r from-blue-500/10 to-green-400/10 blur-xl rounded-3xl"></div>
               <div className="relative">
                 <div className="inline-flex items-center px-3 py-1 md:px-4 md:py-2 rounded-full bg-gradient-to-r from-blue-500/10 to-green-400/10 border border-blue-200/20 mb-4 md:mb-6">
-                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-gradient-to-r from-blue-500 to-green-400 rounded-full mr-2 md:mr-3 animate-pulse"></div>
-                  <span className="bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent text-xs md:text-sm font-medium tracking-wide">
+                                    <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent text-xs md:text-sm font-medium tracking-wide">
                     HAVE ANY QUESTION?
                   </span>
                 </div>
@@ -531,7 +530,7 @@ const ContactFAQComponent = () => {
   {/* Map Section - Now takes 2 columns (wider) */}
   <div className="order-1 lg:order-1 lg:col-span-2">
     <div className="relative h-full">
-      <div className="relative bg-white overflow-hidden shadow-xl md:shadow-2xl border border-gray-200/50 h-full min-h-[400px] md:min-h-[400px] lg:min-h-[450px]">
+      <div className="relative bg-white overflow-hidden rounded-2xl shadow-xl md:shadow-2xl border border-gray-200/50 h-full min-h-[400px] md:min-h-[400px] lg:min-h-[450px]">
         <div className="h-full w-full relative overflow-hidden">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.567!2d73.799!3d18.631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b9b8a8b8a8a8%3A0x8b8a8b8a8b8a8b8a!2sPimple%20Saudagar%2C%20Pune%2C%20Maharashtra%20411027!5e0!3m2!1sen!2sin!4v1234567890"
@@ -568,7 +567,7 @@ const ContactFAQComponent = () => {
   {/* Contact Form - Now takes 1 column (more concise and positioned to right) */}
   <div className="order-2 lg:order-2">
     <div className="relative">
-      <div className="absolute -inset-1 md:-inset-2 bg-black"></div>
+      <div className="absolute -inset-1 rounded-2xl md:-inset-2 bg-black"></div>
       <div className="relative bg-black p-4 md:p-6 border border-slate-700/50 h-[400px] md:h-[400px] lg:h-[450px] flex flex-col">
         <div className="flex items-center mb-4 md:mb-6">
           <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-blue-500 to-green-400 rounded-lg md:rounded-xl flex items-center justify-center mr-2 md:mr-3">
