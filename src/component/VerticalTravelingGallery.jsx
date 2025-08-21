@@ -133,7 +133,11 @@ const VerticalSyncGrid = () => {
           >
             <div className="space-y-4">
               <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                Powered by <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent">150+</span> Visionaries:
+                Powered by{" "}
+                <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent">
+                  150+
+                </span>{" "}
+                Visionaries:
               </h1>
 
               <h2 className="text-2xl lg:text-3xl font-semibold text-gray-700">
@@ -143,21 +147,30 @@ const VerticalSyncGrid = () => {
 
             <div className="space-y-6">
               <p className="text-lg text-gray-600">
-                Our multidisciplinary team of designers, developers, strategists, and innovators collaborate seamlessly to bring extraordinary concepts to life through cutting-edge technology and creative excellence.
+                Our multidisciplinary team of designers, developers,
+                strategists, and innovators collaborate seamlessly to bring
+                extraordinary concepts to life through cutting-edge technology
+                and creative excellence.
               </p>
 
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="w-4 h-px bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981]"></div>
-                  <span className="text-gray-700 font-medium">Award-winning design solutions</span>
+                  <span className="text-gray-700 font-medium">
+                    Award-winning design solutions
+                  </span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-4 h-px bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981]"></div>
-                  <span className="text-gray-700 font-medium">Next-generation development practices</span>
+                  <span className="text-gray-700 font-medium">
+                    Next-generation development practices
+                  </span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-4 h-px bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981]"></div>
-                  <span className="text-gray-700 font-medium">Strategic innovation consulting</span>
+                  <span className="text-gray-700 font-medium">
+                    Strategic innovation consulting
+                  </span>
                 </div>
               </div>
 
