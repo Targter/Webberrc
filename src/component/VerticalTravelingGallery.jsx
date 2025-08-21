@@ -78,7 +78,7 @@ const VerticalSyncGrid = () => {
       {/* Enhanced Header Section */}
       <div className="pt-29 pb-12 text-center max-w-5xl mx-auto px-4">
         <div className="space-y-6">
-          <div className="text-6xl md:text-8xl font-black">
+          <div className="text-4xl md:text-6xl font-black">
             <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent drop-shadow-lg tracking-tight">
               VISUAL WALKTHROUGH
             </span>

@@ -1577,19 +1577,12 @@ const sampleContent = [
     content: (
       <div className="relative h-full w-full">
         <img
-          src="/rd/battery2.png"
+          src="/rd/battery3.png"
           alt="Easy Battery Pack Paralleling"
-          className="h-full w-full object-cover"
+          className="h-full w-full  object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-        <div className="absolute bottom-8 left-8 right-8">
-          <h3 className="text-2xl font-bold text-white mb-2">
-            Seamless Power Delivery
-          </h3>
-          <p className="text-white/90 text-sm">
-            Paralleling made simple with no software dependencies
-          </p>
-        </div>
+      
       </div>
     ),
   },
@@ -1600,19 +1593,12 @@ const sampleContent = [
     content: (
       <div className="relative h-full w-full">
         <img
-          src="/rd/reliable2.png"
+          src="/rd/Reliability3.png"
           alt="Unparalleled Reliability"
           className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-        <div className="absolute bottom-8 left-8 right-8">
-          <h3 className="text-2xl font-bold text-white mb-2">
-            Tested for Millions of Kms
-          </h3>
-          <p className="text-white/90 text-sm">
-            Rugged design trusted by 15K+ successful deployments
-          </p>
-        </div>
+     
       </div>
     ),
   },
@@ -1623,19 +1609,12 @@ const sampleContent = [
     content: (
       <div className="relative h-full w-full">
         <img
-          src="/rd/balance.png"
+          src="/rd/balance1.png"
           alt="Better Cell Balancing"
           className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-        <div className="absolute bottom-8 left-8 right-8">
-          <h3 className="text-2xl font-bold text-white mb-2">
-            Fast & Efficient Balancing
-          </h3>
-          <p className="text-white/90 text-sm">
-            400mA current + smart algorithms for better DoD control
-          </p>
-        </div>
+       
       </div>
     ),
   },
@@ -1646,19 +1625,12 @@ const sampleContent = [
     content: (
       <div className="relative h-full w-full">
         <img
-          src="/rd/thermal.png"
+          src="/rd/thermal2.png"
           alt="Superior Thermal Stability"
           className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-        <div className="absolute bottom-8 left-8 right-8">
-          <h3 className="text-2xl font-bold text-white mb-2">
-            2x Better Thermal Performance
-          </h3>
-          <p className="text-white/90 text-sm">
-            Innovative MOSFET mounting delivers cooler efficiency
-          </p>
-        </div>
+    
       </div>
     ),
   },

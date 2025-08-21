@@ -256,46 +256,46 @@ const Products = () => {
         </p>
          
         {/* Action Buttons Container */}
-        <div className="flex items-center justify-between">
-          {/* Download Info Document Button - Left Side */}
-          <button 
-            onClick={() => window.open(product.documentUrl, '_blank')}
-            className="inline-flex items-center text-md font-medium text-green-600 hover:text-green-700 transition-colors group/download"
-          >
-            <svg
-              className="w-5 h-5 mr-1 transition-transform group-hover/download:translate-y-0.5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-              />
-            </svg>
-            <span>Info Doc</span>
-          </button>
-          
-          {/* View Product Button - Right Side */}
-          <button className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors group/btn">
-            <span className="mr-2">View product</span>
-            <svg
-              className="w-4 h-4 transition-transform group-hover/btn:translate-x-1"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </button>
-        </div>
+       <div className="flex items-center justify-between">
+  {/* Download Info Document Button - Left Side */}
+  <button 
+    onClick={() => window.open(product.documentUrl, '_blank')}
+    className="inline-flex items-center text-md font-medium bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent hover:from-[#2563eb] hover:via-[#0891b2] hover:to-[#059669] transition-all duration-300 group/download"
+  >
+    <svg
+      className="w-5 h-5 mr-1 transition-transform group-hover/download:translate-y-0.5 text-cyan-500 group-hover/download:text-cyan-400"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+      />
+    </svg>
+    <span>Info Doc</span>
+  </button>
+  
+  {/* View Product Button - Right Side */}
+  <button className="inline-flex items-center text-sm font-medium bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent hover:from-[#2563eb] hover:via-[#0891b2] hover:to-[#059669] transition-all duration-300 group/btn">
+    <span className="mr-2">View product</span>
+    <svg
+      className="w-4 h-4 transition-transform group-hover/btn:translate-x-1 text-blue-500 group-hover/btn:text-blue-400"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M9 5l7 7-7 7"
+      />
+    </svg>
+  </button>
+</div>
       </div>
        
       {/* Bottom Border Accent */}

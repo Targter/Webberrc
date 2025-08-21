@@ -23,7 +23,7 @@ export default function Home() {
 
       {/* <GlowingEffectDemoSecond /> */}
       <TrustedPartnersSection />
-      {/* <VerticalTravelingGallery /> */}
+      <VerticalTravelingGallery />
       {/* <Achieve /> */}
       {/* <VideoComponent /> */}
       {/* <ManufacturingShowcase /> */}

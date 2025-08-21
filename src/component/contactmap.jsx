@@ -507,13 +507,13 @@ const ContactFAQComponent = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 lg:py-20">
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-flex items-center px-3 py-1 md:px-4 md:py-2 rounded-full bg-blue-100/50 border border-blue-200/30 mb-4 md:mb-6">
-              <span className="text-blue-600 text-xs md:text-sm font-medium tracking-wide">
+              <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent text-xs md:text-sm font-medium tracking-wide">
                 CONTACT US
               </span>
             </div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-4 md:mb-6">
               Get The Right Solution{" "}
-              <span className="bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent">
                 For Your Needs
               </span>
             </h2>
