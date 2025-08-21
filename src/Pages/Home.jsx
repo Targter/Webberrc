@@ -66,11 +66,11 @@ const Home2 = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60"></div>
       </div>
 
-      {/* Main Content - Fixed responsive layout */}
-      <div className="relative z-20 w-full h-screen flex items-center px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20 pt-16 sm:pt-20 md:pt-24">
+      {/* Main Content - Fixed responsive layout with reduced spacing for SM/MD */}
+      <div className="relative z-20 w-full h-screen flex items-center px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20 pt-20 sm:pt-24 md:pt-28 lg:pt-24">
         <div className="w-full h-full max-w-full sm:max-w-2xl md:max-w-4xl lg:max-w-4xl mx-auto lg:mx-0">
           {/* Orange highlight text - Left aligned for all sizes */}
-          <div className={`mb-3 sm:mb-4 md:mb-6 lg:mb-8 pt-4 sm:pt-8 md:pt-12 lg:pt-20 pb-1 sm:pb-2 md:pb-3 lg:pb-4 transition-all duration-1000 ${
+          <div className={`mb-2 sm:mb-3 md:mb-4 lg:mb-8 pt-2 sm:pt-4 md:pt-6 lg:pt-20 pb-1 sm:pb-1 md:pb-2 lg:pb-4 transition-all duration-1000 ${
             hasLaunched 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-8'
@@ -88,7 +88,7 @@ const Home2 = () => {
           </div>
 
           {/* Main heading - Left aligned for all sizes */}
-          <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-bold text-white leading-tight sm:leading-[0.85] md:leading-[0.9] mb-2 sm:mb-3 md:mb-4 lg:mb-6 mt-2 sm:mt-3 md:mt-4 lg:mt-6 transition-all duration-1000 text-left ${
+          <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-bold text-white leading-tight sm:leading-[0.85] md:leading-[0.9] mb-1 sm:mb-2 md:mb-3 lg:mb-6 mt-1 sm:mt-2 md:mt-3 lg:mt-6 transition-all duration-1000 text-left ${
             hasLaunched 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-12'
@@ -106,7 +106,7 @@ const Home2 = () => {
           </h1>
           
           {/* Description paragraph - Left aligned for all sizes */}
-          <p className={`text-sm sm:text-base md:text-lg lg:text-xl xl:text-xl text-gray-200 max-w-full leading-relaxed mb-4 sm:mb-6 md:mb-6 lg:mb-8 mt-2 sm:mt-3 md:mt-4 lg:mt-6 font-light transition-all duration-1000 text-left ${
+          <p className={`text-sm sm:text-base md:text-lg lg:text-xl xl:text-xl text-gray-200 max-w-full leading-relaxed mb-3 sm:mb-4 md:mb-5 lg:mb-8 mt-1 sm:mt-2 md:mt-3 lg:mt-6 font-light transition-all duration-1000 text-left ${
             hasLaunched 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-8'

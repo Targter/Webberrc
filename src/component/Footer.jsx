@@ -59,7 +59,7 @@ const Footer = () => {
             {/* Bharat Ka BMS Badge */}
             <div className="max-w-xs">
               <div className="bg-gray-900 rounded-lg p-4 flex items-center justify-center">
-                <span className="text-white font-bold text-lg">BHARAT KA BMS</span>
+                <span className="text-white font-bold text-xl">BHARAT  KA  BMS</span>
               </div>
             </div>
           </div>
@@ -87,7 +87,7 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <h3 className="text-white text-lg font-semibold mb-6">Resources</h3>
             <ul className="space-y-4 text-sm">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">Blogs</a></li>
+              <li><a href="/Blog" className="text-gray-400 hover:text-white transition-colors duration-200">Blogs</a></li>
               <li><a href="/Media" className="text-gray-400 hover:text-white transition-colors duration-200">Media</a></li>
             </ul>
           </div>
@@ -96,9 +96,9 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <h3 className="text-white text-lg font-semibold mb-6">Company</h3>
             <ul className="space-y-4 text-sm">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">About Us</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">Careers</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">Investor Relations</a></li>
+              <li><a href="/Aboutus" className="text-gray-400 hover:text-white transition-colors duration-200">About Us</a></li>
+              <li><a href="/Carrers" className="text-gray-400 hover:text-white transition-colors duration-200">Careers</a></li>
+              <li><a href="/Invest" className="text-gray-400 hover:text-white transition-colors duration-200">Investor Relations</a></li>
             </ul>
           </div>
 
