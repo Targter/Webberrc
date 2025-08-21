@@ -1403,12 +1403,12 @@ export const StickyScroll = ({ content, contentClassName }) => {
                 transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative  items-center gap-2 px-5 py-2 md:px-6 md:py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transform transition-all duration-300 overflow-hidden mx-auto lg:mx-0 block"
+                className="group relative  items-center gap-2 px-5 py-2 md:px-6 md:py-3 bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] text-white font-medium rounded-lg shadow-lg hover:shadow-xl transform transition-all duration-300 overflow-hidden mx-auto lg:mx-0 block"
               >
                 <span className="relative z-10 text-sm md:text-base">
                   Learn More
                 </span>
-              
+
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </motion.button>
             </div>
@@ -1668,34 +1668,29 @@ export default function StickyScrollDemo() {
     <div className="min-h-screen bg-black">
       {/* Hero Section */}
       <div className="py-12 md:py-16 lg:py-20 px-4">
-     <div className="text-center mb-8 md:mb-10 px-4">
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.7, ease: "easeOut" }}
-    className="transition-all duration-700 delay-200 opacity-100 translate-y-0"
-  >
-    <h3 className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent hover:from-blue-300/70 hover:via-cyan-300/80 hover:to-blue-400/70 transition-all duration-300 border-b-2 border-yellow-400/60 pb-1 inline-block mb-3 md:mb-4 tracking-wide text-sm sm:text-base md:text-lg font-semibold">
-      Why choose Webber?
-    </h3>
-  </motion.div>
+        <div className="text-center mb-8 md:mb-10 px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="transition-all duration-700 delay-200 opacity-100 translate-y-0"
+          >
+            <h3 className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent hover:from-blue-300/70 hover:via-cyan-300/80 hover:to-blue-400/70 transition-all duration-300 border-b-2 border-yellow-400/60 pb-1 inline-block mb-3 md:mb-4 tracking-wide text-sm sm:text-base md:text-lg font-semibold">
+              Why choose Webber?
+            </h3>
+          </motion.div>
 
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-    className="transition-all duration-700 delay-400 opacity-100 translate-y-0"
-  >
-    <div className="text-2xl sm:text-3xl text-white md:text-4xl lg:text-5xl xl:text-7xl font-black leading-tight">
-
-        FIRST PRINCIPLE
-
-      <br className="block sm:hidden" />
-      
-        {" "}DESIGN APPROACH
-  
-    </div>
-    {/* <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black leading-tight">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+            className="transition-all duration-700 delay-400 opacity-100 translate-y-0"
+          >
+            <div className="text-2xl sm:text-3xl text-white md:text-4xl lg:text-5xl xl:text-7xl font-black leading-tight">
+              FIRST PRINCIPLE
+              <br className="block sm:hidden" /> DESIGN APPROACH
+            </div>
+            {/* <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black leading-tight">
       <span className="bg-gradient-to-r from-green-400/90 via-emerald-300/80 to-cyan-300/90 bg-clip-text text-transparent">
         FIRST PRINCIPLE
       </span>
@@ -1704,21 +1699,27 @@ export default function StickyScrollDemo() {
         {" "}DESIGN APPROACH
       </span>
     </div> */}
-  </motion.div>
+          </motion.div>
 
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.7, ease: "easeOut", delay: 0.4 }}
-    className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 md:gap-4 text-sm sm:text-base md:text-lg font-medium text-white transition-all duration-700 delay-800 opacity-100 translate-y-0 mt-4"
-  >
-    <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent font-semibold">Value</span>
-    <span className="text-gray-400/60">|</span>
-    <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent font-semibold">Reliable</span>
-    <span className="text-gray-400/60">|</span>
-    <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent font-semibold">Agile</span>
-  </motion.div>
-</div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.4 }}
+            className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 md:gap-4 text-sm sm:text-base md:text-lg font-medium text-white transition-all duration-700 delay-800 opacity-100 translate-y-0 mt-4"
+          >
+            <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent font-semibold">
+              Value
+            </span>
+            <span className="text-gray-400/60">|</span>
+            <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent font-semibold">
+              Reliable
+            </span>
+            <span className="text-gray-400/60">|</span>
+            <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent font-semibold">
+              Agile
+            </span>
+          </motion.div>
+        </div>
         <StickyScroll content={sampleContent} />
       </div>
     </div>

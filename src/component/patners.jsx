@@ -141,11 +141,9 @@ const TrustedPartnersSection = () => {
               : "opacity-0 translate-y-8"
           }`}
         >
-         <div className="max-w-6xl mx-auto text-center py-16 pb-0 px-4">
+          <div className="max-w-6xl mx-auto text-center py-16 pb-0 px-4">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-2 tracking-tight">
-              <span className="text-black">
-                OUR
-              </span>{" "}
+              <span className="text-black">OUR</span>{" "}
               <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent drop-shadow-sm">
                 TRUSTED
               </span>{" "}
@@ -153,15 +151,15 @@ const TrustedPartnersSection = () => {
                 PARTNERS
               </span>{" "}
             </h1>
-            
+
             <style jsx>{`
               .shine {
                 position: relative;
                 overflow: hidden;
               }
-              
+
               .shine::before {
-                content: '';
+                content: "";
                 position: absolute;
                 top: 0;
                 left: -100%;
@@ -175,7 +173,7 @@ const TrustedPartnersSection = () => {
                 );
                 animation: shine 3s infinite;
               }
-              
+
               @keyframes shine {
                 0% {
                   left: -100%;
@@ -259,7 +257,7 @@ const TrustedPartnersSection = () => {
               disabled={!canScrollRight}
               className={`flex items-center justify-center w-10 h-10 rounded-full border-2 transition-all duration-300 ${
                 canScrollRight
-                  ? "border-blue-400 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:scale-110 cursor-pointer"
+                  ? "border-slate-300 text-slate-600 hover:border-slate-400 hover:text-slate-800 hover:shadow-md hover:scale-110 cursor-pointer"
                   : "border-gray-300 text-gray-400 cursor-not-allowed"
               }`}
               aria-label="Scroll right"
@@ -268,14 +266,16 @@ const TrustedPartnersSection = () => {
             </button>
           </div>
           <div className="flex items-center gap-2 text-xs text-gray-400 dark:text-gray-500">
-            <div className="w-8 h-px bg-gradient-to-r from-transparent to-blue-400/50"></div>
+            <div className="w-8 h-px bg-gradient-to-r from-transparent to-gray-400/50"></div>
             <span>Use arrows or scroll to explore</span>
-            <div className="w-8 h-px bg-gradient-to-l from-transparent to-blue-400/50"></div>
+            <div className="w-8 h-px bg-gradient-to-l from-transparent to-gray-400/50"></div>
           </div>
         </div>
       </div>
     </section>
   );
 };
+
+// border-slate-300 text-slate-600 hover:border-slate-400 hover:text-slate-800 hover:shadow-md
 
 export default TrustedPartnersSection;
