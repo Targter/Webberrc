@@ -16,96 +16,108 @@ const Products = () => {
     "Other Advance Electronics",
   ];
 
- const allProducts = {
-  "Battery Management Systems": [
-    {  
-      heading: "Compact Applications", 
-      title: "WBMS-SW-32S Contactor",
-      description: "Feature-rich BMS designed for standalone & stackable architecture with || support.",
-      image: "/products/sw.png",
-      documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
-    },
-    {
-      heading: "Performance 2W & E-Ricks (L3)",
-      title: "WBMS-SWLT 16S 100A",
-      description: "Smart BMS Manages Lithium Ion Batteries with Precision and Speed.",
-      image: "/products/swmini.png",
-      documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
-    },
-    {
-      heading: "Autos (L5) & Forklifts",
-      title: "WBMS-SW 16S Contactor",
-      description: "Functionally Safe BMS for High Power and low voltage applications.",
-      image: "/products/webim2.png",
-      documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
-    },
-    {
-      heading: "Heavy Duty Applications",
-      title: "WBMS-SW 24S Pro",
-      description: "Advanced BMS solution for heavy-duty vehicles with enhanced safety protocols.",
-      image: "/products/sw.png",
-      documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
-    },
-    {
-      heading: "Marine & Maritime",
-      title: "WBMS-SW Marine Series",
-      description: "Waterproof BMS designed for marine applications with corrosion resistance.",
-      image: "/products/swmini.png",
-      documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
-    },
-    {
-      heading: "Energy Storage Systems",
-      title: "WBMS-SW Grid Scale",
-      description: "High-capacity BMS for grid-scale energy storage and renewable integration.",
-      image: "/products/webim2.png",
-      documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
-    },
-  ],
-  "Other Advance Electronics": [
-    {  
-      heading: "Industrial Solutions", 
-      title: "Advanced Control Unit",
-      description: "High-performance control systems for industrial automation and monitoring applications.",
-      image: "/products/sw.png",
-      documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
-    },
-    {
-      heading: "Smart Connectivity",
-      title: "IoT Communication Module",
-      description: "Seamless connectivity solutions for smart devices and industrial IoT applications.",
-      image: "/products/swmini.png",
-      documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
-    },
-    {
-      heading: "Power Electronics",
-      title: "Precision Power Supply",
-      description: "Reliable power management solutions for critical electronic systems and applications.",
-      image: "/products/webim2.png",
-      documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
-    },
-    {
-      heading: "Signal Processing",
-      title: "Digital Signal Processor",
-      description: "High-speed signal processing unit for real-time data analysis and filtering.",
-      image: "/products/sw.png",
-      documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
-    },
-    {
-      heading: "Wireless Solutions",
-      title: "RF Communication Module",
-      description: "Long-range wireless communication system for remote monitoring applications.",
-      image: "/products/swmini.png",
-      documentUrl: "/documents/rf-communication-module-spec.pdf",
-    },
-    {
-      heading: "Sensor Networks",
-      title: "Multi-Sensor Hub",
-      description: "Integrated sensor platform for environmental monitoring and data collection.",
-      image: "/products/webim2.png",
-      documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
-    },
-  ]
-};
+  const allProducts = {
+    "Battery Management Systems": [
+      {
+        heading: "Compact Applications",
+        title: "WBMS-SW-32S Contactor",
+        description:
+          "Feature-rich BMS designed for standalone & stackable architecture with || support.",
+        image: "/products/sw.png",
+        documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
+      },
+      {
+        heading: "Performance 2W & E-Ricks (L3)",
+        title: "WBMS-SWLT 16S 100A",
+        description:
+          "Smart BMS Manages Lithium Ion Batteries with Precision and Speed.",
+        image: "/products/swmini.png",
+        documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
+      },
+      {
+        heading: "Autos (L5) & Forklifts",
+        title: "WBMS-SW 16S Contactor",
+        description:
+          "Functionally Safe BMS for High Power and low voltage applications.",
+        image: "/products/webim2.png",
+        documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
+      },
+      {
+        heading: "Heavy Duty Applications",
+        title: "WBMS-SW 24S Pro",
+        description:
+          "Advanced BMS solution for heavy-duty vehicles with enhanced safety protocols.",
+        image: "/products/sw.png",
+        documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
+      },
+      {
+        heading: "Marine & Maritime",
+        title: "WBMS-SW Marine Series",
+        description:
+          "Waterproof BMS designed for marine applications with corrosion resistance.",
+        image: "/products/swmini.png",
+        documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
+      },
+      {
+        heading: "Energy Storage Systems",
+        title: "WBMS-SW Grid Scale",
+        description:
+          "High-capacity BMS for grid-scale energy storage and renewable integration.",
+        image: "/products/webim2.png",
+        documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
+      },
+    ],
+    "Other Advance Electronics": [
+      {
+        heading: "Industrial Solutions",
+        title: "Advanced Control Unit",
+        description:
+          "High-performance control systems for industrial automation and monitoring applications.",
+        image: "/products/sw.png",
+        documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
+      },
+      {
+        heading: "Smart Connectivity",
+        title: "IoT Communication Module",
+        description:
+          "Seamless connectivity solutions for smart devices and industrial IoT applications.",
+        image: "/products/swmini.png",
+        documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
+      },
+      {
+        heading: "Power Electronics",
+        title: "Precision Power Supply",
+        description:
+          "Reliable power management solutions for critical electronic systems and applications.",
+        image: "/products/webim2.png",
+        documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
+      },
+      {
+        heading: "Signal Processing",
+        title: "Digital Signal Processor",
+        description:
+          "High-speed signal processing unit for real-time data analysis and filtering.",
+        image: "/products/sw.png",
+        documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
+      },
+      {
+        heading: "Wireless Solutions",
+        title: "RF Communication Module",
+        description:
+          "Long-range wireless communication system for remote monitoring applications.",
+        image: "/products/swmini.png",
+        documentUrl: "/documents/rf-communication-module-spec.pdf",
+      },
+      {
+        heading: "Sensor Networks",
+        title: "Multi-Sensor Hub",
+        description:
+          "Integrated sensor platform for environmental monitoring and data collection.",
+        image: "/products/webim2.png",
+        documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
+      },
+    ],
+  };
 
   const currentProducts = allProducts[activeCategory];
   const cardWidth = 352 + 32; // 352px card + 32px gap
@@ -157,25 +169,24 @@ const Products = () => {
   return (
     <div className="w-full min-h-screen  max-w-7xl mx-auto">
       {/* Header Section */}
-     <div className="text-center py-12 px-4">
-  <div className="max-w-6xl mx-auto">
-    <p className="text-sm uppercase tracking-wide text-slate-900">
-      Our Offerings
-    </p>
-    <div className="w-28 h-0.5 bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] mx-auto  mb-3 rounded-full"></div>
+      <div className="text-center py-12 px-4">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-sm uppercase tracking-wide text-slate-900">
+            Our Offerings
+          </p>
+          <div className="w-28 h-0.5 bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] mx-auto  mb-3 rounded-full"></div>
 
-    <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-slate-800 mb-2 tracking-tight">
-      Powering{" "}
-      <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent">
-        Electric
-      </span>{" "}
-      <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent">
-        Mobility
-      </span>
-    </h1>
-  </div>
-</div>
-
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-slate-800 mb-2 tracking-tight">
+            Powering{" "}
+            <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent">
+              Electric
+            </span>{" "}
+            <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent">
+              Mobility
+            </span>
+          </h1>
+        </div>
+      </div>
 
       {/* Category Tabs */}
       <div className="max-w-7xl mx-auto px-4 lg:px-8 mb-8">
