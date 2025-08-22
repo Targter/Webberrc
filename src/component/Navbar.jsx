@@ -28,19 +28,23 @@ const Button = ({
   </button>
 );
 
+const handleContactClick = () => {
+  window.location.href = 'mailto:mahindersehgl@webberec.com';
+};
+
 const ElectricChipNavbar = () => {
-  const [isResourcesOpen, setIsResourcesOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isTransparent, setIsTransparent] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
   const [activeMobileSection, setActiveMobileSection] = useState(null);
   const [hasLaunched, setHasLaunched] = useState(false);
 
   const navItems = [
     { name: "Home", hasDropdown: false, link: "/" },
-    { name: "About Us", hasDropdown: false },
+    { name: "About Us", hasDropdown: false, link: "/About-us" },
+
+
     {
       name: "Products",
       hasDropdown: true,
@@ -68,7 +72,7 @@ const ElectricChipNavbar = () => {
               documentUrl: "/pdata/WBMS-SWLT-16S-100A v3.0 (1).pdf",
             },
             {
-              name: "WBMS-SW-16S Contactor",
+              name: "WBMS-SW-16S Contractor",
               description: "For cost-competitive mobility applications",
               category: "low",
               documentUrl: "/pdata/WBMS-SWLT 16S 100A.pdf",
@@ -85,81 +89,49 @@ const ElectricChipNavbar = () => {
           type: "Upcoming Projects",
           hasSubDropdown: false,
         },
+        {
+          type: "More",
+          hasSubDropdown: false,
+          link:"/Products"
+        },
       ],
     },
-    { name: "Services", hasDropdown: false },
+    { name: "Services", hasDropdown: false,link:"/Servicess" },
   ];
 
-  // Enhanced download function with better error handling and multiple fallbacks
+  // Enhanced download function
   const handleDownload = async (documentUrl, fileName) => {
     console.log("Download initiated for:", documentUrl);
 
     try {
-      // Method 1: Direct download with anchor element
       const link = document.createElement("a");
-
-      // Make URL absolute if it's relative
       const fullUrl = documentUrl.startsWith("http")
         ? documentUrl
         : `${window.location.origin}${documentUrl}`;
 
       link.href = fullUrl;
-      link.download =
-        fileName || documentUrl.split("/").pop() || "document.pdf";
+      link.download = fileName || documentUrl.split("/").pop() || "document.pdf";
       link.style.display = "none";
-      link.target = "_blank"; // Add target blank as backup
 
       document.body.appendChild(link);
-
-      // Try to trigger download
       link.click();
 
-      // Clean up
       setTimeout(() => {
-        document.body.removeChild(link);
+        if (document.body.contains(link)) {
+          document.body.removeChild(link);
+        }
       }, 100);
 
-      console.log("Download link clicked successfully");
+      console.log("Download initiated successfully");
     } catch (error) {
-      console.error("Method 1 failed, trying alternative:", error);
-
-      try {
-        // Method 2: Fetch and create blob (for cross-origin or stubborn files)
-        const response = await fetch(documentUrl);
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const blob = await response.blob();
-        const url = window.URL.createObjectURL(blob);
-
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = fileName || "document.pdf";
-        link.style.display = "none";
-
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-
-        // Clean up the blob URL
-        window.URL.revokeObjectURL(url);
-
-        console.log("Download via blob successful");
-      } catch (blobError) {
-        console.error("Method 2 failed, opening in new tab:", blobError);
-
-        // Method 3: Last resort - open in new tab with download headers
-        const newWindow = window.open(documentUrl, "_blank");
-
-        if (!newWindow) {
-          alert(
-            "Please allow popups to download the file, or check the file URL."
-          );
-        }
-      }
+      console.error("Download failed:", error);
+      window.open(documentUrl, "_blank");
     }
+  };
+
+  // Handle product click - redirect to /Products
+  const handleProductClick = (productName) => {
+    window.location.href = "/Products";
   };
 
   // First launch effect
@@ -167,14 +139,12 @@ const ElectricChipNavbar = () => {
     const timer = setTimeout(() => {
       setHasLaunched(true);
     }, 200);
-
     return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
       setIsScrolled(currentScrollY > 50);
 
       if (currentScrollY < 10) {
@@ -190,18 +160,26 @@ const ElectricChipNavbar = () => {
     };
 
     const handleResize = () => {
-      if (window.innerWidth >= 1024) {
+      if (window.innerWidth >= 768) {
         setIsMobileMenuOpen(false);
         setActiveMobileSection(null);
       }
     };
 
+    const handleClickOutside = (event) => {
+      if (!event.target.closest('.navbar-container')) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleResize);
+    document.addEventListener("click", handleClickOutside);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, [lastScrollY]);
 
@@ -211,12 +189,11 @@ const ElectricChipNavbar = () => {
 
   return (
     <nav
-      className={`fixed top-2 left-2 right-2 sm:left-4 sm:right-4 z-50 rounded-xl transition-all duration-500 transform
+      className={`navbar-container fixed top-2 left-2 right-2 sm:left-4 sm:right-4 z-50 rounded-xl transition-all duration-500 transform
         ${isTransparent ? "opacity-0 hover:opacity-100" : "opacity-100"}
-        ${
-          isScrolled
-            ? "bg-white/95 backdrop-blur-md border border-gray-200/50 shadow-lg"
-            : "bg-white/90 backdrop-blur-sm border border-gray-200/30 shadow-md"
+        ${isScrolled
+          ? "bg-white/95 backdrop-blur-md border border-gray-200/50 shadow-lg"
+          : "bg-white/90 backdrop-blur-sm border border-gray-200/30 shadow-md"
         }
         ${hasLaunched ? "translate-y-0" : "-translate-y-8"}
       `}
@@ -229,12 +206,11 @@ const ElectricChipNavbar = () => {
     >
       <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 py-1">
         <div className="flex items-center justify-between h-12 sm:h-14">
-          {/* Logo - Responsive sizing */}
+          {/* Logo */}
           <Link href="/">
             <div
-              className={`relative p-1 bg-slate-700 rounded-lg transition-all duration-700 ${
-                hasLaunched ? "opacity-100 scale-100" : "opacity-0 scale-95"
-              }`}
+              className={`relative p-1 bg-slate-700 rounded-lg transition-all duration-700 ${hasLaunched ? "opacity-100 scale-100" : "opacity-0 scale-95"
+                }`}
               style={{
                 transitionDelay: hasLaunched ? "0ms" : "200ms",
                 transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
@@ -252,104 +228,111 @@ const ElectricChipNavbar = () => {
 
           {/* Desktop/Tablet Menu - Hidden on mobile */}
           <div
-            className={`hidden md:flex items-center space-x-2 lg:space-x-4 xl:space-x-6 transition-all duration-800 ${
-              hasLaunched
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 translate-x-4"
-            }`}
+            className={`hidden md:flex items-center space-x-2 lg:space-x-4 xl:space-x-6 transition-all duration-800 ${hasLaunched
+              ? "opacity-100 translate-x-0"
+              : "opacity-0 translate-x-4"
+              }`}
             style={{
               transitionDelay: hasLaunched ? "0ms" : "400ms",
               transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
             }}
           >
             {navItems.map((item, i) => (
-              <Link href={item.link ? item.link : "/"} key={i}>
-                <div
-                  className="relative group"
-                  style={{
-                    animationDelay: hasLaunched ? "0ms" : `${500 + i * 100}ms`,
-                  }}
-                >
-                  <button className="flex items-center space-x-1 text-gray-700 hover:text-black transition-all text-sm font-medium py-1 px-2">
+              <div
+                key={i}
+                className="relative group"
+                style={{
+                  animationDelay: hasLaunched ? "0ms" : `${500 + i * 100}ms`,
+                }}
+              >
+                {item.hasDropdown ? (
+                  <div className="flex items-center space-x-1 text-gray-700 hover:text-black transition-all text-sm font-medium py-1 px-2 cursor-pointer">
                     <span className="whitespace-nowrap">{item.name}</span>
-                    {item.hasDropdown && <ChevronDown className="w-3 h-3" />}
-                  </button>
+                    <ChevronDown className="w-3 h-3" />
+                  </div>
+                ) : (
+                  <Link href={item.link ? item.link : "/"}>
+                    <div className="flex items-center space-x-1 text-gray-700 hover:text-black transition-all text-sm font-medium py-1 px-2 cursor-pointer">
+                      <span className="whitespace-nowrap">{item.name}</span>
+                    </div>
+                  </Link>
+                )}
 
-                  {item.hasDropdown && (
-                    <div className="absolute left-0 mt-1 w-64 bg-white border border-gray-200 rounded-lg shadow-lg z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150">
-                      {item.items.map((category, ci) => (
-                        <div key={ci} className="relative group/submenu">
-                          <div className="flex items-center justify-between px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 text-sm border-b border-gray-100 last:border-0 transition-colors cursor-pointer">
-                            <span className="font-medium">{category.type}</span>
-                            {category.hasSubDropdown && (
-                              <ChevronRight className="w-3 h-3" />
-                            )}
-                          </div>
-
+                {item.hasDropdown && (
+                  <div className="absolute left-0 mt-1 w-64 bg-white border border-gray-200 rounded-lg shadow-lg z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150">
+                    {item.items.map((category, ci) => (
+                      <div key={ci} className="relative group/submenu">
+                        <div className="flex items-center justify-between px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 text-sm border-b border-gray-100 last:border-0 transition-colors cursor-pointer">
+                          
+                          <span className="font-medium">{category.type}</span>
                           {category.hasSubDropdown && (
-                            <div className="absolute left-full top-0 ml-1 w-96 bg-white border border-gray-200 rounded-lg shadow-lg z-60 max-h-[60vh] overflow-y-auto opacity-0 invisible group-hover/submenu:opacity-100 group-hover/submenu:visible transition-all duration-150">
-                              <div className="p-3">
-                                <div className="grid grid-cols-2 gap-2">
-                                  {category.chips &&
-                                    category.chips.map((chip, chipIndex) => (
-                                      <div
-                                        key={chipIndex}
-                                        className="p-3 bg-gray-50 border border-gray-100 rounded-lg hover:shadow-sm hover:border-blue-200 transition-all cursor-pointer group/card"
-                                      >
-                                        <h4 className="font-medium text-gray-900 text-sm group-hover/card:text-blue-600 mb-1">
-                                          {chip.name}
-                                        </h4>
-                                        <p className="text-xs text-gray-600 line-clamp-2 mb-2">
-                                          {chip.description}
-                                        </p>
-                                        <button
-                                          onClick={(e) => {
-                                            e.preventDefault();
-                                            e.stopPropagation();
-                                            handleDownload(
-                                              chip.documentUrl,
-                                              `${chip.name}.pdf`
-                                            );
-                                          }}
-                                          className="inline-flex items-center text-xs font-medium text-green-600 hover:text-green-700 transition-colors group/download mt-1 bg-green-50 hover:bg-green-100 px-2 py-1 rounded"
-                                        >
-                                          <svg
-                                            className="w-3 h-3 mr-1 transition-transform group-hover/download:translate-y-0.5"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            viewBox="0 0 24 24"
-                                          >
-                                            <path
-                                              strokeLinecap="round"
-                                              strokeLinejoin="round"
-                                              strokeWidth={2}
-                                              d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                                            />
-                                          </svg>
-                                          <span>Download</span>
-                                        </button>
-                                      </div>
-                                    ))}
-                                </div>
-                              </div>
-                            </div>
+                            <ChevronRight className="w-3 h-3" />
                           )}
                         </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </Link>
+
+                        {category.hasSubDropdown && (
+                          <div className="absolute left-full top-0 ml-1 w-96 bg-white border border-gray-200 rounded-lg shadow-lg z-60 max-h-[60vh] overflow-y-auto opacity-0 invisible group-hover/submenu:opacity-100 group-hover/submenu:visible transition-all duration-150">
+                            <div className="p-3">
+                              <div className="grid grid-cols-2 gap-2">
+                                {category.chips &&
+                                  category.chips.map((chip, chipIndex) => (
+                                    <div
+                                      key={chipIndex}
+                                      className="p-3 bg-gray-50 border border-gray-100 rounded-lg hover:shadow-sm hover:border-blue-200 transition-all cursor-pointer group/card"
+                                      onClick={() => handleProductClick(chip.name)}
+                                    >
+                                      <h4 className="font-medium text-gray-900 text-sm group-hover/card:text-blue-600 mb-1">
+                                        {chip.name}
+                                      </h4>
+                                      <p className="text-xs text-gray-600 mb-2">
+                                        {chip.description}
+                                      </p>
+                                      <button
+                                        onClick={(e) => {
+                                          e.preventDefault();
+                                          e.stopPropagation();
+                                          handleDownload(
+                                            chip.documentUrl,
+                                            `${chip.name}.pdf`
+                                          );
+                                        }}
+                                        className="inline-flex items-center text-xs font-medium text-green-600 hover:text-green-700 transition-colors group/download mt-1 bg-green-50 hover:bg-green-100 px-2 py-1 rounded"
+                                      >
+                                        <svg
+                                          className="w-3 h-3 mr-1 transition-transform group-hover/download:translate-y-0.5"
+                                          fill="none"
+                                          stroke="currentColor"
+                                          viewBox="0 0 24 24"
+                                        >
+                                          <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                          />
+                                        </svg>
+                                        <span>Download</span>
+                                      </button>
+                                    </div>
+                                  ))}
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
           </div>
 
-          {/* Right Side Buttons - Responsive */}
+          {/* Right Side Buttons */}
           <div
-            className={`flex items-center space-x-1 sm:space-x-2 transition-all duration-700 ${
-              hasLaunched
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 translate-x-8"
-            }`}
+            className={`flex items-center space-x-1 sm:space-x-2 transition-all duration-700 ${hasLaunched
+              ? "opacity-100 translate-x-0"
+              : "opacity-0 translate-x-8"
+              }`}
             style={{
               transitionDelay: hasLaunched ? "0ms" : "600ms",
               transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
@@ -357,9 +340,8 @@ const ElectricChipNavbar = () => {
           >
             {/* Resources Button with Dropdown - Hidden on small screens, visible on sm+ */}
             <div
-              className={`hidden sm:block relative group transition-all duration-600 ${
-                hasLaunched ? "opacity-100 scale-100" : "opacity-0 scale-95"
-              }`}
+              className={`hidden sm:block relative group transition-all duration-600 ${hasLaunched ? "opacity-100 scale-100" : "opacity-0 scale-95"
+                }`}
               style={{
                 transitionDelay: hasLaunched ? "0ms" : "650ms",
               }}
@@ -397,11 +379,10 @@ const ElectricChipNavbar = () => {
               </div>
             </div>
 
-            {/* Contact Button - Always visible but responsive sizing */}
+            {/* Contact Button */}
             <div
-              className={`transition-all duration-600 ${
-                hasLaunched ? "opacity-100 scale-100" : "opacity-0 scale-95"
-              }`}
+              className={`transition-all duration-600 ${hasLaunched ? "opacity-100 scale-100" : "opacity-0 scale-95"
+                }`}
               style={{
                 transitionDelay: hasLaunched ? "0ms" : "700ms",
               }}
@@ -414,9 +395,8 @@ const ElectricChipNavbar = () => {
 
             {/* Mobile Menu Toggle - Only visible on mobile/tablet */}
             <div
-              className={`block md:hidden transition-all duration-600 ${
-                hasLaunched ? "opacity-100 scale-100" : "opacity-0 scale-95"
-              }`}
+              className={`block md:hidden transition-all duration-600 ${hasLaunched ? "opacity-100 scale-100" : "opacity-0 scale-95"
+                }`}
               style={{
                 transitionDelay: hasLaunched ? "0ms" : "750ms",
               }}
@@ -426,9 +406,9 @@ const ElectricChipNavbar = () => {
                 className="p-1.5 sm:p-2 border border-gray-300 bg-white text-gray-700 hover:text-black hover:bg-gray-50 rounded-lg transition-colors"
               >
                 {isMobileMenuOpen ? (
-                  <X className="h-3 w-3 sm:h-4 sm:w-4" />
+                  <X className="h-4 w-4" />
                 ) : (
-                  <Menu className="h-3 w-3 sm:h-4 sm:w-4" />
+                  <Menu className="h-4 w-4" />
                 )}
               </button>
             </div>
@@ -443,16 +423,15 @@ const ElectricChipNavbar = () => {
                 <div key={i}>
                   <button
                     onClick={() =>
-                      item.hasDropdown ? toggleMobileSection(i) : null
+                      item.hasDropdown ? toggleMobileSection(i) : window.location.href = item.link || "/"
                     }
                     className="w-full flex justify-between items-center text-gray-300 hover:text-white text-sm font-medium py-2.5 px-2 hover:bg-gray-800/30 rounded transition-all"
                   >
                     <span>{item.name}</span>
                     {item.hasDropdown && (
                       <ChevronDown
-                        className={`h-4 w-4 transition-transform duration-200 ${
-                          activeMobileSection === i ? "rotate-180" : ""
-                        }`}
+                        className={`h-4 w-4 transition-transform duration-200 ${activeMobileSection === i ? "rotate-180" : ""
+                          }`}
                       />
                     )}
                   </button>
@@ -471,15 +450,15 @@ const ElectricChipNavbar = () => {
                               {category.chips.map((chip, chipIndex) => (
                                 <div
                                   key={chipIndex}
-                                  className="bg-gray-800/50 p-3 rounded border border-gray-700 hover:border-gray-600 transition-colors mx-1"
+                                  className="bg-gray-800/50 p-3 rounded border border-gray-700 hover:border-gray-600 transition-colors mx-1 cursor-pointer"
+                                  onClick={() => handleProductClick(chip.name)}
                                 >
-                                  <div className="font-medium text-white text-xs mb-1">
+                                  <div className="font-medium text-white text-sm mb-1">
                                     {chip.name}
                                   </div>
-                                  <div className="text-[10px] sm:text-xs text-gray-400 leading-relaxed mb-2">
+                                  <div className="text-xs text-gray-400 leading-relaxed mb-2">
                                     {chip.description}
                                   </div>
-                                  {/* Mobile Download button */}
                                   <button
                                     onClick={(e) => {
                                       e.preventDefault();
@@ -517,17 +496,46 @@ const ElectricChipNavbar = () => {
                 </div>
               ))}
 
+              {/* Mobile Resources Section - Only show on xs */}
+              <div className="block sm:hidden pt-3 border-t border-gray-800">
+                <button
+                  onClick={() => toggleMobileSection('resources')}
+                  className="w-full flex justify-between items-center text-gray-300 hover:text-white text-sm font-medium py-2.5 px-2 hover:bg-gray-800/30 rounded transition-all"
+                >
+                  <span>Resources</span>
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform duration-200 ${activeMobileSection === 'resources' ? "rotate-180" : ""
+                      }`}
+                  />
+                </button>
+
+                {activeMobileSection === 'resources' && (
+                  <div className="ml-4 mt-2 space-y-2">
+                    <button
+                      onClick={() => window.location.href = "/Blog"}
+                      className="block w-full text-left text-gray-400 hover:text-white text-sm py-2 px-2 hover:bg-gray-800/30 rounded transition-colors"
+                    >
+                      Blogs
+                    </button>
+                    <button
+                      onClick={() => window.location.href = "/Media"}
+                      className="block w-full text-left text-gray-400 hover:text-white text-sm py-2 px-2 hover:bg-gray-800/30 rounded transition-colors"
+                    >
+                      Media
+                    </button>
+                  </div>
+                )}
+              </div>
+
               {/* Mobile CTA Buttons */}
               <div className="pt-3 border-t border-gray-800 space-y-2">
                 <Button
-                  title="Resources"
-                  containerClass="w-full border border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white rounded-lg"
-                />
-                <Button
                   title="Contact Us"
-                  containerClass="w-full bg-cyan-500 text-white hover:bg-cyan-600 border border-cyan-500 rounded-lg"
+                  onClick={handleContactClick}
+                  containerClass="w-full bg-cyan-500 text-white hover:bg-cyan-600 border border-cyan-500 rounded-lg py-3"
                 />
               </div>
+
             </div>
           </div>
         )}

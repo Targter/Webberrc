@@ -1,10 +1,9 @@
 import React from 'react'
-import Products from '@/component/Products'
+
 const page = () => {
   return (
     <div>
-      <Products/>
-
+      
     </div>
   )
 }

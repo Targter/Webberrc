@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import { Calendar, ExternalLink, Play, FileText, Newspaper, Monitor, Award, Users, Globe } from 'lucide-react';
+import Image from 'next/image';
 
 const MediaPage = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -15,7 +16,9 @@ const MediaPage = () => {
       date: 'June 2025',
       url: 'https://yourstory.com/2025/06/webber-ev-bms-india-innovation',
       description: 'In-depth interview covering Webber\'s innovative approach to EV battery management systems in India.',
-      featured: true
+      featured: true,
+      image:"/pr/article1.png"
+
     },
     {
       id: 2,
@@ -26,7 +29,8 @@ const MediaPage = () => {
       date: 'May 2025',
       url: 'https://www.youtube.com/live/W4DoA5V3ogQ?si=cNzE4PRRshVKpkI-',
       description: 'Live video interview discussing Webber\'s role in revolutionizing electric vehicle technology.',
-      featured: true
+      featured: true,
+      image:"/pr/article1.png"
     },
     {
       id: 3,
@@ -37,7 +41,8 @@ const MediaPage = () => {
       date: 'May 2025',
       url: 'https://ciso.economictimes.indiatimes.com/news/webber-electrocorp-revolutionizes-electric-vehicle-after-sales-service-with-webber-care-point/121490831',
       description: 'Press coverage on Webber Care Point service platform launch.',
-      featured: true
+      featured: true,
+      image:"/pr/article1.png"
     },
     {
       id: 4,
@@ -47,7 +52,8 @@ const MediaPage = () => {
       publication: 'Mobility Outlook',
       date: 'May 2025',
       url: 'https://www.mobilityoutlook.com/news/webber-electrocorp-enhances-ev-service-norms/',
-      description: 'Coverage of enhanced service standards and customer care initiatives.'
+      description: 'Coverage of enhanced service standards and customer care initiatives.',
+      image:"/pr/article1.png"
     },
     {
       id: 5,
@@ -57,7 +63,9 @@ const MediaPage = () => {
       publication: 'Franchise India',
       date: 'May 2025',
       url: 'https://www.franchiseindia.com/insights/en/news/webber-electrocorp-launches-webber-care-point-service-platform.56587',
-      description: 'Launch announcement of Webber Care Point service platform.'
+      description: 'Launch announcement of Webber Care Point service platform.',
+      image:"/pr/article1.png"
+      
     },
     {
       id: 6,
@@ -67,7 +75,8 @@ const MediaPage = () => {
       publication: 'Media Brief',
       date: 'May 2025',
       url: 'https://mediabrief.com/webber-electrocorp-drives-ev-mobility-forward-with-smart-after-sales-solutions/',
-      description: 'Analysis of intelligent after-sales solutions in the EV sector.'
+      description: 'Analysis of intelligent after-sales solutions in the EV sector.',
+      image:"/pr/article1.png"
     },
     {
       id: 7,
@@ -77,7 +86,8 @@ const MediaPage = () => {
       publication: 'Startup Talky',
       date: 'May 2025',
       url: 'https://startuptalky.com/news/webber-electrocorp-ev-after-sales-solutions/',
-      description: 'Coverage focusing on innovative approaches to EV customer service.'
+      description: 'Coverage focusing on innovative approaches to EV customer service.',
+      image:"/pr/article1.png"
     },
     {
       id: 8,
@@ -87,7 +97,8 @@ const MediaPage = () => {
       publication: 'Evolution Auto India',
       date: 'May 2025',
       url: 'https://evolutionautoindia.in/webber-electrocorp-leads-the-charge-in-ev-mobility-with-intelligent-after-sales-solutions/',
-      description: 'Industry leadership coverage in EV mobility solutions.'
+      description: 'Industry leadership coverage in EV mobility solutions.',
+      image:"/pr/article1.png"
     },
     {
       id: 9,
@@ -97,7 +108,8 @@ const MediaPage = () => {
       publication: 'CXO Today',
       date: 'May 2025',
       url: 'https://cxotoday.com/press-release/webber-electrocorp-leads-the-charge-in-ev-mobility-with-intelligent-after-sales-solutions/',
-      description: 'Executive perspective on Webber\'s market leadership position.'
+      description: 'Executive perspective on Webber\'s market leadership position.',
+      image:"/pr/article1.png"
     },
     {
       id: 10,
@@ -107,7 +119,8 @@ const MediaPage = () => {
       publication: 'Auto Car Pro',
       date: 'May 2025',
       url: 'https://www.autocarpro.in/news/webber-electrocorp-launches-service-network-for-electric-vehicle-after-sales-support-126699',
-      description: 'Comprehensive service network expansion announcement.'
+      description: 'Comprehensive service network expansion announcement.',
+      image:"/pr/article1.png"
     },
     {
       id: 11,
@@ -117,7 +130,8 @@ const MediaPage = () => {
       publication: 'Energetica India',
       date: 'May 2025',
       url: 'https://www.energetica-india.net/news/webber-launches-smart-battery-management-system-and-webber-care-point-ev-after-sales-service',
-      description: 'Technical coverage of BMS innovation and service platform.'
+      description: 'Technical coverage of BMS innovation and service platform.',
+      image:"/pr/article1.png"
     },
     {
       id: 12,
@@ -127,7 +141,8 @@ const MediaPage = () => {
       publication: 'Dainik Jagran',
       date: 'May 2025',
       url: '#',
-      description: 'Print media coverage in leading Hindi daily newspaper.'
+      description: 'Print media coverage in leading Hindi daily newspaper.',
+      image:"/pr/article1.png"
     },
     {
       id: 13,
@@ -137,7 +152,8 @@ const MediaPage = () => {
       publication: 'Dainik Savera',
       date: 'May 2025',
       url: '#',
-      description: 'Regional print coverage of technological advancements.'
+      description: 'Regional print coverage of technological advancements.',
+      image:"/pr/article1.png"
     },
     {
       id: 14,
@@ -147,7 +163,8 @@ const MediaPage = () => {
       publication: 'Amar Ujala',
       date: 'May 2025',
       url: '#',
-      description: 'Coverage in popular Hindi newspaper focusing on service innovation.'
+      description: 'Coverage in popular Hindi newspaper focusing on service innovation.',
+      image:"/pr/article1.png"
     },
     {
       id: 15,
@@ -157,7 +174,8 @@ const MediaPage = () => {
       publication: 'Punjab Kesari',
       date: 'May 2025',
       url: '#',
-      description: 'Regional newspaper coverage of industry leadership.'
+      description: 'Regional newspaper coverage of industry leadership.',
+      image:"/pr/article1.png"
     },
     {
       id: 16,
@@ -167,7 +185,8 @@ const MediaPage = () => {
       publication: 'Deshbandhu',
       date: 'May 2025',
       url: 'https://epaper.deshbandhu.co.in/clip/64672',
-      description: 'Print coverage focusing on technological advancement in EV sector.'
+      description: 'Print coverage focusing on technological advancement in EV sector.',
+      image:"/pr/article1.png"
     }
   ];
 
@@ -248,7 +267,12 @@ const MediaPage = () => {
                     <div className="h-80 bg-gradient-to-br from-blue-50 to-green-50 flex items-center justify-center">
                       <div className="text-center text-gray-400">
                         {getIcon(featuredItems[0].type)}
-                        <p className="mt-2 text-sm">Featured Image</p>
+                        {/* <p className="mt-2 text-sm">Featured Image</p> */}
+                        <Image
+                        
+                        
+                        
+                        />
                       </div>
                     </div>
                     <div className="p-12 flex flex-col justify-center">
