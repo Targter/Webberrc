@@ -16,24 +16,30 @@ export const wrap = (min, max, v) => {
   return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
 };
 
-export const Achieve = ({ default_velocity = 0.5, className }) => {
-  const companies = [
-    { img: "/ach2.png", alt: "Achievement 1", text: "2nd Runner-up" },
-    { img: "/ach1.png", alt: "Achievement 2", text: "Top 10 Finalists" },
-    { img: "/ach2.png", alt: "Achievement 1", text: "2nd Runner-up" },
-    { img: "/ach1.png", alt: "Achievement 2", text: "Top 10 Finalists" },
+export const MediaGallery = ({ default_velocity = 0.3, className }) => {
+  const mediaImages = [
+    { img: "/media/m1.jpg", alt: "Media Image 1" },
+    { img: "/media/m2.jpg", alt: "Media Image 2" },
+    { img: "/media/m3.jpg", alt: "Media Image 3" },
+    { img: "/media/m4.jpg", alt: "Media Image 4" },
+    { img: "/media/m5.jpg", alt: "Media Image 5" },
+    { img: "/media/m6.jpg", alt: "Media Image 6" },
+    { img: "/media/m3.jpg", alt: "Media Image 7" },
+    { img: "/media/m2.jpg", alt: "Media Image 8" },
+    { img: "/media/m1.jpg", alt: "Media Image 9" },
+    { img: "/media/m5.jpg", alt: "Media Image 10" },
   ];
 
-  const ParallaxLogos = ({ companies, baseVelocity = 50, className }) => {
+  const ParallaxMedia = ({ mediaImages, baseVelocity = 20, className }) => {
     const baseX = useMotionValue(0);
     const { scrollY } = useScroll();
     const scrollVelocity = useVelocity(scrollY);
     const smoothVelocity = useSpring(scrollVelocity, {
-      damping: 50,
-      stiffness: 400,
+      damping: 80,
+      stiffness: 200,
     });
 
-    const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 3], {
+    const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 2], {
       clamp: false,
     });
 
@@ -54,7 +60,7 @@ export const Achieve = ({ default_velocity = 0.5, className }) => {
       calculateRepetitions();
       window.addEventListener("resize", calculateRepetitions);
       return () => window.removeEventListener("resize", calculateRepetitions);
-    }, [companies]);
+    }, [mediaImages]);
 
     const x = useTransform(baseX, (v) => `${wrap(-100 / repetitions, 0, v)}%`);
 
@@ -71,35 +77,30 @@ export const Achieve = ({ default_velocity = 0.5, className }) => {
 
     return (
       <div className="w-full overflow-hidden relative" ref={containerRef}>
-        <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-slate-50 via-slate-50/70 to-transparent dark:from-slate-900 dark:via-slate-900/70 z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-slate-50 via-slate-50/70 to-transparent dark:from-slate-900 dark:via-slate-900/70 z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 w-20 h-full bg-gradient-to-r from-white via-white/70 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 w-20 h-full bg-gradient-to-l from-white via-white/70 to-transparent z-10 pointer-events-none" />
 
         <motion.div
-          className={cn("inline-block whitespace-nowrap py-8", className)}
+          className={cn("inline-block whitespace-nowrap py-6", className)}
           style={{ x }}
         >
           {Array.from({ length: repetitions }).map((_, i) => (
             <div
               key={i}
               ref={i === 0 ? contentRef : null}
-              className="inline-flex items-center"
+              className="inline-flex items-center gap-4"
             >
-              {companies.map((company, index) => (
+              {mediaImages.map((media, index) => (
                 <motion.div
                   key={`${i}-${index}`}
-                  className="inline-flex flex-col items-center justify-center mx-8 md:mx-12"
+                  className="flex-shrink-0"
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
-                  <div className="text-center mb-3">
-                    <h3 className="text-lg md:text-xl font-semibold text-slate-800 dark:text-slate-200">
-                      {company.text}
-                    </h3>
-                  </div>
                   <img
-                    src={company.img}
-                    alt={company.alt}
-                    className="h-16 md:h-20 w-auto object-contain drop-shadow-lg hover:drop-shadow-xl transition-all duration-300"
+                    src={media.img}
+                    alt={media.alt}
+                    className="h-80 w-auto object-cover rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
                     onError={(e) => {
                       e.target.style.display = "none";
                     }}
@@ -114,54 +115,27 @@ export const Achieve = ({ default_velocity = 0.5, className }) => {
   };
 
   return (
-    <section className="relative w-full overflow-hidden bg-slate-50 dark:bg-slate-900">
-      {/* Refined header with purple-to-teal gradient */}
-      <div className="w-full bg-gradient-to-r from-purple-600 via-indigo-600 to-teal-500 dark:from-purple-700 dark:via-indigo-700 dark:to-teal-600 py-8 md:py-12 text-white shadow-xl mt-4">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="space-y-4"
-          >
-            <motion.p
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="text-white/80 text-sm md:text-base font-medium tracking-wider uppercase"
-            >
-              Excellence • Innovation • Achievement
-            </motion.p>
-            
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="text-2xl md:text-4xl lg:text-5xl font-bold text-white leading-tight"
-            >
-              WEBBER'S WORLD STAGE ACHIEVEMENTS
-            </motion.h1>
-          </motion.div>
+    <section className="relative w-full bg-white">
+      {/* Static Header Section - matching your image layout */}
+      <div className="w-full py-16 md:py-20 bg-white">
+        <div className="text-center max-w-6xl mx-auto px-4">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+            One Stop for <span className="text-blue-500">Every Drive</span><br />
+            <span className="text-teal-400">and Every Device.</span>
+          </h1>
+          <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            Discover how we're accelerating the earth's transition to an all-electric future - meet the team who makes it possible
+          </p>
         </div>
       </div>
 
-      {/* Achievement carousel */}
-      <div className="relative overflow-hidden bg-slate-50 dark:bg-slate-900">
-        <ParallaxLogos
-          companies={companies}
-          baseVelocity={default_velocity}
+      {/* Fast-moving Media Carousel */}
+      <div className="relative overflow-hidden bg-white pb-12">
+        <ParallaxMedia
+          mediaImages={mediaImages}
+          baseVelocity={default_velocity * 20}
           className={className}
         />
-      </div>
-
-      {/* Minimal decorative elements */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-16 left-8 w-20 h-20 bg-purple-500/8 rounded-full blur-2xl" />
-        <div className="absolute top-16 right-8 w-20 h-20 bg-teal-500/8 rounded-full blur-2xl" />
-        <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 w-24 h-24 bg-indigo-500/6 rounded-full blur-2xl" />
       </div>
     </section>
   );

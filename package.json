@@ -22,6 +22,7 @@
     "react-countup": "^6.5.3",
     "react-dom": "19.1.0",
     "react-lottie": "^1.2.10",
+    "react-use": "^17.6.0",
     "react-wrap-balancer": "^1.1.1",
     "swiper": "^11.2.10",
     "tailwind-merge": "^3.3.1"
