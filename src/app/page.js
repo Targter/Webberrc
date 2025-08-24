@@ -4,7 +4,7 @@ import TrustedPartnersSection from "../component/patners";
 import { GlowingEffectDemoSecond } from "@/component/rd";
 import { ManufacturingShowcase } from "../component/advance";
 import ContactMap from "@/component/contactmap";
-import { Achieve } from "@/component/achieve";
+import { Achieve } from "@/component/MediaGallery";
 import VideoComponent from "@/component/VideoComponent";
 import Ab from "@/component/Ab";
 import StickyScrollDemo from "@/component/scrollrd";

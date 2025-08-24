@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import TimelineDemo from "@/component/timeline"
-import {MediaGallery} from "@/component/achieve"
+import {MediaGallery} from "@/component/MediaGallery"
 const About = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const missionRef = useRef(null);
@@ -267,7 +267,7 @@ const About = () => {
      
 
       {/* Stats Section */}
-      <section className="py-8 md:py-12 px-4 md:px-6 bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981]">
+      {/* <section className="py-8 md:py-12 px-4 md:px-6 bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981]">
         <div className="max-w-4xl mx-auto text-center text-white">
           <h2 className="text-2xl md:text-3xl font-bold mb-8 md:mb-12">Our Impact</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
@@ -285,7 +285,7 @@ const About = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       {/* <TimelineDemo/> */}
     </div>
   );
