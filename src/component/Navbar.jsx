@@ -42,9 +42,6 @@ const ElectricChipNavbar = () => {
 
   const navItems = [
     { name: "Home", hasDropdown: false, link: "/" },
-    { name: "About Us", hasDropdown: false, link: "/About-us" },
-
-
     {
       name: "Products",
       hasDropdown: true,
@@ -89,13 +86,12 @@ const ElectricChipNavbar = () => {
           type: "Upcoming Projects",
           hasSubDropdown: false,
         },
-        {
-          type: "More",
-          hasSubDropdown: false,
-          link:"/Products"
-        },
+      
       ],
     },
+    { name: "About Us", hasDropdown: false, link: "/About-us" },
+
+
     { name: "Services", hasDropdown: false,link:"/Servicess" },
   ];
 
@@ -237,7 +233,7 @@ const ElectricChipNavbar = () => {
               transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
             }}
           >
-            {navItems.map((item, i) => (
+           {navItems.map((item, i) => (
               <div
                 key={i}
                 className="relative group"
@@ -260,6 +256,8 @@ const ElectricChipNavbar = () => {
 
                 {item.hasDropdown && (
                   <div className="absolute left-0 mt-1 w-64 bg-white border border-gray-200 rounded-lg shadow-lg z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150">
+                  
+                    
                     {item.items.map((category, ci) => (
                       <div key={ci} className="relative group/submenu">
                         <div className="flex items-center justify-between px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 text-sm border-b border-gray-100 last:border-0 transition-colors cursor-pointer">
@@ -269,6 +267,7 @@ const ElectricChipNavbar = () => {
                             <ChevronRight className="w-3 h-3" />
                           )}
                         </div>
+                        
 
                         {category.hasSubDropdown && (
                           <div className="absolute left-full top-0 ml-1 w-96 bg-white border border-gray-200 rounded-lg shadow-lg z-60 max-h-[60vh] overflow-y-auto opacity-0 invisible group-hover/submenu:opacity-100 group-hover/submenu:visible transition-all duration-150">
@@ -321,6 +320,16 @@ const ElectricChipNavbar = () => {
                         )}
                       </div>
                     ))}
+                      {item.name.toLowerCase() === 'products' && (
+                      <Link href="/Products">
+                        <div className="flex items-center justify-between px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 text-sm border-b font-bold border-gray-100 last:border-0 transition-colors cursor-pointer">
+                          <span>View All Products</span>
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
+                        </div>
+                      </Link>
+                    )}
                   </div>
                 )}
               </div>
