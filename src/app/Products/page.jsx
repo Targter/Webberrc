@@ -1,12 +1,11 @@
-import React from 'react'
-import Products from '@/component/Products'
+import React from "react";
+import Products from "@/component/Products";
 const page = () => {
   return (
-    <div>
-      <Products/>
-
+    <div className="mt-11">
+      <Products />
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;
