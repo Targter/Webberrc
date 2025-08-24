@@ -113,3 +113,133 @@
     },
   ],
 };
+
+export const mediaItems = [
+    {
+      id: 1,
+      type: 'interview',
+      category: 'Digital',
+      title: 'Webber EV BMS India Innovation',
+      publication: 'YourStory',
+      date: 'June 2025',
+      url: 'https://yourstory.com/2025/06/webber-ev-bms-india-innovation',
+      description: 'In-depth interview covering Webber\'s innovative approach to EV battery management systems in India.',
+      featured: true,
+      image:"/pr/article1.png"
+
+    },
+    {
+      id: 2,
+      type: 'video',
+      category: 'Digital',
+      title: 'Live Discussion on EV Innovation',
+      publication: 'YouTube',
+      date: 'May 2025',
+      url: 'https://www.youtube.com/live/W4DoA5V3ogQ?si=cNzE4PRRshVKpkI-',
+      description: 'Live video interview discussing Webber\'s role in revolutionizing electric vehicle technology.',
+      featured: true,
+      image:"/pr/yt.png"
+    },
+    {
+      id: 3,
+      type: 'press',
+      category: 'Digital',
+      title: 'Webber Electrocorp Revolutionizes Electric Vehicle After-Sales Service',
+      publication: 'Economic Times',
+      date: 'May 2025',
+      url: 'https://ciso.economictimes.indiatimes.com/news/webber-electrocorp-revolutionizes-electric-vehicle-after-sales-service-with-webber-care-point/121490831',
+      description: 'Press coverage on Webber Care Point service platform launch.',
+      featured: true,
+      image:"/pr/ettimes.png"
+    },
+    {
+      id: 4,
+      type: 'press',
+      category: 'Digital',
+      title: 'Webber Electrocorp Enhances EV Service Norms',
+      publication: 'Mobility Outlook',
+      date: 'May 2025',
+      url: 'https://www.mobilityoutlook.com/news/webber-electrocorp-enhances-ev-service-norms/',
+      description: 'Coverage of enhanced service standards and customer care initiatives.',
+      image:"/pr/mob.png"
+    },
+    {
+      id: 5,
+      type: 'press',
+      category: 'Digital',
+      title: 'Webber Electrocorp Launches Service Platform',
+      publication: 'Franchise India',
+      date: 'May 2025',
+      url: 'https://www.franchiseindia.com/insights/en/news/webber-electrocorp-launches-webber-care-point-service-platform.56587',
+      description: 'Launch announcement of Webber Care Point service platform.',
+      image:"/pr/french.png"
+      
+    },
+    {
+      id: 6,
+      type: 'press',
+      category: 'Digital',
+      title: 'Smart After-Sales Solutions Drive EV Mobility',
+      publication: 'Media Brief',
+      date: 'May 2025',
+      url: 'https://mediabrief.com/webber-electrocorp-drives-ev-mobility-forward-with-smart-after-sales-solutions/',
+      description: 'Analysis of intelligent after-sales solutions in the EV sector.',
+      image:"/pr/mb.png"
+    },
+    {
+      id: 7,
+      type: 'press',
+      category: 'Digital',
+      title: 'EV After-Sales Solutions Innovation',
+      publication: 'Startup Talky',
+      date: 'May 2025',
+      url: 'https://startuptalky.com/news/webber-electrocorp-ev-after-sales-solutions/',
+      description: 'Coverage focusing on innovative approaches to EV customer service.',
+      image:"/pr/article1.png"
+    },
+    {
+      id: 8,
+      type: 'press',
+      category: 'Digital',
+      title: 'Intelligent After-Sales Solutions Leadership',
+      publication: 'Evolution Auto India',
+      date: 'May 2025',
+      url: 'https://evolutionautoindia.in/webber-electrocorp-leads-the-charge-in-ev-mobility-with-intelligent-after-sales-solutions/',
+      description: 'Industry leadership coverage in EV mobility solutions.',
+      image:"/pr/article1.png"
+    },
+    {
+      id: 9,
+      type: 'press',
+      category: 'Digital',
+      title: 'Leading EV Mobility Charge',
+      publication: 'CXO Today',
+      date: 'May 2025',
+      url: 'https://cxotoday.com/press-release/webber-electrocorp-leads-the-charge-in-ev-mobility-with-intelligent-after-sales-solutions/',
+      description: 'Executive perspective on Webber\'s market leadership position.',
+      image:"/pr/article1.png"
+    },
+    {
+      id: 10,
+      type: 'press',
+      category: 'Digital',
+      title: 'Service Network Launch for EV Support',
+      publication: 'Auto Car Pro',
+      date: 'May 2025',
+      url: 'https://www.autocarpro.in/news/webber-electrocorp-launches-service-network-for-electric-vehicle-after-sales-support-126699',
+      description: 'Comprehensive service network expansion announcement.',
+      image:"/pr/article1.png"
+    },
+    {
+      id: 11,
+      type: 'press',
+      category: 'Digital',
+      title: 'Smart Battery Management System Launch',
+      publication: 'Energetica India',
+      date: 'May 2025',
+      url: 'https://www.energetica-india.net/news/webber-launches-smart-battery-management-system-and-webber-care-point-ev-after-sales-service',
+      description: 'Technical coverage of BMS innovation and service platform.',
+      image:"/pr/article1.png"
+    },
+ 
+  ];
