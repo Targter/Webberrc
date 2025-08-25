@@ -295,7 +295,7 @@ const MediaPage = () => {
       )}
 
       {/* Contact Section */}
-      <div className="bg-white py-20">
+      {/* <div className="bg-white py-20">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-4xl font-bold mb-6">
             <span className="bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">
@@ -314,7 +314,7 @@ const MediaPage = () => {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

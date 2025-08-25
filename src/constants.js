@@ -243,3 +243,174 @@ export const mediaItems = [
     },
  
   ];
+
+  export const blogPosts = [
+    {
+      id: 1,
+      title: "The Complete Ecosystem for Advanced Electronics",
+      excerpt: "In today's rapidly evolving technological landscape, businesses require integrated solutions that streamline operations, enhance productivity, and enable informed decision-making...",
+      category: "ELECTRIC",
+      date: "15 Nov 2024",
+      readTime: "5 min read",
+      image: "/bg/bg1.png",
+      author: {
+        name: "Priya Sharma",
+        role: "Software Lead Engineer",
+        avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face"
+      }
+    },
+    {
+      id: 2,
+      title: "Understanding Thermal Runaway and How It's Being Prevented in 2024",
+      excerpt: "In the evolving landscape of electric vehicles (EVs), battery safety remains a top priority, especially when it comes to preventing thermal runaway — a dangerous phenomenon that can lead to catastrophic outcomes...",
+      category: "ELECTRIC",
+      date: "20 Sep 2024",
+      readTime: "6 min read",
+      image: "/bg/bg3.png",
+      author: {
+        name: "Rajesh Kumar",
+        role: "Application Engineer",
+        avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face"
+      }
+    },
+    {
+      id: 3,
+      title: "5 Stars",
+      excerpt: "I walked into the office on a Wednesday morning, sat at my desk, and procrastinated a bit before I started the day's work...",
+      category: "ELECTRIC",
+      date: "6 Sep 2024",
+      readTime: "4 min read",
+      image: "/bg/bg4.png",
+      author: {
+        name: "Arjun Patel",
+        role: "Marketing Strategist",
+        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face"
+      }
+    },
+    {
+      id: 4,
+      title: "Battery Management Systems: The Future of Energy Storage",
+      excerpt: "Comprehensive guide to BMS integration for electric vehicle enthusiasts and professionals in the renewable energy sector...",
+      category: "ELECTRIC",
+      date: "12 Aug 2024",
+      readTime: "8 min read",
+      image: "https://images.unsplash.com/photo-1559302504-64aae6ca6b6d?w=600&h=400&fit=crop",
+      author: {
+        name: "Dr. Meera Reddy",
+        role: "Research Director",
+        avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop&crop=face"
+      }
+    },
+    {
+      id: 5,
+      title: "EV Market Trends and Predictions for 2025",
+      excerpt: "An in-depth analysis of the electric vehicle market growth, consumer adoption patterns, and technological innovations shaping the industry...",
+      category: "EV MARKET",
+      date: "28 Jul 2024",
+      readTime: "7 min read",
+      image: "https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=600&h=400&fit=crop",
+      author: {
+        name: "Vikram Singh",
+        role: "Market Analyst",
+        avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop&crop=face"
+      }
+    },
+    {
+      id: 6,
+      title: "Sustainable Power Solutions in Modern Manufacturing",
+      excerpt: "How Webber Electro Corp is revolutionizing industrial power management with cutting-edge sustainable technologies and smart grid integration...",
+      category: "ELECTRIC",
+      date: "15 Jul 2024",
+      readTime: "5 min read",
+      image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&h=400&fit=crop",
+      author: {
+        name: "Kavya Iyer",
+        role: "Sustainability Officer",
+        avatar: "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=40&h=40&fit=crop&crop=face"
+      }
+    },
+    {
+      id: 7,
+      title: "Advanced Lithium-Ion Cell Technologies and Safety Protocols",
+      excerpt: "Exploring the latest innovations in lithium-ion cell chemistry, manufacturing processes, and comprehensive safety measures for high-performance applications...",
+      category: "ELECTRIC",
+      date: "10 Jul 2024",
+      readTime: "9 min read",
+      image: "/bg/bg1.png",
+      author: {
+        name: "Dr. Anil Gupta",
+        role: "Battery Technology Specialist",
+        avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=40&h=40&fit=crop&crop=face"
+      }
+    },
+    {
+      id: 8,
+      title: "Global EV Adoption Rates: A Continental Comparison",
+      excerpt: "Analyzing the varying speeds of electric vehicle adoption across different continents, exploring policy impacts, infrastructure development, and consumer preferences...",
+      category: "EV MARKET",
+      date: "25 Jun 2024",
+      readTime: "10 min read",
+      image: "/bg/bg2.png",
+      author: {
+        name: "Sanya Joshi",
+        role: "Global Market Research Lead",
+        avatar: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=40&h=40&fit=crop&crop=face"
+      }
+    },
+    {
+      id: 9,
+      title: "Smart Grid Integration for Electric Vehicle Charging Networks",
+      excerpt: "How intelligent grid systems are optimizing EV charging infrastructure, reducing costs, and improving energy distribution efficiency across urban environments...",
+      category: "ELECTRIC",
+      date: "18 Jun 2024",
+      readTime: "7 min read",
+      image: "/bg/bg5.png",
+      author: {
+        name: "Rohit Agarwal",
+        role: "Smart Grid Engineer",
+        avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=40&h=40&fit=crop&crop=face"
+      }
+    },
+    {
+      id: 10,
+      title: "Commercial Fleet Electrification: ROI Analysis and Best Practices",
+      excerpt: "A comprehensive study on the return on investment for commercial fleet electrification, including implementation strategies and long-term cost benefits...",
+      category: "EV MARKET",
+      date: "5 Jun 2024",
+      readTime: "11 min read",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop",
+      author: {
+        name: "Deepika Nair",
+        role: "Fleet Analyst",
+        avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=40&h=40&fit=crop&crop=face"
+      }
+    },
+    {
+      id: 11,
+      title: "Power Electronics Innovations for Next-Gen EVs",
+      excerpt: "Breakthrough developments in power electronics that are revolutionizing electric vehicle performance, efficiency, and charging capabilities...",
+      category: "ELECTRIC",
+      date: "22 May 2024",
+      readTime: "8 min read",
+      image: "/bg/bg7.png",
+      author: {
+        name: "Dr. Neha Verma",
+        role: "Power Electronics Engineer",
+        avatar: "https://images.unsplash.com/photo-1507101105822-7472b28e22ac?w=40&h=40&fit=crop&crop=face"
+      }
+    },
+    {
+      id: 12,
+      title: "Consumer Behavior Trends in EV Market 2024",
+      excerpt: "Understanding changing consumer preferences, purchase drivers, and barriers to EV adoption through comprehensive market research and surveys...",
+      category: "EV MARKET",
+      date: "8 May 2024",
+      readTime: "6 min read",
+      image: "/bg/bg2.png",
+      author: {
+        name: "Suresh Bansal",
+        role: "Consumer Research Director",
+        avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face"
+      }
+    }
+  ];

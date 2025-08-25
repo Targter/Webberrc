@@ -469,25 +469,22 @@ const ContactFAQComponent = () => {
                   </span>
                   <div className="relative w-5 h-5 md:w-6 md:h-6 flex-shrink-0">
                     <Plus
-                      className={`absolute w-5 h-5 md:w-6 md:h-6 bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent-500 transition-all duration-300 ${
-                        openFAQ === index
+                      className={`absolute w-5 h-5 md:w-6 md:h-6 bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent-500 transition-all duration-300 ${openFAQ === index
                           ? "opacity-0 rotate-90"
                           : "opacity-100"
-                      }`}
+                        }`}
                     />
                     <Minus
-                      className={`absolute w-5 h-5 md:w-6 md:h-6 text-green-500 transition-all duration-300 ${
-                        openFAQ === index
+                      className={`absolute w-5 h-5 md:w-6 md:h-6 text-green-500 transition-all duration-300 ${openFAQ === index
                           ? "opacity-100 rotate-0"
                           : "opacity-0 -rotate-90"
-                      }`}
+                        }`}
                     />
                   </div>
                 </button>
                 <div
-                  className={`overflow-hidden transition-all duration-300 ${
-                    openFAQ === index ? "max-h-96 pb-4 md:pb-6" : "max-h-0"
-                  }`}
+                  className={`overflow-hidden transition-all duration-300 ${openFAQ === index ? "max-h-96 pb-4 md:pb-6" : "max-h-0"
+                    }`}
                 >
                   <div className="px-4 md:px-6 lg:px-8">
                     <div className="w-full h-px bg-gradient-to-r from-blue-200 to-green-200 mb-3 md:mb-4"></div>
@@ -532,7 +529,7 @@ const ContactFAQComponent = () => {
                 <div className="relative bg-white overflow-hidden rounded-2xl shadow-xl md:shadow-2xl border border-gray-200/50 h-full min-h-[400px] md:min-h-[400px] lg:min-h-[450px]">
                   <div className="h-full w-full relative overflow-hidden">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.567!2d73.799!3d18.631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b9b8a8b8a8a8%3A0x8b8a8b8a8b8a8b8a!2sPimple%20Saudagar%2C%20Pune%2C%20Maharashtra%20411027!5e0!3m2!1sen!2sin!4v1234567890"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3545.9131610981144!2d76.99443847553455!3d28.40847207578792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d3d0009c9d843%3A0x583aec3f7286c19f!2sWebber%20electro%20corp!5e1!3m2!1sen!2sin!4v1756103430113!5m2!1sen!2sin"
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}
@@ -540,7 +537,7 @@ const ContactFAQComponent = () => {
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
                       className="w-full h-full absolute inset-0"
-                      title="Office Location - Pimple Saudagar, Pune"
+                      title="Office Location - Gurugram"
                     ></iframe>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent text-white p-4 md:p-6">
@@ -553,8 +550,9 @@ const ContactFAQComponent = () => {
                           Head Office Location
                         </h4>
                         <span className="text-xs md:text-sm text-gray-200 leading-relaxed">
-                          Office 03 and 04, First Floor, Sai Raj Regency, Pimple
-                          Saudagar, Pune, Maharashtra 411 027
+                          DLF Corporate Green, Tower 1
+                          Unit no: 711, Sector 74A
+                          Gurugram 122004
                         </span>
                       </div>
                     </div>
@@ -627,9 +625,8 @@ const ContactFAQComponent = () => {
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                     <Send
-                      className={`w-4 h-4 mr-2 transition-transform duration-300 ${
-                        isHovered ? "translate-x-1" : ""
-                      }`}
+                      className={`w-4 h-4 mr-2 transition-transform duration-300 ${isHovered ? "translate-x-1" : ""
+                        }`}
                     />
                     <span className="relative">SEND</span>
                   </button>
