@@ -2591,31 +2591,36 @@ const ElectricChipNavbar = () => {
           type: "Battery Management System",
           hasSubDropdown: true,
           chips: [
-            {
+            { 
+              id:"bms-1",
               name: "WBMS-SW-32S Contactor",
               description: "For standalone & stackable architectures",
               category: "low",
               documentUrl: "/pdata/WBMS-SW-32S-Contactor v3.0 (1).pdf",
             },
             {
+              id:"bms-2",
               name: "WBMS-SWLT 20S 60A",
               description: "For onroad & battery safety",
               category: "low",
               documentUrl: "/pdata/WBMS-SWLT-20S-60A v3.0 (1).pdf",
             },
             {
+              id:"bms-3",
               name: "WBMS-SWLT 16S 100A",
               description: "For cost-competitive mobility applications",
               category: "low",
               documentUrl: "/pdata/WBMS-SWLT-16S-100A v3.0 (1).pdf",
             },
             {
+              id:"bms-4",
               name: "WBMS-SW-16S Contractor",
               description: "For cost-competitive mobility applications",
               category: "low",
               documentUrl: "/pdata/WBMS-SWLT 16S 100A.pdf",
             },
             {
+              id:"bms-5",
               name: "WBMS-SW 16S 60/80A",
               description: "For cost-competitive mobility applications",
               category: "low",
@@ -2665,9 +2670,10 @@ const ElectricChipNavbar = () => {
   };
 
   // Handle product click - redirect to /Products
-  const handleProductClick = (productName) => {
-    window.location.href = "/Products";
-  };
+  const handleProductClick = (Productid) => {
+    window.location.href = `/Products/${Productid}`;
+};
+
 
   // First launch effect
   useEffect(() => {
@@ -2887,7 +2893,7 @@ const ElectricChipNavbar = () => {
                                         key={chipIndex}
                                         className="p-3 bg-gray-50 border border-gray-100 rounded-lg hover:shadow-sm hover:border-blue-200 transition-all cursor-pointer group/card"
                                         onClick={() =>
-                                          handleProductClick(chip.name)
+                                          handleProductClick(chip.id)
                                         }
                                       >
                                         <h4 className="font-medium text-gray-900 text-sm group-hover/card:text-blue-600 mb-1">
