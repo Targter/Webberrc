@@ -275,8 +275,8 @@ const ElectricChipNavbar = () => {
           {/* Desktop/Tablet Menu - Hidden on mobile */}
           <div
             className={`hidden md:flex items-center space-x-2 lg:space-x-4 xl:space-x-6 transition-all duration-800 ${hasLaunched
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 translate-x-4"
+              ? "opacity-100 translate-x-0"
+              : "opacity-0 translate-x-4"
               }`}
             style={{
               transitionDelay: hasLaunched ? "0ms" : "400ms",
@@ -428,8 +428,8 @@ const ElectricChipNavbar = () => {
           {/* Right Side Buttons */}
           <div
             className={`flex items-center space-x-1 sm:space-x-2 transition-all duration-700 ${hasLaunched
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 translate-x-8"
+              ? "opacity-100 translate-x-0"
+              : "opacity-0 translate-x-8"
               }`}
           >
             {/* Resources Button with Dropdown - Hidden on small screens, visible on sm+ */}
@@ -452,8 +452,8 @@ const ElectricChipNavbar = () => {
                     <span>Resources</span>
                     <ChevronDown
                       className={`h-4 w-4 transition-transform duration-200 ${activeDesktopDropdown === "resources"
-                          ? "rotate-180"
-                          : ""
+                        ? "rotate-180"
+                        : ""
                         }`}
                     />
                   </div>
@@ -464,29 +464,28 @@ const ElectricChipNavbar = () => {
 
               {/* Dropdown Menu */}
               <div
-  className={`absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50 resources-dropdown-menu transition-all duration-200 ${
-    activeDesktopDropdown === "resources"
-      ? "opacity-100 visible translate-y-0"
-      : "opacity-0 invisible -translate-y-2"
-  }`}
-  onMouseEnter={() => setActiveDesktopDropdown("resources")}
-  onMouseLeave={() => setActiveDesktopDropdown(null)}
->
-  <div className="flex flex-col py-2">
-    <Link
-      href="/Blogs"
-      className="px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-black transition-colors"
-    >
-      Blogs
-    </Link>
-    <Link
-      href="/Media"
-      className="px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-black transition-colors"
-    >
-      Media
-    </Link>
-  </div>
-</div>
+                className={`absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50 resources-dropdown-menu transition-all duration-200 ${activeDesktopDropdown === "resources"
+                  ? "opacity-100 visible translate-y-0"
+                  : "opacity-0 invisible -translate-y-2"
+                  }`}
+                onMouseEnter={() => setActiveDesktopDropdown("resources")}
+                onMouseLeave={() => setActiveDesktopDropdown(null)}
+              >
+                <div className="flex flex-col py-2">
+                  <Link
+                    href="/Blogs"
+                    className="px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-black transition-colors"
+                  >
+                    Blogs
+                  </Link>
+                  <Link
+                    href="/Media"
+                    className="px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-black transition-colors"
+                  >
+                    Media
+                  </Link>
+                </div>
+              </div>
 
             </div>
 
@@ -552,71 +551,103 @@ const ElectricChipNavbar = () => {
                   </button>
 
                   {/* Mobile Dropdown Content */}
-                  {item.hasDropdown && activeMobileSection === i && (
-                    <div
-                      className="ml-2 sm:ml-4 mt-2 space-y-3 animate-in slide-in-from-top-2 duration-200"
-                      onMouseEnter={(e) => e.stopPropagation()}
-                    >
-                      {item.items.map((category, ci) => (
-                        <div key={ci}>
-                          <div className="text-white font-medium text-sm py-2 border-l-2 border-cyan-400 pl-3">
-                            {category.type}
-                          </div>
+                 {item.hasDropdown && activeMobileSection === i && (
+  <div
+    className="ml-2 sm:ml-4 mt-2 space-y-3 animate-in slide-in-from-top-2 duration-200"
+    onMouseEnter={(e) => e.stopPropagation()}
+  >
+    {item.items.map((category, ci) => (
+      <div key={ci}>
+        {/* Category Title */}
+        <div className="text-white font-medium text-sm py-2 border-l-2 border-cyan-400 pl-3">
+          {category.type}
+        </div>
 
-                          {category.hasSubDropdown && category.chips && (
-                            <div
-                              className="ml-2 sm:ml-4 space-y-2 max-h-64 overflow-y-auto"
-                              onMouseEnter={(e) => e.stopPropagation()}
-                            >
-                              {category.chips.map((chip, chipIndex) => (
-                                <div
-                                  key={chipIndex}
-                                  className="bg-gray-800/50 p-3 rounded border border-gray-700 hover:border-gray-600 transition-colors mx-1 cursor-pointer"
-                                  onClick={() => {
-                                    handleProductClick(chip.name);
-                                    setIsMobileMenuOpen(false);
-                                  }}
-                                >
-                                  <div className="font-medium text-white text-sm mb-1">
-                                    {chip.name}
-                                  </div>
-                                  <div className="text-xs text-gray-400 leading-relaxed mb-2">
-                                    {chip.description}
-                                  </div>
-                                  <button
-                                    onClick={(e) => {
-                                      e.preventDefault();
-                                      e.stopPropagation();
-                                      handleDownload(
-                                        chip.documentUrl,
-                                        `${chip.name}.pdf`
-                                      );
-                                    }}
-                                    className="inline-flex items-center text-xs font-medium text-green-400 hover:text-green-300 transition-colors mt-1 bg-green-900/30 hover:bg-green-900/50 px-2 py-1 rounded"
-                                  >
-                                    <svg
-                                      className="w-3 h-3 mr-1"
-                                      fill="none"
-                                      stroke="currentColor"
-                                      viewBox="0 0 24 24"
-                                    >
-                                      <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                                      />
-                                    </svg>
-                                    <span>Download</span>
-                                  </button>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  )}
+        {/* Sub Dropdown Chips */}
+        {category.hasSubDropdown && category.chips && (
+          <div
+            className="ml-2 sm:ml-4 space-y-2 max-h-64 overflow-y-auto"
+            onMouseEnter={(e) => e.stopPropagation()}
+          >
+            {category.chips.map((chip, chipIndex) => (
+              <div
+                key={chipIndex}
+                className="bg-gray-800/50 p-3 rounded border border-gray-700 hover:border-gray-600 transition-colors mx-1 cursor-pointer"
+                onClick={() => {
+                  handleProductClick(chip.id);
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                <div className="font-medium text-white text-sm mb-1">
+                  {chip.name}
+                </div>
+                <div className="text-xs text-gray-400 leading-relaxed mb-2">
+                  {chip.description}
+                </div>
+
+                {/* Download Button */}
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleDownload(chip.documentUrl, `${chip.name}.pdf`);
+                  }}
+                  className="inline-flex items-center text-xs font-medium text-green-400 hover:text-green-300 transition-colors mt-1 bg-green-900/30 hover:bg-green-900/50 px-2 py-1 rounded"
+                >
+                  <svg
+                    className="w-3 h-3 mr-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
+                  </svg>
+                  <span>Download</span>
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    ))}
+
+    {/* View All Products Button - Styled Like Other Chips */}
+    {item.name.toLowerCase() === "products" && (
+      <Link href="/Products" onClick={() => setIsMobileMenuOpen(false)}>
+        <div className="bg-gray-800/50 p-3 rounded border border-gray-700 hover:border-gray-600 transition-colors mx-1 cursor-pointer flex items-center justify-between">
+          <div>
+            <div className="font-medium text-white text-sm mb-1">
+              View All Products
+            </div>
+            <div className="text-xs text-gray-400 leading-relaxed">
+              Explore our complete product range
+            </div>
+          </div>
+          <svg
+            className="w-4 h-4 text-cyan-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M17 8l4 4m0 0l-4 4m4-4H3"
+            />
+          </svg>
+        </div>
+      </Link>
+    )}
+  </div>
+)}
+
+
                 </div>
               ))}
 
