@@ -55,36 +55,36 @@ const ElectricChipNavbar = () => {
           type: "Battery Management System",
           hasSubDropdown: true,
           chips: [
-            { 
-              id:"bms-1",
+            {
+              id: "bms-1",
               name: "WBMS-SW-32S Contactor",
               description: "For standalone & stackable architectures",
               category: "low",
               documentUrl: "/pdata/WBMS-SW-32S-Contactor v3.0 (1).pdf",
             },
             {
-              id:"bms-2",
+              id: "bms-2",
               name: "WBMS-SWLT 20S 60A",
               description: "For onroad & battery safety",
               category: "low",
               documentUrl: "/pdata/WBMS-SWLT-20S-60A v3.0 (1).pdf",
             },
             {
-              id:"bms-3",
+              id: "bms-3",
               name: "WBMS-SWLT 16S 100A",
               description: "For cost-competitive mobility applications",
               category: "low",
               documentUrl: "/pdata/WBMS-SWLT-16S-100A v3.0 (1).pdf",
             },
             {
-              id:"bms-4",
+              id: "bms-4",
               name: "WBMS-SW-16S Contractor",
               description: "For cost-competitive mobility applications",
               category: "low",
               documentUrl: "/pdata/WBMS-SWLT 16S 100A.pdf",
             },
             {
-              id:"bms-5",
+              id: "bms-5",
               name: "WBMS-SW 16S 60/80A",
               description: "For cost-competitive mobility applications",
               category: "low",
@@ -136,7 +136,7 @@ const ElectricChipNavbar = () => {
   // Handle product click - redirect to /Products
   const handleProductClick = (Productid) => {
     window.location.href = `/Products/${Productid}`;
-};
+  };
 
 
   // First launch effect
@@ -237,10 +237,9 @@ const ElectricChipNavbar = () => {
     <nav
       className={`navbar-container fixed top-2 left-2 right-2 sm:left-4 sm:right-4 z-50 rounded-xl transition-all duration-500 transform
         ${isTransparent ? "opacity-0 hover:opacity-100" : "opacity-100"}
-        ${
-          isScrolled
-            ? "bg-white/95 backdrop-blur-md border border-gray-200/50 shadow-lg"
-            : "bg-white/90 backdrop-blur-sm border border-gray-200/30 shadow-md"
+        ${isScrolled
+          ? "bg-white/95 backdrop-blur-md border border-gray-200/50 shadow-lg"
+          : "bg-white/90 backdrop-blur-sm border border-gray-200/30 shadow-md"
         }
         ${hasLaunched ? "translate-y-0" : "-translate-y-8"}
       `}
@@ -256,9 +255,8 @@ const ElectricChipNavbar = () => {
           {/* Logo */}
           <Link href="/">
             <div
-              className={`relative p-1 bg-slate-700 rounded-lg transition-all duration-700 ${
-                hasLaunched ? "opacity-100 scale-100" : "opacity-0 scale-95"
-              }`}
+              className={`relative p-1 bg-slate-700 rounded-lg transition-all duration-700 ${hasLaunched ? "opacity-100 scale-100" : "opacity-0 scale-95"
+                }`}
               style={{
                 transitionDelay: hasLaunched ? "0ms" : "200ms",
                 transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
@@ -276,11 +274,10 @@ const ElectricChipNavbar = () => {
 
           {/* Desktop/Tablet Menu - Hidden on mobile */}
           <div
-            className={`hidden md:flex items-center space-x-2 lg:space-x-4 xl:space-x-6 transition-all duration-800 ${
-              hasLaunched
+            className={`hidden md:flex items-center space-x-2 lg:space-x-4 xl:space-x-6 transition-all duration-800 ${hasLaunched
                 ? "opacity-100 translate-x-0"
                 : "opacity-0 translate-x-4"
-            }`}
+              }`}
             style={{
               transitionDelay: hasLaunched ? "0ms" : "400ms",
               transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
@@ -302,9 +299,8 @@ const ElectricChipNavbar = () => {
                   >
                     <span className="whitespace-nowrap">{item.name}</span>
                     <ChevronDown
-                      className={`w-3 h-3 transition-transform ${
-                        activeDesktopDropdown === i ? "rotate-180" : ""
-                      }`}
+                      className={`w-3 h-3 transition-transform ${activeDesktopDropdown === i ? "rotate-180" : ""
+                        }`}
                     />
                   </div>
                 ) : (
@@ -353,49 +349,49 @@ const ElectricChipNavbar = () => {
                                 <div className="grid grid-cols-2 gap-2">
                                   {category.chips &&
                                     category.chips.map((chip, chipIndex) => (
-                                        
-                                      <Link key={chipIndex}  href={`/Products/${chip.id}`}>
+
+                                      <Link key={chipIndex} href={`/Products/${chip.id}`}>
                                         <div
-                                        className="p-3 bg-gray-50 border border-gray-100 rounded-lg hover:shadow-sm hover:border-blue-200 transition-all cursor-pointer group/card"
-                                        
-                                      >
-                                        
-                                        <h4 className="font-medium text-gray-900 text-sm group-hover/card:text-blue-600 mb-1">
-                                          {chip.name}
-                                        </h4>
-                                        <p className="text-xs text-gray-600 mb-2">
-                                          {chip.description}
-                                        </p>
-                                        <button
-                                          onClick={(e) => {
-                                            e.preventDefault();
-                                            e.stopPropagation();
-                                            handleDownload(
-                                              chip.documentUrl,
-                                              `${chip.name}.pdf`
-                                            );
-                                          }}
-                                          className="inline-flex items-center text-xs font-medium text-green-600 hover:text-green-700 transition-colors group/download mt-1 bg-green-50 hover:bg-green-100 px-2 py-1 rounded"
+                                          className="p-3 bg-gray-50 border border-gray-100 rounded-lg hover:shadow-sm hover:border-blue-200 transition-all cursor-pointer group/card"
+
+                                        >
+
+                                          <h4 className="font-medium text-gray-900 text-sm group-hover/card:text-blue-600 mb-1">
+                                            {chip.name}
+                                          </h4>
+                                          <p className="text-xs text-gray-600 mb-2">
+                                            {chip.description}
+                                          </p>
+                                          <button
+                                            onClick={(e) => {
+                                              e.preventDefault();
+                                              e.stopPropagation();
+                                              handleDownload(
+                                                chip.documentUrl,
+                                                `${chip.name}.pdf`
+                                              );
+                                            }}
+                                            className="inline-flex items-center text-xs font-medium text-green-600 hover:text-green-700 transition-colors group/download mt-1 bg-green-50 hover:bg-green-100 px-2 py-1 rounded"
                                           >
-                                          <svg
-                                            className="w-3 h-3 mr-1 transition-transform group-hover/download:translate-y-0.5"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            viewBox="0 0 24 24"
+                                            <svg
+                                              className="w-3 h-3 mr-1 transition-transform group-hover/download:translate-y-0.5"
+                                              fill="none"
+                                              stroke="currentColor"
+                                              viewBox="0 0 24 24"
                                             >
-                                            <path
-                                              strokeLinecap="round"
-                                              strokeLinejoin="round"
-                                              strokeWidth={2}
-                                              d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                                            />
-                                          </svg>
-                                          <span>Download</span>
-                                        </button>
-                                      </div>
+                                              <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth={2}
+                                                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                              />
+                                            </svg>
+                                            <span>Download</span>
+                                          </button>
+                                        </div>
                                       </Link>
-                                    
-                                              
+
+
                                     ))}
                                 </div>
                               </div>
@@ -431,17 +427,15 @@ const ElectricChipNavbar = () => {
 
           {/* Right Side Buttons */}
           <div
-            className={`flex items-center space-x-1 sm:space-x-2 transition-all duration-700 ${
-              hasLaunched
+            className={`flex items-center space-x-1 sm:space-x-2 transition-all duration-700 ${hasLaunched
                 ? "opacity-100 translate-x-0"
                 : "opacity-0 translate-x-8"
-            }`}
+              }`}
           >
             {/* Resources Button with Dropdown - Hidden on small screens, visible on sm+ */}
             <div
-              className={`hidden sm:block relative resources-dropdown-trigger transition-all duration-600 ${
-                hasLaunched ? "opacity-100 scale-100" : "opacity-0 scale-95"
-              }`}
+              className={`hidden sm:block relative resources-dropdown-trigger transition-all duration-600 ${hasLaunched ? "opacity-100 scale-100" : "opacity-0 scale-95"
+                }`}
               style={{
                 transitionDelay: hasLaunched ? "0ms" : "650ms",
               }}
@@ -457,11 +451,10 @@ const ElectricChipNavbar = () => {
                   <div className="flex items-center space-x-1">
                     <span>Resources</span>
                     <ChevronDown
-                      className={`h-4 w-4 transition-transform duration-200 ${
-                        activeDesktopDropdown === "resources"
+                      className={`h-4 w-4 transition-transform duration-200 ${activeDesktopDropdown === "resources"
                           ? "rotate-180"
                           : ""
-                      }`}
+                        }`}
                     />
                   </div>
                 }
@@ -471,33 +464,30 @@ const ElectricChipNavbar = () => {
 
               {/* Dropdown Menu */}
               <div
-                className={`absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50 resources-dropdown-menu transition-all duration-200 ${
-                  activeDesktopDropdown === "resources"
-                    ? "opacity-100 visible translate-y-0"
-                    : "opacity-0 invisible -translate-y-2"
-                }`}
-                onMouseEnter={() => setActiveDesktopDropdown("resources")}
-                onMouseLeave={() => setActiveDesktopDropdown(null)}
-              >
-                <div className="py-2">
-                  <button
-                    onClick={() => {
-                      window.location.href = "/Blog";
-                    }}
-                    className="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-black transition-colors"
-                  >
-                    Blogs
-                  </button>
-                  <button
-                    onClick={() => {
-                      window.location.href = "/Media";
-                    }}
-                    className="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-black transition-colors"
-                  >
-                    Media
-                  </button>
-                </div>
-              </div>
+  className={`absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50 resources-dropdown-menu transition-all duration-200 ${
+    activeDesktopDropdown === "resources"
+      ? "opacity-100 visible translate-y-0"
+      : "opacity-0 invisible -translate-y-2"
+  }`}
+  onMouseEnter={() => setActiveDesktopDropdown("resources")}
+  onMouseLeave={() => setActiveDesktopDropdown(null)}
+>
+  <div className="flex flex-col py-2">
+    <Link
+      href="/Blogs"
+      className="px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-black transition-colors"
+    >
+      Blogs
+    </Link>
+    <Link
+      href="/Media"
+      className="px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-black transition-colors"
+    >
+      Media
+    </Link>
+  </div>
+</div>
+
             </div>
 
             {/* Contact Button */}
@@ -511,9 +501,8 @@ const ElectricChipNavbar = () => {
 
             {/* Mobile Menu Toggle - Only visible on mobile/tablet */}
             <div
-              className={`block md:hidden transition-all duration-600 ${
-                hasLaunched ? "opacity-100 scale-100" : "opacity-0 scale-95"
-              }`}
+              className={`block md:hidden transition-all duration-600 ${hasLaunched ? "opacity-100 scale-100" : "opacity-0 scale-95"
+                }`}
               style={{
                 transitionDelay: hasLaunched ? "0ms" : "750ms",
               }}
@@ -556,9 +545,8 @@ const ElectricChipNavbar = () => {
                     <span>{item.name}</span>
                     {item.hasDropdown && (
                       <ChevronDown
-                        className={`h-4 w-4 transition-transform duration-200 ${
-                          activeMobileSection === i ? "rotate-180" : ""
-                        }`}
+                        className={`h-4 w-4 transition-transform duration-200 ${activeMobileSection === i ? "rotate-180" : ""
+                          }`}
                       />
                     )}
                   </button>
@@ -643,9 +631,8 @@ const ElectricChipNavbar = () => {
                 >
                   <span>Resources</span>
                   <ChevronDown
-                    className={`h-4 w-4 transition-transform duration-200 ${
-                      activeMobileSection === "resources" ? "rotate-180" : ""
-                    }`}
+                    className={`h-4 w-4 transition-transform duration-200 ${activeMobileSection === "resources" ? "rotate-180" : ""
+                      }`}
                   />
                 </button>
 
