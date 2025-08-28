@@ -127,7 +127,7 @@ const page = ({ params }) => {
         >
           
           {/* Breadcrumb with staggered animation */}
-          <div className={`flex items-center py-6 gap-2 text-sm text-gray-600 mb-4 transition-all duration-700 delay-300 transform ${
+          <div className={`flex items-center py-8 gap-2 text-sm text-gray-600 mb-4 transition-all duration-700 delay-300 transform ${
             isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'
           }`}>
             <Link href="/Products" className="hover:text-blue-500 transition-colors duration-300">
