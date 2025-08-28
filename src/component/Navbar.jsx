@@ -473,7 +473,7 @@ const ElectricChipNavbar = () => {
               >
                 <div className="flex flex-col py-2">
                   <Link
-                    href="/Blogs"
+                    href="/Blog"
                     className="px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-black transition-colors"
                   >
                     Blogs
