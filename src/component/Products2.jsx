@@ -1,6 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import {allProducts} from "@/constants"
 
 const Products2 = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -9,136 +10,82 @@ const Products2 = () => {
   );
   const [visibleCount, setVisibleCount] = useState(6);
   const [showAll, setShowAll] = useState(false);
+  const [isFirstLaunch, setIsFirstLaunch] = useState(true);
+  const [visibleElements, setVisibleElements] = useState(new Set());
+  
+  const headerRef = useRef(null);
+  const categoryRef = useRef(null);
+  const productRefs = useRef([]);
 
   const categories = [
     "Battery Management Systems",
     "Other Advance Electronics",
   ];
-
-  const allProducts = {
-    "Battery Management Systems": [
-      {
-        id: "bms-1",
-        heading: "Compact Applications",
-        title: "WBMS-SW-32S Contactor",
-        description:
-          "Feature-rich BMS designed for standalone & stackable architecture with || support.",
-        image: "/products/sw.png",
-        documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
-      },
-      {
-        id: "bms-2",
-        heading: "Performance 2W & E-Ricks (L3)",
-        title: "WBMS-SWLT 16S 100A",
-        description:
-          "Smart BMS Manages Lithium Ion Batteries with Precision and Speed.",
-        image: "/products/swmini.png",
-        documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
-      },
-      {
-        id: "bms-3",
-        heading: "Autos (L5) & Forklifts",
-        title: "WBMS-SW 16S Contactor",
-        description:
-          "Functionally Safe BMS for High Power and low voltage applications.",
-        image: "/products/webim2.png",
-        documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
-      },
-      {
-        id: "bms-4",
-        heading: "Heavy Duty Applications",
-        title: "WBMS-SW 24S Pro",
-        description:
-          "Advanced BMS solution for heavy-duty vehicles with enhanced safety protocols.",
-        image: "/products/sw.png",
-        documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
-      },
-      {
-        id: "bms-5",
-        heading: "Marine & Maritime",
-        title: "WBMS-SW Marine Series",
-        description:
-          "Waterproof BMS designed for marine applications with corrosion resistance.",
-        image: "/products/swmini.png",
-        documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
-      },
-      {
-        id: "bms-6",
-        heading: "Energy Storage Systems",
-        title: "WBMS-SW Grid Scale",
-        description:
-          "High-capacity BMS for grid-scale energy storage and renewable integration.",
-        image: "/products/webim2.png",
-        documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
-      },
-    ],
-
-    "Other Advance Electronics": [
-      {
-        id: "oe-1",
-        heading: "Industrial Solutions",
-        title: "Advanced Control Unit",
-        description:
-          "High-performance control systems for industrial automation and monitoring applications.",
-        image: "/products/sw.png",
-        documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
-      },
-      {
-        id: "oe-2",
-        heading: "Smart Connectivity",
-        title: "IoT Communication Module",
-        description:
-          "Seamless connectivity solutions for smart devices and industrial IoT applications.",
-        image: "/products/swmini.png",
-        documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
-      },
-      {
-        id: "oe-3",
-        heading: "Power Electronics",
-        title: "Precision Power Supply",
-        description:
-          "Reliable power management solutions for critical electronic systems and applications.",
-        image: "/products/webim2.png",
-        documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
-      },
-      {
-        id: "oe-4",
-        heading: "Signal Processing",
-        title: "Digital Signal Processor",
-        description:
-          "High-speed signal processing unit for real-time data analysis and filtering.",
-        image: "/products/sw.png",
-        documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
-      },
-      {
-        id: "oe-5",
-        heading: "Wireless Solutions",
-        title: "RF Communication Module",
-        description:
-          "Long-range wireless communication system for remote monitoring applications.",
-        image: "/products/swmini.png",
-        documentUrl: "/documents/rf-communication-module-spec.pdf",
-      },
-      {
-        id: "oe-6",
-        heading: "Sensor Networks",
-        title: "Multi-Sensor Hub",
-        description:
-          "Integrated sensor platform for environmental monitoring and data collection.",
-        image: "/products/webim2.png",
-        documentUrl: "/pdata/WBMS-SW-16S-60A-80A v3.0 (1).pdf",
-      },
-    ],
-  };
-
   const currentProducts = allProducts[activeCategory];
   const hasMoreProducts = !showAll && visibleCount < currentProducts.length;
   const displayedProducts = showAll ? currentProducts : currentProducts.slice(0, visibleCount);
 
+  // First launch animation effect
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsFirstLaunch(false);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Intersection Observer for scroll animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleElements(prev => new Set([...prev, entry.target.dataset.index]));
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '50px'
+      }
+    );
+
+    // Observe header
+    if (headerRef.current) {
+      headerRef.current.dataset.index = 'header';
+      observer.observe(headerRef.current);
+    }
+
+    // Observe category section
+    if (categoryRef.current) {
+      categoryRef.current.dataset.index = 'category';
+      observer.observe(categoryRef.current);
+    }
+
+    // Observe product cards
+    productRefs.current.forEach((ref, index) => {
+      if (ref) {
+        ref.dataset.index = `product-${index}`;
+        observer.observe(ref);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, [displayedProducts.length]);
+
   const handleCategoryChange = (category) => {
     setActiveCategory(category);
-    setVisibleCount(6); // Reset to initial count when switching categories
-    setShowAll(false); // Reset view all state
+    setVisibleCount(6);
+    setShowAll(false);
+    // Reset visibility for new products
+    setVisibleElements(prev => {
+      const newSet = new Set();
+      prev.forEach(item => {
+        if (!item.startsWith('product-')) {
+          newSet.add(item);
+        }
+      });
+      return newSet;
+    });
   };
 
   const loadMoreProducts = () => {
@@ -152,24 +99,46 @@ const Products2 = () => {
   return (
     <div className="w-full min-h-screen max-w-7xl mx-auto">
       {/* Header Section */}
-      <div className="text-center py-8 sm:py-12 px-4">
+      <div 
+        ref={headerRef}
+        className={`text-center py-8 sm:py-12 px-4 transition-all duration-1000 ${
+          isFirstLaunch 
+            ? 'opacity-0 transform translate-y-8' 
+            : visibleElements.has('header')
+              ? 'opacity-100 transform translate-y-0'
+              : 'opacity-0 transform translate-y-8'
+        }`}
+      >
         <div className="max-w-6xl mx-auto">
-          <p className="text-xs sm:text-sm uppercase tracking-wide text-slate-900 mb-2">
+          <p className={`text-xs sm:text-sm uppercase tracking-wide text-slate-900 mb-2 transition-all duration-1000 delay-200 ${
+            isFirstLaunch ? 'opacity-0 transform translate-y-4' : 'opacity-100 transform translate-y-0'
+          }`}>
             Our Comprehensive Product Portfolio
           </p>
-          <div className="w-20 sm:w-28 h-0.5 bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] mx-auto mb-4 sm:mb-3 rounded-full"></div>
+          
+          <div className={`w-20 sm:w-28 h-0.5 bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] mx-auto mb-4 sm:mb-3 rounded-full transition-all duration-1000 delay-300 ${
+            isFirstLaunch ? 'opacity-0 transform scale-x-0' : 'opacity-100 transform scale-x-100'
+          }`}></div>
 
-          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-slate-800 mb-4 tracking-tight leading-tight">
+          <h1 className={`text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-slate-800 mb-4 tracking-tight leading-tight transition-all duration-1000 delay-400 ${
+            isFirstLaunch ? 'opacity-0 transform translate-y-6' : 'opacity-100 transform translate-y-0'
+          }`}>
             Powering the Future of{" "}
-            <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent">
+            <span className={`bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent transition-all duration-1000 delay-500 ${
+              isFirstLaunch ? 'opacity-0' : 'opacity-100'
+            }`}>
               Electric
             </span>{" "}
-            <span className="bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent">
+            <span className={`bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent transition-all duration-1000 delay-600 ${
+              isFirstLaunch ? 'opacity-0' : 'opacity-100'
+            }`}>
               Mobility
             </span>
           </h1>
           
-          <p className="text-sm sm:text-base md:text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
+          <p className={`text-sm sm:text-base md:text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed transition-all duration-1000 delay-700 ${
+            isFirstLaunch ? 'opacity-0 transform translate-y-4' : 'opacity-100 transform translate-y-0'
+          }`}>
             Discover our cutting-edge battery management systems and advanced electronic solutions 
             designed to drive innovation across automotive, industrial, and sustainable energy sectors.
           </p>
@@ -177,19 +146,31 @@ const Products2 = () => {
       </div>
 
       {/* Category Tabs */}
-      <div className="max-w-7xl mx-auto px-4 lg:px-8 mb-6 sm:mb-8">
+      <div 
+        ref={categoryRef}
+        className={`max-w-7xl mx-auto px-4 lg:px-8 mb-6 sm:mb-8 transition-all duration-800 ${
+          isFirstLaunch 
+            ? 'opacity-0 transform translate-y-8' 
+            : visibleElements.has('category')
+              ? 'opacity-100 transform translate-y-0'
+              : 'opacity-0 transform translate-y-8'
+        }`}
+      >
         <div className="flex justify-center">
           <div className="bg-white rounded-full p-1 shadow-md w-full sm:w-auto">
             <div className="flex flex-col sm:flex-row w-full sm:w-auto">
-              {categories.map((category) => (
+              {categories.map((category, index) => (
                 <button
                   key={category}
                   onClick={() => handleCategoryChange(category)}
-                  className={`px-3 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 mb-1 sm:mb-0 last:mb-0 ${
+                  className={`px-3 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 mb-1 sm:mb-0 last:mb-0 transform hover:scale-105 ${
                     activeCategory === category
                       ? "bg-slate-900 text-white shadow-lg"
                       : "text-slate-600 hover:text-slate-900 hover:bg-gray-50"
-                  }`}
+                  } ${isFirstLaunch ? `opacity-0 translate-y-4 delay-${800 + index * 100}` : 'opacity-100 translate-y-0'}`}
+                  style={{ 
+                    transitionDelay: isFirstLaunch ? `${800 + index * 100}ms` : '0ms'
+                  }}
                 >
                   <span className="block sm:inline">{category}</span>
                 </button>
@@ -206,13 +187,24 @@ const Products2 = () => {
           {displayedProducts.map((product, index) => (
             <div
               key={`${activeCategory}-${index}`}
-              className="relative group"
+              ref={el => productRefs.current[index] = el}
+              className={`relative group transition-all duration-800 ${
+                isFirstLaunch 
+                  ? 'opacity-0 transform translate-y-12 scale-95' 
+                  : visibleElements.has(`product-${index}`)
+                    ? 'opacity-100 transform translate-y-0 scale-100'
+                    : 'opacity-0 transform translate-y-12 scale-95'
+              }`}
+              style={{ 
+                transitionDelay: isFirstLaunch ? `${1000 + index * 150}ms` : `${index * 100}ms`
+              }}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-full">
+              <Link href={`/Products/${product.id}`} className="block h-full">
+                <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-full cursor-pointer">
                 {/* Image Container with Proper Padding */}
-                <div className="relative h-40 sm:h-48 md:h-52 bg-gray-50 p-6 sm:p-8">
+                <div className="relative h-40 sm:h-48 md:h-52 bg-gray-50 p-6 sm:p-8 overflow-hidden">
                   <div className="w-full h-full flex items-center justify-center">
                     <img
                       src={product.image}
@@ -220,6 +212,8 @@ const Products2 = () => {
                       className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-105"
                     />
                   </div>
+                  {/* Animated background gradient on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-blue-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 
                 {/* Content */}
@@ -239,8 +233,12 @@ const Products2 = () => {
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3 lg:gap-0">
                     {/* Download Info Document Button */}
                     <button 
-                      onClick={() => window.open(product.documentUrl, '_blank')}
-                      className="inline-flex items-center justify-center sm:justify-start text-xs sm:text-sm font-medium bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent hover:from-[#2563eb] hover:via-[#0891b2] hover:to-[#059669] transition-all duration-300 group/download py-1"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        window.open(product.documentUrl, '_blank');
+                      }}
+                      className="inline-flex items-center justify-center sm:justify-start text-xs sm:text-sm font-medium bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent hover:from-[#2563eb] hover:via-[#0891b2] hover:to-[#059669] transition-all duration-300 group/download py-1 z-10 relative"
                     >
                       <svg
                         className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 transition-transform group-hover/download:translate-y-0.5 text-cyan-500"
@@ -258,11 +256,8 @@ const Products2 = () => {
                       <span>Info Doc</span>
                     </button>
                     
-                    {/* View Product Button */}
-                    <Link
-                      href={`/Products/${product.id}`}
-                      className="inline-flex items-center justify-center sm:justify-start text-xs sm:text-sm font-medium bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent hover:from-[#2563eb] hover:via-[#0891b2] hover:to-[#059669] transition-all duration-300 group/btn py-1"
-                    >
+                    {/* View Product Text */}
+                    <div className="inline-flex items-center justify-center sm:justify-start text-xs sm:text-sm font-medium bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] bg-clip-text text-transparent hover:from-[#2563eb] hover:via-[#0891b2] hover:to-[#059669] transition-all duration-300 group/btn py-1">
                       <span className="mr-1 sm:mr-2">View product</span>
                       <svg
                         className="w-3 h-3 sm:w-4 sm:h-4 transition-transform group-hover/btn:translate-x-1 text-blue-500"
@@ -277,20 +272,25 @@ const Products2 = () => {
                           d="M9 5l7 7-7 7"
                         />
                       </svg>
-                    </Link>
+                    </div>
                   </div>
                 </div>
                 
                 {/* Bottom Border Accent */}
                 <div className="h-0.5 sm:h-1 bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
+              </Link>
             </div>
           ))}
         </div>
 
-        {/* Load More & View All Buttons */}
+        {/* Load More & View All Buttons with Animation */}
         {!showAll && (
-          <div className="text-center space-y-4">
+          <div className={`text-center space-y-4 transition-all duration-800 ${
+            displayedProducts.length > 0 && visibleElements.has(`product-${Math.min(5, displayedProducts.length - 1)}`)
+              ? 'opacity-100 transform translate-y-0'
+              : 'opacity-0 transform translate-y-8'
+          }`}>
             {hasMoreProducts && (
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
                 <button
@@ -355,15 +355,17 @@ const Products2 = () => {
                     d="M13 7l5 5m0 0l-5 5m5-5H6"
                   />
                 </svg>
-                </button>
+              </button>
             )}
           </div>
         )}
       </div>
 
-      {/* Contact Section */}
-      <div className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50">
-        <button className="bg-slate-800 hover:bg-slate-900 text-white px-2 sm:px-3 md:px-4 py-2 sm:py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-1 sm:space-x-2 group">
+      {/* Contact Section with Pulse Animation */}
+      <div className={`fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50 transition-all duration-1000 delay-1500 ${
+        isFirstLaunch ? 'opacity-0 transform translate-y-8 scale-75' : 'opacity-100 transform translate-y-0 scale-100'
+      }`}>
+        <button className="bg-slate-800 hover:bg-slate-900 text-white px-2 sm:px-3 md:px-4 py-2 sm:py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-1 sm:space-x-2 group animate-pulse hover:animate-none">
           <span className="text-xs sm:text-sm font-medium">Get in Touch</span>
           <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-slate-700 rounded-full flex items-center justify-center group-hover:bg-slate-600 transition-colors">
             <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">

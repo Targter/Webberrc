@@ -1,7 +1,7 @@
 "use client"
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import TimelineDemo from "@/component/timeline"
+// import TimelineDemo from "@/component/timeline"
 import {MediaGallery} from "@/component/MediaGallery"
 const About = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
