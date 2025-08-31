@@ -169,7 +169,7 @@ const About = () => {
               </div>
               
               <p className="mb-6 sm:mb-8 opacity-90 text-xs sm:text-sm md:text-base mt-3 sm:mt-5">
-                Innovating with Integrity, Collaboration, and Customer Focus. At Maxwell,
+                Innovating with Integrity, Collaboration, and Customer Focus. At Webber ,
                 we champion a culture built on trust, transparency, and innovation.
               </p>
               
