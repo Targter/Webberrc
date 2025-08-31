@@ -176,7 +176,7 @@ const cardData = [
       "https://cdn.prod.website-files.com/644bbee16ccf1974b3fcb98b/649a6f9dd0a1ee8984073364_Industrial%20Hero%20Image-min-min.avif",
     title: "Industrial Applications",
     description:
-      "Maxwell’s BMS is scalable and designed to manage complex industrial applications such as electric forklifts, excavators, mining equipment, robots, AGV's seamlessly.",
+      "Webber’s BMS is scalable and designed to manage complex industrial applications such as electric forklifts, excavators, mining equipment, robots, AGV's seamlessly.",
     link: "/applications/industrial-applications",
     lottieIndex: 2,
   },
@@ -220,7 +220,7 @@ export default function IndustryApplications() {
               </div>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-white">
-              Maxwell's solutions are designed to power a wide{" "}
+              Webber's solutions are designed to power a wide{" "}
               <span className="bg-gradient-to-r from-blue-500 to-green-400 bg-clip-text text-transparent">
                 range of applications
               </span>
