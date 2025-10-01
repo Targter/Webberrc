@@ -7,7 +7,7 @@ const Home2 = () => {
   
   const stats = [
     { title: "Customers Served", amount: 150, suffix: "+" },
-    { title: "Products", amount: 25, suffix: "+" },
+    { title: "Deployments", amount: 100, suffix: "k+" },
     { title: "Years Experience", amount: 8, suffix: "+" },
   ];
 
@@ -81,7 +81,7 @@ const Home2 = () => {
           }}>
             <div className="inline-flex items-center space-x-1 sm:space-x-2 bg-white/10 backdrop-blur-sm px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-full border border-white/20">
               <span className="text-white text-xs sm:text-sm md:text-base lg:text-lg font-medium tracking-wide uppercase leading-tight">
-                <span className="hidden sm:inline">RELIABLE CHIP • RELIABLE BATTERY • RELIABLE RIDE</span>
+                <span className="hidden sm:inline">RELIABLE CHIP • RELIABLE BATTERY • RELIABLE STORAGE</span>
                 <span className="sm:hidden">RELIABLE • TRUSTED • INNOVATIVE</span>
               </span>
             </div>

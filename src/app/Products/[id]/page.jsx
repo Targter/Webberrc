@@ -1,7 +1,7 @@
 "use client";
 import React, { use, useEffect, useState, useRef } from "react";
 import Image from "next/image";
-import { allProducts } from "@/constants";
+import { productsByCategory} from "@/constants";
 import Link from "next/link";
 
 const page = ({ params }) => {
