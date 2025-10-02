@@ -82,7 +82,7 @@ const Products = () => {
 
       {/* Main Content with Sidebar */}
       <div className="flex flex-col lg:flex-row max-w-[1800px] mx-auto px-4 lg:px-8 gap-6 pb-12">
-        {/* Sidebar - Category Selection */}
+        {/* Sidebar - Category Selection and bar removed by removing hover:translate-x-1 (since that can push elements horizontally and trigger overflow). You can keep it if you wrap the whole container in overflow-x-hidden.*/}
         <div className="lg:w-64 flex-shrink-0">
           <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-4 flex flex-col" style={{ height: '420px' }}>
             <div className="flex-1 flex flex-col w-full justify-center space-y-3 overflow-y-auto overflow-x-hidden">
@@ -103,7 +103,7 @@ const Products = () => {
               ))}
             </div>
 
-            {/* Product Count Badge */}
+            {/* coutn of products */}
             <div className="mt-4 p-4 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl animate-fadeIn flex-shrink-0">
               <p className="text-sm text-slate-600">
                 <span className="font-bold text-2xl text-slate-800 block">

@@ -423,4 +423,197 @@ export const mediaItems = [
     }
   ];
 
+ export  const  allProducts = {
+  "Battery Management Systems": [
+    {
+      id: "bms-1",
+      heading: "CAN BMS",
+      title: "WBMS-SW 16S 60/80A",
+      description:
+        " Smart BMS Manages Lithium Ion Batteries with Precision and Speed",
+      image: "/products/sw.png",
+      documentUrl: "\products\new\CAN BMS\WBMS-SW-16S-60A-80A v3.0.pdf",
+    },
+    {
+      id: "bms-2",
+      heading: "Contactor 16S",
+      title: "WBMS-SW-16S Contactor",
+      description:
+        "Smart BMS Manages Lithium Ion Batteries with Precision and Speed",
+      image: "/products/swmini.png",
+      documentUrl: "\products\new\Contactor 16S\WBMS-SW-16S-250A-Contactor v3.0 (1).pdf",
+    },
+    {
+      id: "bms-3",
+      heading: "Contactor 32S",
+      title: "WBMS-SW-32S 200A Contactor",
+      description:
+        "Smart BMS Manages Lithium Ion Batteries with Precision and Speed",
+      image: "/products/webim2.png",
+      documentUrl: "\products\new\Contactor 32S\WBMS-SW-32S-200A-Contactor v3 (Hongfa).pdf",
+    },
+    {
+      id: "bms-4",
+      heading: "Contactor 32S",
+      title: "WBMS-SW-32S 250A Contactor",
+      description:
+        "Advanced BMS solution for heavy-duty vehicles with enhanced safety protocols.",
+      image: "/products/sw.png",
+      documentUrl: "public\products\new\Contactor 32S\WBMS-SW-32S-250A-Contactor v3.0.pdf",
+    },
+    {
+      id: "bms-5",
+      heading: "Mini CAN",
+      title: "WBMS-SW-Mini 16S 20A",
+      description:
+        "Smart BMS Manages Lithium Ion Batteries with Precision and Speed",
+      image: "/products/swmini.png",
+      documentUrl: "public\products\new\Mini CAN\WBMS-SW-Mini-16S-20A v3.0.pdf",
+    },
+    {
+      id: "bms-6",
+      heading: "Mini CAN",
+      title: "WBMS-SW-Mini 16S 45A",
+      description:
+        "Smart BMS Manages Lithium Ion Batteries with Precision and Speed",
+      image: "/products/swmini.png",
+      documentUrl: "public\products\new\Mini CAN\WBMS-SW-Mini-16S-45A v3.0.pdf",
+    },
+    {
+      id: "bms-7",
+      heading: "SWLT EV",
+      title: "WBMS-SWLT 16S 45A",
+      description:
+        "Smart BMS Manages Lithium Ion Batterieswith Precision and Speed",
+      image: "/products/swmini.png",
+      documentUrl: "public\products\new\SWLT EV\WBMS-SWLT-16S-45A v3.0.pdf",
+    },
+    {
+      id: "bms-8",
+      heading: "SWLT EV",
+      title: "WBMS-SWLT 16S 80A",
+      description:
+        "Smart BMS Manages Lithium Ion Batteries with Precision and Speed",
+      image: "/products/swmini.png",
+      documentUrl: "public\products\new\SWLT EV\WBMS-SWLT-16S-80A v3.0.pdf",
+    },
+    {
+      id: "bms-9",
+      heading: "SWLT EV",
+      title: "WBMS-SWLT 16S 100A",
+      description:
+        "Smart BMS Manages Lithium Ion Batteries with Precision and Speed",
+      image: "/products/swmini.png",
+      documentUrl: "public\products\new\SWLT EV\WBMS-SWLT-16S-100A v3.0.pdf",
+    },
+    {
+      id: "bms-10",
+      heading: "SWLT Inverter",
+      title: "WBMS-SWLT 8S 100A",
+      description:
+        "Smart BMS Manages Lithium Ion Batteries with Precision and Speed",
+      image: "/products/swmini.png",
+      documentUrl: "public\products\new\SWLT Inverter\WBMS-SWLT-8S-100A-V1.0.pdf",
+    },
+    {
+      id: "bms-11",
+      heading: "SWLT Inverter",
+      title: "WBMS-SWLT 16S 80A",
+      description:
+        "Smart BMS Manages Lithium Ion Batteries with Precision and Speed",
+      image: "/products/swmini.png",
+      documentUrl: "public\products\new\SWLT Inverter\WBMS-SWLT-16S -80A-V1.0.pdf",
+    },
+    {
+      id: "bms-12",
+      heading: "Energy Storage Systems",
+      title: "SWLT Inverter",
+      description:
+        "Smart BMS Manages Lithium Ion Batteries with Precision and Speed",
+      image: "/products/swmini.png",
+      documentUrl: "public\products\new\SWLT Inverter\WBMS-SWLT-16S-50A-V1.0.pdf",
+    },
+  ],
+
+  "Other Advance Electronics": [
+      {
+      id: "bms-1",
+      heading: "Mini CAN",
+      title: "WBMS-SW-Mini 16S 20A",
+      description:
+        "Smart BMS Manages Lithium Ion Batteries with Precision and Speed",
+      image: "/products/swmini.png",
+      documentUrl: "public\products\new\Mini CAN\WBMS-SW-Mini-16S-20A v3.0.pdf",
+    },
+    {
+      id: "bms-2",
+      heading: "Mini CAN",
+      title: "WBMS-SW-Mini 16S 45A",
+      description:
+        "Smart BMS Manages Lithium Ion Batteries with Precision and Speed",
+      image: "/products/swmini.png",
+      documentUrl: "public\products\new\Mini CAN\WBMS-SW-Mini-16S-45A v3.0.pdf",
+    },
+    {
+      id: "bms-3",
+      heading: "SWLT EV",
+      title: "WBMS-SWLT 16S 45A",
+      description:
+        "Smart BMS Manages Lithium Ion Batterieswith Precision and Speed",
+      image: "/products/swmini.png",
+      documentUrl: "public\products\new\SWLT EV\WBMS-SWLT-16S-45A v3.0.pdf",
+    },
+    {
+      id: "bms-4",
+      heading: "SWLT EV",
+      title: "WBMS-SWLT 16S 80A",
+      description:
+        "Smart BMS Manages Lithium Ion Batteries with Precision and Speed",
+      image: "/products/swmini.png",
+      documentUrl: "public\products\new\SWLT EV\WBMS-SWLT-16S-80A v3.0.pdf",
+    },
+    {
+      id: "bms-5",
+      heading: "SWLT EV",
+      title: "WBMS-SWLT 16S 100A",
+      description:
+        "Smart BMS Manages Lithium Ion Batteries with Precision and Speed",
+      image: "/products/swmini.png",
+      documentUrl: "public\products\new\SWLT EV\WBMS-SWLT-16S-100A v3.0.pdf",
+    },
+    {
+      id: "bms-6",
+      heading: "SWLT Inverter",
+      title: "WBMS-SWLT 8S 100A",
+      description:
+        "Smart BMS Manages Lithium Ion Batteries with Precision and Speed",
+      image: "/products/swmini.png",
+      documentUrl: "public\products\new\SWLT Inverter\WBMS-SWLT-8S-100A-V1.0.pdf",
+    },
+    {
+      id: "bms-7",
+      heading: "SWLT Inverter",
+      title: "WBMS-SWLT 16S 80A",
+      description:
+        "Smart BMS Manages Lithium Ion Batteries with Precision and Speed",
+      image: "/products/swmini.png",
+      documentUrl: "public\products\new\SWLT Inverter\WBMS-SWLT-16S -80A-V1.0.pdf",
+    },
+    {
+      id: "bms-8",
+      heading: "Energy Storage Systems",
+      title: "SWLT Inverter",
+      description:
+        "Smart BMS Manages Lithium Ion Batteries with Precision and Speed",
+      image: "/products/swmini.png",
+      documentUrl: "public\products\new\SWLT Inverter\WBMS-SWLT-16S-50A-V1.0.pdf",
+    },
+  ],
+};
+
+
+
+  
+
+
 
