@@ -24,38 +24,7 @@ export const productsByCategory = {
       image: "/products/swmini.png",
       documentUrl: "public/products/new/SWLT EV/WBMS-SWLT-16S-45A v3.0.pdf",
     },
-    {
-      id: "bms-7",
-      heading: "SWLT EV",
-      title: "WBMS-SWLT 16S 45A",
-      description: "Smart BMS Manages Lithium Ion Batteries with Precision and Speed",
-      image: "/products/swmini.png",
-      documentUrl: "public/products/new/SWLT EV/WBMS-SWLT-16S-45A v3.0.pdf",
-    },
-    {
-      id: "bms-7",
-      heading: "SWLT EV",
-      title: "WBMS-SWLT 16S 45A",
-      description: "Smart BMS Manages Lithium Ion Batteries with Precision and Speed",
-      image: "/products/swmini.png",
-      documentUrl: "public/products/new/SWLT EV/WBMS-SWLT-16S-45A v3.0.pdf",
-    },
-    {
-      id: "bms-7",
-      heading: "SWLT EV",
-      title: "WBMS-SWLT 16S 45A",
-      description: "Smart BMS Manages Lithium Ion Batteries with Precision and Speed",
-      image: "/products/swmini.png",
-      documentUrl: "public/products/new/SWLT EV/WBMS-SWLT-16S-45A v3.0.pdf",
-    },
-    {
-      id: "bms-7",
-      heading: "SWLT EV",
-      title: "WBMS-SWLT 16S 45A",
-      description: "Smart BMS Manages Lithium Ion Batteries with Precision and Speed",
-      image: "/products/swmini.png",
-      documentUrl: "public/products/new/SWLT EV/WBMS-SWLT-16S-45A v3.0.pdf",
-    },
+   
   ],
   "4 Wheelers": [
     {
