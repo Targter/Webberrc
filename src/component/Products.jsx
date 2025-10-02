@@ -85,7 +85,7 @@ const Products = () => {
         {/* Sidebar - Category Selection and bar removed by removing hover:translate-x-1 (since that can push elements horizontally and trigger overflow). You can keep it if you wrap the whole container in overflow-x-hidden.*/}
         <div className="lg:w-64 flex-shrink-0">
           <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-4 flex flex-col" style={{ height: '420px' }}>
-            <div className="flex-1 flex flex-col w-full justify-center space-y-3 overflow-y-auto overflow-x-hidden">
+            <div className="flex-1 flex flex-col  justify-center space-y-3 overflow-y-auto overflow-x-hidden">
               {categories.map((category, idx) => (
                 <button
                   key={category}
@@ -93,7 +93,7 @@ const Products = () => {
                   style={{
                     animationDelay: `${idx * 100}ms`
                   }}
-                  className={`w-full text-left px-4 py-3.5 rounded-xl font-semibold transition-all duration-300 animate-fadeInLeft ${activeCategory === category
+                  className={`w-full text-left px-6 py-3.5 rounded-xl overflow-x-hidden font-semibold transition-all duration-300 animate-fadeInLeft ${activeCategory === category
                       ? "bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] text-white shadow-lg transform scale-105"
                       : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
                     }`}
