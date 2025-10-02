@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import {productsByCategory} from "@/constants"
+import { productsByCategory } from "@/constants"
 
 
 const Products = () => {
@@ -85,7 +85,7 @@ const Products = () => {
         {/* Sidebar - Category Selection */}
         <div className="lg:w-64 flex-shrink-0">
           <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-4 flex flex-col" style={{ height: '420px' }}>
-            <div className="flex-1 flex flex-col justify-center space-y-3 overflow-y-auto">
+            <div className="flex-1 flex flex-col w-full justify-center space-y-3 overflow-y-auto overflow-x-hidden">
               {categories.map((category, idx) => (
                 <button
                   key={category}
@@ -93,17 +93,16 @@ const Products = () => {
                   style={{
                     animationDelay: `${idx * 100}ms`
                   }}
-                  className={`w-full text-left px-4 py-3.5 rounded-xl font-semibold transition-all duration-300 animate-fadeInLeft ${
-                    activeCategory === category
+                  className={`w-full text-left px-4 py-3.5 rounded-xl font-semibold transition-all duration-300 animate-fadeInLeft ${activeCategory === category
                       ? "bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#10b981] text-white shadow-lg transform scale-105"
-                      : "text-slate-600 hover:bg-slate-100 hover:text-slate-900 hover:translate-x-1"
-                  }`}
+                      : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                    }`}
                 >
                   {category}
                 </button>
               ))}
             </div>
-            
+
             {/* Product Count Badge */}
             <div className="mt-4 p-4 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl animate-fadeIn flex-shrink-0">
               <p className="text-sm text-slate-600">
@@ -115,6 +114,7 @@ const Products = () => {
             </div>
           </div>
         </div>
+
 
         {/* Products Display Area */}
         <div className="flex-1">
